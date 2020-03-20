@@ -3,7 +3,7 @@
 - 产品简介
 
   - [产品概述](/)
-  - [产品架构](Privatecloud/UCloudStack/arch.md)
+  - [产品架构](privatecloud/UCloudStack/arch.md)
   - [核心功能](features.md)
   - [产品特性](advantages.md)
   - [技术特性](techadv.md)
