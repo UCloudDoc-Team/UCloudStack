@@ -1,4 +1,4 @@
-<div class="sidebar_title icon__unet"> UCloudStack 私有云 UNet</div>
+<div class="sidebar_title icon__UCloudStack"> UCloudStack 私有云 </div>
 
 - 产品简介
 
