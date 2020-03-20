@@ -1,4 +1,4 @@
-<div class="sidebar_title icon__UCloudStack"> UCloudStack 私有云 </div>
+<div class="sidebar_title icon__OpenStack"> UCloudStack 私有云 </div>
 
 - 产品简介
 
