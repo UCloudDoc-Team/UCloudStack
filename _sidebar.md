@@ -2,7 +2,7 @@
 
 - 产品简介
 
-  - [产品概述](privatecloud/UCloudStack/)
+  - [产品概述](privatecloud/UCloudStack/README.md)
   - [产品架构](privatecloud/UCloudStack/arch.md)
   - [核心功能](privatecloud/UCloudStack/features.md)
   - [产品特性](privatecloud/UCloudStack/advantages.md)
@@ -11,23 +11,23 @@
 
 - 操作指南  
 
-    - [用户指南](UserGuide/UserGuide.md)
-    - [管理员指南](AdminGuide/AdminGuide.md)
+    - [用户指南](privatecloud/UCloudStack/UserGuide/UserGuide.md)
+    - [管理员指南](privatecloud/UCloudStack/AdminGuide/AdminGuide.md)
 
 - 技术白皮书
 
-    - [技术白皮书](TechWhitepaper/TechWhitepaper.md)
+    - [技术白皮书](privatecloud/UCloudStack/TechWhitepaper/TechWhitepaper.md)
 
 - 开发者指南 
 
-    - [API 手册](APIGuide/APIGuide.md)
+    - [API 手册](privatecloud/UCloudStack/APIGuide/APIGuide.md)
 
 - 常见问题
 
-    - [常见问题](faq.md)
+    - [常见问题](privatecloud/UCloudStack/faq.md)
 
 - 更新历史
 
-    - [产品更新](changelog.md)
-    - [文档更新](docschangelog.md)
+    - [产品更新](privatecloud/UCloudStack/changelog.md)
+    - [文档更新](privatecloud/UCloudStack/docschangelog.md)
 
