@@ -11,12 +11,16 @@
 
 - 操作指南  
 
-    - [用户指南](UCloudStack/UserGuide/UserGuide.md)
-    - [管理员指南](UCloudStack/AdminGuide/AdminGuide.md)
+    - [用户手册](UCloudStack/UserGuide/UserGuide.md)
+    - [管理员手册](UCloudStack/AdminGuide/AdminGuide.md)
 
 - 技术白皮书
 
     - [技术白皮书](UCloudStack/TechWhitepaper/TechWhitepaper.md)
+
+- 部署指南
+
+    - [数据中心部署](UCloudStack/DataCenterDeploy/DataCenterDeploy.md)
 
 - 开发者指南 
 
@@ -24,7 +28,7 @@
 
 - 常见问题
 
-    - [常见问题](UCloudStack/faq.md)
+    - [产品架构类](UCloudStack/faq.md)
 
 - 更新历史
 
