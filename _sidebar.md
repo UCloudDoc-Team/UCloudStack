@@ -14,7 +14,7 @@
     - [用户手册](UCloudStack/UserGuide/UserGuide.md)
     - [管理员手册](UCloudStack/AdminGuide/AdminGuide.md)
 
-- 技术白皮书
+- 技术白皮书 
 
     - [技术白皮书](UCloudStack/TechWhitepaper/TechWhitepaper.md)
 
