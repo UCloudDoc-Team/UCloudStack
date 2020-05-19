@@ -20,7 +20,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 本文档是 UCloudStack 云计算产品 API 参考手册。在本文档中，您能够获取到对于每一个指令的描述、语法及使用示例。您可以通过用 HTTP/HTTPS GET 的方式对产品 API 进行调用，或选择适合您所使用编程语言的 SDK 来访问产品 API 接口。在调用 API 时，除需要给出相应的 API 调用地址、公共参数、API指令及指令参数外，还需在调用请求中给出 API 密钥进行身份认证，请务必妥善保管好帐户的 API 密钥。
 
-**本文档描述的 API 接口及内容适用的产品版本为：UCloudStack v1.13.0 ，调用时请配置 UCloudStack 私有云 URL 。**
+**本文档描述的 API 接口及内容适用的产品版本为：UCloudStack v1.14.0 ，调用时请配置 UCloudStack 私有云 URL 。**
 
 ## 1.2 API 规范概述
 
@@ -620,7 +620,46 @@ http(s)://xxx.xxx.xx/?Action=StopVMInstance
 }
 ```
 
-## 2.7 重置虚拟机密码-ResetVMInstancePassword
+## 2.7 断电虚拟机-PoweroffVMInstance
+
+断电虚拟机，可能导致丢失数据甚至损坏操作系统，仅适用于虚拟机死机及级端测试场景。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                               | Required |
+| -------------- | ------ | ----------------------------------------- | -------- |
+| Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| VMID           | string | 虚拟机ID                                  | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回信息描述 | **Yes**  |
+
+**Request Example**
+
+```
+https://api.ucloud.cn/?Action=PoweroffVMInstance
+&Region=cn-zj
+&Zone=cn-zj-01
+&VMID=sakuHexl
+```
+
+**Response Example**
+
+```
+{
+    "Action": "PoweroffVMInstanceResponse", 
+    "Message": "ojfNlmPc", 
+    "RetCode": 0
+}
+```
+
+## 2.8 重置虚拟机密码-ResetVMInstancePassword
 
 重置虚拟机密码，主机必须开机才可以重置密码
 
@@ -661,7 +700,7 @@ https://xxx.xxx.xx/?Action=ResetVMInstancePassword
 }
 ```
 
-## 2.8 重装系统-ReinstallVMInstance
+## 2.9 重装系统-ReinstallVMInstance
 
 重装系统，关机状态的虚拟机才可进行重装系统操作。
 
@@ -702,7 +741,7 @@ https://xxx.xxx.xx/?Action=ReinstallVMInstance
 }
 ```
 
-## 2.9 修改虚拟机配置-ResizeVMConfig
+## 2.10 修改虚拟机配置-ResizeVMConfig
 
 修改虚拟机配置，关机状态的虚拟机才可进行配置修改。
 
@@ -745,7 +784,7 @@ https://xxx.xxx.xx/?Action=ResizeVMConfig
 }
 ```
 
-## 2.10 删除虚拟机-DeleteVMInstance
+## 2.11 删除虚拟机-DeleteVMInstance
 
 删除 UCloudStack 虚拟机实例，删除后虚拟机会进入回收站。
 
@@ -1341,9 +1380,212 @@ https://xxx.xxx.xxx/?Action=DeleteDisk
 }
 ```
 
-# 5 VPC 私有网络
+# 5 硬盘快照
 
-## 5.1 创建 VPC-CreateVPC
+## 5.1 创建硬盘快照-CreateSnapshot
+
+创建硬盘快照
+
+!> 为保证数据及磁盘的安全，仅支持未绑定及已绑定的硬盘进行快照操作，若硬盘在升级或快照中，无法进行创建快照操作。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                               | Required |
+| -------------- | ------ | ----------------------------------------- | -------- |
+| Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Name           | string | 快照名称，限制字符长度30                  | **Yes**  |
+| DiskID         | string | 硬盘ID，输入“有效”状态的ID                | **Yes**  |
+| Remark         | string | 描述，限制字符长度100                     | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回信息描述 | **Yes**  |
+| SnapshotID     | string | 创建的快照ID | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=CreateSnapshot
+&Region=cn-zj
+&Zone=cn-zj-01
+&Name=RsvdhPcb
+&DiskID=FxxPJPmq
+&Remark=CBIehGJR
+```
+
+**Response Example**
+
+```
+{
+    "Action": "CreateSnapshotResponse", 
+    "SnapshotID": "OVTzNNtF", 
+    "Message": "BWAZQDhS", 
+    "RetCode": 0
+}
+```
+
+## 5.2 查询硬盘快照信息-DescribeSnapshot
+
+查询硬盘快照信息
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| SnapshotIDs.N  | string | 【数组】快照ID，输入“有效”的ID。调用方式举例：SnapshotIDs.0=“one-id”、SnapshotIDs.1=“two-id”。 | No       |
+| DiskID         | string | 硬盘ID，输入“有效”状态的ID                                   | No       |
+| Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
+| Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description              | Required |
+| -------------- | ------ | ------------------------ | -------- |
+| RetCode        | int    | 返回码                   | **Yes**  |
+| Action         | string | 操作名称                 | **Yes**  |
+| Message        | string | 返回信息描述             | **Yes**  |
+| TotalCount     | int    | 返回快照总个数           | **Yes**  |
+| Infos          | array  | 【数组】返回快照对象数组 | **Yes**  |
+
+**SnapshotInfo**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值： cn，表示中国；                                | No       |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
+| Name           | string | 快照名称                                                     | No       |
+| Remark         | string | 描述                                                         | No       |
+| SnapshotID     | string | 快照ID                                                       | No       |
+| SnapshotStatus | string | 快照状态。枚举值：Createing，表示制作中；Normal，表示正常；RollBacking，表示回滚中；Deleting，表示删除中；Deleted，表示已删除； | No       |
+| DiskID         | string | 快照对应的硬盘 ID                                            | No       |
+| DiskType       | string | 硬盘类型。枚举值：Boot，表示系统盘；Data，表示数据盘；       | No       |
+| CreateTime     | int    | 快照创建时间                                                 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribeSnapshot
+&Region=cn-zj
+&Zone=cn-zj-01
+&SnapshotIDs=rKAmGutD
+&DiskID=yiPZorAe
+&Offset=1
+&Limit=6
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribeSnapshotResponse", 
+    "TotalCount": 6, 
+    "Message": "xxvzrmqS", 
+    "Infos": [
+        {
+            "Zone": "sHpsasrk", 
+            "SnapshotName": "EmRKPMfA", 
+            "Region": "nLOwuJMy", 
+            "DiskType": "FSqSMNcx", 
+            "SnapshotStatus": "chwKtEAU", 
+            "SnapshotID": "MxRoqprG", 
+            "CreateTime": 6, 
+            "DiskID": "PDekJzuV"
+        }
+    ], 
+    "RetCode": 0
+}
+```
+
+## 5.3 回滚快照-RollbackSnapshot
+
+将某个快照内的数据回滚到原云硬盘，仅支持正常状态的快照进行回滚操作，回滚时硬盘必须处于未绑定或其挂载的主机为关机状态。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                               | Required |
+| -------------- | ------ | ----------------------------------------- | -------- |
+| Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| DiskID         | string | 对应的云硬盘 ID；                         | **Yes**  |
+| SnapshotID     | string | 快照ID                                    | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回信息描述 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=RollbackSnapshot
+&Region=cn-zj
+&Zone=cn-zj-01
+&DiskID=icJxMctU
+&SnapshotID=oGGQpgjB
+```
+
+**Response Example**
+
+```
+{
+    "Action": "RollbackSnapshotResponse", 
+    "Message": "NAyAmJTS", 
+    "RetCode": 0
+}
+```
+
+## 5.4 删除快照-DeleteSnapshot
+
+删除快照，仅支持状态为正常的快照进行删除操作。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                               | Required |
+| -------------- | ------ | ----------------------------------------- | -------- |
+| Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| SnapshotID     | string | 快照ID                                    | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回信息描述 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DeleteSnapshot
+&Region=cn-zj
+&Zone=cn-zj-01
+&SnapshotID=lWHdWLAn
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DeleteSnapshotResponse", 
+    "Message": "NgzHbJOY", 
+    "RetCode": 0
+}
+```
+
+# 6 VPC 私有网络
+
+## 6.1 创建 VPC-CreateVPC
 
 创建 VPC 私有网络
 
@@ -1387,7 +1629,7 @@ https://xxx.xxx.xxx/?Action=CreateVPC
 }
 ```
 
-## 5.2 查询 VPC 信息-DescribeVPC
+## 6.2 查询 VPC 信息-DescribeVPC
 
 查询 VPC 的详细信息
 
@@ -1486,7 +1728,7 @@ https://xxx.xxx.xxx/?Action=DescribeVPC
 }
 ```
 
-## 5.3 删除 VPC-DeleteVPC
+## 6.3 删除 VPC-DeleteVPC
 
 删除 VPC
 
@@ -1525,7 +1767,7 @@ https://xxx.xxx.xxx/?Action=DeleteVPC
 }
 ```
 
-## 5.4 创建子网-CreateSubnet
+## 6.4 创建子网-CreateSubnet
 
 创建子网
 
@@ -1571,7 +1813,7 @@ https://xxx.xxx.xxx/?Action=CreateSubnet
 }
 ```
 
-## 5.5 查询子网信息-DescribeSubnet
+## 6.5 查询子网信息-DescribeSubnet
 
 查询子网信息
 
@@ -1644,7 +1886,7 @@ https://xxx.xxx.xxx/?Action=DescribeSubnet
 }
 ```
 
-## 5.6 删除子网-DeleteSubnet
+## 6.6 删除子网-DeleteSubnet
 
 删除子网
 
@@ -1683,9 +1925,9 @@ https://xxx.xxx.xxx/?Action=DeleteSubnet
 }
 ```
 
-# 6 外网 IP
+# 7 外网 IP
 
-## 6.1 申请外网IP-AllocateEIP
+## 7.1 申请外网IP-AllocateEIP
 
 申请 UCloudStack 外网 IP 地址。
 
@@ -1734,7 +1976,7 @@ https://xxx.xxx.xxx/?Action=AllocateEIP
 }
 ```
 
-## 6.2 获取外网 IP 价格-GetEIPPrice
+## 7.2 获取外网 IP 价格-GetEIPPrice
 
 获取 UCloudStack 外网 IP 的价格信息。
 
@@ -1793,7 +2035,7 @@ https://xxx.xxx.xxx/?Action=GetEIPPrice
 }
 ```
 
-## 6.3 获取外网 IP 信息-DescribeEIP
+## 7.3 获取外网 IP 信息-DescribeEIP
 
 获取 UCloudStack 外网 IP 地址的信息。
 
@@ -1864,7 +2106,7 @@ https://xxx.xxx.xxx/?Action=DescribeEIP
 }
 ```
 
-## 6.4 绑定外网 IP-BindEIP
+## 7.4 绑定外网 IP-BindEIP
 
 绑定 UCoudStack 外网 IP 地址到虚拟机、负载均衡、NAT 网关资源。
 
@@ -1907,7 +2149,7 @@ https://xxx.xxx.xxx/?Action=BindEIP
 } 
 ```
 
-## 6.5 解绑外网 IP-UnBindEIP
+## 7.5 解绑外网 IP-UnBindEIP
 
 将外网 IP 地址从虚拟机、负载均衡、NAT网关资源上解绑，解绑后的外网 IP 地址可重新绑定至其它资源。
 
@@ -1951,7 +2193,7 @@ https://xxx.xxx.xxx/?Action=UnBindEIP
 }
 ```
 
-## 6.6 调整外网IP带宽-ModifyEIPBandwidth
+## 7.6 调整外网IP带宽-ModifyEIPBandwidth
 
 调整外网 IP 地址的带宽
 
@@ -1992,7 +2234,7 @@ https://xxx.xxx.xxx/?Action=ModifyEIPBandwidth
 }
 ```
 
-## 6.7 删除外网 IP-ReleaseEIP
+## 7.7 删除外网 IP-ReleaseEIP
 
 删除外网 IP 地址，删除后 IP 地址会进入回收站。
 
@@ -2031,9 +2273,260 @@ https://xxx.xxx.xxx/?Action=ReleaseEIP
 }
 ```
 
-# 7 安全组
+# 8 物理IP
 
-## 7.1 创建安全组-CreateSecurityGroup
+## 8.1 创建物理IP-CreatePhysicalIP
+
+创建物理 IP ，需确保平台已配置物理 IP 线路相关信息及物理网络联通性。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| OperatorName   | string | 物理IP线路                          | **Yes**  |
+| Name           | string | 物理IP名称，限制字符长度30          | **Yes**  |
+| Remark         | string | 描述                                | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description          | Required |
+| -------------- | ------ | -------------------- | -------- |
+| RetCode        | int    | 返回码               | **Yes**  |
+| Action         | string | 操作名称             | **Yes**  |
+| PhysicalIPID   | string | 返回创建的物理IP的ID | **Yes**  |
+| Message        | string | 返回信息描述         | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=CreatePhysicalIP
+&Region=pUUQadov
+&Zone=xolTDqNR
+&OperatorName=TrtORwfX
+&Name=JvTIwIKY
+&Remark=RhNatQiY
+```
+
+**Response Example**
+
+```
+{
+    "Action": "CreatePhysicalIPResponse", 
+    "Message": "zIcfhKnW", 
+    "RetCode": 0, 
+    "PhysicalIPID": "KcNetRFg"
+}
+```
+
+## 8.2 获取物理IP信息-DescribePhysicalIP
+
+获取物理IP信息 
+
+**Request Parameters**
+
+| Parameter name  | Type   | Description                                                  | Required |
+| --------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region          | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Offset          | string | 列表起始位置偏移量，默认为0。                                | No       |
+| Limit           | string | 返回数据长度，默认为20，最大100。                            | No       |
+| PhysicalIPIDs.N | string | 【数组】物理IP的 ID。输入有效的 ID。调用方式举例：PhysicalIPIDs.0=“one-id”、PhysicalIPIDs.1=“two-id” | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description        | Required |
+| -------------- | ------ | ------------------ | -------- |
+| RetCode        | int    | 返回码             | **Yes**  |
+| Action         | string | 操作名称           | **Yes**  |
+| Message        | string | 返回信息描述       | **Yes**  |
+| Infos          | array  | 物理IP数组         | **Yes**  |
+| TotalCount     | int    | 返回现有物理IP总数 | No       |
+
+**PhysicalIPInfo**
+
+| Parameter name   | Type   | Description                                                  | Required |
+| ---------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region           | string | 地域                                                         | **Yes**  |
+| Zone             | string | 可用区                                                       | **Yes**  |
+| PhysicalIPID     | string | 物理IP的ID                                                   | **Yes**  |
+| Name             | string | 名称                                                         | **Yes**  |
+| Remark           | string | 备注                                                         | **Yes**  |
+| Status           | string | 状态。Allocating：申请中,Free：未绑定,Bounding：绑定中,Bound：已绑定,Unbounding：解绑中,Deleted：已删除,Releasing：销毁中,Released：已销毁 | **Yes**  |
+| CreateTime       | int    | 创建时间。时间戳                                             | **Yes**  |
+| UpdateTime       | int    | 过期时间。时间戳                                             | **Yes**  |
+| IP               | string | 物理IP                                                       | **Yes**  |
+| OperatorName     | string | 线路                                                         | **Yes**  |
+| BindResourceID   | string | 绑定资源ID                                                   | **Yes**  |
+| BindResourceType | string | 绑定资源类型                                                 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribePhysicalIP
+&Region=cn
+&Zone=zone-01
+&Offset=mMIHiUlG
+&Limit=JLjDScqp
+&PhysicalIPIDs.N=EFsEuYkM
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribePhysicalIPResponse", 
+    "TotalCount": 7, 
+    "Message": "uTvoWwQs", 
+    "Infos": [
+        {
+            "Status": "VznqLVAk", 
+            "Remark": "mRlRAgDR", 
+            "Name": "DhNFcbEW", 
+            "Zone": "qBrMzVBD", 
+            "IP": "hQUvyNKa", 
+            "Region": "NjJvNJvn", 
+            "UpdateTime": 4, 
+            "OperatorName": "rJLjPbri", 
+            "BindResourceID": "myBrZpOo", 
+            "PhysicalIPID": "BnoNqjgJ", 
+            "BindResourceType": "OLShuohj", 
+            "CreateTime": 8
+        }
+    ], 
+    "RetCode": 0
+}
+```
+
+## 8.3 绑定物理IP-BindPhysicalIP
+
+绑定物理 IP ，被绑定的资源必须处于运行中或有效状态。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description          | Required |
+| -------------- | ------ | -------------------- | -------- |
+| Region         | string | 地域。               | **Yes**  |
+| Zone           | string | 可用区。             | **Yes**  |
+| ResourceType   | string | 资源类型。VM：虚拟机 | **Yes**  |
+| ResourceID     | string | 资源ID               | **Yes**  |
+| PhysicalIPID   | string | 物理IP的ID           | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| RetCode        | int    | 返回码      | **Yes**  |
+| Action         | string | 操作名称    | **Yes**  |
+| Message        | string | 返回描述    | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=BindPhysicalIP
+&Region= 
+&Zone= 
+&ResourceType=VM;
+&ResourceID=NSudKtIt
+&PhysicalIPID=hWopWeZK
+```
+
+**Response Example**
+
+```
+{
+    "Action": "BindPhysicalIPResponse", 
+    "Message": "qZHxtXKi", 
+    "RetCode": 0
+}
+```
+
+## 8.4 解绑物理IP-UnbindPhysicalIP
+
+解绑物理IP
+
+**Request Parameters**
+
+| Parameter name | Type   | Description          | Required |
+| -------------- | ------ | -------------------- | -------- |
+| Region         | string | 地域。               | **Yes**  |
+| Zone           | string | 可用区。             | **Yes**  |
+| ResourceType   | string | 资源类型。VM：虚拟机 | **Yes**  |
+| ResourceID     | string | 资源ID               | **Yes**  |
+| PhysicalIPID   | string | 物理IP的ID           | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=UnbindPhysicalIP
+&Region= 
+&Zone= 
+&ResourceType=rNCPjTRV
+&ResourceID=KtiQtowg
+&PhysicalIPID=dnIgULdY
+```
+
+**Response Example**
+
+```
+{
+    "Action": "UnbindPhysicalIPResponse", 
+    "Message": "DJTtxmKi", 
+    "RetCode": 0
+}
+```
+
+## 8.5 删除物理IP-DeletePhysicalIP
+
+删除物理IP
+
+**Request Parameters**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| Region         | string | 地域。      | **Yes**  |
+| Zone           | string | 可用区。    | **Yes**  |
+| PhysicalIPID   | string | 物理IP的ID  | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回状态描述 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DeletePhysicalIP
+&Region=cn
+&Zone= 
+&PhysicalIPID=uRDlNtPw
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DeletePhysicalIPResponse", 
+    "Message": "MXoLUmqI", 
+    "RetCode": 0
+}
+```
+
+# 9 安全组
+
+## 9.1 创建安全组-CreateSecurityGroup
 
 创建安全组
 
@@ -2077,7 +2570,7 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroup
 }
 ```
 
-## 7.2 查询安全组信息-DescribeSecurityGroup
+## 9.2 查询安全组信息-DescribeSecurityGroup
 
 查询安全组信息
 
@@ -2174,7 +2667,7 @@ https://xxx.xxx.xxx/?Action=DescribeSecurityGroup
 }
 ```
 
-## 7.3 删除安全组-DeleteSecurityGroup
+## 9.3 删除安全组-DeleteSecurityGroup
 
 删除安全组
 
@@ -2213,7 +2706,7 @@ https://xxx.xxx.xxx/?Action=DeleteSecurityGroup
 }
 ```
 
-## 7.4 创建安全组规则-CreateSecurityGroupRule
+## 9.4 创建安全组规则-CreateSecurityGroupRule
 
 创建安全组规则
 
@@ -2255,7 +2748,7 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroupRule
 }
 ```
 
-## 7.5 修改安全组规则-UpdateSecurityGroupRule
+## 9.5 修改安全组规则-UpdateSecurityGroupRule
 
 修改安全组规则
 
@@ -2296,7 +2789,7 @@ https://xxx.xxx.xxx/?Action=UpdateSecurityGroupRule
 }
 ```
 
-## 7.6 删除安全组规则-DeleteSecurityGroupRule
+## 9.6 删除安全组规则-DeleteSecurityGroupRule
 
 删除安全组规则
 
@@ -2337,7 +2830,7 @@ https://xxx.xxx.xxx/?Action=DeleteSecurityGroupRule
 }
 ```
 
-## 7.7 绑定安全组-BindSecurityGroup
+## 9.7 绑定安全组-BindSecurityGroup
 
 绑定安全组
 
@@ -2380,7 +2873,7 @@ https://xxx.xxx.xxx/?Action=BindSecurityGroup
 }
 ```
 
-## 7.8 解绑安全组-UnBindSecurityGroup
+## 9.8 解绑安全组-UnBindSecurityGroup
 
 解绑安全组
 
@@ -2405,10 +2898,10 @@ https://xxx.xxx.xxx/?Action=BindSecurityGroup
 
 ```
 https://xxx.xxx.xxx/?Action=UnBindSecurityGroup
-&Region=MxyROpjF
-&Zone=rZirrUQm
-&ResourceID=ihNMHWFy
-&SGID=jjmxtalT
+&Region=IQxzgMoG
+&Zone=DavYnlLq
+&ResourceID=GoWhyrAT
+&SGID=nDYeMYbG
 ```
 
 **Response Example**
@@ -2416,14 +2909,71 @@ https://xxx.xxx.xxx/?Action=UnBindSecurityGroup
 ```
 {
     "Action": "UnBindSecurityGroupResponse", 
-    "Message": "XSaMkhBb", 
+    "Message": "HvZpQpFD", 
     "RetCode": 0
 }
 ```
 
-# 8 负载均衡
+## 9.9 查询安全组绑定的资源信息-DescribeSecurityGroupResource
 
-## 8.1 创建负载均衡-CreateLB
+查询安全组绑定的资源信息
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| SGID           | string | 安全组ID                            | **Yes**  |
+| Offset         | int    | 列表起始位置偏移量，默认为0。       | No       |
+| Limit          | int    | 返回数据长度，默认为20，最大100。   | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description              | Required |
+| -------------- | ------ | ------------------------ | -------- |
+| RetCode        | int    | 返回码                   | **Yes**  |
+| Action         | string | 操作名称                 | **Yes**  |
+| Message        | string | 返回信息描述。           | **Yes**  |
+| TotalCount     | int    | 返回资源总个数。         | **Yes**  |
+| Infos          | array  | 【数组】返回资源对象数组 | **Yes**  |
+
+**SGResourceInfo**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| Region         | string | 地域        | **Yes**  |
+| Zone           | string | 可用区      | **Yes**  |
+| Name           | string | 资源名称    | **Yes**  |
+| ResourceID     | string | 资源ID      | **Yes**  |
+| ResourceType   | string | 资源类型    | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribeSecurityGroupResource
+&SGID=oUlxQIRz
+&Offset=CLuLQeAp
+&Limit=qNwYnEFY
+&Region=hVMuECVm
+&Zone=SaQhBGLf
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribeSecurityGroupResourceResponse", 
+    "TotalCount": 2, 
+    "Message": "aEhGfxpc", 
+    "Infos": "SaATFWeK", 
+    "RetCode": 0
+}
+```
+
+# 10 负载均衡
+
+## 10.1 创建负载均衡-CreateLB
 
 创建负载均衡
 
@@ -2482,7 +3032,7 @@ https://xxx.xxx.xxx/?Action=CreateLB
 }
 ```
 
-## 8.2 获取负载均衡信息-DescribeLB
+## 10.2 获取负载均衡信息-DescribeLB
 
 获取负载均衡信息
 
@@ -2575,7 +3125,7 @@ https://xxx.xxx.xxx/?Action=DescribeLB
 }
 ```
 
-## 8.3 删除负载均衡-DeleteLB
+## 10.3 删除负载均衡-DeleteLB
 
 删除负载均衡
 
@@ -2614,7 +3164,7 @@ https://xxx.xxx.xxx/?Action=DeleteLB
 }
 ```
 
-## 8.4 创建负载均衡VServer-CreateVS
+## 10.4 创建负载均衡VServer-CreateVS
 
 创建负载均衡VServer
 
@@ -2679,7 +3229,7 @@ https://xxx.xxx.xxx/?Action=CreateVS
 }
 ```
 
-## 8.5 获取负载均衡 VServer 信息-DescribeVS
+## 10.5 获取负载均衡 VServer 信息-DescribeVS
 
 获取负载均衡 VServer 信息
 
@@ -2849,7 +3399,70 @@ https://xxx.xxx.xxx/?Action=DescribeVS
 }
 ```
 
-## 8.6 删除VServer-DeleteVS
+## 10.6 修改负载均衡VServer-UpdateVS
+
+修改负载均衡VServer
+
+**Request Parameters**
+
+| Parameter name      | Type   | Description                                                  | Required |
+| ------------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region              | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
+| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| VSID                | string | 需要更新的VSID                                               | **Yes**  |
+| LBID                | string | VServer 监听器所属的负载均衡 ID                              | **Yes**  |
+| Scheduler           | string | 负载均衡的调度算法。枚举值：wrr:加权轮训；least_conn:最小连接数；hash:原地址,四层lb使用。ip_hash:七层lb使用 | No       |
+| KeepaliveTimeout    | int    | 负载均衡的连接空闲超时时间，单位为秒，默认值为 60s 。当 VServer 协议为 UDP 时，该值为空。 | No       |
+| HealthcheckType     | string | 负载均衡的健康检查类型。枚举值：Port:端口检查；Path: HTTP检查 。仅当 VServer 协议类型为 HTTP 时，才可进行 HTTP 检查。 | No       |
+| Path                | string | HTTP 健康检查的路径，健康检查类型为 HTTP 检查时为必填项。当健康检查类型为端口检查时，该值为空。 | No       |
+| Domain              | string | HTTP 健康检查时校验请求的 HOST 字段中的域名。当健康检查类型为端口检查时，该值为空。 | No       |
+| Port                | int    | VServer 监听端口                                             | No       |
+| PersistenceType     | string | 会话保持类型。枚举值：None:关闭；Auto:自动生成；Manual:手动生成 。当协议为 TCP 时，该值不生效，会话保持和选择的调度算法相关；当协议为 UDP 时 Auto 表示开启会话保持 。 | No       |
+| PersistenceKey      | string | 会话保持KEY，会话保持类型为Manual时为必填项，仅当 VServer 协议为 HTTP 时有效。 | No       |
+| ServerCertificateID | string | 服务器证书ID，用于证明服务器的身份，仅当 VServer监听协议为 HTTPS 时有效。 | No       |
+| CACertificateID     | string | CA证书ID，用于验证客户端证书的签名，仅当VServer监听协议为 HTTPS 且 SSLMode 为双向认证时有效。 | No       |
+| SSLMode             | string | HTTPS SSL 认证解析模式。玫举值：UNIDIRECTIONAL:单向认证，MUTUAL:双向认证 。仅当VServer监听协议为 HTTPS 时有效。 | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=UpdateVS
+&Region=cn
+&Zone=zone-01
+&VSID=OQtsKATJ
+&LBID=xnpwvTbc
+&Scheduler=wrr
+&KeepaliveTimeout=9
+&HealthcheckType=Port
+&Path=JIZeCBjX
+&Domain=ZMDZWvrp
+&Port=1
+&PersistenceType=None
+&PersistenceKey=gIMNhLEN
+&ServerCertificateID=vpORNjoi
+&CACertificateID=qucyZGmN
+&SSLMode=HqNdvAuM
+```
+
+**Response Example**
+
+```
+{
+    "Action": "UpdateVSResponse", 
+    "Message": "xgjlsREx", 
+    "RetCode": 0
+}
+```
+
+## 10.7 删除VServer-DeleteVS
 
 删除VServer
 
@@ -2890,7 +3503,7 @@ https://xxx.xxx.xxx/?Action=DeleteVS
 }
 ```
 
-## 8.7 添加服务节点-CreateRS
+## 10.8 添加服务节点-CreateRS
 
 为负载均衡的 VServer 添加后端服务节点。
 
@@ -2939,7 +3552,7 @@ https://xxx.xxx.xxx/?Action=CreateRS
 }
 ```
 
-## 8.8 获取服务节点信息-DescribeRS
+## 10.9 获取服务节点信息-DescribeRS
 
 获取负载均衡服务的服务节点信息
 
@@ -3022,7 +3635,140 @@ https://xxx.xxx.xxx/?Action=DescribeRS
 }
 ```
 
-## 8.9 移除服务节点-DeleteRS
+## 10.10 启用服务节点-EnableRS
+
+启用负载均衡的单个服务节点
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| RSID           | string | RServer的ID                         | **Yes**  |
+| VSID           | string | VServer的ID                         | **Yes**  |
+| LBID           | string | 负载均衡ID                          | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=EnableRS
+&Region=HcHWTbvj
+&Zone=hZEizudl
+&RSID=YwrgqtLy
+&VSID=YsHCfqbY
+&LBID=wZbSQcfB
+```
+
+**Response Example**
+
+```
+{
+    "Action": "EnableRSResponse", 
+    "Message": "QyUeFjvH", 
+    "RetCode": 0
+}
+```
+
+## 10.11 禁用服务节点-DisableRS
+
+禁用负载均衡的单个服务节点
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| RSID           | string | RServer的ID                         | **Yes**  |
+| VSID           | string | VServer的ID                         | **Yes**  |
+| LBID           | string | 负载均衡ID                          | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DisableRS
+&Region=eXszliox
+&Zone=iBJYlWFl
+&NATGWID=fqkyhbWT
+&VSID=CXbclGlO
+&LBID=LybVDFIf
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DisableRSResponse", 
+    "Message": "LbJgakZp", 
+    "RetCode": 0
+}
+```
+
+## 10.12 修改服务节点-UpdateRS
+
+修改负载均衡的服务节点
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| LBID           | string | VServer 监听器所属的负载均衡 ID     | **Yes**  |
+| VSID           | string | RServer所属的VServer的ID            | **Yes**  |
+| RSID           | string | RServer的ID                         | **Yes**  |
+| Port           | int    | 端口号                              | No       |
+| Weight         | int    | 权重                                | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=UpdateRS
+&Region=cn
+&Zone=zone-01
+&LBID=RarrsdHr
+&VSID=VrJWKImc
+&RSID=sGIACOne
+&Port=7
+&Weight=NaN
+```
+
+**Response Example**
+
+```
+{
+    "Action": "UpdateRSResponse", 
+    "Message": "rxVNLrRV", 
+    "RetCode": 0
+}
+```
+
+## 10.13 移除服务节点-DeleteRS
 
 移除负载均衡的单个服务节点
 
@@ -3065,9 +3811,259 @@ https://xxx.xxx.xxx/?Action=DeleteRS
 }
 ```
 
-# 9 NAT 网关
+## 10.14 创建内容转发规则-CreateVSPolicy
 
-## 9.1 创建NAT网关-CreateNATGW
+创建七层负载均衡内容转发规则，仅当 VServer 的监听协议为 HTTP 和 HTTPS 时有效。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| LBID           | string | 负载均衡ID                                                   | **Yes**  |
+| VSID           | string | VServer的ID                                                  | **Yes**  |
+| RSIDs.N        | string | 【数组】内容转发规则应用的服务节点的 ID，来源于 VServer 中添加的服务节点。调用方式举例：RSIDs.0=“one-id”、RSIDs.1=“two-id”。 | **Yes**  |
+| Path           | string | 内容转发规则关联的请求访问路径，如 "/" 。域名和路径至少需要指定一项，且域名和路径的组合在一个 VServer 中必须唯一。 | No       |
+| Domain         | string | 内容转发规则关联的请求域名，值可为空，即代表仅匹配路径。域名和路径至少需要指定一项，且域名和路径的组合在一个 VServer 中必须唯一。 | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description              | Required |
+| -------------- | ------ | ------------------------ | -------- |
+| RetCode        | int    | 返回码                   | **Yes**  |
+| Action         | string | 操作名称                 | **Yes**  |
+| Message        | string | 返回信息描述。           | No       |
+| PolicyID       | string | 返回创建的内容转发规则ID | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=CreateVSPolicy
+&Region=cn
+&Zone=zone-01
+&LBID=vfWfhpBM
+&VSID=aLLthkrS
+&RSIDs.N=IdKTDMSo
+&Path=pWJqqfba
+&Domain=cZdfEWho
+```
+
+**Response Example**
+
+```
+{
+    "Action": "CreateVSPolicyResponse", 
+    "Message": "xzMjngvL", 
+    "PolicyID": "xXfvlTgK", 
+    "RetCode": 0
+}
+```
+
+## 10.15 获取内容转发规则信息-DescribeVSPolicy
+
+获取七层负载均衡内容转发规则信息，仅当 VServer 的监听协议为 HTTP 和 HTTPS 时有效。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| LBID           | string | 负载均衡ID                                                   | **Yes**  |
+| VSID           | string | VServerID                                                    | No       |
+| PolicyIDs.N    | string | 【数组】七层负载均衡内容转发规则的 ID。调用方式举例：PolicyIDs.0=“one-id”、PolicyIDs.1=“two-id” | No       |
+| Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
+| Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description                        | Required |
+| -------------- | ------ | ---------------------------------- | -------- |
+| RetCode        | int    | 返回码                             | **Yes**  |
+| Action         | string | 操作名称                           | **Yes**  |
+| Message        | string | 返回信息描述。                     | **Yes**  |
+| TotalCount     | int    | 返回内容转发规则的总个数。         | **Yes**  |
+| Infos          | array  | 【数组】返回内容分转发规则对象数组 | **Yes**  |
+
+**VSPolicyInfo**
+
+| Parameter name | Type   | Description                                              | Required |
+| -------------- | ------ | -------------------------------------------------------- | -------- |
+| LBID           | string | 负载均衡ID                                               | **Yes**  |
+| VSID           | string | VServerID                                                | **Yes**  |
+| PolicyID       | string | 内容转发规则ID                                           | **Yes**  |
+| Domain         | string | 内容转发规则关联的请求域名，值可为空，即代表仅匹配路径。 | **Yes**  |
+| Path           | string | 内容转发规则关联的请求访问路径，如 "/" 。                | **Yes**  |
+| PolicyStatus   | string | 状态，枚举值，Available:有效,Deleted:已删除              | **Yes**  |
+| CreateTime     | int    | 创建时间，时间戳                                         | **Yes**  |
+| UpdateTime     | int    | 更新时间，时间戳                                         | **Yes**  |
+| RSInfos        | array  | 转发规则关联的服务节点信息                               | **Yes**  |
+
+**RSInfo**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| LBID           | string | 服务节点所属的负载均衡 ID                                    | **Yes**  |
+| RSID           | string | 服务节点的 ID                                                | **Yes**  |
+| VSID           | string | 服务节点所属的 VServer ID                                    | **Yes**  |
+| Name           | string | 服务节点的资源名称                                           | **Yes**  |
+| BindResourceID | string | 绑定的资源ID                                                 | **Yes**  |
+| IP             | string | 服务节点的内网 IP 地址                                       | **Yes**  |
+| Port           | int    | 服务节点暴露的服务端口号                                     | **Yes**  |
+| Weight         | int    | 服务节点的权重                                               | **Yes**  |
+| RSMode         | string | 节点模式。枚举值，Enabling:开启中,Enable:已启用,Disabling:禁用中,Disable:已禁用 | **Yes**  |
+| RSStatus       | string | RSStatus 的描述修改为：状态，枚举值，Creating:创建中,Inactive:无效,Active:有效,Updating:更新中,Deleting:删除中,Deleted:已删除。其中有效代表节点服务健康，无效代表节点服务异常。 | **Yes**  |
+| CreateTime     | int    | 创建时间，时间戳                                             | **Yes**  |
+| UpdateTime     | int    | 更新时间，时间戳                                             | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribeVSPolicy
+&Region=GoBCJRIr
+&Zone=tlPJijjU
+&LBID=JvahrZut
+&VSID=bQUloIIJ
+&PolicyIDs.N=bBqfVPgh
+&Offset=2
+&Limit=5
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribeVSPolicyResponse", 
+    "TotalCount": 3, 
+    "Message": "hJyXRpbp", 
+    "Infos": [
+        {
+            "Domain": "KtROtIQz", 
+            "UpdateTime": 7, 
+            "VSID": "ItTEcZBA", 
+            "PolicyStatus": "Available", 
+            "LBID": "jNtxJpUX", 
+            "PolicyID": "fKGcHwJg", 
+            "Path": "wDwBCGud", 
+            "CreateTime": 2, 
+            "RSInfos": [
+                {
+                    "UpdateTime": 2, 
+                    "Name": "UFLzBytK", 
+                    "Weight": 4, 
+                    "IP": "jfnMUKDg", 
+                    "RSStatus": "Creating", 
+                    "VSID": "OGUiRuKY", 
+                    "CreateTime": 7, 
+                    "LBID": "nNZSWzXU", 
+                    "RSID": "dvyIwlSt", 
+                    "BindResourceID": "wMibyaZt", 
+                    "Port": 3, 
+                    "RSMode": "Enabling"
+                }
+            ]
+        }
+    ], 
+    "RetCode": 0
+}
+```
+
+## 10.16 更新内容转发规则-UpdateVSPolicy
+
+更新七层负载均衡内容转发规则，仅当 VServer 的监听协议为 HTTP 和 HTTPS 时有效。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| LBID           | string | 负载均衡ID                                                   | **Yes**  |
+| VSID           | string | VServer的ID                                                  | **Yes**  |
+| PolicyID       | string | 内容转发规则ID                                               | **Yes**  |
+| Domain         | string | 内容转发规则关联的请求域名，值可为空，即代表仅匹配路径。     | No       |
+| Path           | string | 内容转发规则关联的请求访问路径，如 "/" 。                    | No       |
+| RSIDs.N        | string | 【数组】RServer的 ID。调用方式举例：RSIDs.0=“one-id”、RSIDs.1=“two-id”。 | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=UpdateVSPolicy
+&Region=cn
+&Zone=zone-01
+&LBID=xQNYTbBu
+&VSID=JXPvzOnx
+&PolicyID=zeRsqxix
+&Domain=UQeDdZSp
+&Path=LDXujumd
+&RSIDs.N=vaqpUSrR
+```
+
+**Response Example**
+
+```
+{
+    "Action": "UpdateVSPolicyResponse", 
+    "Message": "svbsDztL", 
+    "RetCode": 0
+}
+```
+
+## 10.17 删除内容转发规则-DeleteVSPolicy
+
+删除七层负载均衡内容转发规则，仅当 VServer 的监听协议为 HTTP 和 HTTPS 时有效。
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| PolicyID       | string | 内容转发规则ID                      | **Yes**  |
+| LBID           | string | 负载均衡ID                          | **Yes**  |
+| VSID           | string | VServer的ID                         | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DeleteVSPolicy
+&Region=cn
+&Zone=zone-01
+&PolicyID=atuSysrz
+&LBID=TeyqNQZH
+&VSID=DrUyYqyb
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DeleteVSPolicyResponse", 
+    "Message": "IBRYMiwh", 
+    "RetCode": 0
+}
+```
+
+# 11 NAT 网关
+
+## 11.1 创建NAT网关-CreateNATGW
 
 创建NAT网关
 
@@ -3124,7 +4120,7 @@ https://xxx.xxx.xxx/?Action=CreateNATGW
 }
 ```
 
-## 9.2 获取NAT网关信息 -DescribeNATGW
+## 11.2 获取NAT网关信息 -DescribeNATGW
 
 获取NAT网关信息
 
@@ -3207,7 +4203,7 @@ https://xxx.xxx.xxx/?Action=DescribeNATGW
 }
 ```
 
-## 9.3 删除NAT网关-DeleteNATGW
+## 11.3 删除NAT网关-DeleteNATGW
 
 删除NAT网关
 
@@ -3246,7 +4242,7 @@ https://xxx.xxx.xxx/?Action=DeleteNATGW
 }
 ```
 
-## 9.4 添加NAT网关白名单-CreateNATGWRule
+## 11.4 添加NAT网关白名单-CreateNATGWRule
 
 添加NAT网关白名单
 
@@ -3291,7 +4287,7 @@ https://xxx.xxx.xxx/?Action=CreateNATGWRule
 }
 ```
 
-## 9.5 获取NAT网关白名单信息 -DescribeNATGWRule
+## 11.5 获取NAT网关白名单信息 -DescribeNATGWRule
 
 获取NAT网关白名单信息 
 
@@ -3370,7 +4366,7 @@ https://xxx.xxx.xxx/?Action=DescribeNATGWRule
 }
 ```
 
-## 9.6 删除NAT网关白名单-DeleteNATGWRule
+## 11.6 删除NAT网关白名单-DeleteNATGWRule
 
 删除NAT网关白名单
 
@@ -3411,9 +4407,9 @@ https://xxx.xxx.xxx/?Action=DeleteNATGWRule
 }
 ```
 
-# 10 账户管理
+# 12 账户管理
 
-## 10.1 管理员添加账号-CreateUser
+## 12.1 管理员添加账号-CreateUser
 
 管理员添加账号，即创建租户（主账号）。
 
@@ -3452,7 +4448,7 @@ https://xxx.xxx.xxx/?Action=CreateUser
 }
 ```
 
-## 10.2 查询租户信息-DescribeUser
+## 12.2 查询租户信息-DescribeUser
 
 查询 UCloudStack 租户信息。
 
@@ -3510,7 +4506,7 @@ https://xxx.xxx.xxx/?Action=DescribeUser
 }
 ```
 
-## 10.3 管理员给租户充值-Recharge
+## 12.3 管理员给租户充值-Recharge
 
 UCloudStack 管理员给租户充值金额。
 
@@ -3552,9 +4548,202 @@ https://xxx.xxx.xxx/?Action=Recharge
 }
 ```
 
-# 11 资源通用操作
+# 13 回收站
 
-## 11.1 获取资源监控信息-DescribeMetric
+## 13.1 查询回收站资源-DescribeRecycledResource
+
+查询回收站资源
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值：如 cn,表示中国。                               | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                    | **Yes**  |
+| Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
+| Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
+| ResourceIDs.N  | string | 【数组】资源ID，输入“有效”的ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description              | Required |
+| -------------- | ------ | ------------------------ | -------- |
+| RetCode        | int    | 返回码                   | **Yes**  |
+| Action         | string | 操作名称                 | **Yes**  |
+| Infos          | array  | 【数组】返回资源对象数组 | **Yes**  |
+| TotalCount     | int    | 返回回收站资源的总个数   | **Yes**  |
+
+**RecycledResourceInfo**
+
+| Parameter name    | Type   | Description                                                  | Required |
+| ----------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region            | string | 地域                                                         | **Yes**  |
+| Zone              | string | 可用区                                                       | **Yes**  |
+| Name              | string | 名称                                                         | **Yes**  |
+| Description       | string | 描述                                                         | **Yes**  |
+| ResourceType      | string | 资源类型：VM:虚拟机，Disk:硬盘，EIP:外网IP，PIP:物理IP，MySQL:数据库，Redis:缓存 | **Yes**  |
+| ResourceID        | string | 资源ID                                                       | **Yes**  |
+| CreateTime        | int    | 创建时间                                                     | **Yes**  |
+| DeleteTime        | int    | 删除时间                                                     | **Yes**  |
+| WillTerminateTime | int    | 销毁时间                                                     | **Yes**  |
+| ExpireTime        | int    | 过期时间                                                     | **Yes**  |
+| IsAutoTerminated  | bool   | 是否自动销户                                                 | **Yes**  |
+| Status            | string | 资源状态                                                     | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribeRecycledResource
+&Region=cn-zj
+&Zone=cn-zj-01
+&ProjectId=eDIgcGNy
+&Keyword=xOrCLJUy
+&Limit=3
+&Offset=4
+&ResourceIDs.N=lPTfzPKq
+&ResourceIDs.N=MhgeZCON
+&Keyword=OcJIeIxH
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribeRecycledResourceResponse", 
+    "TotalCount": 1, 
+    "Infos": [
+        "XDckqsFJ"
+    ], 
+    "RetCode": 0
+}
+```
+
+## 13.2 恢复回收站资源-RollbackResource
+
+恢复回收站资源
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                               | Required |
+| -------------- | ------ | ----------------------------------------- | -------- |
+| Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| ResourceID     | string | 待恢复的资源ID                            | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回描述信息 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=RollbackResource
+&Region=cn-zj
+&Zone=cn-zj-01
+&ResourceID=euCJVxlb
+```
+
+**Response Example**
+
+```
+{
+    "Action": "RollbackResourceResponse", 
+    "Message": "FpJhwMSB", 
+    "RetCode": 0
+}
+```
+
+## 13.3 续费回收站资源-RenewResource
+
+续费回收站资源 
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值：如 cn,表示中国。                               | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                    | **Yes**  |
+| ResourceID     | string | 待续续的资源ID                                               | **Yes**  |
+| Quantity       | int    | 购买时长，默认为 1。按小时(Dynamic)付费的资源无需此参数，按月付费的资源传 0 时，代表购买至月末。 | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回描述信息 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=RenewResource
+&Region=cn-zj
+&Zone=cn-zj-01
+&ProjectId=bMLyxEto
+&ResourceID=LhGyiWLf
+&Quantity=6
+```
+
+**Response Example**
+
+```
+{
+    "Action": "RenewResourceResponse", 
+    "Message": "sMNHWSdZ", 
+    "RetCode": 0
+}
+```
+
+## 13.4 销毁资源-TerminateResource
+
+销毁资源
+
+**Request Parameters**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| Region         | string | 地域。      | **Yes**  |
+| Zone           | string | 可用区。    | **Yes**  |
+| ResourceID     | string | 资源id      | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回描述信息 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=TerminateResource
+&Region=cn-zj
+&Zone=cn-zj-01
+&ProjectId=gMdvxLJA
+&ResourceID=QYDCJKrv
+&ResourceType=PfyNGwVr
+&ResourceID=hsHmIrGa
+```
+
+**Response Example**
+
+```
+{
+    "Action": "TerminateResourceResponse", 
+    "Message": "mHuHgOve", 
+    "RetCode": 0
+}
+```
+
+# 14 资源通用操作
+
+## 14.1 获取资源监控信息-DescribeMetric
 
 获取资源监控信息，资源通用 API ，根据请求的资源类型及资源 ID 返回相关监控信息。
 
@@ -3629,7 +4818,7 @@ https://xxx.xxx.xxx/?Action=DescribeMetric
 }
 ```
 
-## 11.2 修改资源名称和备注-ModifyNameAndRemark
+## 14.2 修改资源名称和备注-ModifyNameAndRemark
 
 修改资源名称和备注，资源通用 API 。
 
@@ -3672,7 +4861,7 @@ https://xxx.xxx.xxx/?Action=ModifyNameAndRemark
 }
 ```
 
-## 11.3 绑定告警模板-BindAlarmTemplate
+## 14.3 绑定告警模板-BindAlarmTemplate
 
 绑定告警模板
 
@@ -3715,18 +4904,19 @@ https://xxx.xxx.xxx/?Action=BindAlarmTemplate
 }
 ```
 
-## 11.4 解绑告警模板-UnbindAlarmTemplate
+## 14.4 解绑告警模板-UnbindAlarmTemplate
 
 解绑告警模板
 
 **Request Parameters**
 
-| Parameter name | Type   | Description                                                  | Required |
-| -------------- | ------ | ------------------------------------------------------------ | -------- |
-| Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
-| ResourceIDs.N  | string | 【数组】资源的 ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | **Yes**  |
-| ResourceType   | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关;EIP:弹性网卡 | **Yes**  |
+| Parameter name  | Type   | Description                                                  | Required |
+| --------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region          | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| ResourceIDs.N   | string | 【数组】资源的 ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | **Yes**  |
+| ResourceType    | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关;EIP:弹性网卡 | **Yes**  |
+| AlarmTemplateID | string | 告警模板ID                                                   | **Yes**  |
 
 **Response Elements**
 
@@ -3740,10 +4930,11 @@ https://xxx.xxx.xxx/?Action=BindAlarmTemplate
 
 ```
 https://xxx.xxx.xxx/?Action=UnbindAlarmTemplate
-&Region=ayJRNZAm
-&Zone=jhGuDHnf
-&ResourceIDs.N=XCFKNlCY
-&ResourceType=MHVVnNgD
+&Region=uAdynArQ
+&Zone=wjehVKoU
+&ResourceIDs.N=hPHosUtB
+&ResourceType=viBQGqWY
+&AlarmTemplateID=cCBssjyK
 ```
 
 **Response Example**
@@ -3751,12 +4942,12 @@ https://xxx.xxx.xxx/?Action=UnbindAlarmTemplate
 ```
 {
     "Action": "UnbindAlarmTemplateResponse", 
-    "Message": "NoHtElYp", 
+    "Message": "toGFaOmr", 
     "RetCode": 0
 }
 ```
 
-## 11.5 查询主机机型-DescribeVMType
+## 14.5 查询主机机型-DescribeVMType
 
 查询主机机型
 
@@ -3813,7 +5004,7 @@ https://xxx.xxx.xxx/?Action=DescribeVMType
 }
 ```
 
-## 11.6 查询存储类型-DescribeStorageType
+## 14.6 查询存储类型-DescribeStorageType
 
 查询存储类型
 
@@ -3866,7 +5057,7 @@ https://xxx.xxx.xxx/?Action=DescribeStorageType
 }
 ```
 
-# 12 Python Demo
+# 15 Python Demo
 
 
 ```python
