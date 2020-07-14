@@ -4,6 +4,7 @@
 - 产品简介
 
   - [产品概述](UCloudStack/README.md)
+  - [客户痛点](UCloudStack/painpoint.md)
   - [产品架构](UCloudStack/arch.md)
   - [核心功能](UCloudStack/features.md)
   - [产品特性](UCloudStack/advantages.md)
