@@ -38,6 +38,8 @@ UCloud 超融合一体机为企业在私有环境下提供全栈云计算能力�
 
 ![UHyperBoxArch](UHyperBoxArch.png)
 
+
+
 # 4 典型配置
 
 | 机型       | 计算密集型                                                   |
