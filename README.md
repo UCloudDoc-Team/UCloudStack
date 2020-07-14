@@ -15,12 +15,13 @@ UCloudStack定位为轻量级交付，3 节点即可构建生产环境且可平�
 - 产品简介
 
   - [产品概述](UCloudStack/README.md)
-  - [客户痛点](UCloudStack/painpoint.md)
   - [产品架构](UCloudStack/arch.md)
   - [核心功能](UCloudStack/features.md)
   - [产品特性](UCloudStack/advantages.md)
   - [技术特性](UCloudStack/techadv.md)
+  - [客户痛点](UCloudStack/painpoint.md)
   - [应用场景](UCloudStack/scenario.md)
+  - [交付模式](UCloudStack/deliver.md)
 
 - 操作指南  
 
@@ -30,6 +31,7 @@ UCloudStack定位为轻量级交付，3 节点即可构建生产环境且可平�
 - 技术白皮书
 
     - [技术白皮书](UCloudStack/TechWhitepaper/TechWhitepaper.md)
+    - [超融合一体机](UCloudStack/UHyperBox/UHyperBox.md)
 
 - 部署指南
 
