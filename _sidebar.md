@@ -16,6 +16,7 @@
 
     - [用户手册](UCloudStack/UserGuide/UserGuide.md)
     - [管理员手册](UCloudStack/AdminGuide/AdminGuide.md)
+    - [自定义镜像制作](UCloudStack/CustomImage/CustomImage.md)
 
 - 技术白皮书
 
