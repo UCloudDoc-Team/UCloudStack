@@ -37,8 +37,8 @@
 
 - 更新历史
 
-    - [产品更新](UCloudStack/changelog.md)
-    - [文档更新](UCloudStack/docschangelog.md)
+    - [产品更新](UCloudStack/Changelog/changelog.md)
+    - [文档更新](UCloudStack/Changelog/docschangelog.md)
 
 
 
