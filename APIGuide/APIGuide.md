@@ -20,7 +20,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 本文档是 UCloudStack 云计算产品 API 参考手册。在本文档中，您能够获取到对于每一个指令的描述、语法及使用示例。您可以通过用 HTTP/HTTPS GET 的方式对产品 API 进行调用，或选择适合您所使用编程语言的 SDK 来访问产品 API 接口。在调用 API 时，除需要给出相应的 API 调用地址、公共参数、API指令及指令参数外，还需在调用请求中给出 API 密钥进行身份认证，请务必妥善保管好帐户的 API 密钥。
 
-**本文档描述的 API 接口及内容适用的产品版本为：UCloudStack v1.14.0 ，调用时请配置 UCloudStack 私有云 URL 。**
+**本文档描述的 API 接口及内容适用的产品版本为：UCloudStack v1.16.0 ，调用时请配置 UCloudStack 私有云 URL 。**
 
 ## 1.2 API 规范概述
 
@@ -239,83 +239,98 @@ curl -X POST http://console.dev.ucloudstack.com/api \
 
 ## 2.1 创建虚拟机-CreateVMInstance
 
-创建 UCloudStack 虚拟机。该 API 属于UCloudStack ，调用时请配置 UCloudStack 私有云 URL 。
+创建虚拟机
 
 **Request Parameters**
 
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
-| Region          | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
+| Region          | string | 地域或数据中心。枚举值：cn,表示中国；                        | **Yes**  |
 | Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
 | Name            | string | 虚拟机名称。可输入如：myVM。名称只能包含中英文、数字以及- _ .且1-30个字符。 | **Yes**  |
-| VMType          | string | 机型。枚举值：Normal，表示普通；SSD，表示SSD；               | **Yes**  |
+| VMType          | string | 虚拟机所在宿主机的集群类型，代表不同架构、不同型号的 CPU 或硬件特征。枚举值：Normal，表示普通；SSD，表示SSD。 | **Yes**  |
 | ImageID         | string | 镜像 ID。基础镜像 ID 或者自制镜像 ID。如：cn-image-centos-74。 | **Yes**  |
-| CPU             | int    | CPU 个数，目前只能输入数据库配置指定规格参数，如：1核2048M、2核4096M、4核8192M、8核16384M、16核32768M。 | **Yes**  |
-| Memory          | int    | 内存大小，单位 M。目前只能输入数据库配置指定规格参数，如：1核2048M、2核4096M、4核8192M、8核16384M、16核32768M。 | **Yes**  |
+| CPU             | int    | CPU个数，如1，2，4，8，16，32，64等。                        | **Yes**  |
+| Memory          | int    | 内存容量，如1024，2048，4096，8192，16384，32768，65535等。  | **Yes**  |
 | BootDiskSetType | string | 系统盘类型。枚举值：Normal，表示普通；SSD，表示SSD；         | **Yes**  |
 | DataDiskSetType | string | 数据盘类型。枚举值：Normal，表示普通；SSD，表示SSD；         | **Yes**  |
-| VPCID           | string | VPC ID。                                                     | **Yes**  |
-| SubnetID        | string | 子网 ID。                                                    | **Yes**  |
+| VPCID           | string | 虚拟机所属 VPC ID。                                          | **Yes**  |
+| SubnetID        | string | 虚拟机所属子网 ID。                                          | **Yes**  |
 | WANSGID         | string | 外网安全组 ID。输入“有效”状态的安全组的ID。                  | **Yes**  |
 | ChargeType      | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
 | Password        | string | 密码。可输入如：ucloud.cn。密码长度限6-30个字符；需要同时包含两项或以上（大写字母/小写字母/数字/特殊符号)；windows不能包含用户名（administrator）中超过2个连续字符的部分。 | **Yes**  |
 | DataDiskSpace   | int    | 数据盘大小，单位 GB。默认值为0。范围：【0，8000】，步长10。  | No       |
 | Quantity        | int    | 购买时长。默认值1。小时不生效，月范围【1，11】，年范围【1，5】。 | No       |
-| InternalIP      | string | 指定内网IP。输入有效的指定内网 IP。默认为系统自动分配内网 IP。 | No       |
+| InternalIP      | string | 指定内网IP。输入有效的指定内网 IP，不指定时系统将自动从子网分配 IP 地址。 | No       |
 | LANSGID         | string | 内网安全组 ID。输入“有效”状态的安全组的ID。                  | No       |
 | GPU             | int    | GPU 卡核心的占用个数。枚举值：【1,2,4】。GPU与CPU、内存大小关系：CPU个数>=4*GPU个数，同时内存与CPU规格匹配. | No       |
+| OperatorName    | string | 创建虚拟机同时绑定外网 IP 的网段，可由管理员自定义。         | No       |
+| Bandwidth       | string | 创建虚拟机同时绑定外网 IP 的带宽。                           | No       |
+| IPVersion       | string | 创建虚拟机同时绑定外网 IP 的 IP 版本。枚举值：IPv4 & IPv6，默认为 IPv4 | No       |
+| InternetIP      | string | 手动指定虚拟机绑定外网 IP 的地址，IP地址必须包含在网段内。   | No       |
 
 **Response Elements**
 
-| Parameter name | Type   | Description                | Required |
-| -------------- | ------ | -------------------------- | -------- |
-| RetCode        | int    | 返回码                     | **Yes**  |
-| Action         | string | 操作名称                   | **Yes**  |
-| Message        | string | 返回信息描述。             | No       |
-| VMID           | string | 返回创建虚拟机的 ID 数组。 | No       |
+| Parameter name | Type   | Description             | Required |
+| -------------- | ------ | ----------------------- | -------- |
+| RetCode        | int    | 返回码                  | **Yes**  |
+| Action         | string | 操作名称                | **Yes**  |
+| Message        | string | 返回信息描述。          | No       |
+| VMID           | string | 返回创建的虚拟机 ID     | No       |
+| DiskID         | string | 返回同时创建的数据盘 ID | No       |
+| EIPID          | string | 返回同时创建的外网IP ID | No       |
 
 **Request Example**
 
 ```
-http(s)://xxx.xxx.xx/?Action=CreateVMInstance
+https://xxx.xxx.xxx/?Action=CreateVMInstance
 &Region=cn
 &Zone=zone-01
-&Name=ZQbjAFhy
+&Name=VHHGUYDD
 &VMType=Normal
-&ImageID=cn-image-centos-74
-&Memory=2048
+&ImageID=VvsSJqxx
 &CPU=1
-&BootDiskType=Normal
-&DataDiskType=Normal
-&VPCID=oFbnHuhY
-&SubnetID=wQpNmRCA
-&WANSGID=YrNzIemH
-&ChargeType=Month
-&Password=loZNFaoN.cn
+&Memory=2048
+&BootDiskSetType=Normal
+&DataDiskSetType=Normal
+&VPCID=LRDzfXDp
+&SubnetID=OPMffOvW
+&WANSGID=LPYnUzTN
+&ChargeType=Dynamic
+&Password=EIhsCxDA
+&DataDiskSpace=5
+&Quantity=4
+&InternalIP=nqHiZNdS
+&LANSGID=qbnEjKNR
+&GPU=1
+&OperatorName=PPaDwHUY
+&Bandwidth=lCjvLVGT
+&IPVersion=jOowvODd
+&InternetIP=HoSrxQXc
 ```
 
 **Response Example**
 
 ```
 {
-    "Action": "CreateVMInstanceResponse", 
-    "Message": "lnlouxcc", 
     "RetCode": 0, 
-    "VMIDs": [
-        "XjKoVIGV"
-    ]
+    "VMID": "GFdRqvpO", 
+    "EIPID": "SGUmaudy", 
+    "Action": "CreateVMInstanceResponse", 
+    "Message": "OdUHohed", 
+    "DiskID": "WZINcEbx"
 }
 ```
 
 ## 2.2 查询虚拟机-DescribeVMInstance
 
-查询 UCloudStack 虚拟机列表及详细信息。
+查询虚拟机
 
 **Request Parameters**
 
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
-| Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
+| Region         | string | 地域或数据中心。枚举值： cn，表示中国；                      | **Yes**  |
 | Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
 | VPCID          | string | VPC ID。输入“有效”状态的VPC ID。                             | No       |
 | SubnetID       | string | 子网 ID。输入“有效”状态的子网 ID。                           | No       |
@@ -339,11 +354,9 @@ http(s)://xxx.xxx.xx/?Action=CreateVMInstance
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | Region                                                       | No       |
 | Zone           | string | Zone                                                         | No       |
-| State          | string | 虚拟机状态。枚举值：Initializing，表示初始化；Starting，表示启动中；Restarting，表示重启中；Running，表示运行；Stopping，表示关机中；Stopped，表示关机；Deleted，表示已删除；Resizing，表示修改配置中；Terminating，表示销毁中；Terminated，表示已销毁；Migrating，表示迁移中；WaitReinstall，表示重装中；Reinstalling，表示重装中；Poweroffing，表示断电中；ChangeSGing，表示修改防火墙中； | No       |
-| RegionAlias    | string | Region 别名                                                  | No       |
-| ZoneAlias      | string | Zone 别名                                                    | No       |
+| State          | string | 虚拟机状态。枚举值：Initializing，表示初始化；Starting，表示启动中；Restarting，表示重启中；Running，表示运行；Stopping，表示关机中；Stopped，表示关机；Deleted，表示已删除；Resizing，表示修改配置中；Terminating，表示销毁中；Terminated，表示已销毁；Migrating，表示迁移中；WaitReinstall，表示等待重装系统；Reinstalling，表示重装中；Poweroffing，表示断电中；ChangeSGing，表示修改防火墙中； | No       |
 | VMID           | string | 虚拟机 ID                                                    | No       |
-| VMType         | string | 虚拟机类型                                                   | No       |
+| VMType         | string | 虚拟机所在宿主机的集群类型 ID                                | No       |
 | ImageID        | string | 镜像 ID                                                      | No       |
 | OSName         | string | 操作系统名称                                                 | No       |
 | OSType         | string | 操作系统类型                                                 | No       |
@@ -360,7 +373,7 @@ http(s)://xxx.xxx.xx/?Action=CreateVMInstance
 | VPCName        | string | VPC 名称                                                     | No       |
 | SubnetID       | string | 子网 ID                                                      | No       |
 | SubnetName     | string | 子网 名称                                                    | No       |
-| VMTypeAlias    | string | 虚拟机类型别名                                               | No       |
+| VMTypeAlias    | string | 虚拟机所在宿主机的集群类型名称                               | No       |
 
 **VMDiskInfo**
 
@@ -375,30 +388,32 @@ http(s)://xxx.xxx.xx/?Action=CreateVMInstance
 
 **VMIPInfo**
 
-| Parameter name | Type   | Description                                                  | Required |
-| -------------- | ------ | ------------------------------------------------------------ | -------- |
-| IP             | string | IP 值                                                        | No       |
-| MAC            | string | MAC 地址值                                                   | No       |
-| Type           | string | IP 类型。枚举值：Private，表示内网；Public，表示外网；Physical，表示物理网； | No       |
-| SubnetID       | string | 子网 ID                                                      | No       |
-| VPCID          | string | VPC ID                                                       | No       |
-| SGName         | string | 安全组名称                                                   | No       |
-| SGID           | string | 安全组 ID                                                    | No       |
-| InterfaceID    | string | 网卡 ID                                                      | No       |
-| IsElastic      | string | 是否是弹性网卡。枚举值：Y，表示是；N，表示否；               | No       |
-| VPCName        | string | VPC 名称                                                     | No       |
-| SubnetName     | string | 子网名称                                                     | No       |
+| Parameter name | Type   | Description                                            | Required |
+| -------------- | ------ | ------------------------------------------------------ | -------- |
+| IP             | string | IP 值                                                  | No       |
+| MAC            | string | MAC 地址值                                             | No       |
+| Type           | string | IP 类型。枚举值：Private，表示内网；Public，表示外网。 | No       |
+| IPVersion      | string | IP版本,支持值：IPv4\IPv6                               | No       |
+| SubnetID       | string | 子网 ID，IP 为外网 IP 时为空；                         | No       |
+| VPCID          | string | VPC ID，IP 为外网 IP 时为空；                          | No       |
+| SGName         | string | 安全组名称                                             | No       |
+| SGID           | string | 安全组 ID                                              | No       |
+| InterfaceID    | string | 网卡 ID，IP 地址绑定的网卡 ID                          | No       |
+| IsElastic      | string | 是否是弹性网卡。枚举值：Y，表示是；N，表示否；         | No       |
+| VPCName        | string | VPC 名称，IP 为外网 IP 时为空；                        | No       |
+| SubnetName     | string | 子网名称，IP 为外网 IP 时为空；                        | No       |
 
 **Request Example**
 
 ```
-http(s)://xxx.xxx.xx/?Action=DescribeVMInstance
-&Region=cn
+https://xxx.xxx.xxx/?Action=DescribeVMInstance
+&Region= cn
 &Zone=zone-01
-&VPCID=yipvTOkV
-&SubnetID=BEPiKaef
-&Offset=0
-&Limit=20
+&VPCID=GTCAUTlR
+&SubnetID=szSFfHXz
+&Offset=crTWhzRL
+&Limit=2
+&VMIDs.N=lnMODCoR
 ```
 
 **Response Example**
@@ -406,10 +421,57 @@ http(s)://xxx.xxx.xx/?Action=DescribeVMInstance
 ```
 {
     "Action": "DescribeVMInstanceResponse", 
-    "TotalCount": 6, 
-    "Message": "OalUWiFJ", 
+    "TotalCount": 8, 
+    "Message": "VNPsHmEp", 
     "Infos": [
-        "FiPXvwyG"
+        {
+            "VPCID": "bXRXSGPf", 
+            "Zone": "MAqeRNQa", 
+            "DiskInfos": [
+                {
+                    "Name": "PtVCqUKu", 
+                    "Drive": "NHwuTFge", 
+                    "IsElastic": "Y", 
+                    "Type": "Boot", 
+                    "DiskID": "CEFBXOaL", 
+                    "Size": 1
+                }
+            ], 
+            "ImageID": "YJZHmQLl", 
+            "OSType": "DDQKPxOp", 
+            "State": "IUBEeilF", 
+            "Memory": 9, 
+            "SubnetName": "djeyTwyK", 
+            "CPU": 7, 
+            "VPCName": "AoMgdqfi", 
+            "Remark": "WNyvRLHE", 
+            "Name": "RpOBIgCg", 
+            "VMTypeAlias": "JsUPkBrS", 
+            "Region": "AZjCAfBQ", 
+            "VMID": "HliPtSlE", 
+            "OSName": "OrFxbHYx", 
+            "IPInfos": [
+                {
+                    "InterfaceID": "GtPjtBcr", 
+                    "VPCID": "lZsUVvoa", 
+                    "IP": "quaHoDzO", 
+                    "SGName": "HeaCblbp", 
+                    "IPVersion": "luSyIrjz", 
+                    "SubnetName": "FdiJmXQk", 
+                    "MAC": "qnshAgIm", 
+                    "VPCName": "xNenkgXc", 
+                    "SubnetID": "LLlGCBuC", 
+                    "SGID": "yHvSFufj", 
+                    "IsElastic": "bWbLZBYZ", 
+                    "Type": "XGdtJjFy"
+                }
+            ], 
+            "ExpireTime": 8, 
+            "VMType": "DieGyeaQ", 
+            "ChargeType": "eaIQaijl", 
+            "SubnetID": "LfzEaKfC", 
+            "CreateTime": 2
+        }
     ], 
     "RetCode": 0
 }
@@ -1929,7 +1991,7 @@ https://xxx.xxx.xxx/?Action=DeleteSubnet
 
 ## 7.1 申请外网IP-AllocateEIP
 
-申请 UCloudStack 外网 IP 地址。
+申请外网IP
 
 **Request Parameters**
 
@@ -1942,6 +2004,8 @@ https://xxx.xxx.xxx/?Action=DeleteSubnet
 | ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
 | Name           | string | 名称                                                         | **Yes**  |
 | Quantity       | int    | 购买时长。默认值1。小时不生效，月范围【1，11】，年范围【1，5】。 | No       |
+| IP             | string | 指定IP                                                       | No       |
+| IPVersion      | string | IP版本，默认值IPv4，支持值：IPv4\IPv6                        | No       |
 
 **Response Elements**
 
@@ -1956,13 +2020,15 @@ https://xxx.xxx.xxx/?Action=DeleteSubnet
 
 ```
 https://xxx.xxx.xxx/?Action=AllocateEIP
-&Region=cn-zj
-&OperatorName=pNQdTosM
-&Bandwidth=5
-&ChargeType=Month
-&Quantity=1
-&Name=JpJqGLmS
+&Region=cn
 &Zone=zone-01
+&OperatorName=Bgp
+&Bandwidth=5
+&ChargeType=Dynamic;Month;Year
+&Name=yJPiBFDG
+&Quantity=3
+&IP=UsRyyWpW
+&IPVersion=rSkZkkBe
 ```
 
 **Response Example**
@@ -1970,15 +2036,15 @@ https://xxx.xxx.xxx/?Action=AllocateEIP
 ```
 {
     "Action": "AllocateEIPResponse", 
-    "Message": "zhaUEBjY", 
-    "EIPID": "WKcJoCEy", 
+    "Message": "KzWgPkfl", 
+    "EIPID": "TzvqQnVs", 
     "RetCode": 0
 }
 ```
 
-## 7.2 获取外网 IP 价格-GetEIPPrice
+## 7.2 获取外网IP信息-DescribeEIP
 
-获取 UCloudStack 外网 IP 的价格信息。
+获取外网IP的信息
 
 **Request Parameters**
 
@@ -1986,49 +2052,83 @@ https://xxx.xxx.xxx/?Action=AllocateEIP
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
 | Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
-| ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
-| OpertatorName  | string | 线路。目前支持Bgp                                            | **Yes**  |
-| Bandwidth      | int    | 带宽，默认值1，默认范围1\~100                                | **Yes**  |
-| Quantity       | int    | 购买时长。默认值1。小时不生效，月范围【1，11】，年范围【1，5】。 | No       |
+| Offset         | string | 列表起始位置偏移量，默认为0。                                | No       |
+| Limit          | string | 返回数据长度，默认为20，最大100。                            | No       |
+| EIPIDs.N       | string | 【数组】外网的 ID。输入有效的 ID。调用方式举例：EIPIDs.0=“one-id”、EIPIDs.1=“two-id” | No       |
+| IPVersion      | string | 版本，支持IPv4、IPv6                                         | No       |
+| BindResourceID | string | 绑定资源ID，查询该资源绑定的所有 EIP                         | No       |
 
 **Response Elements**
 
-| Parameter name | Type   | Description    | Required |
-| -------------- | ------ | -------------- | -------- |
-| RetCode        | int    | 返回码         | **Yes**  |
-| Action         | string | 操作名称       | **Yes**  |
-| Message        | string | 返回信息描述   | **Yes**  |
-| Infos          | array  | 返回的价格信息 | No       |
+| Parameter name | Type   | Description        | Required |
+| -------------- | ------ | ------------------ | -------- |
+| RetCode        | int    | 返回码             | **Yes**  |
+| Action         | string | 操作名称           | **Yes**  |
+| Message        | string | 返回信息描述       | **Yes**  |
+| Infos          | array  | 外网IP数组         | **Yes**  |
+| Totalcount     | int    | 返回现有外网IP总数 | No       |
 
-**PriceInfo**
+**EIPInfo**
 
-| Parameter name | Type   | Description                                                  | Required |
-| -------------- | ------ | ------------------------------------------------------------ | -------- |
-| ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
-| Price          | float  | 价格                                                         | **Yes**  |
+| Parameter name   | Type   | Description                                                  | Required |
+| ---------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region           | string | 地域                                                         | No       |
+| Zone             | string | 可用区                                                       | No       |
+| EIPID            | string | ID                                                           | No       |
+| Bandwidth        | int    | 带宽大小                                                     | No       |
+| ChargeType       | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | No       |
+| Name             | string | 名称                                                         | No       |
+| Remark           | string | 备注                                                         | No       |
+| Status           | string | 状态。Allocating：申请中,Free：未绑定,Bounding：绑定中,Bound：已绑定,Unbounding：解绑中,Deleted：已删除,Releasing：销毁中,Released：已销毁,BandwidthChanging：带宽修改中 | No       |
+| CreateTime       | int    | 创建时间。时间戳                                             | No       |
+| ExpireTime       | int    | 过期时间。时间戳                                             | No       |
+| IP               | string | 外网IP                                                       | No       |
+| OperatorName     | string | 线路                                                         | No       |
+| IPVersion        | string | IP版本,支持值：IPv4\IPv6                                     | No       |
+| BindResourceID   | string | 绑定资源ID                                                   | No       |
+| BindResourceType | string | 绑定资源类型                                                 | No       |
+| ISDefaultGW      | int    | 是否为默认出口，1代表该IP地址为默认出口                      | No       |
+| CanDefaultGW     | int    | 所处线路是否为默认路由，1代表所处线路是默认路由；默认路由的可以设置成出口 | No       |
 
 **Request Example**
 
 ```
-https://xxx.xxx.xxx/?Action=GetEIPPrice
-&Region=cn-zj
-&Zone=cn-zj-01
-&ChargeType=FJBytqOA
-&Quantity=BrjpicZO
-&OpertatorName=ilsUQOiZ
-&Bandwidth=DNtLIsHG
+https://xxx.xxx.xxx/?Action=DescribeEIP
+&Region=cn
+&Zone=zone-01
+&Offset=HjdUrLyx
+&Limit=WxEYDkbv
+&EIPIDs.N=OZyJWWUt
+&IPVersion=jpJapMRK
+&BindResourceID=fcNTxWoH
 ```
 
 **Response Example**
 
 ```
 {
-    "Action": "GetEIPPriceResponse", 
-    "Message": "NNNLqxlc", 
+    "Action": "DescribeEIPResponse", 
+    "Totalcount": 8, 
+    "Message": "UjeokBSI", 
     "Infos": [
         {
-            "Price": 1.47368, 
-            "ChargeType": "Dynamic"
+            "Status": "KwSyfBRL", 
+            "IPVersion": "zospCUKO", 
+            "Remark": "BpKXTPiJ", 
+            "Name": "HcdDtpbz", 
+            "Zone": "OHcIlYVT", 
+            "IP": "eFWvZUYD", 
+            "Region": "kAvCelVp", 
+            "EIPID": "QFeefKoO", 
+            "OperatorName": "wormHDoM", 
+            "ExpireTime": 7, 
+            "Bandwidth": 5, 
+            "CanDefaultGW": 7, 
+            "BindResourceID": "nVMmbbrU", 
+            "ChargeType": "mUeelFeQ", 
+            "BindResourceType": "QEnqTNTM", 
+            "ISDefaultGW": 4, 
+            "CreateTime": 9
         }
     ], 
     "RetCode": 0
@@ -2273,11 +2373,11 @@ https://xxx.xxx.xxx/?Action=ReleaseEIP
 }
 ```
 
-# 8 物理IP
+# 8 弹性网卡
 
-## 8.1 创建物理IP-CreatePhysicalIP
+## 8.1 创建网卡-CreateNIC
 
-创建物理 IP ，需确保平台已配置物理 IP 线路相关信息及物理网络联通性。
+创建网卡
 
 **Request Parameters**
 
@@ -2285,176 +2385,138 @@ https://xxx.xxx.xxx/?Action=ReleaseEIP
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
 | Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
-| OperatorName   | string | 物理IP线路                          | **Yes**  |
-| Name           | string | 物理IP名称，限制字符长度30          | **Yes**  |
-| Remark         | string | 描述                                | No       |
+| VPCID          | string | 弹性网卡所属 VPC 的 ID              | **Yes**  |
+| SubnetID       | string | 弹性网卡所属子网的 ID               | **Yes**  |
+| Name           | string | 弹性网卡名称                        | **Yes**  |
+| SGID           | string | 弹性网卡绑定的安全组 ID             | No       |
+| IP             | string | 手动指定IP弹性网卡的 IP 地址        | No       |
 
 **Response Elements**
 
-| Parameter name | Type   | Description          | Required |
-| -------------- | ------ | -------------------- | -------- |
-| RetCode        | int    | 返回码               | **Yes**  |
-| Action         | string | 操作名称             | **Yes**  |
-| PhysicalIPID   | string | 返回创建的物理IP的ID | **Yes**  |
-| Message        | string | 返回信息描述         | No       |
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | **Yes**  |
+| NICID          | string | 创建的网卡 ID  | **Yes**  |
 
 **Request Example**
 
 ```
-https://xxx.xxx.xxx/?Action=CreatePhysicalIP
-&Region=pUUQadov
-&Zone=xolTDqNR
-&OperatorName=TrtORwfX
-&Name=JvTIwIKY
-&Remark=RhNatQiY
+https://xxx.xxx.xxx/?Action=CreateNIC
+&Region=cn
+&Zone=zone-01
+&VPCID=fFyrIyua
+&SubnetID=UiwqEpvR
+&Name=pgltSQFP
+&SGID=CdvAGEns
+&IP=RVDGbScE
 ```
 
 **Response Example**
 
 ```
 {
-    "Action": "CreatePhysicalIPResponse", 
-    "Message": "zIcfhKnW", 
-    "RetCode": 0, 
-    "PhysicalIPID": "KcNetRFg"
+    "Action": "CreateNICResponse", 
+    "Message": "DfCEfqsr", 
+    "NICID": "ekCtilkg", 
+    "RetCode": 0
 }
 ```
 
-## 8.2 获取物理IP信息-DescribePhysicalIP
+## 8.2 获取网卡信息-DescribeNIC
 
-获取物理IP信息 
+获取网卡信息
 
 **Request Parameters**
 
-| Parameter name  | Type   | Description                                                  | Required |
-| --------------- | ------ | ------------------------------------------------------------ | -------- |
-| Region          | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
-| Offset          | string | 列表起始位置偏移量，默认为0。                                | No       |
-| Limit           | string | 返回数据长度，默认为20，最大100。                            | No       |
-| PhysicalIPIDs.N | string | 【数组】物理IP的 ID。输入有效的 ID。调用方式举例：PhysicalIPIDs.0=“one-id”、PhysicalIPIDs.1=“two-id” | No       |
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| NICIDs.N       | string | 【数组】网卡的 ID。输入有效的 ID。调用方式举例：NICIDs.0=“one-id”、NICIDs.1=“two-id”。 | No       |
+| Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
+| Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 
 **Response Elements**
 
-| Parameter name | Type   | Description        | Required |
-| -------------- | ------ | ------------------ | -------- |
-| RetCode        | int    | 返回码             | **Yes**  |
-| Action         | string | 操作名称           | **Yes**  |
-| Message        | string | 返回信息描述       | **Yes**  |
-| Infos          | array  | 物理IP数组         | **Yes**  |
-| TotalCount     | int    | 返回现有物理IP总数 | No       |
+| Parameter name | Type   | Description              | Required |
+| -------------- | ------ | ------------------------ | -------- |
+| RetCode        | int    | 返回码                   | **Yes**  |
+| Action         | string | 操作名称                 | **Yes**  |
+| Message        | string | 返回信息描述。           | **Yes**  |
+| TotalCount     | int    | 返回网卡总个数。         | **Yes**  |
+| Infos          | array  | 【数组】返回网卡对象数组 | **Yes**  |
 
-**PhysicalIPInfo**
+**NICInfo**
 
-| Parameter name   | Type   | Description                                                  | Required |
-| ---------------- | ------ | ------------------------------------------------------------ | -------- |
-| Region           | string | 地域                                                         | **Yes**  |
-| Zone             | string | 可用区                                                       | **Yes**  |
-| PhysicalIPID     | string | 物理IP的ID                                                   | **Yes**  |
-| Name             | string | 名称                                                         | **Yes**  |
-| Remark           | string | 备注                                                         | **Yes**  |
-| Status           | string | 状态。Allocating：申请中,Free：未绑定,Bounding：绑定中,Bound：已绑定,Unbounding：解绑中,Deleted：已删除,Releasing：销毁中,Released：已销毁 | **Yes**  |
-| CreateTime       | int    | 创建时间。时间戳                                             | **Yes**  |
-| UpdateTime       | int    | 过期时间。时间戳                                             | **Yes**  |
-| IP               | string | 物理IP                                                       | **Yes**  |
-| OperatorName     | string | 线路                                                         | **Yes**  |
-| BindResourceID   | string | 绑定资源ID                                                   | **Yes**  |
-| BindResourceType | string | 绑定资源类型                                                 | **Yes**  |
+| Parameter name | Type   | Description                                                  | Required |
+| -------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region         | string | 地域                                                         | **Yes**  |
+| Zone           | string | 可用区                                                       | **Yes**  |
+| VPCID          | string | 弹性网卡所属 VPC ID                                          | **Yes**  |
+| SubnetID       | string | 弹性网卡所属子网 ID                                          | **Yes**  |
+| MAC            | string | 弹性网卡的 MAC 地址                                          | **Yes**  |
+| IP             | string | 弹性网卡的 IP 地址                                           | **Yes**  |
+| SGID           | string | 安全组ID ，未绑定时为空                                      | **Yes**  |
+| BindResourceID | string | 绑定资源ID，未绑定资源时为空                                 | **Yes**  |
+| NICID          | string | 弹性网卡的 ID                                                | **Yes**  |
+| Name           | string | 弹性网卡的名称                                               | **Yes**  |
+| Remark         | string | 弹性网卡的备注                                               | **Yes**  |
+| NICStatus      | string | 网卡状态。枚举值。Creating：创建中,Free：未绑定,Unbounding：解绑中,Bounding：绑定中,Bound：已绑定,BindSGing：绑定安全组中,UnbindSGing：解绑安全组中,UpdateSGing：更新安全组中,Deleting：删除中,Deleted：已删除,Releasing：销毁中,Released：已销毁 | **Yes**  |
+| CreateTime     | int    | 创建时间。时间戳                                             | **Yes**  |
 
 **Request Example**
 
 ```
-https://xxx.xxx.xxx/?Action=DescribePhysicalIP
-&Region=cn
-&Zone=zone-01
-&Offset=mMIHiUlG
-&Limit=JLjDScqp
-&PhysicalIPIDs.N=EFsEuYkM
+https://xxx.xxx.xxx/?Action=DescribeNIC
+&Region=NNGsTgcb
+&Zone=dfBBeNeO
+&NICIDs.N=YNlJgQWp
+&Offset=1
+&Limit=2
 ```
 
 **Response Example**
 
 ```
 {
-    "Action": "DescribePhysicalIPResponse", 
+    "Action": "DescribeNICResponse", 
     "TotalCount": 7, 
-    "Message": "uTvoWwQs", 
+    "Message": "FaWJxYeS", 
     "Infos": [
         {
-            "Status": "VznqLVAk", 
-            "Remark": "mRlRAgDR", 
-            "Name": "DhNFcbEW", 
-            "Zone": "qBrMzVBD", 
-            "IP": "hQUvyNKa", 
-            "Region": "NjJvNJvn", 
-            "UpdateTime": 4, 
-            "OperatorName": "rJLjPbri", 
-            "BindResourceID": "myBrZpOo", 
-            "PhysicalIPID": "BnoNqjgJ", 
-            "BindResourceType": "OLShuohj", 
-            "CreateTime": 8
+            "Remark": "FkQGSFXo", 
+            "VPCID": "rEXiWbwI", 
+            "NICID": "SZwabANT", 
+            "Name": "HkCAViXF", 
+            "Zone": "HJSvobwF", 
+            "IP": "RxYJyLpD", 
+            "Region": "gPhzWtcj", 
+            "MAC": "sgbWsbgt", 
+            "BindResourceID": "WhfQmBVL", 
+            "NICStatus": "fIRAIZbK", 
+            "SubnetID": "NEqImzIh", 
+            "SGID": "fIgCjlrK", 
+            "CreateTime": 1
         }
     ], 
     "RetCode": 0
 }
 ```
 
-## 8.3 绑定物理IP-BindPhysicalIP
+## 8.3 绑定网卡-AttachNIC
 
-绑定物理 IP ，被绑定的资源必须处于运行中或有效状态。
-
-**Request Parameters**
-
-| Parameter name | Type   | Description          | Required |
-| -------------- | ------ | -------------------- | -------- |
-| Region         | string | 地域。               | **Yes**  |
-| Zone           | string | 可用区。             | **Yes**  |
-| ResourceType   | string | 资源类型。VM：虚拟机 | **Yes**  |
-| ResourceID     | string | 资源ID               | **Yes**  |
-| PhysicalIPID   | string | 物理IP的ID           | **Yes**  |
-
-**Response Elements**
-
-| Parameter name | Type   | Description | Required |
-| -------------- | ------ | ----------- | -------- |
-| RetCode        | int    | 返回码      | **Yes**  |
-| Action         | string | 操作名称    | **Yes**  |
-| Message        | string | 返回描述    | **Yes**  |
-
-**Request Example**
-
-```
-https://xxx.xxx.xxx/?Action=BindPhysicalIP
-&Region= 
-&Zone= 
-&ResourceType=VM;
-&ResourceID=NSudKtIt
-&PhysicalIPID=hWopWeZK
-```
-
-**Response Example**
-
-```
-{
-    "Action": "BindPhysicalIPResponse", 
-    "Message": "qZHxtXKi", 
-    "RetCode": 0
-}
-```
-
-## 8.4 解绑物理IP-UnbindPhysicalIP
-
-解绑物理IP
+绑定网卡
 
 **Request Parameters**
 
-| Parameter name | Type   | Description          | Required |
-| -------------- | ------ | -------------------- | -------- |
-| Region         | string | 地域。               | **Yes**  |
-| Zone           | string | 可用区。             | **Yes**  |
-| ResourceType   | string | 资源类型。VM：虚拟机 | **Yes**  |
-| ResourceID     | string | 资源ID               | **Yes**  |
-| PhysicalIPID   | string | 物理IP的ID           | **Yes**  |
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| NICID          | string | 网卡ID                              | **Yes**  |
+| ResourceID     | string | 绑定的资源ID                        | **Yes**  |
 
 **Response Elements**
 
@@ -2467,59 +2529,100 @@ https://xxx.xxx.xxx/?Action=BindPhysicalIP
 **Request Example**
 
 ```
-https://xxx.xxx.xxx/?Action=UnbindPhysicalIP
-&Region= 
-&Zone= 
-&ResourceType=rNCPjTRV
-&ResourceID=KtiQtowg
-&PhysicalIPID=dnIgULdY
+https://xxx.xxx.xxx/?Action=AttachNIC
+&Region=dddPjfha
+&Zone=EJTUtCWh
+&NICID=byzFMQwT
+&ResourceID=JqooVUan
 ```
 
 **Response Example**
 
 ```
 {
-    "Action": "UnbindPhysicalIPResponse", 
-    "Message": "DJTtxmKi", 
+    "Action": "AttachNICResponse", 
+    "Message": "WhammmEf", 
     "RetCode": 0
 }
 ```
 
-## 8.5 删除物理IP-DeletePhysicalIP
+## 8.4 解绑网卡-DetachNIC
 
-删除物理IP
+解绑网卡
 
 **Request Parameters**
 
-| Parameter name | Type   | Description | Required |
-| -------------- | ------ | ----------- | -------- |
-| Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
-| PhysicalIPID   | string | 物理IP的ID  | **Yes**  |
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| NICID          | string | 网卡ID                              | **Yes**  |
+| ResourceID     | string | 绑定的资源ID                        | **Yes**  |
 
 **Response Elements**
 
-| Parameter name | Type   | Description  | Required |
-| -------------- | ------ | ------------ | -------- |
-| RetCode        | int    | 返回码       | **Yes**  |
-| Action         | string | 操作名称     | **Yes**  |
-| Message        | string | 返回状态描述 | **Yes**  |
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | **Yes**  |
 
 **Request Example**
 
 ```
-https://xxx.xxx.xxx/?Action=DeletePhysicalIP
-&Region=cn
-&Zone= 
-&PhysicalIPID=uRDlNtPw
+https://xxx.xxx.xxx/?Action=DetachNIC
+&Region=vtQynkyS
+&Zone=AFRHDuzF
+&NICID=jhJccJJc
+&ResourceID=bGiQWUaV
 ```
 
 **Response Example**
 
 ```
 {
-    "Action": "DeletePhysicalIPResponse", 
-    "Message": "MXoLUmqI", 
+    "Action": "DetachNICResponse", 
+    "Message": "bmroZmFO", 
+    "RetCode": 0
+}
+```
+
+## 8.5 删除网卡-DeleteNIC
+
+删除网卡
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                         | Required |
+| -------------- | ------ | ----------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| NICID          | string | 被删除的网卡 ID                     | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description    | Required |
+| -------------- | ------ | -------------- | -------- |
+| RetCode        | int    | 返回码         | **Yes**  |
+| Action         | string | 操作名称       | **Yes**  |
+| Message        | string | 返回信息描述。 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DeleteNIC
+&Region=CvplwCUu
+&Zone=PLQJJMPJ
+&DiskID=SKujOWRj
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DeleteNICResponse", 
+    "Message": "CgEQQnNo", 
+    "HasBind": "KIwiiMVk", 
     "RetCode": 0
 }
 ```
@@ -2759,7 +2862,7 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroupRule
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
 | Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
 | SGID           | string | 安全组ID                                                     | **Yes**  |
-| Rules.N        | string | 【数组】规则。输入有效的 规则。调用方式举例：Rules.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1”、Rules.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1” | **Yes**  |
+| Rules.N        | string | 【数组】规则。输入有效的 规则。调用方式举例：Rules.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1\|sg_rule-wefvg34f”、Rules.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1\|sg_rule-wefvggf” | **Yes**  |
 
 **Response Elements**
 
@@ -2773,10 +2876,10 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroupRule
 
 ```
 https://xxx.xxx.xxx/?Action=UpdateSecurityGroupRule
-&Region=OwjoQwnC
-&Zone=mkAyPnMd
-&SGID=dbFAQeJn
-&Rules.N=oVMAaCBD
+&Region=XiHEGOAx
+&Zone=BwqGouSr
+&SGID=ifFOuBhC
+&Rules.N=jeKSrdZU
 ```
 
 **Response Example**
@@ -2784,7 +2887,7 @@ https://xxx.xxx.xxx/?Action=UpdateSecurityGroupRule
 ```
 {
     "Action": "UpdateSecurityGroupRuleResponse", 
-    "Message": "EHyhtDNK", 
+    "Message": "QrnbhbWs", 
     "RetCode": 0
 }
 ```
@@ -3170,7 +3273,7 @@ https://xxx.xxx.xxx/?Action=DeleteLB
 
 **Request Parameters**
 
-| Parameter name      | Type   | Description    | Required |
+| Parameter name      | Type   | Description                                                  | Required |
 | ------------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region              | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
 | Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
@@ -3186,7 +3289,7 @@ https://xxx.xxx.xxx/?Action=DeleteLB
 | Domain              | string | HTTP 健康检查时校验请求的 HOST 字段中的域名。当健康检查类型为端口检查时，该值为空。 | No       |
 | ServerCertificateID | string | 服务器证书ID，用于证明服务器的身份，仅当 VServer监听协议为 HTTPS时有效。 | No       |
 | CACertificateID     | string | CA证书ID，用于验证客户端证书的签名，仅当VServer监听协议为 HTTPS 且 SSLMode 为双向认证时有效。 | No       |
-| SSLMode             | string | HTTPS SSL 认证解析模式。玫举值：UNIDIRECTIONAL:单向认证，MUTUAL:双向认证 。仅当VServer监听协议为 HTTPS 时有效且为必填项。 | No       |
+| SSLMode             | string | SSL认证模式,HTTPS协议下必传,取值范围["simplex","duplex"]分别表示单向认证和双向认证。 | No       |
 
 **Response Elements**
 
@@ -3203,19 +3306,19 @@ https://xxx.xxx.xxx/?Action=DeleteLB
 https://xxx.xxx.xxx/?Action=CreateVS
 &Region=cn
 &Zone=zone-01
-&LBID=hyQumQAd
+&LBID=eSeMrMzu
 &Protocol=TCP|UDP|HTTP
-&Port=7
+&Port=6
 &Scheduler=wrr
 &HealthcheckType=Port
 &PersistenceType=None
-&PersistenceKey=kivxLjPr
-&KeepaliveTimeout=2
-&Path=rdkwfOeM
-&Domain=xaHwauhz
-&ServerCertificateID=IgrUQmOS
-&CACertificateID=fFfuAOVZ
-&SSLMode=ABdyJSjv
+&PersistenceKey=CGZYdHEW
+&KeepaliveTimeout=9
+&Path=rLyGsgWv
+&Domain=iShXSkya
+&ServerCertificateID=hhYiLUcm
+&CACertificateID=ajznmSxy
+&SSLMode=fmKPGstD
 ```
 
 **Response Example**
@@ -3223,13 +3326,13 @@ https://xxx.xxx.xxx/?Action=CreateVS
 ```
 {
     "Action": "CreateVSResponse", 
-    "Message": "XvmACpAC", 
+    "Message": "yspqZwgH", 
     "RetCode": 0, 
-    "VSID": "xzHeuYer"
+    "VSID": "EfjgRIrn"
 }
 ```
 
-## 10.5 获取负载均衡 VServer 信息-DescribeVS
+## 10.5 获取负载均衡VServer-DescribeVS
 
 获取负载均衡 VServer 信息
 
@@ -3262,6 +3365,7 @@ https://xxx.xxx.xxx/?Action=CreateVS
 | LBID                | string | VServer 所属的负载均衡 ID                                    | **Yes**  |
 | Protocol            | string | 协议                                                         | **Yes**  |
 | Port                | int    | 端口                                                         | **Yes**  |
+| Scheduler           | string | 负载均衡的调度算法。枚举值：wrr:加权轮训；least_conn:最小连接数；hash:原地址,四层lb使用。ip_hash:七层lb使用 | **Yes**  |
 | PersistenceType     | string | 会话保持类型。枚举值：None:关闭；Auto:自动生成；Manual:手动生成 。当协议为 TCP 时，该值为空；当协议为 UDP 时 Auto 表示开启会话保持 。 | **Yes**  |
 | HealthcheckType     | string | 负载均衡的健康检查类型。枚举值：Port:端口检查；Path: HTTP检查 。 | **Yes**  |
 | KeepaliveTimeout    | int    | 负载均衡的连接空闲超时时间，单位为秒，默认值为 60s 。当 VServer 协议为 UDP 时，该值为空。 | **Yes**  |
@@ -3270,7 +3374,7 @@ https://xxx.xxx.xxx/?Action=CreateVS
 | CreateTime          | int    | 创建时间，时间戳                                             | **Yes**  |
 | UpdateTime          | int    | 更新时间，时间戳                                             | **Yes**  |
 | AlarmTemplateID     | string | 告警模板ID                                                   | **Yes**  |
-| SSLMode             | string | HTTPS SSL 认证解析模式。玫举值：UNIDIRECTIONAL:单向认证，MUTUAL:双向认证 。仅当VServer监听协议为 HTTPS 时有效。 | No       |
+| SSLMode             | string | SSL认证模式,取值范围["simplex","duplex"]分别表示单向认证和双向认证。 | No       |
 | PersistenceKey      | string | 会话保持KEY，仅当 VServer 协议为 HTTP 且会话保持为手动时有效。 | No       |
 | Path                | string | HTTP 健康检查的路径。当健康检查类型为端口检查时，该值为空。  | No       |
 | Domain              | string | HTTP 健康检查时校验请求的 HOST 字段中的域名。当健康检查类型为端口检查时，该值为空。 | No       |
@@ -3314,12 +3418,12 @@ https://xxx.xxx.xxx/?Action=CreateVS
 
 ```
 https://xxx.xxx.xxx/?Action=DescribeVS
-&Region=wBzRHcEI
-&Zone=XsLBZlTk
-&LBID=GdWfrdEN
-&VSIDs.N=VRRExEVF
-&Offset=6
-&Limit=4
+&Region=CPOjKYJj
+&Zone=WBJeDVfo
+&LBID=jTtCTJTh
+&VSIDs.N=dCmbyxHJ
+&Offset=1
+&Limit=7
 ```
 
 **Response Example**
@@ -3327,69 +3431,70 @@ https://xxx.xxx.xxx/?Action=DescribeVS
 ```
 {
     "Action": "DescribeVSResponse", 
-    "TotalCount": 3, 
-    "Message": "kaKcOUzP", 
+    "TotalCount": 7, 
+    "Message": "kxxUeJfM", 
     "Infos": [
         {
+            "CACertificateID": "lNruhpqA", 
             "PersistenceType": "None", 
-            "Domain": "IeMiwXqu", 
-            "Protocol": "WLfcdNbU", 
+            "Domain": "pvNxBnQY", 
+            "Protocol": "axRwVusJ", 
             "VSPolicyInfos": [
                 {
-                    "Domain": "xfezxbLF", 
+                    "Domain": "IDMoHeoG", 
                     "UpdateTime": 9, 
-                    "VSID": "hEnRenuZ", 
+                    "VSID": "GVFbTmIT", 
                     "PolicyStatus": "Available", 
-                    "LBID": "WknPlpKe", 
-                    "PolicyID": "ljYLxzUn", 
-                    "Path": "OSzQhqBk", 
-                    "CreateTime": 6, 
+                    "LBID": "zHQKrFXH", 
+                    "PolicyID": "zhhfvipY", 
+                    "Path": "TZuliwTB", 
+                    "CreateTime": 4, 
                     "RSInfos": [
                         {
-                            "UpdateTime": 9, 
-                            "Name": "xQsJCDEU", 
-                            "Weight": 2, 
-                            "IP": "ZjbFAjGL", 
+                            "UpdateTime": 1, 
+                            "Name": "migqkpKK", 
+                            "Weight": 8, 
+                            "IP": "oAUJRzRL", 
                             "RSStatus": "Creating", 
-                            "VSID": "qmVMNesY", 
-                            "CreateTime": 3, 
-                            "LBID": "MhABvYvD", 
-                            "RSID": "NQaUbquq", 
-                            "BindResourceID": "MDwmDbYb", 
-                            "Port": 5, 
+                            "VSID": "sONSWMOj", 
+                            "CreateTime": 1, 
+                            "LBID": "iAYAcAGG", 
+                            "RSID": "iEtcrhIe", 
+                            "BindResourceID": "DlPhQxWL", 
+                            "Port": 6, 
                             "RSMode": "Enabling"
                         }
                     ]
                 }
             ], 
             "RSHealthStatus": "Empty", 
-            "UpdateTime": 5, 
-            "VSID": "yexEIOfp", 
+            "UpdateTime": 1, 
+            "VSID": "FuJXOwaQ", 
             "HealthcheckType": "Port", 
-            "LBID": "ubxFmgvI", 
-            "CreateTime": 1, 
-            "AlarmTemplateID": "mmIDJoLA", 
-            "CACertificateID": "bEGvXoXJ", 
-            "KeepaliveTimeout": 2, 
-            "SSLMode": "ijfBiEZN", 
-            "Path": "THwqsoAh", 
+            "LBID": "XenNKVkP", 
+            "CreateTime": 3, 
+            "AlarmTemplateID": "hOqvPKXw", 
+            "Scheduler": "eVgWEVhB", 
+            "KeepaliveTimeout": 4, 
+            "SSLMode": "uMRyDKFo", 
+            "Path": "bgyqHVaU", 
             "VSStatus": "Available", 
-            "PersistenceKey": "ToMLUFho", 
-            "Port": 2, 
-            "ServerCertificateID": "sfJFoYqM", 
+            "PersistenceKey": "hCCVtRaj", 
+            "Port": 6, 
+            "ServerCertificateID": "qLuTYvCS", 
             "RSInfos": [
                 {
-                    "UpdateTime": 7, 
-                    "Name": "XlRifUhY", 
-                    "Weight": 7, 
-                    "IP": "RQIaXQeO", 
+                    "UpdateTime": 9, 
+                    "Name": "tysEPtls", 
+                    "Weight": 5, 
+                    "IP": "xboMKoFS", 
                     "RSStatus": "Creating", 
-                    "VSID": "XinTeALM", 
-                    "CreateTime": 9, 
-                    "LBID": "xsOEsuyq", 
-                    "RSID": "GxHXVrvt", 
-                    "BindResourceID": "MDIbmFgl", 
-                    "Port": 1, 
+                    "VSID": "UlbYhLzh", 
+                    "CreateTime": 2, 
+                    "LBID": "WkkSzlEj", 
+                    "RSID": "tElbFTxw", 
+                    "BindResourceID": "VAaPHfHk", 
+                    "Port": 9, 
                     "RSMode": "Enabling"
                 }
             ]
@@ -3421,7 +3526,7 @@ https://xxx.xxx.xxx/?Action=DescribeVS
 | PersistenceKey      | string | 会话保持KEY，会话保持类型为Manual时为必填项，仅当 VServer 协议为 HTTP 时有效。 | No       |
 | ServerCertificateID | string | 服务器证书ID，用于证明服务器的身份，仅当 VServer监听协议为 HTTPS 时有效。 | No       |
 | CACertificateID     | string | CA证书ID，用于验证客户端证书的签名，仅当VServer监听协议为 HTTPS 且 SSLMode 为双向认证时有效。 | No       |
-| SSLMode             | string | HTTPS SSL 认证解析模式。玫举值：UNIDIRECTIONAL:单向认证，MUTUAL:双向认证 。仅当VServer监听协议为 HTTPS 时有效。 | No       |
+| SSLMode             | string | SSL认证模式,HTTPS协议下必传,取值范围["simplex","duplex"]分别表示单向认证和双向认证。 | No       |
 
 **Response Elements**
 
@@ -3437,19 +3542,19 @@ https://xxx.xxx.xxx/?Action=DescribeVS
 https://xxx.xxx.xxx/?Action=UpdateVS
 &Region=cn
 &Zone=zone-01
-&VSID=OQtsKATJ
-&LBID=xnpwvTbc
+&VSID=drNhHRuk
+&LBID=HlYbzVoO
 &Scheduler=wrr
-&KeepaliveTimeout=9
+&KeepaliveTimeout=1
 &HealthcheckType=Port
-&Path=JIZeCBjX
-&Domain=ZMDZWvrp
-&Port=1
+&Path=qLReLofN
+&Domain=wDkfxuMq
+&Port=4
 &PersistenceType=None
-&PersistenceKey=gIMNhLEN
-&ServerCertificateID=vpORNjoi
-&CACertificateID=qucyZGmN
-&SSLMode=HqNdvAuM
+&PersistenceKey=EOkGXtOS
+&ServerCertificateID=lfcDlWhs
+&CACertificateID=gTlaOszR
+&SSLMode=fFGxzLCr
 ```
 
 **Response Example**
@@ -3457,7 +3562,7 @@ https://xxx.xxx.xxx/?Action=UpdateVS
 ```
 {
     "Action": "UpdateVSResponse", 
-    "Message": "xgjlsREx", 
+    "Message": "UDgQbPVN", 
     "RetCode": 0
 }
 ```
@@ -4057,6 +4162,205 @@ https://xxx.xxx.xxx/?Action=DeleteVSPolicy
 {
     "Action": "DeleteVSPolicyResponse", 
     "Message": "IBRYMiwh", 
+    "RetCode": 0
+}
+```
+
+## 10.18 创建证书-CreateCertificate
+
+创建证书
+
+**Request Parameters**
+
+| Parameter name  | Type   | Description                                                  | Required |
+| --------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region          | string | 地域。                                                       | **Yes**  |
+| Zone            | string | 可用区。                                                     | **Yes**  |
+| Certificate     | string | 证书内容                                                     | **Yes**  |
+| Name            | string | 证书名称                                                     | **Yes**  |
+| CertificateType | string | 证书类型，枚举值["ServerCrt","CACrt"]。分别表示服务器证书和CA证书，CA证书仅在双向认证的时有效。 | **Yes**  |
+| PrivateKey      | string | 私钥内容,服务器证书必传,证书类型为CA证书时无效。             | No       |
+| Remark          | string | 证书描述                                                     | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| RetCode        | int    | 返回码      | **Yes**  |
+| Action         | string | 操作名称    | **Yes**  |
+| Message        | string | 错误描述    | **Yes**  |
+| CertificateID  | string | 证书ID      | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=CreateCertificate
+&Region=cn-zj
+&Zone=cn-zj-01
+&ProjectId=htENHVIj
+&Certificate=kUbusDVn
+&PrivateKey=cwpajKCz
+&CertificateName=LdPvXaLL
+&CertificateType=zzBMnjIH
+&Remark=bLtpxlJV
+&Certificate=HJlGtXLl
+&PrivateKey=ULqfPvaz
+&CertificateName=YPcrjwMM
+&CertificateType=BZplOOit
+&Remark=jAJpfciQ
+```
+
+**Response Example**
+
+```
+{
+    "Action": "CreateCertificateResponse", 
+    "Message": "yiImQPEa", 
+    "CertificateID": "yvklxOAN", 
+    "RetCode": 0
+}
+```
+
+## 10.19 查询证书-DescribeCertificate
+
+查询证书
+
+**Request Parameters**
+
+| Parameter name   | Type   | Description                                                  | Required |
+| ---------------- | ------ | ------------------------------------------------------------ | -------- |
+| Region           | string | 地域。                                                       | **Yes**  |
+| Zone             | string | 可用区。                                                     | **Yes**  |
+| CertificateType  | string | 证书类型，枚举值["ServerCrt","CACrt"]，分别表示服务器证书和CA证书。 | No       |
+| CertificateIDs.N | string | 证书ID列表                                                   | No       |
+| Limit            | int    | 返回数据长度，默认为20，最大100                              | No       |
+| Offset           | int    | 列表起始位置偏移量，默认为0                                  | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description        | Required |
+| -------------- | ------ | ------------------ | -------- |
+| RetCode        | int    | 返回码             | **Yes**  |
+| Action         | string | 操作名称           | **Yes**  |
+| Message        | string | 返回信息描述       | **Yes**  |
+| TotalCount     | int    | 证书总个数         | **Yes**  |
+| Infos          | array  | [数组]证书对象数组 | No       |
+
+**CertificateInfo**
+
+| Parameter name          | Type   | Description                           | Required |
+| ----------------------- | ------ | ------------------------------------- | -------- |
+| Region                  | string | 地域                                  | No       |
+| Zone                    | string | 可用区                                | No       |
+| VSInfos                 | array  | 关联的vs的信息                        | **Yes**  |
+| CertificateID           | string | 证书ID                                | No       |
+| CertificateType         | string | 证书类型，枚举值["ServerCrt","CACrt"] | No       |
+| Name                    | string | 证书名                                | No       |
+| Remark                  | string | 证书描述                              | No       |
+| CertificateContent      | string | 证书内容                              | No       |
+| Privatekey              | string | 私钥内容                              | No       |
+| CommonName              | string | 主域名                                | No       |
+| SubjectAlternativeNames | array  | 备域名                                | No       |
+| CreateTime              | int    | 创建时间（平台创建时间）              | No       |
+| ExpireTime              | int    | 证书内容的过期时间                    | No       |
+| Fingerprint             | string | 证书指纹                              | No       |
+
+**BindVSInfo**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| LBID           | string | LB ID       | No       |
+| LBName         | string | LB名称      | No       |
+| VSID           | string | VS ID       | No       |
+| Protocol       | string | VS的协议    | No       |
+| Port           | int    | VS的端口    | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribeCertificate
+&Region=cn-zj
+&Zone=cn-zj-01
+&CertificateType=VRdVNQQr
+&CertificateIDs.N=vzaHTLGq
+&Limit=9
+&Offset=5
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribeCertificateResponse", 
+    "TotalCount": 6, 
+    "Message": "EdFnAQne", 
+    "Infos": [
+        {
+            "Remark": "laVLBJXA", 
+            "CertificateID": "xayDwHju", 
+            "SubjectAlternativeNames": [
+                "fPKnfEwM"
+            ], 
+            "Zone": "SbVgWxFB", 
+            "CommonName": "LJrFmcbM", 
+            "Region": "opVMInhl", 
+            "Privatekey": "OgUqbDPe", 
+            "ExpireTime": 6, 
+            "CertificateContent": "CSWOaMWk", 
+            "VSInfos": [
+                {
+                    "LBID": "UKBRFmaJ", 
+                    "Protocol": "wbzMzEYV", 
+                    "LBName": "LyuJdOaj", 
+                    "VSID": "ABizVGDn", 
+                    "Port": "LwgRAeoC"
+                }
+            ], 
+            "CertificateName": "wdDWyBjN", 
+            "Fingerprint": "HrlaJucO", 
+            "CertificateType": "LKXSWmpk", 
+            "CreateTime": 5
+        }
+    ], 
+    "RetCode": 0
+}
+```
+
+## 10.20 删除证书-DeleteCertificate
+
+删除证书
+
+**Request Parameters**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| Region         | string | 地域。      | **Yes**  |
+| Zone           | string | 可用区。    | **Yes**  |
+| CertificateID  | string | 证书ID      | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description  | Required |
+| -------------- | ------ | ------------ | -------- |
+| RetCode        | int    | 返回码       | **Yes**  |
+| Action         | string | 操作名称     | **Yes**  |
+| Message        | string | 返回信息描述 | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DeleteCertificate
+&Region=cn-zj
+&Zone=cn-zj-01
+&CertificateID=sHDtfKYt
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DeleteCertificateResponse", 
+    "Message": "NaObKjbg", 
     "RetCode": 0
 }
 ```
@@ -5051,6 +5355,91 @@ https://xxx.xxx.xxx/?Action=DescribeStorageType
             "StorageType": "wWLDEBqf", 
             "Region": "gJvDjJly", 
             "Zone": "dRuTGjoe"
+        }
+    ], 
+    "RetCode": 0
+}
+```
+
+## 14.7 查询操作日志-DescribeOPLogs
+
+查询操作日志
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                       | Required |
+| -------------- | ------ | --------------------------------- | -------- |
+| Region         | string | 地域。                            | **Yes**  |
+| Zone           | string | 可用区。                          | **Yes**  |
+| BeginTime      | int    | 开始时间                          | **Yes**  |
+| EndTime        | int    | 结束时间                          | **Yes**  |
+| ResourceID     | string | 资源ID                            | No       |
+| ResourceType   | string | 资源类型                          | No       |
+| IsSuccess      | string | 是否操作成功                      | No       |
+| Offset         | int    | 列表起始位置偏移量，默认为0。     | No       |
+| Limit          | int    | 返回数据长度，默认为20，最大100。 | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description                  | Required |
+| -------------- | ------ | ---------------------------- | -------- |
+| RetCode        | int    | 返回码                       | **Yes**  |
+| Action         | string | 操作名称                     | **Yes**  |
+| Message        | string | 错误信息                     | **Yes**  |
+| TotalCount     | int    | 总数                         | **Yes**  |
+| Infos          | array  | 【数组】返回操作日志对象数组 | **Yes**  |
+
+**OPLogInfo**
+
+| Parameter name | Type   | Description              | Required |
+| -------------- | ------ | ------------------------ | -------- |
+| Region         | string | 地域或数据中心           | No       |
+| Zone           | string | 可用区                   | No       |
+| OPLogsID       | string | 操作日志ID               | No       |
+| OPName         | string | 操作名称                 | No       |
+| IsSuccess      | string | 是否操作成功， Yes, No   | No       |
+| OPTime         | int    | 操作时间                 | No       |
+| UserEmail      | string | 操作者账号邮箱           | No       |
+| ResourceID     | string | 操作的资源ID             | No       |
+| RetCode        | int    | 操作返回的状态码         | No       |
+| OpMessage      | string | 操作返回的信息描述       | No       |
+| ResourceType   | int    | 操作资源的类型，如虚拟机 | No       |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribeOPLogs
+&Region=cn-zj
+&Zone=cn-zj-01
+&BeginTime=2
+&EndTime=2
+&ResourceID=BcRktuUX
+&ResourceType=OnYQjtVl
+&IsSuccess=iyHhkjDB
+&Offset=6
+&Limit=8
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribeOPLogsResponse", 
+    "TotalCount": 7, 
+    "Message": "tBpstDyP", 
+    "Infos": [
+        {
+            "UserEmail": "yQhrsGvF", 
+            "OPLogsID": "MMvYHzju", 
+            "OPTime": 5, 
+            "RetCode": 7, 
+            "Zone": "HOxgbLOt", 
+            "ResourceType": 6, 
+            "ResourceID": "dZedlNUs", 
+            "Region": "ZNgjEPqm", 
+            "OpMessage": "GbzPKpLP", 
+            "IsSuccess": "QkLloVhX", 
+            "OPName": "gzyXadNY"
         }
     ], 
     "RetCode": 0
