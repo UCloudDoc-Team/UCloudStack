@@ -489,8 +489,7 @@ VPN 隧道被删除后即直接销毁，请在删除前确保 VPN 隧道无业�
 
 * UCloud 公有云 IPSecVPN 
 * Cisco 防火墙配置
-* 华为防火墙配置
-* OpenSwan 配置
+* StrongSwan 配置
 * VPC 到 VPC 的 VPN 连接
 
 ### 12.6.1 UCloud 公有云 IPSecVPN
@@ -507,8 +506,8 @@ UCloud 公有云  IPSecVPN 目前仅支持 IKEv1 ，本文描述在私有云和 
 | -------------------- | ------------------------------- | ------------------------------- |
 | VPN 网关公网 IP 地址 | 106.75.234.78                   | 113.31.115.114                  |
 | VPC 网段             | 10.0.192.0/20                   | 10.23.0.0/16、10.25.0.0/16      |
-| 客户虚拟机 IP        | 10.0.192.31                     | 10.23.228.173                   |
-| 预共享密钥           | ucloud.123                      | ucloud.123                      |
+| 客户虚拟机 IP        | 10.0.192.32                     | 10.23.228.173                   |
+| 预共享密钥           | ucloud.1231                     | ucloud.1231                     |
 | IKE 版本             | V1——协商模式为主模式            | V1——协商模式为主模式            |
 | IKE 策略             | 认证 SHA1、加密 AES128、DH 组 2 | 认证 SHA1、加密 AES128、DH 组 2 |
 | IPSec 安全传输协议   | ESP                             | ESP                             |
@@ -532,39 +531,264 @@ UCloud 公有云 IPSecVPN 服务与 UCloudStack VPN 服务的配置过程相同�
 
    > 注意：如果 UCloudStack 侧 VPN 网关使用的公网 IP 地址为 SNAT 后的地址池，即 VPN 网关的出口非固定公网 IP ，则需要将对端网关创建为 0.0.0.0 ，使 UCloud 公有云可以通过任意地址连接 UCloudStack 侧的 VPN 网关并建立 VPN 连接。
 
-3. 使用前提已创建的 VPN 网关和客户网关，采用前提条件中的 IKE 和 IPSec 策略创建 VPN 隧道，如下图所示：
+3. 使用已创建的 VPN 网关和客户网关，采用前提条件中的 IKE 和 IPSec 策略创建 VPN 隧道，如下图所示：
 
-   dfdf
+   ![ucloudtunnelinfo](ucloudtunnelinfo.png)
+
+   * 本端网段和对端网段与 UCloudStack 平台侧隧道正好相反，UCloudStack 平台侧隧道配置的本端网段为`10.0.192.0/20` ，对端网段为`10.23.0.0/16 ` 和 `10.25.0.0/16`  。
+   * 本端 ID 和对端 ID 即对应 UCloudStack 平台侧的本端标识和对端标识，如图所示与 UCloudStack 侧的配置正好相反，UCloudStack 侧配置的本端标识为 `106.75.234.78` ，对端标识为 `113.31.115.114` 。
+   * IKE 策略的版本、加密算法、认证算法、预共享密钥 、DH 组 均与 UCloudStack 侧保持一致。
+   * IPSec 策略安全协议、加密算法、认证算法、PFS DH 组与 UCloudStack 侧保持 一致。
 
 4. 分别查看 UCloudStack 侧和 UCloud 公有云侧的 VPN 隧道连接状态，等待隧道自动连接。UCloudStack 侧可通过列表上连接状态直接查看隧道是否已连接，UCloud 公有云侧需进入隧道详情页面查看"VPN 隧道状态"的监控，如下图所示：
 
+   ![ucloudtunnelmonitor](ucloudtunnelmonitor.png)
+
+5. 在 UCloud 公有云的隧道监控中查看 VPN 隧道状态已变为 1 ，代表 VPN 已连接，同时在 UCloudStack 中隧道的连接状态流转为“已连接” ，如下图所示：
+
+   ![tunnelstatus1](tunnelstatus1.png)
+
+#### 12.6.1.3 配置验证
+
+在已连接状态时，UCloudStack 侧会自动下发对端网段为目标地址的路由至本端网段内的虚拟机中，可登入提前准备的本端虚拟机查看相关网络及路由配置信息。
+
+如下图所示，本端虚拟机的 IP 地址为 `10.0.192.32` ，下发的路由为 `10.23.0.0/16`  及 `10.25.0.0/16` ，即代表虚拟机可与 UCloud 公有云侧的两个网段进行通信。
+
+![vpnvmroute](vpnvmroute.png)
+
+可通过 ping 命令检测与 UCloud 公有云虚拟机的网络连通性，如下图代表两端内网的虚拟机网络互通。
+
+![vpnucloudping](vpnucloudping.png)
+
+根据以上的配置过程，即可通过 IPSecVPN 的方式将 UCloudStack 和与 UCloud 公有云内网打通。
+
+### 12.6.2 Cisco 防火墙配置
+
+通过在 IDC 数据中心的 Cisco 防火墙与 UCloudStack 之间建立  IPSecVPN 连接，实现私有云和 IDC 数据中心网络互通和数据交互。
+
+Cisco 防火墙支持 IKEv1 和 IKEv2 ，本文仅介绍私有云平台和 Cisco 防火墙建立基于 IKEv2 的 IPSecVPN 连接。
+
+#### 12.6.2.1 前提条件
+
+在建立 IPSecVPN 连接进行通信前，需确认两端要建立 IPSecVPN 连接的网络拓扑关系及配置参数信息。
+
+| 网络配置和配置参数   | UCloudStack 私有云              | Cisco 防火墙                    |
+| -------------------- | ------------------------------- | ------------------------------- |
+| VPN 网关公网 IP 地址 | 106.75.234.78                   | 1.1.1.1                         |
+| VPC 网段/本地网段    | 10.0.192.0/24                   | 192.168.1.0/24                  |
+| 客户虚拟机 IP        | 10.0.192.32                     | 192.168.1.2                     |
+| 预共享密钥           | ucloud.1231                     | ucloud.1231                     |
+| IKE 版本             | V2                              | V2                              |
+| IKE 策略             | 认证 SHA1、加密 AES128、DH 组 2 | 认证 SHA1、加密 AES128、DH 组 2 |
+| IPSec 安全传输协议   | ESP                             | ESP                             |
+| IPSec 策略           | 认证 SHA1、加密 AES128、PFSDH 2 | 认证 SHA1、加密 AES128、PFSDH 2 |
+
+> 本文假设已在 UCloudStack 私有云上部署 VPN 网关和对端网关，并已通过以上配置参数创建 VPN 隧道，等待数据中心的 Cisco 防火墙配置好 VPN 隧道后，即可进行 VPN 连接。
+
+#### 12.6.2.2 配置防火墙
+
+1. 配置 IKE 第一阶段算法。
+
+   ```
+   crypto ikev2 proposal test 
+   encryption aes-cbc-128
+   integrity sha1
+   group 2
+   ```
+
+2. 配置 IKEv2 策略并应用至 proposal 。
+
+   ```
+   crypto ikev2 policy ipsecpro64_v2
+   proposal test
+   ```
+
+3. 配置预共享密钥。
+
+   ```
+   crypto ikev2 keyring ipsecpro64_v2 
+   peer vpngw 
+   address 106.75.234.78
+   pre-shared-key 0 ucloud.1231
+   ```
+
+4. 配置身份认证。
+
+   ```
+   crypto ikev2 profile ipsecpro64_v2
+   match identity remote address 106.75.234.78 255.255.255.255
+   identity local address 192.168.1.1 
+   authentication remote pre-share     
+   authentication local pre-share 
+   keyring local ipsecpro64_v2
+   ```
+
+5. 配置 IPSec 安全协议。
+
+   ```
+   crypto ipsec transform-set ipsecpro64_v2 esp-aes esp-sha-hmac
+   mode tunnel
+   ```
+
+6. 配置 ACL ，定义需要 VPN 保护并透传的数据流，即本端网段和对端网段。若有多个网段，则需要分别对多个网段添加 ACL 策略，以确保 VPN 可透传网段流量。
+
+   ```
+   access-list 200 permit ip 192.168.1.0 0.0.0.255 10.0.192.0/24 0.0.0.255
+   ```
+
+7. 配置 IPSec 策略并应用 IPSec 策略
+
+   ```
+   crypto map ipsecpro64_v2 10 ipsec-isakmp
+   set peer 106.75.234.78
+   set transform-set ipsecpro64_v2 
+   set ikev2-profile ipsecpro64_v2
+   match address 200
    
+   interface g0/1
+   crypto map ipsecpro64_v2
+   ```
 
+   > interface g0/1 代表防火墙网关公网 IP 地址的接口，即防火墙的公网接口。
 
+8. 配置静态路由
 
+   ```
+   ip route 10.0.192.0 255.255.255.0 106.75.234.78
+   ```
 
+#### 12.6.2.3 配置验证
 
+通过 IDC 数据中心防火墙下 `192.168.1.0/24` 网段的主机 `Ping` 云平台的虚拟机`10.0.192.32` ，测试连通性。
 
+### 12.6.3 StrongSwan 配置
 
+通过在任意有公网 IP 地址的 Linux 主机上安装并配置 StrongSwan 与 UCloudStack 之间建立  IPSecVPN 连接，实现私有云和安装 IPSec 软件的主机对接，使相同网段的客户主机通过 IPSec 主机与 UCloudStack 平台虚拟机进行通信。
 
+#### 12.6.3.1 前提条件
 
+在建立 IPSecVPN 连接进行通信前，需确认两端要建立 IPSecVPN 连接的网络拓扑关系及配置参数信息。
 
+| 网络配置和配置参数   | UCloudStack 私有云              | IDC 侧 StrongSwan                   |
+| -------------------- | ------------------------------- | ----------------------------------- |
+| VPN 网关公网 IP 地址 | 106.75.234.78                   | 113.31.113.78（内网 10.23.228.173） |
+| VPC 网段/本地网段    | 10.0.192.0/20                   | 10.23.0.0/16                        |
+| 客户虚拟机 IP        | 10.0.192.32                     | 10.23.112.177                       |
+| 预共享密钥           | ucloud.1231                     | ucloud.1231                         |
+| IKE 版本             | V2                              | V2                                  |
+| IKE 策略             | 认证 SHA1、加密 AES128、DH 组 5 | 认证 SHA1、加密 AES128、DH 组 5     |
+| IPSec 安全传输协议   | ESP                             | ESP                                 |
+| IPSec 策略           | 认证 SHA1、加密 AES128、PFSDH 5 | 认证 SHA1、加密 AES128、PFSDH 5     |
 
+> 本文假设已在 UCloudStack 私有云上部署 VPN 网关和对端网关，并已通过以上配置参数创建 VPN 隧道，等待数据中心的 StrongSwan 配置好 VPN 隧道后，即可进行 VPN 连接。
 
+#### 12.6.3.2 配置 StrongSwan
 
+本节介绍安装配置 StrongSwan 软件，安装环境为 Centos 7.4 。
 
+1. 安装 StrongSwan
 
+   ```
+   yum install strongswan
+   strongswan version
+   ```
 
+2. 开启操作系统数据转发配置并进行相关网络配置
 
+   ```
+   echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
+   echo 'net.ipv4.conf.default.rp_filter = 0' >> /etc/sysctl.conf
+   echo 'net.ipv4.conf.all.accept_redirects = 0' >> /etc/sysctl.conf
+   echo 'net.ipv4.conf.all.send_redirects = 0' >> /etc/sysctl.conf
+   echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
+   echo 0 > /proc/sys/net/ipv4/conf/eth0/rp_filter
+   echo 0 > /proc/sys/net/ipv4/conf/eth1/rp_filter
+   echo 0 > /proc/sys/net/ipv4/conf/all/rp_filter
+   sysctl -a | egrep "ipv4.*(accept|send)_redirects" | awk -F "=" '{print$1"= 0"}' >> /etc/sysctl.conf
+   
+   sysctl -p     //执行命令，生效转发配置命令
+   ```
 
+3. 配置 StrongSwan 参数
 
+   ```
+   vi /etc/strongswan/ipsec.conf           //编辑ipsec.conf文件
+                        
+   conn test                               //定义连接名称为 test
+     authby=psk
+     type=tunnel                           //开启隧道模式
+   	keyexchange=ikev2                     // ike密钥交换方式为版本2	
+     auto=start
+     leftid=113.31.113.78                         //本端标识ID
+     left=10.23.228.173                        //本地IP，nat场景选择真实的主机地址
+     leftsubnet=10.23.0.0/16               //本地子网  
+     rightid=106.75.234.78                   //远端标识ID
+     right=106.75.234.78                     //远端VPN网关IP
+     rightsubnet=10.0.192.0/20               //远端子网
+     ike=aes128-sha1-modp1024               //按照对端配置定义ike阶段算法和group
+     esp=aes128-sha1-modp1024             //按照对端配置定义ipsec阶段算法和group
+     ikelifetime=86400s                             // ike阶段生命周期
+     lifetime=86400s                                //二阶段生命周期 
+     dpdaction=restart
+     dpddelay=8s
+     dpdtimeout=13s
+   ```
 
+> 本文搭建 StrongSwan 的主机是通过 NAT 网关模式，即使用 NAT 网关的 IP 地址访问互联网，或真实的搭建环境中 StrongSwan 主机有真实的公网 IP 地址，则 left 的值为真实公网 IP 地址。
 
+4. 配置 ipsec.secrets 文件，定义预共享密钥
 
+   ```
+   vi /etc/strongswan/ipsec.secrets
+   
+   113.31.113.78 106.75.234.78 : PSK ucloud.1231
+   ```
 
+5. 启动 StrongSwan  并加入开机启动
 
+   ```
+   systemctl enable strongswan
+   systemctl start strongswan
+   ```
 
+#### 12.6.3.3 配置验证
 
+1. 通过 `strongswan statusall` 命令查询 strongswan 的连接状态，若出现类似  `ESTABLISHED 6 minutes ago`的信息，证明已连接成功，如下所示：
+
+```
+[root@10-23-228-173 ~]# strongswan statusall
+Status of IKE charon daemon (strongSwan 5.7.2, Linux 3.10.0-957.27.2.el7.x86_64, x86_64):
+  uptime: 6 minutes, since Jul 30 19:13:57 2020
+  malloc: sbrk 2666496, mmap 0, used 609168, free 2057328
+  worker threads: 11 of 16 idle, 5/0/0/0 working, job queue: 0/0/0/0, scheduled: 5
+  loaded plugins: charon pkcs11 tpm aesni aes des rc2 sha2 sha1 md4 md5 mgf1 random nonce x509 revocation constraints acert pubkey pkcs1 pkcs7 pkcs8 pkcs12 pgp dnskey sshkey pem openssl gcrypt fips-prf gmp curve25519 chapoly xcbc cmac hmac ctr ccm gcm curl attr kernel-netlink resolve socket-default farp stroke vici updown eap-identity eap-sim eap-aka eap-aka-3gpp eap-aka-3gpp2 eap-md5 eap-gtc eap-mschapv2 eap-dynamic eap-radius eap-tls eap-ttls eap-peap xauth-generic xauth-eap xauth-pam xauth-noauth dhcp led duplicheck unity counters
+Listening IP addresses:
+  10.23.228.173
+Connections:
+        test:  10.23.228.173...106.75.234.78  IKEv2, dpddelay=8s
+        test:   local:  [113.31.113.78] uses pre-shared key authentication
+        test:   remote: [106.75.234.78] uses pre-shared key authentication
+        test:   child:  10.23.0.0/16 === 10.0.192.0/20 TUNNEL, dpdaction=restart
+Security Associations (1 up, 0 connecting):
+        test[1]: ESTABLISHED 6 minutes ago, 10.23.228.173[113.31.113.78]...106.75.234.78[106.75.234.78]
+        test[1]: IKEv2 SPIs: 8285787a9e1b8ae2_i* 22543e6225ea8e59_r, pre-shared key reauthentication in 23 hours
+        test[1]: IKE proposal: AES_CBC_128/HMAC_SHA1_96/PRF_HMAC_SHA1/MODP_1024
+        test{1}:  INSTALLED, TUNNEL, reqid 1, ESP in UDP SPIs: c22520e2_i c30646c8_o
+        test{1}:  AES_CBC_128/HMAC_SHA1_96, 35364 bytes_i (421 pkts, 1s ago), 35364 bytes_o (421 pkts, 1s ago), rekeying in 23 hours
+        test{1}:   10.23.0.0/16 === 10.0.192.0/20
+```
+
+2. 在 IDC 数据中心 StrongSwan下 `10.23.0.0/16` 网段的主机内添加到达 UCloudStack 侧网段的路由，使两端主机可以互相通信。
+
+   ```
+   ip route add 10.0.192.0/20 via 10.23.228.173
+   ```
+
+3. 通过 IDC 数据中心 StrongSwan下 `10.23.0.0/16` 网段的主机 `Ping` 云平台的虚拟机`10.0.192.32` ，测试连通性。
+
+   ![StrongSwanping](StrongSwanping.png)
+
+### 12.6.4 VPC 到 VPC 的 VPN 连接
 
 
 
