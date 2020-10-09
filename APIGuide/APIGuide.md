@@ -336,7 +336,7 @@ https://xxx.xxx.xxx/?Action=CreateVMInstance
 | SubnetID       | string | 子网 ID。输入“有效”状态的子网 ID。                           | No       |
 | Offset         | string | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
-| VMIDs.N        | string | 【数组】虚拟机的 ID。输入有效的 ID。调用方式举例：PrivateIp.0=“one-id”、PrivateIp.1=“two-id”。 | No       |
+| VMIDs.N        | string | 【数组】虚拟机的 ID。输入有效的 ID。调用方式举例：VMIDs.0=“one-id” 、 VMIDs.1=“two-id”。 | No       |
 
 **Response Elements**
 
