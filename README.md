@@ -43,6 +43,7 @@ UCloudStack定位为轻量级交付，3 节点即可构建生产环境且可平�
 - 开发者指南 
 
     - [API 手册](UCloudStack/APIGuide/APIGuide.md)
+    - [API 状态码列表](UCloudStack/APIGuide/APIRetcode.md)
 
 - 常见问题
 
