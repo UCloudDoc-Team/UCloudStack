@@ -1,5 +1,3 @@
-<div class="sidebar_title icon__logo"> UCloudStack 私有云 </div>
-
 
 - 产品简介
 
