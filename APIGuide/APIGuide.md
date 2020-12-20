@@ -268,6 +268,7 @@ curl -X POST http://console.dev.ucloudstack.com/api \
 | Bandwidth       | string | 创建虚拟机同时绑定外网 IP 的带宽。                           | No       |
 | IPVersion       | string | 创建虚拟机同时绑定外网 IP 的 IP 版本。枚举值：IPv4 & IPv6，默认为 IPv4 | No       |
 | InternetIP      | string | 手动指定虚拟机绑定外网 IP 的地址，IP地址必须包含在网段内。   | No       |
+| BootDiskSpace   | int    | 系统盘大小，单位 GB。默认值为40。范围：【40，500】，步长10。 | No       |
 
 **Response Elements**
 
@@ -286,27 +287,28 @@ curl -X POST http://console.dev.ucloudstack.com/api \
 https://xxx.xxx.xxx/?Action=CreateVMInstance
 &Region=cn
 &Zone=zone-01
-&Name=VHHGUYDD
+&Name=GmVzvGHM
 &VMType=Normal
-&ImageID=VvsSJqxx
+&ImageID=SNmaoHtN
 &CPU=1
 &Memory=2048
 &BootDiskSetType=Normal
 &DataDiskSetType=Normal
-&VPCID=LRDzfXDp
-&SubnetID=OPMffOvW
-&WANSGID=LPYnUzTN
+&VPCID=bNDADRnn
+&SubnetID=GBdNuHBB
+&WANSGID=mCRQkQRi
 &ChargeType=Dynamic
-&Password=EIhsCxDA
-&DataDiskSpace=5
-&Quantity=4
-&InternalIP=nqHiZNdS
-&LANSGID=qbnEjKNR
+&Password=oNKBYzPA
+&DataDiskSpace=8
+&Quantity=7
+&InternalIP=ZJzHPCwg
+&LANSGID=fRyUTuTT
 &GPU=1
-&OperatorName=PPaDwHUY
-&Bandwidth=lCjvLVGT
-&IPVersion=jOowvODd
-&InternetIP=HoSrxQXc
+&OperatorName=ShoqoDdR
+&Bandwidth=gXCJuHhf
+&IPVersion=UxUXacRh
+&InternetIP=DfOQkePt
+&BootDiskSpace=4
 ```
 
 **Response Example**
@@ -314,11 +316,11 @@ https://xxx.xxx.xxx/?Action=CreateVMInstance
 ```
 {
     "RetCode": 0, 
-    "VMID": "GFdRqvpO", 
-    "EIPID": "SGUmaudy", 
+    "VMID": "gyHonDYi", 
+    "EIPID": "hWMaozqD", 
     "Action": "CreateVMInstanceResponse", 
-    "Message": "OdUHohed", 
-    "DiskID": "WZINcEbx"
+    "Message": "YYfWYkFc", 
+    "DiskID": "NdlYxMgW"
 }
 ```
 
@@ -334,9 +336,9 @@ https://xxx.xxx.xxx/?Action=CreateVMInstance
 | Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
 | VPCID          | string | VPC ID。输入“有效”状态的VPC ID。                             | No       |
 | SubnetID       | string | 子网 ID。输入“有效”状态的子网 ID。                           | No       |
-| Offset         | string | 列表起始位置偏移量，默认为0。                                | No       |
+| Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
-| VMIDs.N        | string | 【数组】虚拟机的 ID。输入有效的 ID。调用方式举例：VMIDs.0=“one-id” 、 VMIDs.1=“two-id”。 | No       |
+| VMIDs.N        | string | 【数组】虚拟机的 ID。输入有效的 ID。调用方式举例：VMIDs.0=“one-id”、VMIDs.1=“two-id”。 | No       |
 
 **Response Elements**
 
@@ -386,8 +388,7 @@ https://xxx.xxx.xxx/?Action=CreateVMInstance
 | Size           | int    | 磁盘大小，单位 GB                                      | No       |
 | IsElastic      | string | 是否是弹性磁盘。枚举值为：Y，表示是；N，表示否；       | No       |
 
-**VMIPInfo**
-
+## VMIPInfo
 | Parameter name | Type   | Description                                            | Required |
 | -------------- | ------ | ------------------------------------------------------ | -------- |
 | IP             | string | IP 值                                                  | No       |
@@ -409,11 +410,11 @@ https://xxx.xxx.xxx/?Action=CreateVMInstance
 https://xxx.xxx.xxx/?Action=DescribeVMInstance
 &Region= cn
 &Zone=zone-01
-&VPCID=GTCAUTlR
-&SubnetID=szSFfHXz
-&Offset=crTWhzRL
-&Limit=2
-&VMIDs.N=lnMODCoR
+&VPCID=UxmNzpZf
+&SubnetID=CSMXnQFT
+&Offset=3
+&Limit=4
+&VMIDs.N=iWGESINJ
 ```
 
 **Response Example**
@@ -421,55 +422,55 @@ https://xxx.xxx.xxx/?Action=DescribeVMInstance
 ```
 {
     "Action": "DescribeVMInstanceResponse", 
-    "TotalCount": 8, 
-    "Message": "VNPsHmEp", 
+    "TotalCount": 6, 
+    "Message": "UjKYrrsR", 
     "Infos": [
         {
-            "VPCID": "bXRXSGPf", 
-            "Zone": "MAqeRNQa", 
+            "VPCID": "WpcFysuc", 
+            "Zone": "mADuhoZW", 
             "DiskInfos": [
                 {
-                    "Name": "PtVCqUKu", 
-                    "Drive": "NHwuTFge", 
+                    "Name": "yxgvPzZn", 
+                    "Drive": "lCHHihNl", 
                     "IsElastic": "Y", 
                     "Type": "Boot", 
-                    "DiskID": "CEFBXOaL", 
+                    "DiskID": "pGBlTDQD", 
                     "Size": 1
                 }
             ], 
-            "ImageID": "YJZHmQLl", 
-            "OSType": "DDQKPxOp", 
-            "State": "IUBEeilF", 
-            "Memory": 9, 
-            "SubnetName": "djeyTwyK", 
-            "CPU": 7, 
-            "VPCName": "AoMgdqfi", 
-            "Remark": "WNyvRLHE", 
-            "Name": "RpOBIgCg", 
-            "VMTypeAlias": "JsUPkBrS", 
-            "Region": "AZjCAfBQ", 
-            "VMID": "HliPtSlE", 
-            "OSName": "OrFxbHYx", 
+            "ImageID": "spGLGVlM", 
+            "OSType": "dtPOXKmD", 
+            "State": "pWeZsyga", 
+            "Memory": 7, 
+            "SubnetName": "FKyPdPEt", 
+            "CPU": 1, 
+            "VPCName": "tyKeuify", 
+            "Remark": "blkaAwSU", 
+            "Name": "EICQugoQ", 
+            "VMTypeAlias": "GoMkEsyk", 
+            "Region": "OBYiDDka", 
+            "VMID": "uXROnMUJ", 
+            "OSName": "KEVYuwsI", 
             "IPInfos": [
                 {
-                    "InterfaceID": "GtPjtBcr", 
-                    "VPCID": "lZsUVvoa", 
-                    "IP": "quaHoDzO", 
-                    "SGName": "HeaCblbp", 
-                    "IPVersion": "luSyIrjz", 
-                    "SubnetName": "FdiJmXQk", 
-                    "MAC": "qnshAgIm", 
-                    "VPCName": "xNenkgXc", 
-                    "SubnetID": "LLlGCBuC", 
-                    "SGID": "yHvSFufj", 
-                    "IsElastic": "bWbLZBYZ", 
-                    "Type": "XGdtJjFy"
+                    "InterfaceID": "gxfBxsBN", 
+                    "VPCID": "FcHxBcZS", 
+                    "IP": "pgZmTQJY", 
+                    "SGName": "NsgJLUEv", 
+                    "IPVersion": "MwCfqKFL", 
+                    "SubnetName": "TvUOkVOd", 
+                    "MAC": "TCqbvJYl", 
+                    "VPCName": "erOvAhkM", 
+                    "SubnetID": "aRCbkqYS", 
+                    "SGID": "eZrBLGlV", 
+                    "IsElastic": "sUGNclMl", 
+                    "Type": "bkgmxdBu"
                 }
             ], 
             "ExpireTime": 8, 
-            "VMType": "DieGyeaQ", 
-            "ChargeType": "eaIQaijl", 
-            "SubnetID": "LfzEaKfC", 
+            "VMType": "MUOzrJzz", 
+            "ChargeType": "nblALGys", 
+            "SubnetID": "vieOpAop", 
             "CreateTime": 2
         }
     ], 
@@ -846,7 +847,48 @@ https://xxx.xxx.xx/?Action=ResizeVMConfig
 }
 ```
 
-## 2.11 删除虚拟机-DeleteVMInstance
+## 2.11设置虚拟机网络出口-UpdateVMDefaultGW
+
+设置虚拟机的默认网络出口
+
+**Request Parameters**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| Region         | string | 地域        | **Yes**  |
+| Zone           | string | 可用区      | **Yes**  |
+| VMID           | string | 虚拟机ID    | **Yes**  |
+| EIPID          | string | EIPID       | **Yes**  |
+
+**Response Elements**
+
+| Parameter name | Type   | Description | Required |
+| -------------- | ------ | ----------- | -------- |
+| RetCode        | int    | 返回码      | **Yes**  |
+| Action         | string | 操作名称    | **Yes**  |
+| Message        | string | 错误信息    | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=UpdateVMDefaultGW
+&Region=cn-zj
+&Zone=cn-zj-01
+&VMID=RKIGciIf
+&EIPID=DAmBJbnw
+```
+
+**Response Example**
+
+```
+{
+    "Action": "UpdateVMDefaultGWResponse", 
+    "Message": "mlrvTnqm", 
+    "RetCode": 0
+}
+```
+
+## 2.12 删除虚拟机-DeleteVMInstance
 
 删除 UCloudStack 虚拟机实例，删除后虚拟机会进入回收站。
 
@@ -2083,12 +2125,12 @@ https://xxx.xxx.xxx/?Action=AllocateEIP
 | CreateTime       | int    | 创建时间。时间戳                                             | No       |
 | ExpireTime       | int    | 过期时间。时间戳                                             | No       |
 | IP               | string | 外网IP                                                       | No       |
-| OperatorName     | string | 线路                                                         | No       |
+| OperatorName     | string | EIP的所属外网网段                                            | No       |
 | IPVersion        | string | IP版本,支持值：IPv4\IPv6                                     | No       |
 | BindResourceID   | string | 绑定资源ID                                                   | No       |
 | BindResourceType | string | 绑定资源类型                                                 | No       |
 | ISDefaultGW      | int    | 是否为默认出口，1代表该IP地址为默认出口                      | No       |
-| CanDefaultGW     | int    | 所处线路是否为默认路由，1代表所处线路是默认路由；默认路由的可以设置成出口 | No       |
+| CanDefaultGW     | int    | 所属网段是否为默认路由，1代表所属网段是默认路由；默认路由的网段IP可以设置为默认网络出口 | No       |
 
 **Request Example**
 
@@ -2096,11 +2138,11 @@ https://xxx.xxx.xxx/?Action=AllocateEIP
 https://xxx.xxx.xxx/?Action=DescribeEIP
 &Region=cn
 &Zone=zone-01
-&Offset=HjdUrLyx
-&Limit=WxEYDkbv
-&EIPIDs.N=OZyJWWUt
-&IPVersion=jpJapMRK
-&BindResourceID=fcNTxWoH
+&Offset=usWSWEzC
+&Limit=uNcfsWHs
+&EIPIDs.N=rnvrHmtk
+&IPVersion=WwfmTJEk
+&BindResourceID=WhCMTSpo
 ```
 
 **Response Example**
@@ -2109,25 +2151,25 @@ https://xxx.xxx.xxx/?Action=DescribeEIP
 {
     "Action": "DescribeEIPResponse", 
     "Totalcount": 8, 
-    "Message": "UjeokBSI", 
+    "Message": "rUXDEXds", 
     "Infos": [
         {
-            "Status": "KwSyfBRL", 
-            "IPVersion": "zospCUKO", 
-            "Remark": "BpKXTPiJ", 
-            "Name": "HcdDtpbz", 
-            "Zone": "OHcIlYVT", 
-            "IP": "eFWvZUYD", 
-            "Region": "kAvCelVp", 
-            "EIPID": "QFeefKoO", 
-            "OperatorName": "wormHDoM", 
-            "ExpireTime": 7, 
-            "Bandwidth": 5, 
-            "CanDefaultGW": 7, 
-            "BindResourceID": "nVMmbbrU", 
-            "ChargeType": "mUeelFeQ", 
-            "BindResourceType": "QEnqTNTM", 
-            "ISDefaultGW": 4, 
+            "Status": "CVyEVZfF", 
+            "IPVersion": "uBayIPHI", 
+            "Remark": "dUQqriSU", 
+            "Name": "ltcadyox", 
+            "Zone": "UsWASpTe", 
+            "IP": "NkFrtbzc", 
+            "Region": "mhLaeNue", 
+            "EIPID": "HuCsJPWq", 
+            "OperatorName": "AfuwmvUN", 
+            "ExpireTime": 9, 
+            "Bandwidth": 7, 
+            "CanDefaultGW": 5, 
+            "BindResourceID": "RyPCuymq", 
+            "ChargeType": "OftxMjUM", 
+            "BindResourceType": "XIOdjfwJ", 
+            "ISDefaultGW": 1, 
             "CreateTime": 9
         }
     ], 
@@ -2406,11 +2448,11 @@ https://xxx.xxx.xxx/?Action=ReleaseEIP
 https://xxx.xxx.xxx/?Action=CreateNIC
 &Region=cn
 &Zone=zone-01
-&VPCID=fFyrIyua
-&SubnetID=UiwqEpvR
-&Name=pgltSQFP
-&SGID=CdvAGEns
-&IP=RVDGbScE
+&VPCID=eGLzpjdp
+&SubnetID=lrUQEbLr
+&Name=QDcnaDZM
+&SGID=EiclDNmq
+&IP=djLTzEfg
 ```
 
 **Response Example**
@@ -2418,8 +2460,8 @@ https://xxx.xxx.xxx/?Action=CreateNIC
 ```
 {
     "Action": "CreateNICResponse", 
-    "Message": "DfCEfqsr", 
-    "NICID": "ekCtilkg", 
+    "Message": "WEgwGtYY", 
+    "NICID": "tJJHJAVS", 
     "RetCode": 0
 }
 ```
@@ -2470,11 +2512,11 @@ https://xxx.xxx.xxx/?Action=CreateNIC
 
 ```
 https://xxx.xxx.xxx/?Action=DescribeNIC
-&Region=NNGsTgcb
-&Zone=dfBBeNeO
-&NICIDs.N=YNlJgQWp
-&Offset=1
-&Limit=2
+&Region=vydmIece
+&Zone=jgsHLTZJ
+&NICIDs.N=rhJPWxxc
+&Offset=6
+&Limit=9
 ```
 
 **Response Example**
@@ -2482,32 +2524,32 @@ https://xxx.xxx.xxx/?Action=DescribeNIC
 ```
 {
     "Action": "DescribeNICResponse", 
-    "TotalCount": 7, 
-    "Message": "FaWJxYeS", 
+    "TotalCount": 1, 
+    "Message": "xSoVyfgt", 
     "Infos": [
         {
-            "Remark": "FkQGSFXo", 
-            "VPCID": "rEXiWbwI", 
-            "NICID": "SZwabANT", 
-            "Name": "HkCAViXF", 
-            "Zone": "HJSvobwF", 
-            "IP": "RxYJyLpD", 
-            "Region": "gPhzWtcj", 
-            "MAC": "sgbWsbgt", 
-            "BindResourceID": "WhfQmBVL", 
-            "NICStatus": "fIRAIZbK", 
-            "SubnetID": "NEqImzIh", 
-            "SGID": "fIgCjlrK", 
-            "CreateTime": 1
+            "Remark": "kqKEgRaf", 
+            "VPCID": "ludsPYeb", 
+            "NICID": "VMsqBJvZ", 
+            "Name": "gLRMoJkF", 
+            "Zone": "mKLvAcCG", 
+            "IP": "vseXAZnD", 
+            "Region": "yzkQCjpV", 
+            "MAC": "CRQIjiTy", 
+            "BindResourceID": "YkfGbjrn", 
+            "NICStatus": "mTrfquCN", 
+            "SubnetID": "NQUhbxaN", 
+            "SGID": "OPHcCvKJ", 
+            "CreateTime": 6
         }
     ], 
     "RetCode": 0
 }
 ```
 
-## 8.3 绑定网卡-AttachNIC
+## 8.3 绑定弹性网卡-AttachNIC
 
-绑定网卡
+绑定弹性网卡
 
 **Request Parameters**
 
@@ -2530,10 +2572,10 @@ https://xxx.xxx.xxx/?Action=DescribeNIC
 
 ```
 https://xxx.xxx.xxx/?Action=AttachNIC
-&Region=dddPjfha
-&Zone=EJTUtCWh
-&NICID=byzFMQwT
-&ResourceID=JqooVUan
+&Region=gLNTtZoP
+&Zone=AOqlJokz
+&NICID=nadzvDrO
+&ResourceID=rAPpCitk
 ```
 
 **Response Example**
@@ -2541,7 +2583,7 @@ https://xxx.xxx.xxx/?Action=AttachNIC
 ```
 {
     "Action": "AttachNICResponse", 
-    "Message": "WhammmEf", 
+    "Message": "xhOyeeuB", 
     "RetCode": 0
 }
 ```
@@ -2571,10 +2613,10 @@ https://xxx.xxx.xxx/?Action=AttachNIC
 
 ```
 https://xxx.xxx.xxx/?Action=DetachNIC
-&Region=vtQynkyS
-&Zone=AFRHDuzF
-&NICID=jhJccJJc
-&ResourceID=bGiQWUaV
+&Region=CuhLfpSN
+&Zone=aXSsCJxc
+&NICID=RfSMuUbr
+&ResourceID=tVmqsYiA
 ```
 
 **Response Example**
@@ -2582,7 +2624,7 @@ https://xxx.xxx.xxx/?Action=DetachNIC
 ```
 {
     "Action": "DetachNICResponse", 
-    "Message": "bmroZmFO", 
+    "Message": "gwrWTPtt", 
     "RetCode": 0
 }
 ```
@@ -2611,9 +2653,9 @@ https://xxx.xxx.xxx/?Action=DetachNIC
 
 ```
 https://xxx.xxx.xxx/?Action=DeleteNIC
-&Region=CvplwCUu
-&Zone=PLQJJMPJ
-&DiskID=SKujOWRj
+&Region=NwJREXaT
+&Zone=NWgkPWvC
+&NICID=ZJABEbcC
 ```
 
 **Response Example**
@@ -2621,8 +2663,7 @@ https://xxx.xxx.xxx/?Action=DeleteNIC
 ```
 {
     "Action": "DeleteNICResponse", 
-    "Message": "CgEQQnNo", 
-    "HasBind": "KIwiiMVk", 
+    "Message": "XZaFMquJ", 
     "RetCode": 0
 }
 ```
@@ -5442,6 +5483,65 @@ https://xxx.xxx.xxx/?Action=DescribeOPLogs
             "OPName": "gzyXadNY"
         }
     ], 
+    "RetCode": 0
+}
+```
+
+## 14.8 查询地域-DescribeRegion
+
+查询地域
+
+**Request Parameters**
+
+| Parameter name | Type   | Description                       | Required |
+| -------------- | ------ | --------------------------------- | -------- |
+| Region         | string | 地域。枚举值：cn,表示中国；       | No       |
+| Limit          | int    | 列表起始位置偏移量，默认为0。     | No       |
+| Offset         | int    | 返回数据长度，默认为20，最大100。 | No       |
+
+**Response Elements**
+
+| Parameter name | Type   | Description      | Required |
+| -------------- | ------ | ---------------- | -------- |
+| RetCode        | int    | 返回码           | **Yes**  |
+| Action         | string | 操作名称         | **Yes**  |
+| Message        | string | 返回信息描述     | No       |
+| Infos          | string | 地域数组         | No       |
+| TotalCount     | int    | 返回现有地域总数 | No       |
+
+**RegionInfo**
+
+| Parameter name | Type   | Description                                      | Required |
+| -------------- | ------ | ------------------------------------------------ | -------- |
+| Region         | string | 地域                                             | **Yes**  |
+| RegionAlias    | string | 地域别名                                         | **Yes**  |
+| EndPoints      | string | 地域的API访问地址，仅平台管理员有查看权限。      | **Yes**  |
+| CPUCount       | int    | 地域中的vCPU总核数，仅平台管理员有权限查看。     | **Yes**  |
+| CPUUsed        | int    | 地域中已分配的vCPU核数，仅平台管理员有权限查看。 | **Yes**  |
+| MemoryCap      | int    | 地域中的总内存容量，仅平台管理员有权限查看。     | **Yes**  |
+| MemoryUsed     | int    | 地域中已分配的内存容量，仅平台管理员有权限查看。 | **Yes**  |
+| GPUCount       | int    | 地域中已分配的GPU数量，仅平台管理员有权限查看。  | **Yes**  |
+| GPUUsed        | int    | 地域中已分配的GPU数量，仅平台管理员有权限查看。  | **Yes**  |
+| CreateTime     | int    | 地域的创建时间                                   | **Yes**  |
+| UpdateTime     | int    | 地域的更新时间                                   | **Yes**  |
+
+**Request Example**
+
+```
+https://xxx.xxx.xxx/?Action=DescribeRegion
+&Region=DlLJdPEF
+&Limit=2
+&Offset=5
+```
+
+**Response Example**
+
+```
+{
+    "Action": "DescribeRegionResponse", 
+    "TotalCount": 8, 
+    "Message": "JpwVTaAL", 
+    "Infos": "DCLducJK", 
     "RetCode": 0
 }
 ```
