@@ -1,6 +1,58 @@
-# 管理员指南    <div style="float:right;color:black" align="right"><b style="font-size: 18px">![](../_media/pdf.png ':size=18')&nbsp;[查看 PDF](UCloudStackt管理员手册.pdf ':ignore title')</b></div>  
+<center>
+<img src="ustacklog.png" width="60%" height="60%" />
+</center> 
 
----
+
+<center>
+<B><font size=7>UCloudStack 管理员手册 </font></B>
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<center>
+<B><font size=5>产品版本：V1.21.0 </font></B>
+</center>
+
+
+
+<center>
+<B><font size=4>文档版本：202101 </font></B>
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -30,6 +82,33 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[toc]
 
 
 
