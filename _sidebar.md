@@ -23,7 +23,7 @@
     - [API 手册](/UCloudStack/APIGuide/README.md)
     - [API 状态码列表](/UCloudStack/APIGuide/APIRetcode/APIRetcode.md)
 - [常见问题](/UCloudStack/faq.md)
-- [更新历史](/UCloudStack/Changelog/changelog.md)
+- [更新历史](/UCloudStack/Changelog/README.md)
 
 
 
