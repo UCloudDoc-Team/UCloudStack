@@ -1,3 +1,5 @@
+<div class="sidebar_title icon-product__ucloudstack">管理员手册 AdminGuide</div>
+
  * [概览](/UCloudStack/AdminGuide/README.md)
  * [版权声明](/UCloudStack/AdminGuide/copyright.md)
  * [1 平台概述](/UCloudStack/AdminGuide/introduction.md)
