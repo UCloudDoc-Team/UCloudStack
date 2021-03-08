@@ -1,7 +1,6 @@
 <div class="sidebar_title icon-product__ucloudstack">用户手册 UserGuide</div>
 
 * [概览](/UCloudStack/UserGuide/README.md)
-
 * [版权声明](/UCloudStack/UserGuide/copyright.md)
 * [1 产品简介](/UCloudStack/UserGuide/introduction.md)
 * [2 主账号](/UCloudStack/UserGuide/mainaccount.md)
@@ -25,4 +24,5 @@
 * [20 回收站](/UCloudStack/UserGuide/recycle.md)
 * [21 账号管理](/UCloudStack/UserGuide/account.md)
 * [22 计费管理](/UCloudStack/UserGuide/charge.md)
+* [返回主页](/UCloudStack/README.md)
 
