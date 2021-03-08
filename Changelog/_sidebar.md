@@ -1,8 +1,8 @@
 <div class="sidebar_title icon-product__ucloudstack">更新历史 Changelog</div>
 
 * [概览](/UCloudStack/Changelog/README.md)
-* [1.21 (2021-03-07)](/UCloudStack/Changelog/introduction.md)
-* [2 主账号](/UCloudStack/Changelog/mainaccount.md)
+* [1.21 (2021-12) ](/UCloudStack/Changelog/introduction.md)
+* [1.20 (2021-11) ](/UCloudStack/Changelog/introduction.md)
 * [3 虚拟机](/UCloudStack/Changelog/vm.md)
 * [4 自制镜像](/UCloudStack/Changelog/image.md)
 * [5 弹性网卡](/UCloudStack/Changelog/nic.md)
