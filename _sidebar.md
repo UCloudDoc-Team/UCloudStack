@@ -21,7 +21,7 @@
     - [数据中心部署](/UCloudStack/DataCenterDeploy/DataCenterDeploy.md)
 - 开发者指南 
     - [API 手册](/UCloudStack/APIGuide/README.md)
-    - [API 状态码列表](/UCloudStack/APIGuide/APIRetcode.md)
+    - [API 状态码列表](/UCloudStack/APIGuide/APIRetcode/APIRetcode.md)
 - [常见问题](/UCloudStack/faq.md)
 - [更新历史](/UCloudStack/Changelog/changelog.md)
 
