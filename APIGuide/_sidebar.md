@@ -1,6 +1,7 @@
 <div class="sidebar_title icon-product__ucloudstack">API手册 APIGuide</div>
 
 * [概览](/UCloudStack/APIGuide/README.md)
+* [版权声明](/UCloudStack/APIGuide/copyright.md)
 * [1 API 概述](/UCloudStack/APIGuide/overview.md)
 * [2 虚拟机](/UCloudStack/APIGuide/vm.md)
 * [3 镜像管理](/UCloudStack/APIGuide/image.md)
