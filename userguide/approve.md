@@ -35,13 +35,13 @@
 
 * 进入虚拟机控制台，通过【创建虚拟机】进入虚拟机创建引导页面，如下图所示：
 
-  ![vmapprove](vmapprove.png)
+  ![vmapprove](../images/userguide/vmapprove.png)
 
 * 填写申请名称和申请备注，按照虚拟机的创建要求输入其它必填信息，点击【立即购买】提交申请。
 
 * 提交申请后，页面会自动跳转至【申请管理】页面，并在申请列表中自动新增一条待审批的申请记录。
 
-  ![approvelist](approvelist.png)
+  ![approvelist](../images/userguide/approvelist.png)
 
 **（3）管理员审批**：由平台管理员 admin 账号进行审批。
 
@@ -56,7 +56,7 @@
 
 用户通过我的申请列表可查看租户下所有已提交的申请记录，包括手工审批和自动审批的所有记录。如下图所示：
 
-![applicationlist](applicationlist.png)
+![applicationlist](../images/userguide/applicationlist.png)
 
 * 申请名称：本次申请的名称。
 * 资源类型：本次申请的资源类型，包括虚拟机、硬盘、VPC、外网IP、负载均衡等五类资源。
@@ -79,7 +79,7 @@
 
 用户通过申请记录右侧“详情”按钮可进入申请的概览页面。在此页面可查看申请信息、申请涉及到的资源的信息、申请的处理记录、申请的关联资源。
 
-![applicaitondetail](applicaitondetail.png)
+![applicaitondetail](../images/userguide/applicaitondetail.png)
 
 （1）申请信息：描述本次申请的详细信息，如申请名称、申请资源类型、申请的变更操作及申请的状态及时间。
 

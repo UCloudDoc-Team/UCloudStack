@@ -19,11 +19,11 @@
 
 3. 进入脚本所在目录，输入`./image_init -t install` 执行脚本；
 
-   ![customize_01](customize_01.png)
+   ![customize_01](../images/customimage/customize_01.png)
 
 4. 执行` ./image_init -t check` 命令检查脚本中每一项任务是否正确安装；
 
-   ![customize_02](customize_02.png)
+   ![customize_02](../images/customimage/customize_02.png)
 
 5. 如脚本执行报错，请联系技术支持。
 
@@ -41,7 +41,7 @@
 
 2. 在物理机操作系统上执行 `qemu-img info 镜像名称` 查看虚拟机磁盘信息；
 
-   ![image](customize_03.png)
+   ![image](../images/customimage/customize_03.png)
 
    > 不同镜像可能文件格式不同，本指南以 qcow2 格式镜像为例。
 
@@ -60,7 +60,7 @@
 
 Windows 安装过程中出现下图提示说明制镜镜像的虚拟机未安装 `virtio` 驱动，安装步骤如下：
 
-![image](customize_04.png)
+![image](../images/customimage/customize_04.png)
 
 * 下载 [virtio 驱动程序](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-2/) 中的 `virtio-win-0.1.149.iso` 文件到物理机操作，如 `/root` 目录；
 
@@ -121,5 +121,5 @@ Windows 安装过程中出现下图提示说明制镜镜像的虚拟机未安装
 
 * 在虚拟机操作系统的设备管理器中点击更新带有感叹号的设备驱动程序（以太网控制器 /scsi 控制器为必须更新项)，如下图所示：
 
-  ![image](customize_05.png)
+  ![image](../images/customimage/customize_05.png)
 

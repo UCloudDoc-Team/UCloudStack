@@ -13,7 +13,7 @@ UCloudStack 灾备服务支持本地灾备、异地灾备、公有云灾备、�
 
 UCloudStack 平台通过分布式存储系统、RAID5 及多副本机制，自动屏蔽软硬件故障，磁盘损坏和软件故障，系统自动检测到并自动进行副本数据备份和迁移，保证本地数据安全性。详见[分布式存储](#2.3.5 分布式存储)。同时平台支持将本地虚拟机、镜像、云硬盘、数据库等数据定时增量备份至对象存储服务。本地灾备架构如下图所示：
 
-![本地灾备架构](UCloudStack_Local_DR.png)
+![本地灾备架构](../images/techwhitepaper/UCloudStack_Local_DR.png)
 
 - 平台支持灵活的备份和恢复策略，可通过不同时间维度，全量或增量的方式备份数据，
 - 当本地数据损坏或误删时，可将本地备份数据还原至平台，恢复业务数据及业务运行；
@@ -23,7 +23,7 @@ UCloudStack 平台通过分布式存储系统、RAID5 及多副本机制，自�
 
 UCloudStack 云平台在保证本地数据中心的业务数据安全的同时提供异地灾备服务，将云业务镜像及数据通过专线、SD-WAN、VPN 或互联网连接以增量的方式复制到异地对象存储服务，确保业务数据 RPO 指标。当本地数据中心发生灾难时，可快速通过异地数据恢复业务。
 
-![异地灾备架构](UCloudStack_Offsite_DR.png)
+![异地灾备架构](../images/techwhitepaper/UCloudStack_Offsite_DR.png)
 
 异地灾备服务支持多种业务部署方式，为云平台业务提供不同 RTO 指标，控制云平台业务灾备成本。
 
@@ -57,7 +57,7 @@ UCloudStack 云平台在保证本地数据中心的业务数据安全的同时�
 
 UCloudStack 云平台提供本地数据中心到公有云平台的灾备服务，将云业务镜像及数据通过专线、SD-WAN、VPN 或互联网连接以增量的方式复制到第三方公有云平台对象存储服务，确保业务数据 RPO 指标。当本地数据中心发生灾难时，可快速在公有云上恢复业务，同时也可将公有云上的业务数据备份还原至本地，重新本地数据中心。
 
-![公有云灾备架构](UCloudStack_Public_DR.png)
+![公有云灾备架构](../images/techwhitepaper/UCloudStack_Public_DR.png)
 
 公有云灾备服务支持多种业务部署方式，为云平台业务提供不同 RTO 指标，控制云平台业务灾备成本。
 
@@ -94,7 +94,7 @@ UCloudStack 云平台提供本地数据中心到公有云平台的灾备服务�
 
 UCloudStack 云平台提供两地三中心灾备服务，支持在同城双活数据中心基础上，增加一个异地灾备中心，并与同城双活实现同步；当同城双中心均发生自然灾害等原因发生故障时，异地灾备中心可以实现数据恢复，进一步提高业务 RTO 及 RPO 指标。
 
-![两地三中心](UCloudStack_Three_Center_DR.png)
+![两地三中心](../images/techwhitepaper/UCloudStack_Three_Center_DR.png)
 
 UCloudStack 云平台将同城双中心分别作为一个区域（Region）的两个可用区（Availability Zone），即生产可用区和同城灾备可用区。两个可用区间距离为 30 公里左右，**使用 DWDM 通道将两个可用区内网直接互连**，具备二层网络打通和网络负载均衡条件，满足同城双活网络时延小于 2ms 。
 
@@ -165,7 +165,7 @@ UCloudStack 云平台将同城双中心分别作为一个区域（Region）的�
 
 UCloudStack 灾备服务网络分别同城双中心网络和异地灾备网络，不同灾备服务构建方式，通过不同的网络链路进行互联互通。生产中心与异地灾备中心可通过 SD-WAN、专线、VPN、互联网等方式进行网络联通和数据复制，可根据业务对 RPO 的需求，选择不同的网络连接方案。
 
-![灾备网络架构](UCloudStack_DR_Network.png)
+![灾备网络架构](../images/techwhitepaper/UCloudStack_DR_Network.png)
 
 - 同城双中心
   - 本地数据中心和同城灾备中心通过 [DWDM](https://en.wikipedia.org/wiki/Wavelength-division_multiplexing) 链路，将同城双中心内网核心进行物理互联，并通过三层将双中心二层网络打通，保证网络负载均衡条件，网络时延小于 2ms ；

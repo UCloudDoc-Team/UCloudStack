@@ -29,7 +29,7 @@ ULB 支持收集并展示负载流量各种网络指标的监控数据，并可�
 
 一个提供服务的负载均衡，主要由 LB 实例（ LoadBalancer ）、虚拟服务器（ VServer ）、后端服务器（ Backend Real Server ）三部分组成。如架构图所示：
 
-![ulbarch](ulbarch.png)
+![ulbarch](../images/userguide/ulbarch.png)
 
 - LoadBalancer（ LB ）：负载均衡实例为主备高可用集群架构，可实现负载均衡器故障自动切换，提高接入负载均衡服务的可用性。同时结合内外网 IP 地址，根据 VServer 配置的监听器，将虚拟机加入到 Backend 成为 Real Server ，以实现业务的流量均衡与服务容错。
 - Virtual Server（ VServer ）：监听器，每个监听器是一组负载均衡的监听端口配置，包含协议、端口、负载算法、会话保持、连接空闲超时及健康检查等配置项，用于分发和处理访问 LB 的请求。
@@ -108,7 +108,7 @@ ULB 支持收集并展示负载流量各种网络指标的监控数据，并可�
 
 用户在平台创建负载均衡需指定所属集群类型、网络类型、VPC 网络、子网、外网 IP 及安全组等信息，可通过导航栏进入【负载均衡】资源控制台，通过“创建负载均衡”进入向导页面，如下图所示：
 
-![createlb1](createlb1.png)
+![createlb1](../images/userguide/createlb1.png)
 
 > 本文以创建外网类型的负载均衡进行描述，内网类型的负载均衡无需指定外网 IP 和安全组信息。
 
@@ -138,7 +138,7 @@ ULB 支持收集并展示负载流量各种网络指标的监控数据，并可�
 
 负载均衡列表可查看当前账户下所有负载均衡资源信息，包括名称、资源 ID、IP、VPC、子网、VServer 数量、创建时间、过期时间、计费方式、状态及操作项，如下图所示：
 
-![lblist](lblist.png)
+![lblist](../images/userguide/lblist.png)
 
 - 名称/ID：负载均衡的名称及全局唯一标识符。
 - IP 地址：负载均衡对外提供服务的访问地址，网络类型为内网时为所属子网自动分配的 IP 地址，网络类型为外网时为所绑定的外网 IP 地址。
@@ -155,7 +155,7 @@ ULB 支持收集并展示负载流量各种网络指标的监控数据，并可�
 
 在负载均衡资源列表上，点击“**名称**” 可进入概览页面查看当前负载均衡实例的详细信息，同时可切换至 VServer 页面对当前负载均衡的 VServer 监听器进行管理，如概览页所示：
 
-![lbdetails](lbdetails.png)
+![lbdetails](../images/userguide/lbdetails.png)
 
 **（1）基本信息**
 
@@ -183,7 +183,7 @@ ULB 支持收集并展示负载流量各种网络指标的监控数据，并可�
 
 支持在负载均衡的视角修改安全组，仅当负载均衡实例的网络类型为**外网**时才可修改负载均衡的安全组。可通过负载均衡列表操作项中的“**修改安全组**”进行修改操作，如下图所示：
 
-![updatelbsg](updatelbsg.png)
+![updatelbsg](../images/userguide/updatelbsg.png)
 
 一个负载均衡仅支持绑定一个安全组，修改成功后外网负载均衡会以新的安全组策略对进出流量进行限制，用户可通过负载均衡详情网络信息查看已绑定的安全组信息。
 
@@ -195,7 +195,7 @@ ULB 支持收集并展示负载流量各种网络指标的监控数据，并可�
 
 用户可通过控制台或 API 的方式删除不需要的负载均衡实例，删除负载均衡时会自动解绑已关联的外网 IP 、后端服务节点及绑定的 SSL 证书，并清除负载均衡已创建的 VServer 监听器及内容转发规则策略。
 
-![rmlb](rmlb.png)
+![rmlb](../images/userguide/rmlb.png)
 
 负载均衡实例删除即被直接销毁，删除前需确保负载均衡无业务流量请求，否则可能影响业务的正常访问。
 
@@ -224,7 +224,7 @@ VServer 即负载均衡的监听器，主要承载负载均衡业务网络的四
 
 用户为负载均衡实例创建一个基于 TCP 协议的监听器，提供注重可靠性的负载均衡服务，本文以创建 `TCP:23` （Telnet）服务为例进行创建。用户可通过负载均衡详情页面 VServer 左侧导航栏的【添加】进入 VServer 监听器的创建向导页面，如下图所示：
 
-![tcpvs](tcpvs.png)
+![tcpvs](../images/userguide/tcpvs.png)
 
 根据向导页面配置 VServer 监听器，包括协议、端口、负载均衡算法、连接空闲超时及健康检查：
 
@@ -246,7 +246,7 @@ VServer 即负载均衡的监听器，主要承载负载均衡业务网络的四
 
 用户为负载均衡实例创建一个基于 UDP 协议的监听器，提供基于 UDP 协议的负载均衡业务服务，本文以创建 `UDP:53` （DNS）服务为例进行创建。用户可通过负载均衡详情页面 VServer 左侧导航栏的【添加】进入 VServer 监听器的创建向导页面，如下图所示：
 
-![udpvs](udpvs.png)
+![udpvs](../images/userguide/udpvs.png)
 
 根据向导页面配置 VServer 监听器，包括协议、端口、负载均衡算法、会话保持及健康检查：
 
@@ -268,7 +268,7 @@ VServer 即负载均衡的监听器，主要承载负载均衡业务网络的四
 
 用户为负载均衡实例创建一个基于 HTTP 协议的监听器，提供基于 HTTP 协议的负载均衡业务服务，本文以创建 `HTTP:80` （WEB）服务为例进行创建。用户可通过负载均衡详情页面 VServer 左侧导航栏的【添加】进入 VServer 监听器的创建向导页面，如下图所示：
 
-![httpvs](httpvs.png)
+![httpvs](../images/userguide/httpvs.png)
 
 根据向导页面配置 VServer 监听器，包括协议、端口、负载均衡算法、会话保持、连接空闲超时及健康检查：
 
@@ -297,7 +297,7 @@ VServer 即负载均衡的监听器，主要承载负载均衡业务网络的四
 
 用户为负载均衡实例创建一个基于 HTTP 协议的监听器，提供基于 HTTPS 协议的负载均衡业务服务，本文以创建基于 SSL 证书加密的 `HTTPs:443` （WEB）服务为例进行创建。用户可通过负载均衡详情页面 VServer 左侧导航栏的【添加】进入 VServer 监听器的创建向导页面，如下图所示：
 
-![httpsvs](httpsvs.png)
+![httpsvs](../images/userguide/httpsvs.png)
 
 根据向导页面配置 VServer 监听器，包括协议、端口、SSL 解析模式、服务器证书、客户端证书、负载均衡算法、会话保持、连接空闲超时及健康检查：
 
@@ -339,7 +339,7 @@ VServer 即负载均衡的监听器，主要承载负载均衡业务网络的四
 
 VServer 列表页面可查看当前负载均衡实例中已拥有的 VServer 资源列表，包括协议端口和状态，如下图所示：
 
-![vslist](vslist.png)
+![vslist](../images/userguide/vslist.png)
 
 - 协议端口：VServer 监听器协议和端口，是负载均衡处理请求的入口依据；
 - 状态：VServer 监听器的服务状态，包括绿色、黄色和红色；
@@ -353,7 +353,7 @@ VServer 列表页面可查看当前负载均衡实例中已拥有的 VServer 资
 
 通过 VServer 资源列表的“**协议端口**” 可在右侧查看 VServer 详情页面，可查看当前 VServer 资源的详细信息，如下图所示，详情页面分为基本信息、VServer 监控信息、服务节点管理及内容转发信息：
 
-![vsdetails](vsdetails.png)
+![vsdetails](../images/userguide/vsdetails.png)
 
 **（1）基本信息**
 
@@ -378,7 +378,7 @@ VServer 实例相关监控图表及信息，包括新建连接数、HTTP 2XX 、
 
 用户通过控制台修改 VServer 监听器配置，如修改监听器的负载均衡算法、会话保持、连接空闲超时及健康检查配置信息，若协议为 HTTPS 可更换监听器的 SSL 解析模式及 SSL 证书。可通过 VServer 列表上的 “修改” 按钮进行修改操作，如修改向导所示：
 
-![updatevs](updatevs.png)
+![updatevs](../images/userguide/updatevs.png)
 
 修改配置的参数设置与创建 VServer 时一致，不支持修改 VServer 的协议和端口。修改过程中 VS 状态由 “运行” 变更为 “更新中” ，更新成功后流转为 “运行” ，即代表更新成功，可通过详情页面查看新修改的配置。修改成功后，平台会立即根据新配置重新对服务节点进行健康检查，同时会根据新修改的调度算法分发请求。
 
@@ -394,7 +394,7 @@ VServer 实例相关监控图表及信息，包括新建连接数、HTTP 2XX 、
 
 用户可通过控制台或 API 的方式删除 VServer 资源，删除时会自动清除 VServer 下已创建的内容转发规则策略，同时会自动解绑已关联的 SSL 证书，仅当 VServer 中不存在后端 RealServer 资源时才可进行删除操作。
 
-![rmvs](rmvs.png)
+![rmvs](../images/userguide/rmvs.png)
 
 VServer 删除后不可恢复，在删除时需检查并确认是否有必要删除 VServer 资源，控制台 VServer 标签页可查看删除过程，待被删除的 VServer 资源被清空时，代表删除成功。
 
@@ -411,7 +411,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 添加服务节点前，需确保服务节点上业务正常运行且可进行正常访问。可通过 VServer 详情页面进入“**服务节点**”资源控制台，点击“**添加服务节点**”进行后端 RealServer 的添加。添加服务节点时，仅可选择与负载均衡实例在相同 数据中心且 VPC 网络相同的虚拟机。如下图所示：
 
-![creaters](creaters.png)
+![creaters](../images/userguide/creaters.png)
 
 * 虚拟机：即需要添加至负载均衡当前 VServer 服务节点的虚拟机，支持指定服务节点暴露的端口及权重。
 * 端口：后端服务节点暴露的服务端口，如 VServer 监听 80 ，服务节点监听 8080 端口，则在端口处输入 8080 即可，负载均衡会将到达 VServer 80  端口的请求分发至服务节点的 8080 端口。
@@ -427,7 +427,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 通过 VServer 详情页面的"服务节点"标签页，可查看 VServer 监听器后端已添加的服务节点资源列表信息，包括服务节点 ID、资源ID、内网 IP、端口、权重、节点模式、节点状态及操作项，如下图所示：
 
-![rslist](rslist.png)
+![rslist](../images/userguide/rslist.png)
 
 - 服务节点：当前服务节点的全局 RS 唯一标识符。
 - 资源ID：当前服务节点已绑定的虚拟机名称和 ID。
@@ -453,7 +453,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 用户可对负载均衡 VServer 服务节点的服务端口及权重进行修改，如下图所示：
 
-![updaters](updaters.png)
+![updaters](../images/userguide/updaters.png)
 
 修改端口和权重不会影响已建立的业务连接，仅对负载均衡新分发请求生效。点击确定后，即返回至服务节点列表页面，节点状态由 “有效” 或 “无效” 流转为“更新中” ，待修改成功后，重新流转回“有效”或“无效” ，有效则代表健康检查成功，服务节点可正常提供服务。
 
@@ -461,7 +461,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 如需对一个服务节点的业务进行变更或从负载均衡后端服务节点下线，可通过删除服务节点功能进行下线操作，下线后不影响虚拟机本身的运行和使用。用户可通过服务节点列表操作项中的“删除”进行服务节点的删除，删除后可重新添加至负载均衡实例。
 
-![rmrs](rmrs.png)
+![rmrs](../images/userguide/rmrs.png)
 
 > 若负载均衡 VServer 的监听协议为 HTTP/HTTPS 且已配置内容转发规则 ，则删除服务节点时，会自动解绑内容转发规则。
 
@@ -475,7 +475,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 内容转发规则中的服务节点，仅可从当前 VServer 已存在的服务节点中进行选择，支持为一个域名添加多个 URL 路径，如下图所示：
 
-![createpolicy](createpolicy.png)
+![createpolicy](../images/userguide/createpolicy.png)
 
 * 域名：内容转发规则匹配的域名，代表请求该域名时及 URL 时，将请求转发至 URL 配置的服务节点。
   * 域名值可以为空，代表无域名请求，仅匹配路径，即通过 IP 地址+ URL 路径的方式；
@@ -493,7 +493,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 内容转发规则列表页面可查看当前 VServer 已添加的内容转发规则信息，包括域名、URL 路径、转发节点、节点数量、规则状态及操作项，如下图所示：
 
-![policylist](policylist.png)
+![policylist](../images/userguide/policylist.png)
 
 * 域名：内容转发规则匹配的域名，代表请求该域名时及 URL 时，将请求转发至 URL 配置的服务节点。
 * URL 路径：内容转发规则匹配的 URL 路径，URL 必须属于一个域名。
@@ -509,7 +509,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 用户可对一个域名或所包含的 URL 规则进行修改，包括域名、 URL 路径、转发的服务节点，如下图所示：
 
-![updatepolicy](updatepolicy.png)
+![updatepolicy](../images/userguide/updatepolicy.png)
 
 修改内容转发规则仅对新负载分发请求生效，不影响已建立并在处理的业务请求。点击确定后，即返回至内容转发规则列表页面，内容转发规则由 “有效” 流转为 “更新中” ，待修改成功后，重新流转回“有效” ，则代表新的匹配规则请求会直接分发到规则所配置的服务节点。
 
@@ -517,7 +517,7 @@ VServer 删除后不可恢复，在删除时需检查并确认是否有必要删
 
 用户可通过控制台或 API 的方式删除不需要的内容转发规则，删除内容转发规则会自动解绑已关联的后端服务节点。内容转发规则被删后，即即直接销毁，在删除前需确保负载均衡转发规则无业务流量的负载请求，否则可能影响业务的正常访问。如下图所示，删除域名时即直接删除该域名下所包括的所有 URL 规则信息：
 
-![rmpolicy.png](rmpolicy.png)
+![rmpolicy.png](../images/userguide/rmpolicy.png)
 
 ## 11.6 SSL 证书管理
 
@@ -741,7 +741,7 @@ openssl rsa -in old_server_key.pem -out new_server_key.pem
 
 **（1）本地上传证书文件的方式创建如下图所示：**
 
-![CreateServerSSL](CreateServerSSL.png)
+![CreateServerSSL](../images/userguide/CreateServerSSL.png)
 
 本地上传时需要上传用户证书文件和证书私钥文件，其中用户证书文件仅支持 `crt` 和 `pem` 格式的文件，证书私钥仅支持上传 `.key` 格式的文件。
 
@@ -752,7 +752,7 @@ openssl rsa -in old_server_key.pem -out new_server_key.pem
 
 **（2）手动输入证书内容创建如下图所示：**
 
-![CreateServerSSL1.png](CreateServerSSL1.png.png)
+![CreateServerSSL1.png](../images/userguide/CreateServerSSL1.png.png)
 
 手动输入证书同样需要输入用户证书和证书私钥的文本内容，需参考文本框中的格式规范输入证书内容和私钥内容，通过确认进行证书创建，创建过程中，平台会检测证书内容的合法性。
 
@@ -762,13 +762,13 @@ openssl rsa -in old_server_key.pem -out new_server_key.pem
 
 **（1）本地上传证书文件的方式创建如下图所示：**
 
-![CreateCASSL](CreateCASSL.png)
+![CreateCASSL](../images/userguide/CreateCASSL.png)
 
 本地上传时需要上传客户端 CA 公钥证书文件，仅支持 `crt` 和 `pem` 格式的文件。点击上传证书，即可将本地已生成的证书文件读取到平台，并通过确认进行证书创建，创建过程中，平台会检测证书内容的合法性。
 
 **（2）手动输入证书内容创建如下图所示：**
 
-![CreateCASSL1](CreateCASSL1.png)
+![CreateCASSL1](../images/userguide/CreateCASSL1.png)
 
 手动输入证书同样需要输入 CA 客户端证书的文本内容，需参考文本框中的格式规范输入证书内容和私钥内容，通过确认进行证书创建，创建过程中，平台会检测证书内容的合法性。
 
@@ -780,7 +780,7 @@ openssl rsa -in old_server_key.pem -out new_server_key.pem
 
 SSL 证书列表可查看当前账户下所有 SSL 证书的资源列表信息，包括名称、资源 ID、证书类型、域名、MD5 值、创建时间、证书过期时间及操作项，如下图所示：
 
-![SSLList](SSLList.png)
+![SSLList](../images/userguide/SSLList.png)
 
 * 名称/ID ：SSL 证书的名称及全局唯一标识符。
 * 证书类型：SSL 证书的类型，包括服务器证书和和客户端证书，仅在 VServer 监听器的 SSL 解析模式为双向认证时才需上传客户端证书。
@@ -795,13 +795,13 @@ SSL 证书列表可查看当前账户下所有 SSL 证书的资源列表信息�
 
 在证书资源列表上，点击名称或 ID 可进入概览页面查看当前证书的详信细信及已绑定的资源信息，如概览所示：
 
-![sslinfos](sslinfos.png)
+![sslinfos](../images/userguide/sslinfos.png)
 
 **（1）基本信息**
 
 SSL 证书的基本信息，包括资源 ID、名称、证书类型、主域名、备域名、MD5 值、证书内容、创建时间及证书的过期时间。用户可通过资源列表上或基本信息中的【查看证书】按钮查询当前证书的内容，如下图所示：
 
-![sslinfo](sslinfo.png)
+![sslinfo](../images/userguide/sslinfo.png)
 
 > 若证书已过期，可通过点击已过期查看证书内容本身的具体过期时间。
 
@@ -813,6 +813,6 @@ SSL 证书的基本信息，包括资源 ID、名称、证书类型、主域名�
 
 用户删除 SSL 证书，仅允许删除未被使用的的 SSL 证书。若一个 SSL 证书已关联一个负载均衡的 VServer ，则不可进行删除。
 
-![sslrm](sslrm.png)
+![sslrm](../images/userguide/sslrm.png)
 
 证书被删除后即在平台彻底销毁，不可进行恢复，可重新进行上传并关联负载均衡进行使用。

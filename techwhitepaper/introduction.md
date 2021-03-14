@@ -4,7 +4,7 @@
 
 UCloudStack （优钛）私有云平台，提供虚拟化、SDN 网络、分布式存储、容器及安全等核心服务的统一管理、资源调度、监控日志及运营运维等一整套云资源管理能力，助力政企数字化转型。
 
-![core](core.png)
+![core](../images/techwhitepaper/core.png)
 
 平台基于 UCloud 公有云基础架构，复用内核及核心虚拟化组件，将公有云架构私有化部署，具有自主可控、稳定可靠、持续进化及开放兼容等特点，可通过控制台或 APIs 快速构建资源及业务，支持与公有云无缝打通，灵活调用公有云能力，帮助政企快速构建安全可靠的业务架构。
 
@@ -13,7 +13,7 @@ UCloudStack 定位为轻量级交付，3 节点即可构建生产环境且可平
 
 ## 1.2 产品架构
 
-![平台架构图](arch.png)
+![平台架构图](../images/techwhitepaper/arch.png)
 
 UCloudStack 平台整体产品架构由基础硬件设施、虚拟核心引擎、智能调度系统、核心产品资源、统一云管平台及运维管理平台组成，为平台租户、管理员及运营人员提供云平台管理和服务。
 
@@ -242,7 +242,7 @@ UCloudStack 将云平台的所有虚拟资源组件化，支持热插拔、编�
 
 UCloudStack提供租户控制台和管理员控制台，支持多租户、账户注册、计量计费等功能特性，同时为云平台管理者提供运营运维管理功能，包括资源管理、租户管理、价格配置、资源规格配置、部署升级及监控日志等服务，为政企提供行业专有云解决方案。
 
-![industry](industry.png)
+![industry](../images/techwhitepaper/industry.png)
 
 UCloudStack 轻量级私有云属于 IaaS+PaaS 复合型产品，并可按需搭载大数据、安全屋、AI 等公有云产品，适用于全行业客户需要云化且私有部署的业务应用上云场景，典型行业如下：
 
@@ -262,7 +262,7 @@ UCloudStack 轻量级私有云属于 IaaS+PaaS 复合型产品，并可按需搭
 
 UCloudStack定位为轻量级交付，3 节点即可构建生产环境且可平滑扩容，并提供统一资源调度和管理，**支持纯软件、超融合一体机及超融合机柜**多种交付模式，有效降低用户管理维护成本，为用户提供一套安全可靠且自主可控的云服务平台。
 
-![deliver](../_media/deliver.png)
+![deliver](../images/techwhitepaper/../_media/deliver.png)
 
 * **纯软件交付**
 
@@ -272,13 +272,13 @@ UCloudStack定位为轻量级交付，3 节点即可构建生产环境且可平�
 
   客户仅需提供数据中心基础设施，UCloud 优刻得提供**超融合一体机**（出厂预装 UCloudStack ），通常在基础网络设施环境完备的情况下，可在小时内完成初始化并交付。
 
-  ![onemachine](../_media/onemachine.jpg)
+  ![onemachine](../images/techwhitepaper/../_media/onemachine.jpg)
 
 * **超融合机柜**
 
   客户仅需提供数据中心即可，UCloud 优刻得提供**超融合一体机柜**（包含网络设备、服务器节点&一体机、PDU、线缆及 UCloudStack 软件 ），通常以一个机柜的形式进行交付。
 
-  ![cabinet](../_media/cabinet.png)
+  ![cabinet](../images/techwhitepaper/../_media/cabinet.png)
   
   
 

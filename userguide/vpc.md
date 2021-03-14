@@ -20,7 +20,7 @@ VPC 网络具有数据中心属性，每个 VPC 私有网络仅属于一个数�
 
 一个 VPC 网络主要由私有网络网段和子网两部分组成，如下图所示：
 
-![vpccom](vpccom.png)
+![vpccom](../images/userguide/vpccom.png)
 
 **（1）私有网络网段**
 
@@ -50,7 +50,7 @@ VPC 网络所属的 CIDR  网段，作为 VPC 隔离网络的私网网段。关�
 
 平台对常用网络设备均进行软件定义及组件抽像，通过将 VPC 网络与虚拟机、弹性网卡、外网 IP、安全组、NAT 网关、负载均衡、VPN 网关、MySQL 数据库、Redis 缓存及专线等组件连接，可快速构建和配置繁杂的网络环境及混合云场景，如下图所示：
 
-![vpccon.png](vpccon.png)
+![vpccon.png](../images/userguide/vpccon.png)
 
 * 虚拟机默认内网网卡（创建时自带的虚拟网卡）加入同一个 VPC 网络实现虚拟机间网络通信，并可通过安全组保证虚拟机东西向流量安全。
 * 虚拟机默认外网网卡（创建时自带的虚拟网卡）可直接绑定多个外网 IP 地址实现 Internet 访问，同时可绑定与 IDC 物理网络相连的外网 IP 地址实现物理网络打通，结合安全组管控虚拟机南北向流量的同时，构建安全可靠的混合接入环境。
@@ -101,7 +101,7 @@ VPC 网络具有数据中心属性，不同数据中心之间的虚拟资源默�
 
 通过导航栏进入 “VPC 网络”资源列表页面，即可创建 VPC 网络，如下图所示：
 
-![createvpc](createvpc.png)
+![createvpc](../images/userguide/createvpc.png)
 
 选择并配置 VPC 网络的名称及网段信息：
 
@@ -118,7 +118,7 @@ VPC 网络创建时状态为“创建中”，待状态转换为“有效”时�
 
 VPC 网络列表页可查看当前账户下 VPC 资源的列表及相关信息，包括名称、资源 ID、网段、子网数量、状态、创建时间及操作项，如下图所示：
 
-![vpclist](vpclist.png)
+![vpclist](../images/userguide/vpclist.png)
 
 - 名称/ID ：VPC 私有网络的名称及全局唯一标识符；
 - 网段：当前 VPC 网络在创建时指定的 CIDR 网段信息；
@@ -134,7 +134,7 @@ VPC 网络列表页可查看当前账户下 VPC 资源的列表及相关信息�
 
 在 VPC 网络列表上，点击 VPC 名称或 ID 可进入概览页面查看当前 VPC 网络的详情及子网信息，同时可切换至操作日志页面查看当前 VPC 网络及子网的操作日志信息，如下图概览页所示：
 
-![vpcdetails](vpcdetails.png)
+![vpcdetails](../images/userguide/vpcdetails.png)
 
 **（1）基本信息**
 
@@ -154,7 +154,7 @@ VPC 详情页面展示当前 VPC 网络中已创建的子网资源列表，包�
 
 支持用户删除并释放未被任何资源占用 IP 地址的 VPC 网络。VPC 网络删除后会被彻底销毁，删除前须保证已清空 VPC 网络已创建的资源。删除操作如下图所示：
 
-![deletevpc](deletevpc.png)
+![deletevpc](../images/userguide/deletevpc.png)
 
 ## 8.6 添加子网
 
@@ -162,7 +162,7 @@ VPC 详情页面展示当前 VPC 网络中已创建的子网资源列表，包�
 
 用户可通过指定子网名称、子网 CIDR 网段为一个 VPC 网络添加一个或多个子网，用于构建内网不同的业务网络。创建子网前需保证 VPC 网络 CIDR 内有充足的 IP 网段，可通过 VPC 网络详情页面子网列表的“**创建子网**”进入创建向导页面，如下图所示
 
-![createsubnet](createsubnet.png)
+![createsubnet](../images/userguide/createsubnet.png)
 
 - 名称/描述：当前需要创建的子网的名称和描述信息；
 - 子网网段：当前需要创建的子网的 CIDR 网段，子网网段必须在 VPC 的 CIDR 网段内，可以与 VPC CIDR 网段相同，即代表该子网包括 VPC 下所有的网络 IP 地址。
@@ -175,7 +175,7 @@ VPC 详情页面展示当前 VPC 网络中已创建的子网资源列表，包�
 
 用户可通过子网列表上的“**删除**”功能删除当前子网资源，被删除的子网将被直接销毁。删除子网前须保证子网内的资源已被清空，包含回收站的资源，否则不允许删除当前子网，如下图所示：
 
-![rmsubnet](rmsubnet.png)
+![rmsubnet](../images/userguide/rmsubnet.png)
 
 ## 8.8 修改子网名称
 

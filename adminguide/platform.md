@@ -16,7 +16,7 @@
 
 管理员可通过全局配置中的 NTP 服务器地址查看并修改 NTP 服务器地址，默认为空，如下图所示：
 
-![upntpserver](/images/adminguide/upntpserver.png)
+![upntpserver](../images/adminguide/upntpserver.png)
 
 NTP 服务器地址仅支持 IPv4 地址，且 IP 地址必须从平台网络可达，以保证可以和 NTP Server 端进行通信；平台会检测 NTP Server 是否可用。修改 NTP 服务器地址可能会影响平台的服务使用，配置时需要谨慎操作。
 
@@ -98,7 +98,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 邮箱设置是指平台邮件服务的配置，主要功能包注册激活、找回密码及监控告警邮件的接收和发送。平台支持管理员定义邮箱的发件人邮箱地址、发件人邮箱密码、邮件服务器地址、邮箱服务器端口及邮件主题前缀，如图所示：
 
-![email](/images/adminguide/email.png)
+![email](../images/adminguide/email.png)
 
 - 发件人邮箱地址: 配置发件人的邮箱地址。
 - 发件人邮箱密码：配置发件人邮箱密码
@@ -120,7 +120,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 登录页设置是平台为企业和管理员提供的登录客制化能力，包括 SSO 背景图、SSO 标题、SSO 标题颜色等，效果如下图所示：
 
-![ssoimage](/images/adminguide/ssoimage.png)
+![ssoimage](../images/adminguide/ssoimage.png)
 
 * SSO 背景图：代表登录框后的背景图片，图片支持png、jpeg、jpg格式，最大不超过500KB 。
 * SSO 标题：代表登录框上的标题描述，如 UCloudStack 私有云，可支持中英文及特殊字符。
@@ -166,7 +166,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 创建规格仅支持创建虚拟机 CPU/内存的规格，云硬盘和外网 IP 的规格由平台默认生成，仅支持修改。管理员可通过全局配置——规格配置中的创建规格进行创建操作，如下图所示：
 
-![createspec](/images/adminguide/createspec.png)
+![createspec](../images/adminguide/createspec.png)
 
 创建虚拟机规格支持根据不同的集群创建不同的规格，即可为不同的机型创建不同的规格，租户创建虚拟机选择不同机型时，即可创建不同规格的虚拟机，适应不同集群硬件配置不一致的应用场景。可分别定义 CPU 和内存：
 
@@ -185,7 +185,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 管理员可通过规格配置列表查看当前已有规格的列表信息，包括产品、集群类型、规格类型、规格值、状态、更新时间及操作项，如下图所示：
 
-![speclist](/images/adminguide/speclist.png)
+![speclist](../images/adminguide/speclist.png)
 
 - 产品：代表规格对应的产品，包括虚拟机、硬盘及外网 IP。
 - 集群类型：代表规格对应的集群类型或外网网段，指当前规格生效的纬度，如虚拟机在计算集群 A 的 CPU/内存规格；硬盘在存储集群 A 的容量范围规格；外网 IP 在 BGP 网段的带宽范围规格。
@@ -202,21 +202,21 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 （1）虚拟机产品规格支持修改 CPU 和内存值，其中 CPU 可指定 1、2、4、8、16、24、32、64；内存可过年费 定 1、2、4、8、16、24、32、64 、128 ，可根据业务需要自定义组合 CPU 和内存规格。
 
-![upvmspec](/images/adminguide/upvmspec.png)
+![upvmspec](../images/adminguide/upvmspec.png)
 
 （2）硬盘产品规格支持修改容量范围的最小容量和最大容量，其中最小容量和最大容量可设置的范围为 10GB 到 8000G ，即平台允许租户创建的云硬盘最小为 10GB ，最大支持到 8000GB ，可根据业务需要调整最小值和最大值。
 
-![updiskspec](/images/adminguide/updiskspec.png)
+![updiskspec](../images/adminguide/updiskspec.png)
 
 （3）外网 IP 规格支持修改带宽范围的最小带宽和最大带宽，其中最小带宽和最大带宽可设置的范围为 1Mb 到 10000Mb ，即平台允许租户申请的外网 IP 最小为 1Mb 最到为 10000Mb ，可根据业务需要调整最小值和最大值。
 
-![upnetspec](/images/adminguide/upnetspec.png)
+![upnetspec](../images/adminguide/upnetspec.png)
 
 ### 10.2.4 删除规格
 
 支持管理员删除指定自定义虚拟机规格，不支持删除硬盘和外网 IP 的规格。如下图所示：
 
-![rmspec](/images/adminguide/rmspec.png)
+![rmspec](../images/adminguide/rmspec.png)
 
 规格删除后平台租户即不可在所属机型中创建当前规格的虚拟机，但不影响通过该规格创建资源的正常运行。
 
@@ -242,7 +242,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 管理员可通过全局配置——配额管理查看当前平台全局配额管理中已有的配额配置信息，包括产品类型、地域、配额、更新时间及操作项，如下图所示：
 
-![quatolist](/images/adminguide/quatolist.png)
+![quatolist](../images/adminguide/quatolist.png)
 
 其中地域代表产品在当前地域中的配额设置，配额值代表在产品在当前地域中的配额值。管理员可通过修改按钮对配额进行修改。
 
@@ -250,6 +250,6 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 支持管理员修改平台上地域及全部地域级别的配额值，其中每个产品单个地域配额之和不能超过【全部】地域配额限制，如下图所示：
 
-![upquato](/images/adminguide/upquato.png)
+![upquato](../images/adminguide/upquato.png)
 
 修改全局配额设置不影响为租户自定义的配额设置。全局配额后修改后，若租户已有的产品数量超过设置值，不影响租户已有的资源运行；若租户将资源删除后，则无法再创建超过配额值的资源。
