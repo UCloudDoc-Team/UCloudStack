@@ -4,7 +4,7 @@
 
 UCloud 超融合一体机为企业在私有环境下提供全栈云计算能力，开箱即用，软硬一体化交付，实现计算、存储、网络、Paas 资源的融合及横向扩展能力。
 
-![UHyperBox](UHyperBox.png)
+![UHyperBox](../images/utrion/UHyperBox.png)
 
 
 
@@ -36,7 +36,7 @@ UCloud 超融合一体机为企业在私有环境下提供全栈云计算能力�
 
 # 3 产品架构
 
-![UHyperBoxArch](UHyperBoxArch.png)
+![UHyperBoxArch](../images/utrion/UHyperBoxArch.png)
 
 
 

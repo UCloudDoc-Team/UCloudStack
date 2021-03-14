@@ -1,6 +1,7 @@
 <center>
-<img src="ustacklog.png" width="60%" height="60%" />
+<img src="../images/introduction/ustacklog.png" width="60%" height="60%" />
 </center> 
+
 
 
 <center>

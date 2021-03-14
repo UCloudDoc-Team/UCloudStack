@@ -22,7 +22,7 @@
 
 账号信息可以查看账号或子账号的基本信息，包括账户 ID、角色 ID、账户名称、账户邮箱、手机号码、现金余额、赠送余额、信用余额及创建时间等信息。可通过用户控制台导航栏“**账户**”进入账户控制台进行查看，如下图所示：
 
-![account](account.png)
+![account](../images/userguide/account.png)
 
 - 账号 ID /角色 ID：当前登录平台账号的 ID 及角色 ID 。
 - 账户名称：当前登录平台账号的账户名称或昵称，可直接通过编辑按钮进行修改，支持中文、英文或字符。
@@ -42,7 +42,7 @@
 
 平台支持用户修改账号登录密码，可通过账号控制台【账号安全】登录密码的“**修改**”进行密码修改。
 
-![uppasswd](uppasswd.png)
+![uppasswd](../images/userguide/uppasswd.png)
 
 > 修改密码必须使用旧密码，若忘记旧密码，可联系管理员进行修改。
 
@@ -60,7 +60,7 @@
 
 1. 登录控制台并进入账号控制台，点击账号安全中的【登录保护】“**开启**” 按钮开启登录保护，也可通过右上角登录头像处的【开启登录保护】进行操作，如下图所示：
 
-   ![FortiToken](FortiToken.png)
+   ![FortiToken](../images/userguide/FortiToken.png)
 
    
 
@@ -82,7 +82,7 @@
 
 二次认证服务开通后，账号密码登录平台时会要求输入认证码，系统判断认证码有效后，即可成功登录平台。
 
-![FortiToken1](FortiToken1.png)
+![FortiToken1](../images/userguide/FortiToken1.png)
 
 #### 21.2.2.4 登录保护 FAQ
 
@@ -116,11 +116,11 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 主账号可通过【账户安全】中“登录访问限制”功能进行登录策略配置，如下图所示，默认为空代表全网无限制。
 
-![LoginWhitelist](LoginWhitelist.png)
+![LoginWhitelist](../images/userguide/LoginWhitelist.png)
 
 可在登录访问范围内输入可登录平台的 IP 地址或 IP 地址段，点击确认即可生效。配置成功后，用户使用账号在未指定的 IP 网络中无法正常登录控制台，并提示当前的 IP 地址，如下图所示：
 
-![LoginWhitelist1](LoginWhitelist1.png)
+![LoginWhitelist1](../images/userguide/LoginWhitelist1.png)
 
 平台仅可限制访问控制台的 IP 地址，即直接请求到控制台 URL 地址的客户端 IP 地址，如用户访问平台的客户端地址在 NAT 路由内，则平台配置登录策略时，需要放通 NAT 后的 IP 地址，即需要将 NAT 后的出口地址配置在登录访问策略的白名单中，保证 NAT 路由器内的客户端均可正常访问控制台。
 
@@ -128,7 +128,7 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 通过账户安全租户可查看属于当前账号的 API 密钥 ，用于管理并使用 API 接口，如处图所示：
 
-![apisec](apisec.png)
+![apisec](../images/userguide/apisec.png)
 
 可通过点击复制按钮进行公私密钥的信息复制，以方便 API 指令的调用。
 
@@ -142,7 +142,7 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 用户通过账户资源控制台的“添加账户”，指定子账号的邮箱、密码及确认密码，即可快带为主账号创建一个子账号，如下图所示：
 
-![addaccount](addaccount.png)
+![addaccount](../images/userguide/addaccount.png)
 
 - 邮箱：新建子账号的电子邮件地址，必须实际有效的邮箱地址；
 - 密码/确认密码：新建子账号的登录密码，密码须包含有大小写字母、数字、符号中的两种，密码长度为 `6-20` 个字符。
@@ -157,7 +157,7 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 子账号列表页面可查看当前主账号下已拥有的所有子账号列表（包含主账号本身），列表信息包括 ID、邮箱、角色、状态、创建时间及操作项，如下图所示：
 
-![accountlist](accountlist.png)
+![accountlist](../images/userguide/accountlist.png)
 
 - ID ：当前账号在云平台全局的唯一标识符；
 - 邮箱：当前账号的登录邮箱地址；
@@ -172,7 +172,7 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 通过子账号列表的 “ID” 或 邮箱地址可进入账号的详情页面，可查看当前账号的详细信息，如下图所示，详情页面分为基本信息及资源权限管理：
 
-![accountdetails](accountdetails.png)
+![accountdetails](../images/userguide/accountdetails.png)
 
 - 基本信息：当前子账号的基本信息，包括 ID、角色、账户邮箱及创建时间；
 - 资源权限管理：当前子账号的资源访问及管理的权限控制，可控制的资源包括 NAT 网关、MySQL、Redis、回收站、安全组、外网 IP 、操作日志、监控、VPC、虚拟机、计费、负载均衡、账户及镜像等，具体权限管理详见：[权限管理](#_2135-权限管理) 。
@@ -181,7 +181,7 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 冻结账户是指将一个子账号进行锁定，被成功冻结的用户，将不允许登录控制台，且禁止控制并管理相关资源。仅支持状态为“**使用中**”的账号进行冻结操作，用户可点击子账号列表操作项中的“冻结”进入冻结账户向导页面：
 
-![lockuser](lockuser.png)
+![lockuser](../images/userguide/lockuser.png)
 
 如上图所示，冻结账户需要主账户进行确认。成功锁定子账号后，账号的状态变更为冻结中，在冻结中状态的子账号支持解冻操作。
 
@@ -191,7 +191,7 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 解冻账户是指解冻一个已冻结的账号，被成功解冻的的用户，可登录管理控制台且可进行相关资源使用和管理。仅支持状态为“**冻结中**”的账号进行解冻操作，用户可点击子账号列表操作项中的“解冻”进入解冻账户向导页面：
 
-![unlockuser](unlockuser.png)
+![unlockuser](../images/userguide/unlockuser.png)
 
 如上图所示，解结一个已锁定的账号需要主账户进行确认。成功解锁的子账号状态将变更为“使用中”，在使用中状态的子账号支持冻结操作。
 
@@ -201,11 +201,11 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 子账号权限管理可管控的资源包括 NAT 网关、MySQL、Redis、回收站、安全组、外网 IP 、操作日志、监控、VPC、虚拟机、计费、负载均衡、账户及镜像等等，对于不同的虚拟资源，分别提供不同的权限管控项，如下图所示：
 
-![auth](auth.png)
+![auth](../images/userguide/auth.png)
 
 如权限管理示意图所示，根据不同的资源可为子账号开启或关闭不同的管理权限。为子账号开启一个资源的功能开关，子账号登录控制台后，即可使用当前功能；若为子账号关闭一个资源的功能开关，子账号登录控制台后，即显示该功能“**权限不足**”，如下图所示：
 
-![noauth](noauth.png)
+![noauth](../images/userguide/noauth.png)
 
 > 权限管理的配置即时生效，在变更子账号资源权限时需谨慎操作。
 
@@ -219,7 +219,7 @@ A：若使用的是 FortiToken 身份认证方式，可以用基于 TOTP 算法�
 
 租户和子账号可通过账号管理控制台"**配额**"配额控制台查看当前账号拥有的资源配额列表，并根据地域分别展示配额信息，如下图所示： 
 
-![quatolist](quatolist.png)
+![quatolist](../images/userguide/quatolist.png)
 
 - 产品类型：当前配额信息的资源类型，平台支持的资源配额包括虚拟机、镜像、VPC、硬盘、弹性网卡、外网 IP 、负载均衡、安全组、 NAT 网关、Redis、MySQL、VPN 网关、VPN 隧道。
 - 地域：当前配额信息的地域信息，代表一个地域可创建的资源配额，支持某个地域或全部地域；

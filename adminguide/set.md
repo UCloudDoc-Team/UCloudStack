@@ -2,7 +2,7 @@
 
 集群（Set）是平台物理资源的逻辑划分，用于区分不同配置规格及不同存储类型的服务节点，如 X86 计算集群、ARM 计算集群、SSD 存储集群或商业存储集群等。一个数据中心可支持部署多个计算和存储集群，一个集群通常由一组配置、用途相同的物理节点组成，且服务节点一般具有相同的 CPU/内存、磁盘类型及操作系统。
 
-![region-set](region-set.png)
+![region-set](../images/adminguide/region-set.png)
 
 云平台支持将 X86、ARM、GPU 等异构计算集群统一管理，并可统一管理 SSD、STAT、NVME 多种架构存储集群。 用户可将虚拟资源部署于不同的计算集群，并分别对虚拟资源挂载不同存储集群的块存储设备。
 
@@ -30,7 +30,7 @@
 
 管理员可通过计算集群控制台查看特定地域的所有计算集群列表及信息，包括集群 ID、集群类型、集群类型名称、CPU 总核数、已分配核数、GPU 颗数、已分配 GPU 颗数、总内存、已分配内存及创建时间，如下图所示：
 
-![computesetlist](/images/adminguide/computesetlist.png)
+![computesetlist](../images/adminguide/computesetlist.png)
 
 - 集群 ID ：集群在平台的唯一标识符，如 set-01、set-02 。 
 - 集群类型名称：标志集群的名称，即在租户端的机型，租户在创建虚拟机时可选择不同的集群部署虚拟机。
@@ -61,7 +61,7 @@
 
 修改集群类型名称后，用户在创建虚拟资源时选择的机型名称会同步为集群名称。修改名称不影响集群和资源的正常运行，在任何情况下均可修改。管理员可在计算集群列表点击“修改集群类型名称”，输入新名称即可更改集群类型名称，如下图所示：
 
-![renameset](/images/adminguide/renamesetname.png)
+![renameset](../images/adminguide/renamesetname.png)
 
 > 平台上计算集群类型和集群名称为一个概念，即一个集群类型即代表一个集群。
 
@@ -71,7 +71,7 @@
 
 在应用场景上，可将特殊机型的物理服务器集群、GPU 物理服务器集群仅对少部分租户开放权限，使一部分租户的关键业务仅运行在指定的集群中。假设目前有 50 台计算存储超融合物理机，针对 ABCD 四个用户中 A 独享 30 台物理机的场景，解决方案如下所示：
 
-![setscene](/images/adminguide/setscene.png)
+![setscene](../images/adminguide/setscene.png)
 
 为满足租户可独享部分物理机，在部署平台规划物理资源时，需要将独享物理机划分至一个独立的计算集群，同时需将独享物理机上的存储资源划分至一个独立的存储集群，并将划分的计算和存储集群分配给独享租户，以保证划分给租户的计算及存储资源为相同的独享物理机。
 
@@ -84,7 +84,7 @@
 
 平台管理员可在计算集群列表点击【修改集群类型权限】，指定租户权限为“所有租户”或“指定租户”，即可将集群划分给指定的租户，如下图所示：
 
-![setscene1](/images/adminguide/setscene1.png)
+![setscene1](../images/adminguide/setscene1.png)
 
 默认权限为所有租户，即平台所有租户默认均可部署虚拟资源至所有集群；当用户为集群设置租户权限为指定租户时，仅指定的租户可查看并部署虚拟资源至集群。
 
@@ -96,7 +96,7 @@
 
 管理员可通过【计算集群】列表进行详情页面，切换至“计算实例”标签，即可查看和管理计算集群下的计算实例列表及相关信息，包括计算实例的名称、实例 ID、资源 ID、所属租户、物理机、镜像 ID、GPU、CPU、内存、状态、创建时间及更新时间，如下图所示：
 
-![cilist](/images/adminguide/cilist.png)
+![cilist](../images/adminguide/cilist.png)
 
 - 名称：计算实例对应的资源名称，当计算实例为虚拟机时展示虚拟机名称，当计算实例为 PaaS 产品的一个实例时展示 PaaS 产品的资源名称，如 `lb001` 。
 - 计算实例 ID：计算实例在所对应的底层计算实例标识符。
@@ -131,7 +131,7 @@
 
 管理员可通过【计算实例】列表操作项的【迁移】进行在线迁移操作，指定迁移模式和目标节点即可进行实例的迁移，如下图所示：
 
-![](instancemigrate.png)
+![instancemigrte](../images/adminguide/instancemigrate.png)
 
 在线迁移仅支持在相同的计算集群内迁移，迁移过程中实例的状态变更为“迁移中”，待迁移成功后转换为“运行中”状态。**在线迁移过程中，会迁移源实例的全量及增量内存数据，待内存数据反复迭代完成数据同步时，即可迁移完成。**
 
@@ -163,7 +163,7 @@
 
 管理员可通过存储集群控制台查看特定地域的所有存储集群列表及信息，包括集群 ID、集群类型、集群类型名称、总存储、已使用存储及创建时间，如下图所示：
 
-![storagesetlist](/images/adminguide/storagesetlist.png)
+![storagesetlist](../images/adminguide/storagesetlist.png)
 
 - 集群ID：存储集群平台全局唯一标识符，如 storage-set-01。
 - 集群类型：存储集群的类型。
@@ -180,7 +180,7 @@
 
 修改集群类型名称后，用户在创建云硬盘时选择的磁盘类型会同步为集群类型名称。修改名称不影响集群和资源的正常运行，在任何情况下均可修改。管理员可在存储集群列表点击“修改集群类型名称”，输入新名称即可更改集群类型名称，如下图所示：
 
-![renameset](/images/adminguide/renameset.png)
+![renameset](../images/adminguide/renameset.png)
 
 ### 4.2.3 修改集群权限
 
@@ -190,7 +190,7 @@
 
 平台管理员可在存储集群列表点击【修改集群类型权限】，指定租户权限为“所有租户”或“指定租户”，即可将集群划分给指定的租户，如下图所示：
 
-![setscene2](/images/adminguide/setscene2.png)
+![setscene2](../images/adminguide/setscene2.png)
 
 默认权限为所有租户，即平台所有租户默认均可在所有存储集群上创建并使用云盘资源；当用户为集群设置租户权限为指定租户时，仅指定的租户可查看并使用集群的存储资源。
 
@@ -225,7 +225,7 @@
 
 物理存储设备及网络准备好后，即可与平台进行对接并使用平台提供的外置存储服务，整个对接过程需要存储设备管理员、平台管理员及平台租户三个角色进行操作，其中与平台相关的为平台管理员和平台租户的操作，如下图流程所示：
 
-![storageflow](/images/adminguide/storageflow.png)
+![storageflow](../images/adminguide/storageflow.png)
 
 1. **存储设备管理员管理存储卷**
 
@@ -259,7 +259,7 @@
 
 管理员可通过导航栏中的集群进入集群管理，切换至外置存储控制台进行外置存储页面，通过【新建】操作进入添加外置存储向导页面，如下图所示：
 
-![addstorage](/images/adminguide/addstorage.png)
+![addstorage](../images/adminguide/addstorage.png)
 
 * 名称：外置存储的名称，添加时必须指定。
 * ISCSI 地址：外置存储的 ISCSI 连接地址，格式为 IP:Port ，支持添加多个 ISCSI 地址，如 172.16.13.201:3260 和 172.16.13.202:3260 。
@@ -270,7 +270,7 @@
 
 支持管理员查看外置存储的列表信息，包括名称、资源 ID、ISCSI 地址、LUN 数量及操作项，如下图所示：
 
-![storagelist](/images/adminguide/storagelist.png)
+![storagelist](../images/adminguide/storagelist.png)
 
 * 名称：外置存储的名称和标识，租户端在创建虚拟机时系统盘类型处显示的名称。
 * 资源 ID ：外置存储在平台的全局唯一标识符。
@@ -291,7 +291,7 @@
 
 管理员可通过外置存储详情中的【LUN 存储卷】列表查看已扫描出的存储卷信息，包括 LUNID、资源 ID、容量、状态、挂载资源、所属租户及操作项，如下图所示：
 
-![lunlist](/images/adminguide/lunlist.png)
+![lunlist](../images/adminguide/lunlist.png)
 
 * LUNID：LUN 存储卷在商业存储中的唯一标识符。
 * 资源 ID：存储卷在平台的唯一标识符。
@@ -308,7 +308,7 @@
 
 管理员可通过 LUN 存储卷列表上的【分配】操作，将一个 LUN 存储设备分配给一个租户，如下图所示：
 
-![Assignlun](/images/adminguide/Assignlun.png)
+![Assignlun](../images/adminguide/Assignlun.png)
 
 管理员也可通过分配操作将一个存储卷重新分配给另一个租户，仅支持未绑定状态的 LUN 设备重新分配租户。
 
@@ -316,7 +316,7 @@
 
 平台支持管理员删除外置存储，删除前扫描出的所有 LUN 设备必须为未绑定状态。可通过外置存储资源列表操作项中的删除对外置存储进行删除，如下图所示：
 
-![rmstorage](/images/adminguide/rmstorage.png)
+![rmstorage](../images/adminguide/rmstorage.png)
 
 外置存储删除仅表示设备从平台进行释放，可通过录入 ISCSI 地址重新添加存储设备到云平台。
 

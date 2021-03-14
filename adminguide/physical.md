@@ -10,7 +10,7 @@
 
 管理员可在计算资源/物理机页面查看地域下所有物理机节点列表及相关信息，包括物理机 ID、物理机 IP、计算集群 ID、CPU 类型、总核数、已分配核数、总内存、已分配内存、状态、更新时间及操作项，如下图所示：
 
-![computenode](/images/adminguide/computenode.png)
+![computenode](../images/adminguide/computenode.png)
 
 - 物理机 ID：计算节点在平台的唯一标识符。
 - 物理机 IP：计算节点的 IP 地址。
@@ -33,7 +33,7 @@
 
 管理员可在物理机列表中，通过目标物理机器名称或者右侧的“详情”按钮进入物理机器详情页面，查看物理机的基本信息及监控信息，同时可查询计算节点已运行的计算实例，如下图所示：
 
-![computenodeinfo](/images/adminguide/computenodeinfo.png)
+![computenodeinfo](../images/adminguide/computenodeinfo.png)
 
 **（1）基本信息**
 
@@ -47,7 +47,7 @@
 
 支持管理员通过物理机详情页面，查看物理机中的计算实例列表及信息，包括名称、计算实例 ID、资源 ID、所属租户、物理机 IP、镜像 ID、GPU、CPU、内存、状态、创建时间及更新时间，并支持对计算实例进行搜索，支持模糊搜索，如下图所示：
 
-![nodeinstance](/images/adminguide/nodeinstance.png)
+![nodeinstance](../images/adminguide/nodeinstance.png)
 
 计算实例包括虚拟机的实例，同时也包括平台网关及 PaaS 产品的实例，可通过实例名称及资源 ID 进行区分。
 
@@ -55,7 +55,7 @@
 
 物理机被锁定后，新建计算实例不会被调度至计算节点，不影响节点内已有计算实例，可配合物理机进入维护模式功能，以实现物理机维护、升级等操作。
 
-![lock](/images/adminguide/lock.png)
+![lock](../images/adminguide/lock.png)
 
 仅支持物理机在【可用】状态下进行锁定操作，锁定物理机后，物理机的状态即流转为【已锁定】，在已锁定状态下新的虚拟机实例不会被创建至节点，同时可在已锁定状态下使计算节点进入维护模式。
 
@@ -65,7 +65,7 @@
 
 管理员将锁定的物理机进行解锁，可对外提供计算服务，计算实例可被调度并部署至物理机。
 
-![unlock](/images/adminguide/unlock.png)
+![unlock](../images/adminguide/unlock.png)
 
 仅支持物理机在【已锁定】状态下进行解锁操作，解锁后物理机的状态即流转为【可用】，在可用状态下计算实例会被调度并创建至节点。
 
@@ -75,7 +75,7 @@
 
 物理机进入维护模式前必须保证节点状态为已锁定，即需要将物理机进行锁定，才可进行【进入维护模式】的操作，如下图所示：
 
-![maintenance](/images/adminguide/maintenance.png)
+![maintenance](../images/adminguide/maintenance.png)
 
 管理员将物理机锁定并进入维护模式前，需请执行以下检查：
 
@@ -89,7 +89,7 @@
 
 2. 点击“进入维护模式”按钮，将物理机器进入到维护模式，物理机将自动流转为“进入维护模式中”状态，如下图所示：
 
-   ![inmaintain](/images/adminguide/inmaintain.png)
+   ![inmaintain](../images/adminguide/inmaintain.png)
 
 3. 系统会自动执行在线迁移功能，将此物理机器上的资源随机迁移至本计算集群中其他合适的物理机节点，关机状态的计算实例在下次启动后会自动调度至其它物理机。
 
@@ -103,7 +103,7 @@
 
 平台管理员可通过物理机节点列表操作项中的【退出维护模式】按钮进行操作，如下图所示：
 
-![outmaintain](/images/adminguide/outmaintain.png)
+![outmaintain](../images/adminguide/outmaintain.png)
 
 退出维护模式后，物理机节点的状态会自动流转为【已锁定】状态，需通过解锁操作使物理机可正常提供服务。
 
@@ -176,7 +176,7 @@
 
 管理员可通过控制台导航栏【物理机纳管】进入物理机资源池列表页面，通过【创建资源池】指定资源池的名称、Vlan、网段及网关进行创建操作，如下图所示：
 
-![createbmspool](/images/adminguide/createbmspool.png)
+![createbmspool](../images/adminguide/createbmspool.png)
 
 * 名称：资源池在平台的名称标识，如 Dell-pool 。
 * Vlan ：资源池网段的所属 Vlan ，无 Vlan 时可为空。
@@ -189,7 +189,7 @@
 
 管理员可平台控制台查看物理机资源池的列表及相关信息，包括名称、资源 ID、Vlan、网段、网关、物理机数量及操作项，如下图所示：
 
-![bmspoollist](/images/adminguide/bmspoollist.png)
+![bmspoollist](../images/adminguide/bmspoollist.png)
 
 * 名称：物理机资源池的名称标识。
 * 资源 ID：物理机资源池的全局唯一标识符。
@@ -200,7 +200,7 @@
 
 管理员可通过列表上操作项对资源池进行修改和删除操作，同时支持批量删除操作；管理员可通过详情按钮进入资源池的详情页面查看资源池的物理机信息，如下图所示：
 
-![bmspoolinfo](/images/adminguide/bmspoolinfo.png)
+![bmspoolinfo](../images/adminguide/bmspoolinfo.png)
 
 通过详情页面管理员可查看物理机资源池的基本信息，同时可通过物理机模块进行资源池的物理机管理，其中基本信息包括名称、资源 ID、Vlan、网段、网关、物理机数量及申请时间。
 
@@ -210,7 +210,7 @@
 
 支持平台管理员修改物理机资源池的信息，包括名称、 Vlan、网段、网关，如下图所示：
 
-![updatebmspool](/images/adminguide/updatebmspool.png)
+![updatebmspool](../images/adminguide/updatebmspool.png)
 
 由于资源池的网段和 Vlan 信息会被资源池中的物理机使用，若物理机资源池中已添加物理机，则不允许修改 Vlan 和网段信息，可修改名称及网关信息。
 
@@ -218,7 +218,7 @@
 
 支持平台管理员删除物理机资源池，删除后租户将无法再申请和管理资源池中的物理机，但不影响已申请物理机的正常运行。管理员可通过物理机资源池列表操作项中的删除按钮进行资源池的删除，如下图所示：
 
-![rmbmspool](/images/adminguide/rmbmspool.png)
+![rmbmspool](../images/adminguide/rmbmspool.png)
 
 资源池被删除后即直接销毁，删除前需确保资源池中的物理机未被租户申请和使用，避免影响租户对物理机的管理和使用。
 
@@ -235,7 +235,7 @@
 
 在准备好前提条件后，管理员可进入物理机资源池详情页面，通过指定名称、SN、IPMI IP、IPMI 用户名、IPMI 密码及网卡模板添加一台物理机，如下图所示：
 
-![createbms](/images/adminguide/createbms.png)
+![createbms](../images/adminguide/createbms.png)
 
 * 名称：指物理机在平台的名称标识，添加时必须指定。
 * SN：指物理机的硬件整机序列号，添加时必须指定，可通过 IPMI 系统或硬件上进行查看。
@@ -255,11 +255,11 @@
 
 为方便运维人员快捷添加物理机，平台提供批量导入物理机的能力，可根据平台规范上传 CSV 格式的表格文件，批量导入一批物理机，如下图所示：
 
-![importbms](/images/adminguide/importbms.png)
+![importbms](../images/adminguide/importbms.png)
 
 仅支持 CSV 格式且按照平台规范的文件，可参考【物理机列表示例】文件进行表格制作，表格中的信息包括 Name、SN、IPMIIP、IPMIUsername、IPMIPassword 及 NICTemplateID ，分别代表物理机名称、SN 整机序列号、IPMI  IP 地址、IPMI 用户名、IPMI 密码及网卡模板，如下图所示：
 
-![bmcsr](/images/adminguide/bmcsr.png)
+![bmcsr](../images/adminguide/bmcsr.png)
 
 批量导入的物理机和手动添加的物理机一致，均会进行初始化准备工作，并将物理机最终置为【已就绪】状态，若物理机一直在准备中，需要登录 IPMI 系统查看物理机的网络及相关配置是否准确。
 
@@ -267,7 +267,7 @@
 
 物理机添加至资源池后，管理员可通过资源池详情中的物理机列表查看物理机的相关信息，包括名称、资源 ID、SN、IPMI IP、SMIP User、所属租户、关联网卡模板、状态及操作项，如下图所示：
 
-![bmslist](/images/adminguide/bmslist.png)
+![bmslist](../images/adminguide/bmslist.png)
 
 * 资源 ID/名称： 为物理机添加至平台后的唯一标识符和名称。
 * 所属租户：代表申请该台物理机的租户，未被申请的物理机租户为空。
@@ -283,9 +283,9 @@
 
 管理员可通过列表上的操作项对物理机进行移除、修改模板、修改物理机、修改名称和备注等操作，同时支持通过列表对物理机进行批量移除，方便运维操作。管理员也可通过物理机名称进入物理机的详情页面，查看物理机的硬件配置信息，包括 CPU、内存、磁盘及网卡信息，如下图所示共分为基本信息、磁盘信息及网卡信息：
 
-![bmsinfo1](/images/adminguide/bmsinfo1.png)
+![bmsinfo1](../images/adminguide/bmsinfo1.png)
 
-![bmsinfo2](/images/adminguide/bmsinfo2.png)
+![bmsinfo2](../images/adminguide/bmsinfo2.png)
 
 **（1）基本信息**
 
@@ -310,7 +310,7 @@
 
 为应对灵活配置网卡的应用场景，平台支持管理员修改已添加的物理机网卡模板，以适应物理机的真实网卡配置。仅支持修改状态为【已就绪】及【成功】的物理机网卡模板，具体操作如下图所示：
 
-![upbmsnet](/images/adminguide/upbmsnet.png)
+![upbmsnet](../images/adminguide/upbmsnet.png)
 
 修改物理机的网卡模板不影响运行中的物理机，装机或重装系统时会根据新的网卡模板生效。
 
@@ -318,7 +318,7 @@
 
 物理机添加至资源池后，支持管理员修改物理机的基本信息，包括名称、IPMIIP、IPMI 用户名及  IPMI 密码，如下图所示：
 
-![upbms](/images/adminguide/upbms.png)
+![upbms](../images/adminguide/upbms.png)
 
 修改物理机 IPMI 相关信息时，需确保修改的信息准确性，否则可能影响物理机的装机及管理操作。
 
@@ -326,7 +326,7 @@
 
 平台支持管理员移除未被租户申请的物理机资源，如下图所示：
 
-![rmbms](/images/adminguide/rmbms.png)
+![rmbms](../images/adminguide/rmbms.png)
 
 删除物理机后，会自动解绑与网卡模板的关联，且租户无法管理物理机，但不影响物理机本身的正常运行；若物理机已被租户申请且未释放，则无法进行删除。
 
@@ -348,7 +348,7 @@
 
 在添加物理机前需要为资源池中的物理机准备一个网卡模板，管理员可通过物理机纳管控制台的网卡模板标签页进行网卡模板的创建操作，如下图所示：
 
-![nictem](/images/adminguide/nictem.png)
+![nictem](../images/adminguide/nictem.png)
 
 创建网卡模板时需指定名称、厂商、型号、网卡设置及虚拟网卡：
 
@@ -369,7 +369,7 @@
 
 管理员可通过网卡模板列表查看网卡模板的基本信息，包括名称、资源 ID、厂商、型号及操作项，如下图所示：
 
-![nictemlist](/images/adminguide/nictemlist.png)
+![nictemlist](../images/adminguide/nictemlist.png)
 
 可通过列表上的对网卡模板进行修改及删除操作，支持批量删除。
 
@@ -377,7 +377,7 @@
 
 管理员可随时修改网卡模板的配置信息，与创建模板时一致，可进行修改名称、厂商、型号、网卡设置及虚拟网卡，如下图所示：
 
-![upnictem](/images/adminguide/upnictem.png)
+![upnictem](../images/adminguide/upnictem.png)
 
 修改网卡模板配置仅对需要安装操作系统或重装系统的物理机生效。
 
@@ -385,7 +385,7 @@
 
 管理员可通过控制台删除无用的网卡模板，仅支持删除未被使用的网卡模板，即未被物理机关联的网卡模板才可进行删除。
 
-![rmnictem](/images/adminguide/rmnictem.png)
+![rmnictem](../images/adminguide/rmnictem.png)
 
 ## 5.3 镜像管理
 
@@ -404,7 +404,7 @@
 
 在基础镜像列表可查看平台所有基础镜像及镜像信息，包括名称、iD、系统类型、操作系统状态及操作项，如下图所示：
 
-![baseimagelist](/images/adminguide/baseimagelist.png)
+![baseimagelist](../images/adminguide/baseimagelist.png)
 
 - 镜像名称：镜像的标识名称，创建虚拟机时展示在镜像列表中的标识。
 - 资源 ID：镜像文件在平台的唯一标识符。
@@ -421,7 +421,7 @@
 
 可以通过删除基础镜像下线平台不需要使用的基础镜像，仅支持删除可用状态的基础镜像，如下图所示：
 
-![](rmbaseimage.png)
+![rmbaseimage](../images/adminguide/rmbaseimage.png)
 
 **如果平台存在通过此基础镜像创建的虚拟机，则基础镜像无法被删除。**
 
@@ -443,7 +443,7 @@
 
 在自制镜像列表可查看平台所有租户在一个地域内的自制镜像列表信息，包括镜像名称、资源 ID、所属租户、系统类型、操作系统、状态及操作项，如下图所示：
 
-![customeimage](/images/adminguide/customeimage.png)
+![customeimage](../images/adminguide/customeimage.png)
 
 - 镜像名称：自制镜像的标识名称。
 
@@ -472,7 +472,7 @@
 
 制作好自定义镜像后，可通过镜像管理控制台资源列表上方的【导入镜像】功能，进入导入镜像向导页面：
 
-![upimage](/images/adminguide/upimage.png)
+![upimage](../images/adminguide/upimage.png)
 
 - 租户邮箱：通过租户主账号邮箱选定自制镜像归属的租户。
 - 镜像名称/描述：镜像的名称及相关描述信息；
@@ -511,7 +511,7 @@
 
 若平台需要其它基础镜像系统，可先上传为自制镜像，再通过“复制为基础镜像”的功能转化为平台基础镜像。可通过目标自制镜像右侧“复制为自制镜像”操作，如下图所示：
 
-![cloneimage](/images/adminguide/cloneimage.png)
+![cloneimage](../images/adminguide/cloneimage.png)
 
 输入目标基础镜像名称，即可触发复制为基础镜像的操作，自制镜像复制过程中会在基础镜像列表生成一条状态为【制作中】的基础镜像信息，待状态转换为【可用】时，代表复制成功，平台上的所有租户可使用此镜像创建虚拟机，进行业务部署。
 
@@ -521,11 +521,11 @@
 
 管理员如果需要下载镜像至本地时，可通过自制镜像列表操作项中的【下载】进入镜像下载向导页面，如下图：
 
-![downloadimage](/images/adminguide/downloadimage.png)
+![downloadimage](../images/adminguide/downloadimage.png)
 
 点击生成下载地址后，平台会跳转至下载地址展示向导页面，通过向导页面，用户通过复制下载地址链接，通过 HTTP、FTP 及相关下载工具下载镜像。
 
-![downloadimage1](/images/adminguide/downloadimage1.png)
+![downloadimage1](../images/adminguide/downloadimage1.png)
 
 > 镜像下载地址有效期为 24 小时，需在 24 小时内进行镜像下载。若镜像下载地址过期，则无法进行下载，需到平台重新生成镜像下载地址。
 
@@ -533,7 +533,7 @@
 
 管理员可对自制镜像进行删除操作，被删除的自制镜像会自动进入所属租户的“**回收站**”，可通过回收站进行还原和销毁操作。管理员可通过自制镜像管理控制台的“删除”功能进行自制镜像的删除，删除后可到回收站中查看已删除的自制镜像，如下图所示：
 
-![rmimage](/images/adminguide/../UserGuide/rmimage.png)
+![rmimage](../images/adminguide/../UserGuide/rmimage.png)
 
 仅支持删除状态为可用或导入失败的的自制镜像；若已通过自制镜像创建虚拟机，则不可删除自制镜像，需要将虚拟机删除，才可进行自制镜像的删除。
 
@@ -567,7 +567,7 @@
 
 管理员在物理网络设备配置好 Vlan 及网段信息后，通过平台资源管理进入外网网段资源控制台，指定网段名称、描述、IP 版本、网段、网关、网卡、Vlan、路由及租户权限创建一个外网网段，如下图所示：
 
-![createnet](/images/adminguide/createnet.png)
+![createnet](../images/adminguide/createnet.png)
 
 * 名称/描述：指外网网段的名称和描述，名称会作为租户端申请外网 IP 时展示的网段名称。
 * IP 版本：指外网网段的 IP 版本，支持 IPv4 或 IPv6 ，创建时必须指定，默认为 IPv4。
@@ -595,7 +595,7 @@
 
 当需要将一段外网网段独享给部分租户时，管理员可修改外网网段的租户权限，如下图所示：
 
-![upnetauth](/images/adminguide/upnetauth.png)
+![upnetauth](../images/adminguide/upnetauth.png)
 
 修改租户权限后，无权限的租户即无法查看并使用外网网段的 IP 地址，但不影响已申请外网 IP 地址的使用，若租户释放了外网 IP ，则无法在申请该网段的  IP 地址。
 
@@ -603,7 +603,7 @@
 
  支持管理员删除不再使用的外网网段，如下图所示：
 
-![rmnet](/images/adminguide/rmnet.png)
+![rmnet](../images/adminguide/rmnet.png)
 
 若网段中的 IP 地址已被租户申请，则无法删除，需要租户将所有的外网 IP 地址释放后，才可进行删除；管理员也可通过虚拟资源管理中为租户释放外网 IP 地址。
 

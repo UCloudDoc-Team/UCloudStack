@@ -30,7 +30,7 @@
 
 1. 登录控制台并进入账号控制台，通过管理员头像中的【开启登录保护】进行操作，如下图所示：
 
-   ![loginprotect](/images/adminguide/loginprotect.png)
+   ![loginprotect](../images/adminguide/loginprotect.png)
 
 2. 检查移动设备上是否安装 FortiToken ：
 
@@ -43,7 +43,7 @@
 
 开启双因子验证后，管理员账号每次登录控制台均需通过二次认证。登录时在输入账号密码后，需要额外再输入授权码后才可成功登录账号，如下图所示：
 
-![fortitoken](/images/adminguide/fortitokenlogin.png)
+![fortitoken](../images/adminguide/fortitokenlogin.png)
 
 可登录控制台点击管理员账号头像中的【关闭登录保证】，输入 6 位授权码，即可关闭双因子验证功能。
 
@@ -59,11 +59,11 @@
 
 管理员可通过头像操作中的【登录访问限制】功能进行登录策略配置，如下图所示，默认为空代表全网无限制。
 
-![LoginWhitelist](/images/adminguide/LoginWhitelist.png)
+![LoginWhitelist](../images/adminguide/LoginWhitelist.png)
 
 可在登录访问范围内输入可登录平台的 IP 地址或 IP 地址段，点击确认即可生效。配置成功后，管理员账号在未指定的 IP 网络中无法正常登录控制台，并提示当前的 IP 地址，如下图所示：
 
-![LoginWhitelist1](/images/adminguide/LoginWhitelist1.png)
+![LoginWhitelist1](../images/adminguide/LoginWhitelist1.png)
 
 平台仅可限制访问控制台的 IP 地址，即直接请求到控制台 URL 地址的客户端 IP 地址，如用户使用管理员账号访问平台的客户端地址在 NAT 路由内，则平台配置登录策略时，需要放通 NAT 后的 IP 地址，即需要将 NAT 后的出口地址配置在登录访问策略的白名单中，保证 NAT 路由器内的客户端均可正常访问控制台。
 
@@ -71,7 +71,7 @@
 
 平台支持管理员修改管理员的账号邮箱地址，用于将管理员账号修改为真实可用且实际需要接收告警邮件的邮箱地址，具体修改操作如下图所示：
 
-![updateadminemail](/images/adminguide/updateadminemail.png)
+![updateadminemail](../images/adminguide/updateadminemail.png)
 
 管理员修登录邮箱修改后可使用原有密码登录控制台，可通过修改登录密码重置管理员邮箱密码。
 
@@ -79,7 +79,7 @@
 
 支持开发者通过 admin 账号获取管理员账号的 API 密钥 ，用于使用平台管理的 API 接口 获取平台全局资源的信息，如下图所示：
 
-![adminapisec](/images/adminguide/adminapisec.png)
+![adminapisec](../images/adminguide/adminapisec.png)
 
 可通过点击复制按钮进行公私密钥的信息复制，以方便 API 指令的调用。
 

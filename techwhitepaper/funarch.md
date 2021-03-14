@@ -26,7 +26,7 @@
 
 集群 ( Set ) 是 UCloudStack 物理资源的逻辑划分，用于区分不同配置规格及不同存储类型的服务器节点。区域、可用区、集群、物理服务器的逻辑关系如下：
 
-![](Region_Zone_Set_Host.png)
+![Region_Zone_Set_Host](../images/techwhitepaper/Region_Zone_Set_Host.png)
 
 * 一个可用区可包含多个集群，云资源支持跨集群调度；
 * 一个集群至少由 3 台服务器节点组成，集群内服务器须具有相同的 CPU/内存、磁盘类型及操作系统；
@@ -61,7 +61,7 @@
 
 虚拟机是云平台用户部署并运行应用服务的基础环境，与物理计算机的使用方式相同，提供创建、关机、断电、开机、重置密码、重装系统、升降级等完全生命周期功能；支持 Linux、Windows 等不同的操作系统，并可通过 VNC 、SSH 等方式进行访问和管理，拥有虚拟机的完全控制权限。虚拟机运行涉及资源及关联关系如下：
 
-![虚拟机结构](VM_Arch.png)
+![虚拟机结构](../images/techwhitepaper/VM_Arch.png)
 
 如图所示，实例规格、镜像、VPC 网络是运行虚拟机必须指定的基础资源，即指定虚拟机的 CPU 内存、操作系统、虚拟网卡及 IP 信息。在虚拟机基础之上，可绑定云硬盘、弹性IP 及安全组，为虚拟机提供数据盘、公网 IP 及网络防火墙，保证虚拟机应用程序的数据存储和网络安全。
 
@@ -100,7 +100,7 @@ UCloudStack 提供虚拟机实例规格全生命周期的管理和维护，包�
 * 支持通过虚拟机自制镜像、从镜像创建主机、上线、下线、修改名称、查看镜像及删除镜像等生命周期管理；
 * 自制镜像整个生命周期包括制作中、可用、下线中、不可用、上线中、已删除等状态，状态流转如下图所示：
 
-![image_status](image_status.png)
+![image_status](../images/techwhitepaper/image_status.png)
 
 #### 4.2.2.3 镜像存储
 
@@ -134,7 +134,7 @@ UCloudStack 提供虚拟机实例规格全生命周期的管理和维护，包�
 
 弹性网卡（ Elastic Network Interface, ENI ）是一种可随时附加到虚拟机的弹性网络接口，支持绑定和解绑，可在多个虚拟机间灵活迁移，为虚拟机提供高可用集群搭建能力，同时可实现精细化网络管理及廉价故障转移方案。
 
-![](evnic.png)
+![evnic](../images/techwhitepaper/evnic.png)
 
 * 弹性网卡与虚拟网卡的实现方式相同，区别在于弹性网卡的具有独立的生命周期；
 * 弹性网卡支持绑定和解绑，可在多个虚拟机间自由迁移；
@@ -152,7 +152,7 @@ UCloudStack 提供虚拟机实例规格全生命周期的管理和维护，包�
 
 弹性网卡整个生命周期包括创建中、未绑定、绑定中、已绑定、解绑中、已删除等状态，状态流转如下图所示：
 
-![nic_status](nic_status.png)
+![nic_status](../images/techwhitepaper/nic_status.png)
 
 <span id="_425-安全组"></span>
 
@@ -166,7 +166,7 @@ UCloudStack 提供虚拟机实例规格全生命周期的管理和维护，包�
 
 安全组仅可作用于**同一个数据中心** 内具有相同安全需求的虚拟机、弹性网卡、负载均衡及 NAT 网关，工作原理如下图所示：
 
-![Secrity_group](Secrity_group.png)
+![Secrity_group](../images/techwhitepaper/Secrity_group.png)
 
 安全组具有独立的生命周期，可以将安全组与虚拟机、弹性网卡、负载均衡、NAT 网关绑定在一起，提供安全访问控制，与之绑定的虚拟资源销毁后，安全组将自动解绑。
 
@@ -248,7 +248,7 @@ UCloudStack 为虚拟机提供完整生命周期管理，用户可自助创建�
 
 UCloudStack 虚拟机完整生命周期包括启动中、运行、关机中、断电中、关机、启动中、重装中、删除中及已删除等资源状态，各状态流转如下图所示：
 
-![VMStatus](VM_Status.png)
+![VMStatus](../images/techwhitepaper/VM_Status.png)
 
 ## 4.3 云硬盘
 
@@ -256,7 +256,7 @@ UCloudStack 虚拟机完整生命周期包括启动中、运行、关机中、�
 
 云硬盘是一种基于分布式存储系统为虚拟机提供持久化存储空间的块设备。具有独立的生命周期，支持随意绑定/解绑至多个虚拟机使用，并能够在存储空间不足时对云硬盘进行扩容，基于网络分布式访问，为云主机提供高安全、高可靠、高性能及可扩展的数据磁盘。
 
-![cbs](cbs.png)
+![cbs](../images/techwhitepaper/cbs.png)
 
 分布式存储系统为虚拟机系统盘、镜像及云硬盘提供统一存储及管理，提高虚拟机与系统盘、云硬盘的数据传输入效率，实现虚拟机快速创建及恢复，并支持系统盘和云硬盘的在线快速扩容和迁移。在本地可通过快照技术，对云硬盘及数据进行快照备份，在数据丢失或损坏时，可通过快照快速恢复数据，包括数据库数据、应用数据及文件目录数据等，可实现分钟级恢复。
 
@@ -277,7 +277,7 @@ UCloudStack 虚拟机完整生命周期包括启动中、运行、关机中、�
 
 高性能型云硬盘的性能与容量的大小成线性关系，容量越大，提供的 IO 性能越高，如果对IO性能有强烈需求，可考虑扩容性能型云硬盘。UCloudStack 云硬盘完整生命周期包括创建中、可用、挂载中、已挂载、卸载中、扩容中、已删除等资源状态，各状态流转如下图所示：
 
-![Storage_Status](Storage_Status.png)
+![Storage_Status](../images/techwhitepaper/Storage_Status.png)
 
 ### 4.3.3 应用场景
 
@@ -312,7 +312,7 @@ VPC 网络具有数据中心属性，每个 VPC 私有网络仅属于一个数�
 
 一个 VPC 网络主要由私有网络网段和子网两部分组成，如下图所示：
 
-![vpccom](vpccom.png)
+![vpccom](../images/techwhitepaper/vpccom.png)
 
 **（1）私有网络网段**
 
@@ -342,7 +342,7 @@ VPC 网络所属的 CIDR  网段，作为 VPC 隔离网络的私网网段。关�
 
 平台对常用网络设备均进行软件定义及组件抽像，通过将 VPC 网络与虚拟机、弹性网卡、外网 IP、安全组、NAT 网关、负载均衡、VPN 网关、MySQL 数据库、Redis 缓存及专线等组件连接，可快速构建和配置繁杂的网络环境及混合云场景，如下图所示：
 
-![vpccon.png](vpccon.png)
+![vpccon.png](../images/techwhitepaper/vpccon.png)
 
 * 虚拟机默认内网网卡（创建时自带的虚拟网卡）加入同一个 VPC 网络实现虚拟机间网络通信，并可通过安全组保证虚拟机东西向流量安全。
 * 虚拟机默认外网网卡（创建时自带的虚拟网卡）可直接绑定多个外网 IP 地址实现 Internet 访问，同时可绑定与 IDC 物理网络相连的外网 IP 地址实现物理网络打通，结合安全组管控虚拟机南北向流量的同时，构建安全可靠的混合接入环境。
@@ -399,7 +399,7 @@ EIP 资源支持独立申请和拥有，用户可通过控制台或 API 申请 I
 
 在私有云平台中，允许平台管理员自定义平台外网 IP 资源池，即由平台管理员自定义平台访问外网的方式，外网 IP 网段资源池在添加至云平台前，需要通过物理网络设备下发至计算节点连接的交换机端口。
 
-![EIPtopology](EIPtopology.png)
+![EIPtopology](../images/techwhitepaper/EIPtopology.png)
 
 如上图物理架构示意图所示，所有计算节点需要连接网线至物理网络的外网接入交换机，并在物理网络的交互机上配置所连接端口允许透传 Vlan 的网络访问方式，使运行在计算节点上虚拟机可通过外网物理网卡直接与外部网络进行通信：
 
@@ -412,7 +412,7 @@ EIP 资源支持独立申请和拥有，用户可通过控制台或 API 申请 I
 
 物理网络架构及配置确认后，在平台层面需要分别添加互联网 IP 网段和 IDC 物理网段至云平台 IP 网段资源池中，租户可申请不同网段的 EIP 地址，并将通往不同网络的 EIP 地址绑定至虚拟机默认外网网卡，使虚拟机可通过外网 IP 地址同时访问互联网和 IDC 数据中心物理网络。
 
-![eiparch](eiparch.png)
+![eiparch](../images/techwhitepaper/eiparch.png)
 
 如逻辑架构图所示，用户在平台中分别添加通往 Internet (Vlan200) 和通往 IDC 物理网络（Vlan100）的网段至云平台。网段举例如下：
 
@@ -431,7 +431,7 @@ EIP 资源支持独立申请和拥有，用户可通过控制台或 API 申请 I
 
 EIP 为浮动 IP ，可随故障虚拟机恢复漂移至健康节点，继续为虚拟机或其它虚拟资源提供外网访问服务。
 
-![eip](eip.png)
+![eip](../images/techwhitepaper/eip.png)
 
 当一台虚拟机所在的物理主机发生故障时，智能调度系统会自动对故障主机上的虚拟机进行宕机迁移操作，即故障虚拟机会在其它健康的主机上重新拉起并提供正常业务服务。若虚拟机已绑定外网 IP ，智能调度系统会同时将外网 IP 地址及相关流表信息一起漂移至虚拟迁移后所在的物理主机，并保证网络通信可达。
 
@@ -476,7 +476,7 @@ NAT 网关（ NAT Gateway ）是一种类似 [NAT](https://zh.wikipedia.org/wiki
 
 在产品层面，租户通过申请一个 NAT 网关，指定 NAT 网关可允许通信的子网，通过绑定【外网 IP】使多子网下虚拟机与互联网或 IDC 数据中心物理网进行通信，具体逻辑架构图如下：
 
-![natgw](natgw.png)
+![natgw](../images/techwhitepaper/natgw.png)
 
 - 平台支持同 VPC 多子网虚拟机使用 NAT 网关访问互联网或 IDC 数据中心网络。
 - 当多个子网中未绑定外网 IP 的虚拟机关联 NAT 网关时，平台将自动在虚拟机中下发访问外网的路由。
@@ -583,7 +583,7 @@ ULB 支持收集并展示负载流量各种网络指标的监控数据，并可�
 
 一个提供服务的负载均衡，主要由 LB 实例（ LoadBalancer ）、虚拟服务器（ VServer ）、后端服务器（ Backend Real Server ）三部分组成。如架构图所示：
 
-![ulbarch](ulbarch.png)
+![ulbarch](../images/techwhitepaper/ulbarch.png)
 
 - LoadBalancer（ LB ）：负载均衡实例为主备高可用集群架构，可实现负载均衡器故障自动切换，提高接入负载均衡服务的可用性。同时结合内外网 IP 地址，根据 VServer 配置的监听器，将虚拟机加入到 Backend 成为 Real Server ，以实现业务的流量均衡与服务容错。
 - Virtual Server（ VServer ）：监听器，每个监听器是一组负载均衡的监听端口配置，包含协议、端口、负载算法、会话保持、连接空闲超时及健康检查等配置项，用于分发和处理访问 LB 的请求。
@@ -667,7 +667,7 @@ IPsec VPN 是一种采用 IPsec 协议加密的隧道技术，由 Internet Engin
 
 VPN 网关 IPsecVPN 服务由 VPN 网关、对端网关及 VPN 隧道连接三部分组成。
 
-![ipsecvpnarch](ipsecvpnarch.png)
+![ipsecvpnarch](../images/techwhitepaper/ipsecvpnarch.png)
 
 - VPN 网关
 
@@ -683,7 +683,7 @@ VPN 网关 IPsecVPN 服务由 VPN 网关、对端网关及 VPN 隧道连接三�
 
 一个 VPN 网关有且必须关联 1 个 VPC 网络和 1 个外网 IP 地址，与对端网关相对应，通过 VPN 隧道进行连接。IPsecVPN 支持点到多点的连接特性，使得 VPN 网关与对端网关可以为一对一或一对多的连接关系，即一个 VPN 网关可以同时与多个对端网关建立隧道。VPN 隧道支持平台多个 VPC 子网与对端网络的多个网段通过隧道进行加密通信，平台 VPC 子网的网段与对端网络的网络不可重叠（本端与对端子网重叠会影响网络的正常通信）。
 
-![ipsecvpnsubnet](ipsecvpnsubnet.png)
+![ipsecvpnsubnet](../images/techwhitepaper/ipsecvpnsubnet.png)
 
 如上图案例所示，在云平台中的 VPC 网络已拥有 2 个子网，分别为 subnet1（`192.168.1.0/24`）和 subnet2（`192.168.2.0/24`）。在远端 IDC 数据中心下有 2 个内网网段，分别为 subnet3（`192.168.3.0/24`）和 subnet4（`192.168.4.0/24`）。
 
@@ -777,7 +777,7 @@ VPN 网关 IPsecVPN 服务是基于 Internet 的网络连接服务，通过 IPse
 
 弹性伸缩从逻辑架构上可分为三部分，分别为伸缩组、伸缩器及虚拟机模板。
 
-![ASArch](ASArch.png)
+![ASArch](../images/techwhitepaper/ASArch.png)
 
 * 伸缩组：负责将组内的实例数量维持在“期望”的水位，添加/缩减虚拟机的动作均由伸缩组进行操作，支持“自动伸缩”和“固定数量” 两种模式维护伸缩组内的实例数量。
 * 伸缩器：即伸缩策略，用于定义伸缩组内虚拟机伸缩的规则，可为伸缩组定义根据 CPU 使用率的阈值触发伸缩动作，支持定义伸缩组最小及最大实例数量，并可配置是否允许缩容。
