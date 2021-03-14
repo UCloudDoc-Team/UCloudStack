@@ -1,4 +1,4 @@
-<div class="sidebar_title icon-product__ucloudstack">API手册 ApiGuide</div>
+<div class="sidebar_title icon-product__ucloudstack">API手册 APIGuide</div>
 
 * [概览](/UCloudStack/apiguide/README.md)
 * [版权声明](/UCloudStack/apiguide/copyright.md)
