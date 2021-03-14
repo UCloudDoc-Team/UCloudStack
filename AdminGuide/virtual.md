@@ -48,7 +48,7 @@
 
 每一块云硬盘创建出来后，管理员可在存储资源——硬盘列表上进行“QoS配置” ，同时可对虚拟机详情磁盘中的系统盘进行 QoS 配置，如下图所示可设置的 QoS 项包括：
 
-![](volumeqos.png)
+![volumeqos](/images/adminguide/volumeqos.png)
 
 * 读/写 IOPS
 

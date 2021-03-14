@@ -219,7 +219,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 1. 登录控制台并进入账号控制台，通过管理员头像中的【开启登录保护】进行操作，如下图所示：
 
-   ![loginprotect](loginprotect.png)
+   ![loginprotect](/images/adminguide/loginprotect.png)
 
 2. 检查移动设备上是否安装 FortiToken ：
 
@@ -248,11 +248,11 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过头像操作中的【登录访问限制】功能进行登录策略配置，如下图所示，默认为空代表全网无限制。
 
-![LoginWhitelist](LoginWhitelist.png)
+![LoginWhitelist](/images/adminguide/LoginWhitelist.png)
 
 可在登录访问范围内输入可登录平台的 IP 地址或 IP 地址段，点击确认即可生效。配置成功后，管理员账号在未指定的 IP 网络中无法正常登录控制台，并提示当前的 IP 地址，如下图所示：
 
-![LoginWhitelist1](LoginWhitelist1.png)
+![LoginWhitelist1](/images/adminguide/LoginWhitelist1.png)
 
 平台仅可限制访问控制台的 IP 地址，即直接请求到控制台 URL 地址的客户端 IP 地址，如用户使用管理员账号访问平台的客户端地址在 NAT 路由内，则平台配置登录策略时，需要放通 NAT 后的 IP 地址，即需要将 NAT 后的出口地址配置在登录访问策略的白名单中，保证 NAT 路由器内的客户端均可正常访问控制台。
 
@@ -260,7 +260,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台支持管理员修改管理员的账号邮箱地址，用于将管理员账号修改为真实可用且实际需要接收告警邮件的邮箱地址，具体修改操作如下图所示：
 
-![updateadminemail](updateadminemail.png)
+![updateadminemail](/images/adminguide/updateadminemail.png)
 
 管理员修登录邮箱修改后可使用原有密码登录控制台，可通过修改登录密码重置管理员邮箱密码。
 
@@ -268,7 +268,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持开发者通过 admin 账号获取管理员账号的 API 密钥 ，用于使用平台管理的 API 接口 获取平台全局资源的信息，如下图所示：
 
-![adminapisec](adminapisec.png)
+![adminapisec](/images/adminguide/adminapisec.png)
 
 可通过点击复制按钮进行公私密钥的信息复制，以方便 API 指令的调用。
 
@@ -309,7 +309,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 用户可在地域列表中点击地域名称，或者点击目标地域列表右侧的“详情”按钮进入当前地域的概览页面，查看地域的基本信息及监控信息，同时可以切换到基础镜像、自制镜像、计算集群、存储集群及外置存储标签页，查看和管理地域下的基础镜像、自制镜像及计算存储资源，如下图所示：
 
-![regiondetails](regiondetails.png)
+![regiondetails](/images/adminguide/regiondetails.png)
 
 概览页面展示基本信息和地域核心资源使用趋势的监控图表。
 
@@ -364,7 +364,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过计算集群控制台查看特定地域的所有计算集群列表及信息，包括集群 ID、集群类型、集群类型名称、CPU 总核数、已分配核数、GPU 颗数、已分配 GPU 颗数、总内存、已分配内存及创建时间，如下图所示：
 
-![computesetlist](computesetlist.png)
+![computesetlist](/images/adminguide/computesetlist.png)
 
 - 集群 ID ：集群在平台的唯一标识符，如 set-01、set-02 。 
 - 集群类型名称：标志集群的名称，即在租户端的机型，租户在创建虚拟机时可选择不同的集群部署虚拟机。
@@ -395,7 +395,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 修改集群类型名称后，用户在创建虚拟资源时选择的机型名称会同步为集群名称。修改名称不影响集群和资源的正常运行，在任何情况下均可修改。管理员可在计算集群列表点击“修改集群类型名称”，输入新名称即可更改集群类型名称，如下图所示：
 
-![renameset](renamesetname.png)
+![renameset](/images/adminguide/renamesetname.png)
 
 > 平台上计算集群类型和集群名称为一个概念，即一个集群类型即代表一个集群。
 
@@ -405,7 +405,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 在应用场景上，可将特殊机型的物理服务器集群、GPU 物理服务器集群仅对少部分租户开放权限，使一部分租户的关键业务仅运行在指定的集群中。假设目前有 50 台计算存储超融合物理机，针对 ABCD 四个用户中 A 独享 30 台物理机的场景，解决方案如下所示：
 
-![setscene](setscene.png)
+![setscene](/images/adminguide/setscene.png)
 
 为满足租户可独享部分物理机，在部署平台规划物理资源时，需要将独享物理机划分至一个独立的计算集群，同时需将独享物理机上的存储资源划分至一个独立的存储集群，并将划分的计算和存储集群分配给独享租户，以保证划分给租户的计算及存储资源为相同的独享物理机。
 
@@ -418,7 +418,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台管理员可在计算集群列表点击【修改集群类型权限】，指定租户权限为“所有租户”或“指定租户”，即可将集群划分给指定的租户，如下图所示：
 
-![setscene1](setscene1.png)
+![setscene1](/images/adminguide/setscene1.png)
 
 默认权限为所有租户，即平台所有租户默认均可部署虚拟资源至所有集群；当用户为集群设置租户权限为指定租户时，仅指定的租户可查看并部署虚拟资源至集群。
 
@@ -430,7 +430,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过【计算集群】列表进行详情页面，切换至“计算实例”标签，即可查看和管理计算集群下的计算实例列表及相关信息，包括计算实例的名称、实例 ID、资源 ID、所属租户、物理机、镜像 ID、GPU、CPU、内存、状态、创建时间及更新时间，如下图所示：
 
-![cilist](cilist.png)
+![cilist](/images/adminguide/cilist.png)
 
 - 名称：计算实例对应的资源名称，当计算实例为虚拟机时展示虚拟机名称，当计算实例为 PaaS 产品的一个实例时展示 PaaS 产品的资源名称，如 `lb001` 。
 - 计算实例 ID：计算实例在所对应的底层计算实例标识符。
@@ -497,7 +497,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过存储集群控制台查看特定地域的所有存储集群列表及信息，包括集群 ID、集群类型、集群类型名称、总存储、已使用存储及创建时间，如下图所示：
 
-![storagesetlist](storagesetlist.png)
+![storagesetlist](/images/adminguide/storagesetlist.png)
 
 - 集群ID：存储集群平台全局唯一标识符，如 storage-set-01。
 - 集群类型：存储集群的类型。
@@ -514,7 +514,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 修改集群类型名称后，用户在创建云硬盘时选择的磁盘类型会同步为集群类型名称。修改名称不影响集群和资源的正常运行，在任何情况下均可修改。管理员可在存储集群列表点击“修改集群类型名称”，输入新名称即可更改集群类型名称，如下图所示：
 
-![renameset](renameset.png)
+![renameset](/images/adminguide/renameset.png)
 
 ### 4.2.3 修改集群权限
 
@@ -524,7 +524,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台管理员可在存储集群列表点击【修改集群类型权限】，指定租户权限为“所有租户”或“指定租户”，即可将集群划分给指定的租户，如下图所示：
 
-![setscene2](setscene2.png)
+![setscene2](/images/adminguide/setscene2.png)
 
 默认权限为所有租户，即平台所有租户默认均可在所有存储集群上创建并使用云盘资源；当用户为集群设置租户权限为指定租户时，仅指定的租户可查看并使用集群的存储资源。
 
@@ -559,7 +559,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 物理存储设备及网络准备好后，即可与平台进行对接并使用平台提供的外置存储服务，整个对接过程需要存储设备管理员、平台管理员及平台租户三个角色进行操作，其中与平台相关的为平台管理员和平台租户的操作，如下图流程所示：
 
-![storageflow](storageflow.png)
+![storageflow](/images/adminguide/storageflow.png)
 
 1. **存储设备管理员管理存储卷**
 
@@ -593,7 +593,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过导航栏中的集群进入集群管理，切换至外置存储控制台进行外置存储页面，通过【新建】操作进入添加外置存储向导页面，如下图所示：
 
-![addstorage](addstorage.png)
+![addstorage](/images/adminguide/addstorage.png)
 
 * 名称：外置存储的名称，添加时必须指定。
 * ISCSI 地址：外置存储的 ISCSI 连接地址，格式为 IP:Port ，支持添加多个 ISCSI 地址，如 172.16.13.201:3260 和 172.16.13.202:3260 。
@@ -604,7 +604,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持管理员查看外置存储的列表信息，包括名称、资源 ID、ISCSI 地址、LUN 数量及操作项，如下图所示：
 
-![storagelist](storagelist.png)
+![storagelist](/images/adminguide/storagelist.png)
 
 * 名称：外置存储的名称和标识，租户端在创建虚拟机时系统盘类型处显示的名称。
 * 资源 ID ：外置存储在平台的全局唯一标识符。
@@ -625,7 +625,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过外置存储详情中的【LUN 存储卷】列表查看已扫描出的存储卷信息，包括 LUNID、资源 ID、容量、状态、挂载资源、所属租户及操作项，如下图所示：
 
-![lunlist](lunlist.png)
+![lunlist](/images/adminguide/lunlist.png)
 
 * LUNID：LUN 存储卷在商业存储中的唯一标识符。
 * 资源 ID：存储卷在平台的唯一标识符。
@@ -642,7 +642,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过 LUN 存储卷列表上的【分配】操作，将一个 LUN 存储设备分配给一个租户，如下图所示：
 
-![Assignlun](Assignlun.png)
+![Assignlun](/images/adminguide/Assignlun.png)
 
 管理员也可通过分配操作将一个存储卷重新分配给另一个租户，仅支持未绑定状态的 LUN 设备重新分配租户。
 
@@ -650,7 +650,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台支持管理员删除外置存储，删除前扫描出的所有 LUN 设备必须为未绑定状态。可通过外置存储资源列表操作项中的删除对外置存储进行删除，如下图所示：
 
-![rmstorage](rmstorage.png)
+![rmstorage](/images/adminguide/rmstorage.png)
 
 外置存储删除仅表示设备从平台进行释放，可通过录入 ISCSI 地址重新添加存储设备到云平台。
 
@@ -666,7 +666,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可在计算资源/物理机页面查看地域下所有物理机节点列表及相关信息，包括物理机 ID、物理机 IP、计算集群 ID、CPU 类型、总核数、已分配核数、总内存、已分配内存、状态、更新时间及操作项，如下图所示：
 
-![computenode](computenode.png)
+![computenode](/images/adminguide/computenode.png)
 
 - 物理机 ID：计算节点在平台的唯一标识符。
 - 物理机 IP：计算节点的 IP 地址。
@@ -689,7 +689,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可在物理机列表中，通过目标物理机器名称或者右侧的“详情”按钮进入物理机器详情页面，查看物理机的基本信息及监控信息，同时可查询计算节点已运行的计算实例，如下图所示：
 
-![computenodeinfo](computenodeinfo.png)
+![computenodeinfo](/images/adminguide/computenodeinfo.png)
 
 **（1）基本信息**
 
@@ -703,7 +703,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持管理员通过物理机详情页面，查看物理机中的计算实例列表及信息，包括名称、计算实例 ID、资源 ID、所属租户、物理机 IP、镜像 ID、GPU、CPU、内存、状态、创建时间及更新时间，并支持对计算实例进行搜索，支持模糊搜索，如下图所示：
 
-![nodeinstance](nodeinstance.png)
+![nodeinstance](/images/adminguide/nodeinstance.png)
 
 计算实例包括虚拟机的实例，同时也包括平台网关及 PaaS 产品的实例，可通过实例名称及资源 ID 进行区分。
 
@@ -711,7 +711,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 物理机被锁定后，新建计算实例不会被调度至计算节点，不影响节点内已有计算实例，可配合物理机进入维护模式功能，以实现物理机维护、升级等操作。
 
-![lock](lock.png)
+![lock](/images/adminguide/lock.png)
 
 仅支持物理机在【可用】状态下进行锁定操作，锁定物理机后，物理机的状态即流转为【已锁定】，在已锁定状态下新的虚拟机实例不会被创建至节点，同时可在已锁定状态下使计算节点进入维护模式。
 
@@ -721,7 +721,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员将锁定的物理机进行解锁，可对外提供计算服务，计算实例可被调度并部署至物理机。
 
-![unlock](unlock.png)
+![unlock](/images/adminguide/unlock.png)
 
 仅支持物理机在【已锁定】状态下进行解锁操作，解锁后物理机的状态即流转为【可用】，在可用状态下计算实例会被调度并创建至节点。
 
@@ -731,7 +731,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 物理机进入维护模式前必须保证节点状态为已锁定，即需要将物理机进行锁定，才可进行【进入维护模式】的操作，如下图所示：
 
-![maintenance](maintenance.png)
+![maintenance](/images/adminguide/maintenance.png)
 
 管理员将物理机锁定并进入维护模式前，需请执行以下检查：
 
@@ -745,7 +745,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 2. 点击“进入维护模式”按钮，将物理机器进入到维护模式，物理机将自动流转为“进入维护模式中”状态，如下图所示：
 
-   ![inmaintain](inmaintain.png)
+   ![inmaintain](/images/adminguide/inmaintain.png)
 
 3. 系统会自动执行在线迁移功能，将此物理机器上的资源随机迁移至本计算集群中其他合适的物理机节点，关机状态的计算实例在下次启动后会自动调度至其它物理机。
 
@@ -759,7 +759,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台管理员可通过物理机节点列表操作项中的【退出维护模式】按钮进行操作，如下图所示：
 
-![outmaintain](outmaintain.png)
+![outmaintain](/images/adminguide/outmaintain.png)
 
 退出维护模式后，物理机节点的状态会自动流转为【已锁定】状态，需通过解锁操作使物理机可正常提供服务。
 
@@ -832,7 +832,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过控制台导航栏【物理机纳管】进入物理机资源池列表页面，通过【创建资源池】指定资源池的名称、Vlan、网段及网关进行创建操作，如下图所示：
 
-![createbmspool](createbmspool.png)
+![createbmspool](/images/adminguide/createbmspool.png)
 
 * 名称：资源池在平台的名称标识，如 Dell-pool 。
 * Vlan ：资源池网段的所属 Vlan ，无 Vlan 时可为空。
@@ -845,7 +845,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可平台控制台查看物理机资源池的列表及相关信息，包括名称、资源 ID、Vlan、网段、网关、物理机数量及操作项，如下图所示：
 
-![bmspoollist](bmspoollist.png)
+![bmspoollist](/images/adminguide/bmspoollist.png)
 
 * 名称：物理机资源池的名称标识。
 * 资源 ID：物理机资源池的全局唯一标识符。
@@ -856,7 +856,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过列表上操作项对资源池进行修改和删除操作，同时支持批量删除操作；管理员可通过详情按钮进入资源池的详情页面查看资源池的物理机信息，如下图所示：
 
-![bmspoolinfo](bmspoolinfo.png)
+![bmspoolinfo](/images/adminguide/bmspoolinfo.png)
 
 通过详情页面管理员可查看物理机资源池的基本信息，同时可通过物理机模块进行资源池的物理机管理，其中基本信息包括名称、资源 ID、Vlan、网段、网关、物理机数量及申请时间。
 
@@ -866,7 +866,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持平台管理员修改物理机资源池的信息，包括名称、 Vlan、网段、网关，如下图所示：
 
-![updatebmspool](updatebmspool.png)
+![updatebmspool](/images/adminguide/updatebmspool.png)
 
 由于资源池的网段和 Vlan 信息会被资源池中的物理机使用，若物理机资源池中已添加物理机，则不允许修改 Vlan 和网段信息，可修改名称及网关信息。
 
@@ -874,7 +874,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持平台管理员删除物理机资源池，删除后租户将无法再申请和管理资源池中的物理机，但不影响已申请物理机的正常运行。管理员可通过物理机资源池列表操作项中的删除按钮进行资源池的删除，如下图所示：
 
-![rmbmspool](rmbmspool.png)
+![rmbmspool](/images/adminguide/rmbmspool.png)
 
 资源池被删除后即直接销毁，删除前需确保资源池中的物理机未被租户申请和使用，避免影响租户对物理机的管理和使用。
 
@@ -891,7 +891,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 在准备好前提条件后，管理员可进入物理机资源池详情页面，通过指定名称、SN、IPMI IP、IPMI 用户名、IPMI 密码及网卡模板添加一台物理机，如下图所示：
 
-![createbms](createbms.png)
+![createbms](/images/adminguide/createbms.png)
 
 * 名称：指物理机在平台的名称标识，添加时必须指定。
 * SN：指物理机的硬件整机序列号，添加时必须指定，可通过 IPMI 系统或硬件上进行查看。
@@ -911,11 +911,11 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 为方便运维人员快捷添加物理机，平台提供批量导入物理机的能力，可根据平台规范上传 CSV 格式的表格文件，批量导入一批物理机，如下图所示：
 
-![importbms](importbms.png)
+![importbms](/images/adminguide/importbms.png)
 
 仅支持 CSV 格式且按照平台规范的文件，可参考【物理机列表示例】文件进行表格制作，表格中的信息包括 Name、SN、IPMIIP、IPMIUsername、IPMIPassword 及 NICTemplateID ，分别代表物理机名称、SN 整机序列号、IPMI  IP 地址、IPMI 用户名、IPMI 密码及网卡模板，如下图所示：
 
-![bmcsr](bmcsr.png)
+![bmcsr](/images/adminguide/bmcsr.png)
 
 批量导入的物理机和手动添加的物理机一致，均会进行初始化准备工作，并将物理机最终置为【已就绪】状态，若物理机一直在准备中，需要登录 IPMI 系统查看物理机的网络及相关配置是否准确。
 
@@ -923,7 +923,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 物理机添加至资源池后，管理员可通过资源池详情中的物理机列表查看物理机的相关信息，包括名称、资源 ID、SN、IPMI IP、SMIP User、所属租户、关联网卡模板、状态及操作项，如下图所示：
 
-![bmslist](bmslist.png)
+![bmslist](/images/adminguide/bmslist.png)
 
 * 资源 ID/名称： 为物理机添加至平台后的唯一标识符和名称。
 * 所属租户：代表申请该台物理机的租户，未被申请的物理机租户为空。
@@ -939,9 +939,9 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过列表上的操作项对物理机进行移除、修改模板、修改物理机、修改名称和备注等操作，同时支持通过列表对物理机进行批量移除，方便运维操作。管理员也可通过物理机名称进入物理机的详情页面，查看物理机的硬件配置信息，包括 CPU、内存、磁盘及网卡信息，如下图所示共分为基本信息、磁盘信息及网卡信息：
 
-![bmsinfo1](bmsinfo1.png)
+![bmsinfo1](/images/adminguide/bmsinfo1.png)
 
-![bmsinfo2](bmsinfo2.png)
+![bmsinfo2](/images/adminguide/bmsinfo2.png)
 
 **（1）基本信息**
 
@@ -966,7 +966,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 为应对灵活配置网卡的应用场景，平台支持管理员修改已添加的物理机网卡模板，以适应物理机的真实网卡配置。仅支持修改状态为【已就绪】及【成功】的物理机网卡模板，具体操作如下图所示：
 
-![upbmsnet](upbmsnet.png)
+![upbmsnet](/images/adminguide/upbmsnet.png)
 
 修改物理机的网卡模板不影响运行中的物理机，装机或重装系统时会根据新的网卡模板生效。
 
@@ -974,7 +974,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 物理机添加至资源池后，支持管理员修改物理机的基本信息，包括名称、IPMIIP、IPMI 用户名及  IPMI 密码，如下图所示：
 
-![upbms](upbms.png)
+![upbms](/images/adminguide/upbms.png)
 
 修改物理机 IPMI 相关信息时，需确保修改的信息准确性，否则可能影响物理机的装机及管理操作。
 
@@ -982,7 +982,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台支持管理员移除未被租户申请的物理机资源，如下图所示：
 
-![rmbms](rmbms.png)
+![rmbms](/images/adminguide/rmbms.png)
 
 删除物理机后，会自动解绑与网卡模板的关联，且租户无法管理物理机，但不影响物理机本身的正常运行；若物理机已被租户申请且未释放，则无法进行删除。
 
@@ -1004,7 +1004,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 在添加物理机前需要为资源池中的物理机准备一个网卡模板，管理员可通过物理机纳管控制台的网卡模板标签页进行网卡模板的创建操作，如下图所示：
 
-![nictem](nictem.png)
+![nictem](/images/adminguide/nictem.png)
 
 创建网卡模板时需指定名称、厂商、型号、网卡设置及虚拟网卡：
 
@@ -1025,7 +1025,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过网卡模板列表查看网卡模板的基本信息，包括名称、资源 ID、厂商、型号及操作项，如下图所示：
 
-![nictemlist](nictemlist.png)
+![nictemlist](/images/adminguide/nictemlist.png)
 
 可通过列表上的对网卡模板进行修改及删除操作，支持批量删除。
 
@@ -1033,7 +1033,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可随时修改网卡模板的配置信息，与创建模板时一致，可进行修改名称、厂商、型号、网卡设置及虚拟网卡，如下图所示：
 
-![upnictem](upnictem.png)
+![upnictem](/images/adminguide/upnictem.png)
 
 修改网卡模板配置仅对需要安装操作系统或重装系统的物理机生效。
 
@@ -1041,7 +1041,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过控制台删除无用的网卡模板，仅支持删除未被使用的网卡模板，即未被物理机关联的网卡模板才可进行删除。
 
-![rmnictem](rmnictem.png)
+![rmnictem](/images/adminguide/rmnictem.png)
 
 ## 5.3 镜像管理
 
@@ -1060,7 +1060,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 在基础镜像列表可查看平台所有基础镜像及镜像信息，包括名称、iD、系统类型、操作系统状态及操作项，如下图所示：
 
-![baseimagelist](baseimagelist.png)
+![baseimagelist](/images/adminguide/baseimagelist.png)
 
 - 镜像名称：镜像的标识名称，创建虚拟机时展示在镜像列表中的标识。
 - 资源 ID：镜像文件在平台的唯一标识符。
@@ -1099,7 +1099,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 在自制镜像列表可查看平台所有租户在一个地域内的自制镜像列表信息，包括镜像名称、资源 ID、所属租户、系统类型、操作系统、状态及操作项，如下图所示：
 
-![customeimage](customeimage.png)
+![customeimage](/images/adminguide/customeimage.png)
 
 - 镜像名称：自制镜像的标识名称。
 
@@ -1128,7 +1128,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 制作好自定义镜像后，可通过镜像管理控制台资源列表上方的【导入镜像】功能，进入导入镜像向导页面：
 
-![upimage](upimage.png)
+![upimage](/images/adminguide/upimage.png)
 
 - 租户邮箱：通过租户主账号邮箱选定自制镜像归属的租户。
 - 镜像名称/描述：镜像的名称及相关描述信息；
@@ -1167,7 +1167,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 若平台需要其它基础镜像系统，可先上传为自制镜像，再通过“复制为基础镜像”的功能转化为平台基础镜像。可通过目标自制镜像右侧“复制为自制镜像”操作，如下图所示：
 
-![cloneimage](cloneimage.png)
+![cloneimage](/images/adminguide/cloneimage.png)
 
 输入目标基础镜像名称，即可触发复制为基础镜像的操作，自制镜像复制过程中会在基础镜像列表生成一条状态为【制作中】的基础镜像信息，待状态转换为【可用】时，代表复制成功，平台上的所有租户可使用此镜像创建虚拟机，进行业务部署。
 
@@ -1177,11 +1177,11 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员如果需要下载镜像至本地时，可通过自制镜像列表操作项中的【下载】进入镜像下载向导页面，如下图：
 
-![downloadimage](downloadimage.png)
+![downloadimage](/images/adminguide/downloadimage.png)
 
 点击生成下载地址后，平台会跳转至下载地址展示向导页面，通过向导页面，用户通过复制下载地址链接，通过 HTTP、FTP 及相关下载工具下载镜像。
 
-![downloadimage1](downloadimage1.png)
+![downloadimage1](/images/adminguide/downloadimage1.png)
 
 > 镜像下载地址有效期为 24 小时，需在 24 小时内进行镜像下载。若镜像下载地址过期，则无法进行下载，需到平台重新生成镜像下载地址。
 
@@ -1189,7 +1189,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可对自制镜像进行删除操作，被删除的自制镜像会自动进入所属租户的“**回收站**”，可通过回收站进行还原和销毁操作。管理员可通过自制镜像管理控制台的“删除”功能进行自制镜像的删除，删除后可到回收站中查看已删除的自制镜像，如下图所示：
 
-![rmimage](../UserGuide/rmimage.png)
+![rmimage](/images/adminguide/../UserGuide/rmimage.png)
 
 仅支持删除状态为可用或导入失败的的自制镜像；若已通过自制镜像创建虚拟机，则不可删除自制镜像，需要将虚拟机删除，才可进行自制镜像的删除。
 
@@ -1223,7 +1223,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员在物理网络设备配置好 Vlan 及网段信息后，通过平台资源管理进入外网网段资源控制台，指定网段名称、描述、IP 版本、网段、网关、网卡、Vlan、路由及租户权限创建一个外网网段，如下图所示：
 
-![createnet](createnet.png)
+![createnet](/images/adminguide/createnet.png)
 
 * 名称/描述：指外网网段的名称和描述，名称会作为租户端申请外网 IP 时展示的网段名称。
 * IP 版本：指外网网段的 IP 版本，支持 IPv4 或 IPv6 ，创建时必须指定，默认为 IPv4。
@@ -1251,7 +1251,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 当需要将一段外网网段独享给部分租户时，管理员可修改外网网段的租户权限，如下图所示：
 
-![upnetauth](upnetauth.png)
+![upnetauth](/images/adminguide/upnetauth.png)
 
 修改租户权限后，无权限的租户即无法查看并使用外网网段的 IP 地址，但不影响已申请外网 IP 地址的使用，若租户释放了外网 IP ，则无法在申请该网段的  IP 地址。
 
@@ -1259,7 +1259,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
  支持管理员删除不再使用的外网网段，如下图所示：
 
-![rmnet](rmnet.png)
+![rmnet](/images/adminguide/rmnet.png)
 
 若网段中的 IP 地址已被租户申请，则无法删除，需要租户将所有的外网 IP 地址释放后，才可进行删除；管理员也可通过虚拟资源管理中为租户释放外网 IP 地址。
 
@@ -1352,7 +1352,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 租户管理用于管理整个云平台的租户及账号信息，提供创建/冻结租户及充值功能，支持查看租户拥有资源信息、订单记录、交易记录及配额价格等信息；同时支持修改租户的资源配额及产品价格。
 
-![organazation](organazation.png)
+![organazation](/images/adminguide/organazation.png)
 
 * **租户**：
 
@@ -1368,7 +1368,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过创建账户来新增平台的租户，同时会新增一个主账号，管理员可通过管理控制台——租户管理中的创建账户进行租户的建立，如下图所示，创建账户时需要输入账户名称、账户邮箱、账户密码、确认密码、是否资源审批、是自自动审批等：
 
-![addacc](addacc.png)
+![addacc](/images/adminguide/addacc.png)
 
 - 账户名称：租户和主账户的名称标识。
 
@@ -1386,7 +1386,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可查看平台所有的租户列表，一个账户代表一个租户。在创建账号时，平台默认会创建一个租户和一个主账号，主账号即为此租户的管理者。账户的列表信息如下图所示：
 
-![acclist](acclist.png)
+![acclist](/images/adminguide/acclist.png)
 
 - 账户 ID：租户的 ID 。
 - 账户名称：账户的名称。
@@ -1404,7 +1404,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过租户列表对每个租户进行管理和操作，包括冻结、解冻、登录限制及编辑审批流程，同时可通过详情按钮进入租户的详情，对租户的账号及配置进行全局管理，同时支持修改租户的账户名称，如下图所示：
 
-![upaccname](upaccname.png)
+![upaccname](/images/adminguide/upaccname.png)
 
 账户概览页面主要展示账户的基本信息和账户下所有的成员，其中基本信息包括账户 ID、账户名称、账户邮箱、现金余额、赠送余额、信用余额、创建时间，有关租户成员管理详见[租户成员管理]()。
 
@@ -1412,7 +1412,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 冻结账户是指将一个租户进行锁定，被成功冻结的租户，主/ 子账号将无法登录云平台，不影响租户内已创建资源的及业务的正常运行。仅支持状态为【使用中】的租户进行冻结操作，管理员可通过租户列表的冻结进入冻结租户的向导页面，如下图所示：
 
-![lockacc](lockacc.png)
+![lockacc](/images/adminguide/lockacc.png)
 
 租户被冻结后，租户内的主子账号均会被冻结，即所有的账号均无法使用，需要对租户进行解冻，租户内的所有账号才可使用。
 
@@ -1420,7 +1420,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 当租户被冻结后，租户的状态为冻结中，支持管理员通过租户管理解冻一个租户，如下图所示：
 
-![unlockacc](unlockacc.png)
+![unlockacc](/images/adminguide/unlockacc.png)
 
 租户解冻后，默认租户中的所有账号均会被解冻，并可正常登录控制台。若冻结租户前，有子账号为冻结中，解冻租户后，之前被冻结的子账号依然保持为冻结中，需要到租户中单独解冻被冻结的子账号，适用于有子账号离职，冻结其账号的场景。
 
@@ -1432,13 +1432,13 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过租户列表操作项中的“登录访问限制”功能对租户的登录策略进行配置，如下图所示，默认为空代表全网无限制。
 
-![LoginWhitelist](LoginWhitelist.png)
+![LoginWhitelist](/images/adminguide/LoginWhitelist.png)
 
 ## 7.7 编辑审批流程
 
 管理员可通过编辑审批流程管理租户下的审批流程设置，以开启或关闭一个租户下所有账号变更资源的审批流程方式，包括开启/关闭资源审批及开启/关闭自动审批。
 
-![editapprove](editapprove.png)
+![editapprove](/images/adminguide/editapprove.png)
 
 ## 7.8 租户成员管理
 
@@ -1448,7 +1448,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 成员列表主要展示租户下的主账号和子账号信息，包括角色 ID、角色、账户 ID、账户名称、邮箱 、状态、创建时间及操作项，同时支持对主子账号进行搜索操作。管理员可通过租户列表中租户的 ID 进入租户详情的概览页面，查看成员的列表信息，如下图所示：
 
-![acclist1](acclist1.png)
+![acclist1](/images/adminguide/acclist1.png)
 
 - 角色 ID：主账号/子账号在平台的唯一标识符。
 - 角色：账户的角色，分为主账号和子账号两种。
@@ -1466,7 +1466,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持管理员单独冻结一个租户内的主账号或子账号。冻结成功的主账号，将不允许登录控制台，不影响其它子账号；冻结成功的子账号，将不允许登录控制台，不影响其它子账号及主账号。
 
-![lockmasteracc](lockmasteracc.png)
+![lockmasteracc](/images/adminguide/lockmasteracc.png)
 
 * 若账号被冻结时，管理员将账号所属租户冻结，则账号为冻结中状态。
 * 管理员将租户解冻时，不影响以前就冻结的账号，即租户解冻，该账号依然为冻结中。
@@ -1476,19 +1476,19 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持管理员单独解冻一个租户内的主账号或子账号，解冻成功的将允许登录控制台。如一个账号因多次输入密码错误导致账号被冻结，可通过租户成员管理单独解冻账号。
 
-![unlockmasteracc](unlockmasteracc.png)
+![unlockmasteracc](/images/adminguide/unlockmasteracc.png)
 
 ## 7.9 租户订单管理
 
 通过租户管理，管理员可查看所属租户的订单管理，同时可通过自定义查询时间查看租户在一定时间周期内产生的订单，并支持管理员下载订单管理信息为本地 Excel 文件，如下图所示：
 
-![accorder](accorder.png)
+![accorder](/images/adminguide/accorder.png)
 
 ## 7.10 租户交易管理
 
 通过租户管理，管理员可查看所属租户的交易信息，同时可通过自定义查询时间查看租户在一定时间周期内产生的交易记录，并支持管理员下载交易管理信息为本地 Excel 文件，如下图所示：
 
-![acctran](acctran.png)
+![acctran](/images/adminguide/acctran.png)
 
 ## 7.11 租户充值管理
 
@@ -1501,7 +1501,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 * 账户余额的充值涞源分为微信支付、银行转账、支付宝支付、微信支付、新浪支付五种。
 * 免费余额为平台为用户赠送的余额，用于测试。
 
-![recharge](recharge.png)
+![recharge](/images/adminguide/recharge.png)
 
 单次充值最小金额为 100 ，最大为 500000 。
 
@@ -1509,7 +1509,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员通过充值管理，查看一定时间段内的充值记录信息，包括充值单号、充值渠道、充值方式、充值金额及充值时间等，并支持管理员下载充值记录信息为本地 Excel 文件，如下图所示：
 
-![rechargelist](rechargelist.png)
+![rechargelist](/images/adminguide/rechargelist.png)
 
 ## 7.12 管理租户配额
 
@@ -1517,7 +1517,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 通过租户管理，管理员可查询当前租户对平台资源的配额设置，同时支持管理员修改租户下每个产品的配额信息，包括产品类型、地域、配额值、更新时间及操作项。
 
-![accquota](accquota.png)
+![accquota](/images/adminguide/accquota.png)
 
 通过操作项，管理员可针对每个产品修改在地域中的配额值。
 
@@ -1525,7 +1525,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台支持配置租户配额的产品包括虚拟机、镜像、VPC、硬盘、网卡、外网 IP、负载均衡、安全组、NAT 网关及 VPN 网关，可根据每个产品针对每个地域及全部地域进行配额配置。
 
-![upaccquota](upaccquota.png)
+![upaccquota](/images/adminguide/upaccquota.png)
 
 租户的配额默认继承平台全局的配额设置，管理员可自定义每个租户的产品配额 ；同时针对每个产品的配额之和不可超过全部地域的配额限制。
 
@@ -1535,7 +1535,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 通过租户管理，管理员可查询当前租户在平台上计费资源的价格信息，包括产品、地域、集群、计费类型、计费规则、价格、折扣、折扣价格、更新时间及操作项。
 
-![setaccprice](setaccprice.png)
+![setaccprice](/images/adminguide/setaccprice.png)
 
 通过操作项，管理员可针对每个产品修改在地域及不同集群的价格，计费资源包括 CPU、内存、硬盘、内网带宽、GPU，及租户创建虚拟资源时，通过计费资源的费用合计按照付费方式进行扣费。
 
@@ -1550,7 +1550,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 租户在平台的资源价格默认继承平台全局的价格配置，管理员可自定义每个租户的产品价格折扣，设置单个资源在针对租户在不同集群的价格，如下图以修改 CPU 在集群 `ComputeSetAAAA` 的按月付费折扣为例：
 
-![UpdateDiscount](UpdateDiscount.png)
+![UpdateDiscount](/images/adminguide/UpdateDiscount.png)
 
 其中折扣为百分数，如 90 为基准价格的 9 折，即将租户 CPU 按月付费的价格打 9 折。修改后即会生效，租户已创建的资源不受影响，新创建的 CPU 资源将按照新的价格进行扣费。
 
@@ -1560,7 +1560,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 通过租户管理，管理员可查看所属租户的资源概览信息，包括资源使用率及资源配额使用情况，如下图所示：
 
-![accoverview](accoverview.png)
+![accoverview](/images/adminguide/accoverview.png)
 
 * 资源使用率：指租户在平台中的所有资源的平均使用率，包括 CPU 平均使用率、内存平均使用率、硬盘平均使用率及带宽平均使用率。
 * 资源配额使用情况：指租户在平台中所有资源的配额占用情况，包括虚拟机、镜像、硬盘、弹性网卡、VPC、外网弹性 IP、安全组、负载均衡、NAT 网关、VPN 网关、MySQL 及 Redis 的总配额以及已使用的配额情况。
@@ -1625,7 +1625,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员新建租户时，支持为租户开启/关闭审批流程，并支持设置开启/关闭自动审批，如下图所示：
 
-![approval](approval.png)
+![approval](/images/adminguide/approval.png)
 
 - 资源审批：是否需要为租户开启资源审批，为账户所在租户开启资源审批流程，此租户下用户创建云主机、云硬盘、私有网络、外网IP，修改云主机配置、扩容系统盘、扩容数据盘、调整带宽需要走申请流程。平台默认审批流程是由平台管理员对资源申请进行审批。
 - 自动审批：是否需要为租户开启资源的自动审批，开启自动审批后，租户的主/子账号提供资源申请后，将自动进行审批，无需人工干预即可完成资源的审批和创建。
@@ -1634,7 +1634,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台支持管理员为已创建的租户开启或关闭审批流程，同时支持开启或关闭自动审批。可通过租户管理页面租户列表的【编辑审批流程】对已创建租户的审批流程进行变更，同时可查看当前租户的审批流程开关状态，如图所示：
 
-![editapprove](editapprove.png)
+![editapprove](/images/adminguide/editapprove.png)
 
 ## 8.3 审批管理
 
@@ -1649,9 +1649,9 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过导航栏【审批管理】进入审批管理控制台，通过审批记录的待办和已办列表查看所有的审批记录信息，如下分别为待办和已办的列表：
 
-![approvewait](approvewait.png)
+![approvewait](/images/adminguide/approvewait.png)
 
-![approvedone](approvedone.png)
+![approvedone](/images/adminguide/approvedone.png)
 
 通过待办和已办列表信息，管理员可分别查看需要处理及已处理的审批记录的列表信息，包括申请名称、资源类型、操作、账号邮箱、账号 ID、创建时间、审批结果及操作项。
 
@@ -1667,7 +1667,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员也可通过详情按钮进入审批记录的详请页面，查看本条审批记录对应的申请详情，包括申请的基本信息、资源信息、关联资源以及处理记录，如下图所示：
 
-![approveinfo](approveinfo.png)
+![approveinfo](/images/adminguide/approveinfo.png)
 
 （1）申请信息：描述本次申请的详细信息，如申请名称、申请资源类型、申请的变更操作及申请的状态及时间。
 
@@ -1686,13 +1686,13 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 租户发起资源变更申请后，管理员审批管理的待办列表中会生成一条审批记录，支持管理员对租户的申请进行通过操作，即同意用户的资源变更申请。审批通过后将自动为申请租户执行资源操作，下发资源或对资源执行变更。
 
-![approvepass](approvepass.png)
+![approvepass](/images/adminguide/approvepass.png)
 
 ### 8.3.3 拒绝申请
 
 租户发起资源变更申请后，管理员审批管理的待办列表中会生成一条审批记录，支持管理员对租户的申请进行拒绝操作，即拒绝用户的资源变更申请。审批拒绝后申请将直接结束流程，不再执行资源操作。
 
-![approverefuse](approverefuse.png)
+![approverefuse](/images/adminguide/approverefuse.png)
 
 # 9 账务管理
 
@@ -1728,7 +1728,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台管理员可在订单管理页面，通过自定义查询时间查看云平台在一定时间周期内产生的订单，如下图所示：
 
-![order](order.png)
+![order](/images/adminguide/order.png)
 
 - 订单号：订单在云平台的唯一标识符。
 - 资源 ID：订单关联资源的资源 ID。
@@ -1742,7 +1742,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台管理员可在交易管理页面，通过自定义查询时间查看云平台在一定时间周期内产生的交易信息，如下图所示：
 
-![tran](tran.png)
+![tran](/images/adminguide/tran.png)
 
 - 交易单号：交易记录在云平台的唯一标识。
 - 交易类型：账户充值和扣费均会生成一次交易记录，因此交易类型包括账户余额充值、免费账户充值及扣费。
@@ -1760,7 +1760,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 平台管理员可在充值管理页面，通过自定义查询时间查看云平台在一定时间周期内产生的充值记录信息，如下图所示：
 
-![recharge1](recharge1.png)
+![recharge1](/images/adminguide/recharge1.png)
 
 - 充值单号：充值记录在云平台的唯一标识。
 - 充值帐户 ID：充值的账号 ID。
@@ -1793,7 +1793,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 支持管理员通过价格配置控制台查看当前平台上所有产品（计费资源）的价格信息，包括产品、地域、集群、计费类型、计费规则、价格、更新时间及操作项。
 
-![price](price.png)
+![price](/images/adminguide/price.png)
 
 通过操作项，管理员可针对每个产品修改在不同集群的价格，计费资源包括 CPU、内存、硬盘、内网带宽、外网IP 及 GPU，租户创建虚拟资源时，通过计费资源的费用合计按照付费方式进行扣费。
 
@@ -1813,11 +1813,11 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可在全局价格配置列表上对计费资源项进行价格更新，支持设置单个资源项针对不同集群的基准价，如下图以修改 CPU 在集群 `ComputeSetAAAA` 的按月付费基准价为例：
 
-![upcpuprice](upcpuprice.png)
+![upcpuprice](/images/adminguide/upcpuprice.png)
 
 管理员可为每个计费资源项修改基准价格，上图以虚拟机 CPU 为例，可设置单核 vCPU 的每小时价格为 0.2431 元，表示单核 vCPU 的小时单价为 0.2431元。同时平台针对外网 IP 的网段，支持按梯度区间定价，如下图所示：
 
-![bgpprice](bgpprice.png)
+![bgpprice](/images/adminguide/bgpprice.png)
 
 管理员可针对外网网段（如图上 Bgp 网段） IP 带宽进行梯度区间定价，如 `0M~5M` 的全局基准价格为 1 元，5M~99999999M 的全局基准价格为 10 元，提升平台计费的可维护性。
 
@@ -1839,7 +1839,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 管理员可通过全局配置中的 NTP 服务器地址查看并修改 NTP 服务器地址，默认为空，如下图所示：
 
-![upntpserver](upntpserver.png)
+![upntpserver](/images/adminguide/upntpserver.png)
 
 NTP 服务器地址仅支持 IPv4 地址，且 IP 地址必须从平台网络可达，以保证可以和 NTP Server 端进行通信；平台会检测 NTP Server 是否可用。修改 NTP 服务器地址可能会影响平台的服务使用，配置时需要谨慎操作。
 
@@ -1921,7 +1921,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 邮箱设置是指平台邮件服务的配置，主要功能包注册激活、找回密码及监控告警邮件的接收和发送。平台支持管理员定义邮箱的发件人邮箱地址、发件人邮箱密码、邮件服务器地址、邮箱服务器端口及邮件主题前缀，如图所示：
 
-![email](email.png)
+![email](/images/adminguide/email.png)
 
 - 发件人邮箱地址: 配置发件人的邮箱地址。
 - 发件人邮箱密码：配置发件人邮箱密码
@@ -1943,7 +1943,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 登录页设置是平台为企业和管理员提供的登录客制化能力，包括 SSO 背景图、SSO 标题、SSO 标题颜色等，效果如下图所示：
 
-![ssoimage](ssoimage.png)
+![ssoimage](/images/adminguide/ssoimage.png)
 
 * SSO 背景图：代表登录框后的背景图片，图片支持png、jpeg、jpg格式，最大不超过500KB 。
 * SSO 标题：代表登录框上的标题描述，如 UCloudStack 私有云，可支持中英文及特殊字符。
@@ -1989,7 +1989,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 创建规格仅支持创建虚拟机 CPU/内存的规格，云硬盘和外网 IP 的规格由平台默认生成，仅支持修改。管理员可通过全局配置——规格配置中的创建规格进行创建操作，如下图所示：
 
-![createspec](createspec.png)
+![createspec](/images/adminguide/createspec.png)
 
 创建虚拟机规格支持根据不同的集群创建不同的规格，即可为不同的机型创建不同的规格，租户创建虚拟机选择不同机型时，即可创建不同规格的虚拟机，适应不同集群硬件配置不一致的应用场景。可分别定义 CPU 和内存：
 
@@ -2008,7 +2008,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 管理员可通过规格配置列表查看当前已有规格的列表信息，包括产品、集群类型、规格类型、规格值、状态、更新时间及操作项，如下图所示：
 
-![speclist](speclist.png)
+![speclist](/images/adminguide/speclist.png)
 
 - 产品：代表规格对应的产品，包括虚拟机、硬盘及外网 IP。
 - 集群类型：代表规格对应的集群类型或外网网段，指当前规格生效的纬度，如虚拟机在计算集群 A 的 CPU/内存规格；硬盘在存储集群 A 的容量范围规格；外网 IP 在 BGP 网段的带宽范围规格。
@@ -2025,21 +2025,21 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 （1）虚拟机产品规格支持修改 CPU 和内存值，其中 CPU 可指定 1、2、4、8、16、24、32、64；内存可过年费 定 1、2、4、8、16、24、32、64 、128 ，可根据业务需要自定义组合 CPU 和内存规格。
 
-![upvmspec](upvmspec.png)
+![upvmspec](/images/adminguide/upvmspec.png)
 
 （2）硬盘产品规格支持修改容量范围的最小容量和最大容量，其中最小容量和最大容量可设置的范围为 10GB 到 8000G ，即平台允许租户创建的云硬盘最小为 10GB ，最大支持到 8000GB ，可根据业务需要调整最小值和最大值。
 
-![updiskspec](updiskspec.png)
+![updiskspec](/images/adminguide/updiskspec.png)
 
 （3）外网 IP 规格支持修改带宽范围的最小带宽和最大带宽，其中最小带宽和最大带宽可设置的范围为 1Mb 到 10000Mb ，即平台允许租户申请的外网 IP 最小为 1Mb 最到为 10000Mb ，可根据业务需要调整最小值和最大值。
 
-![upnetspec](upnetspec.png)
+![upnetspec](/images/adminguide/upnetspec.png)
 
 ### 10.2.4 删除规格
 
 支持管理员删除指定自定义虚拟机规格，不支持删除硬盘和外网 IP 的规格。如下图所示：
 
-![rmspec](rmspec.png)
+![rmspec](/images/adminguide/rmspec.png)
 
 规格删除后平台租户即不可在所属机型中创建当前规格的虚拟机，但不影响通过该规格创建资源的正常运行。
 
@@ -2065,7 +2065,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 管理员可通过全局配置——配额管理查看当前平台全局配额管理中已有的配额配置信息，包括产品类型、地域、配额、更新时间及操作项，如下图所示：
 
-![quatolist](quatolist.png)
+![quatolist](/images/adminguide/quatolist.png)
 
 其中地域代表产品在当前地域中的配额设置，配额值代表在产品在当前地域中的配额值。管理员可通过修改按钮对配额进行修改。
 
@@ -2073,7 +2073,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 支持管理员修改平台上地域及全部地域级别的配额值，其中每个产品单个地域配额之和不能超过【全部】地域配额限制，如下图所示：
 
-![upquato](upquato.png)
+![upquato](/images/adminguide/upquato.png)
 
 修改全局配额设置不影响为租户自定义的配额设置。全局配额后修改后，若租户已有的产品数量超过设置值，不影响租户已有的资源运行；若租户将资源删除后，则无法再创建超过配额值的资源。
 # 11 操作日志
@@ -2082,7 +2082,7 @@ UCloudStack 云平台提供标准版、信创版及快杰版三个发行版本�
 
 目前平台全局操作日显示屏 支持查看日志的产品包括虚拟机、自制镜像、弹性网卡、云硬盘、VPC/子网、外网 IP、NAT 网关、VPN网关、弹性伸缩、负载均衡、安全组、帐户、告警模板及定时器等，如下图所示：
 
-![plog.png](plog.png)
+![plog.png](/images/adminguide/plog.png)
 
 * 操作（API）名称：指操作日志的操作名称，包括调用 API 的接口名称及操作的界面展示名称，如调整带宽。
 * 所属模块：指操作日志操作的资源类型，包括裸金属、虚拟机、虚拟机模板、镜像、VPC、云硬盘、弹性网卡、外网 IP、安全组、负载均衡、NAT 网关、VPN 网关、自动伸缩、监控告警模板、定时器、账户等。

@@ -58,7 +58,7 @@
 
 管理员新建租户时，支持为租户开启/关闭审批流程，并支持设置开启/关闭自动审批，如下图所示：
 
-![approval](approval.png)
+![approval](/images/adminguide/approval.png)
 
 - 资源审批：是否需要为租户开启资源审批，为账户所在租户开启资源审批流程，此租户下用户创建云主机、云硬盘、私有网络、外网IP，修改云主机配置、扩容系统盘、扩容数据盘、调整带宽需要走申请流程。平台默认审批流程是由平台管理员对资源申请进行审批。
 - 自动审批：是否需要为租户开启资源的自动审批，开启自动审批后，租户的主/子账号提供资源申请后，将自动进行审批，无需人工干预即可完成资源的审批和创建。
@@ -67,7 +67,7 @@
 
 平台支持管理员为已创建的租户开启或关闭审批流程，同时支持开启或关闭自动审批。可通过租户管理页面租户列表的【编辑审批流程】对已创建租户的审批流程进行变更，同时可查看当前租户的审批流程开关状态，如图所示：
 
-![editapprove](editapprove.png)
+![editapprove](/images/adminguide/editapprove.png)
 
 ## 8.3 审批管理
 
@@ -82,9 +82,9 @@
 
 管理员可通过导航栏【审批管理】进入审批管理控制台，通过审批记录的待办和已办列表查看所有的审批记录信息，如下分别为待办和已办的列表：
 
-![approvewait](approvewait.png)
+![approvewait](/images/adminguide/approvewait.png)
 
-![approvedone](approvedone.png)
+![approvedone](/images/adminguide/approvedone.png)
 
 通过待办和已办列表信息，管理员可分别查看需要处理及已处理的审批记录的列表信息，包括申请名称、资源类型、操作、账号邮箱、账号 ID、创建时间、审批结果及操作项。
 
@@ -100,7 +100,7 @@
 
 管理员也可通过详情按钮进入审批记录的详请页面，查看本条审批记录对应的申请详情，包括申请的基本信息、资源信息、关联资源以及处理记录，如下图所示：
 
-![approveinfo](approveinfo.png)
+![approveinfo](/images/adminguide/approveinfo.png)
 
 （1）申请信息：描述本次申请的详细信息，如申请名称、申请资源类型、申请的变更操作及申请的状态及时间。
 
@@ -119,11 +119,11 @@
 
 租户发起资源变更申请后，管理员审批管理的待办列表中会生成一条审批记录，支持管理员对租户的申请进行通过操作，即同意用户的资源变更申请。审批通过后将自动为申请租户执行资源操作，下发资源或对资源执行变更。
 
-![approvepass](approvepass.png)
+![approvepass](/images/adminguide/approvepass.png)
 
 ### 8.3.3 拒绝申请
 
 租户发起资源变更申请后，管理员审批管理的待办列表中会生成一条审批记录，支持管理员对租户的申请进行拒绝操作，即拒绝用户的资源变更申请。审批拒绝后申请将直接结束流程，不再执行资源操作。
 
-![approverefuse](approverefuse.png)
+![approverefuse](/images/adminguide/approverefuse.png)
 
