@@ -18,7 +18,7 @@ UCloudStack 私有云源于 UCloud 公有云，并持续平滑将公有云的核
 
 
 
-[产品概述](/UCloudStack/introduction/README.md)   |   [产品架构](/UCloudStack/introduction/arch.md) |  [核心功能](/UCloudStack/introduction/features.md)  |  [产品特性](/UCloudStack/introduction/advantages.md)   |   [客户痛点](/UCloudStack/introduction/painpoint.md) |  [应用场景](/UCloudStack/introduction/scenario.md)  |  [交付模式](/UCloudStack/introduction/deliver.md)
+<center>[产品概述](/UCloudStack/introduction/README.md)   |   [产品架构](/UCloudStack/introduction/arch.md) |  [核心功能](/UCloudStack/introduction/features.md)  |  [产品特性](/UCloudStack/introduction/advantages.md)   |   [客户痛点](/UCloudStack/introduction/painpoint.md) |  [应用场景](/UCloudStack/introduction/scenario.md)  |  [交付模式](/UCloudStack/introduction/deliver.md)</center>
 
 
 
@@ -47,8 +47,7 @@ UCloudStack 私有云平台支持纯软件和优钛超融合等多种交付模�
 
 为方便合作伙伴及第三方接入，平台为开发者提供标准的 API 接口及说明，可参考 API 手册及 API 状态码说明。
 
-* [API 手册](/UCloudStack/apiguide/README.md)
-* [API 状态码列表](/UCloudStack/apiretcode/apiretcode.md)
+<center>[API 手册](/UCloudStack/apiguide/README.md)   |   [API 状态码列表](/UCloudStack/apiretcode/apiretcode.md)</center>
 
 ### 常见问题
 
