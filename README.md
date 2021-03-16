@@ -8,17 +8,9 @@ UCloudStack 定位为轻量级交付，3 节点即可构建生产环境且可平
 
 UCloudStack 私有云源于 UCloud 公有云，并持续平滑将公有云的核心技术和产品迁移到私有云中来帮助用户进行数字化改造。首先来了解下与公有云一致的孪生私有云方案及它的特点。
 
-```
 <center>
-
-[产品概述](/UCloudStack/introduction/README.md)   |   [产品架构](/UCloudStack/introduction/arch.md) |  [核心功能](#核心功能)  |  [产品特性](#产品特性)   |   [客户痛点](#客户痛点) |  [应用场景](#应用场景)  |  [交付模式](#交付模式)
-
-</center> 
-```
-
-
-
-<center>[产品概述](/UCloudStack/introduction/README.md)   |   [产品架构](/UCloudStack/introduction/arch.md) |  [核心功能](/UCloudStack/introduction/features.md)  |  [产品特性](/UCloudStack/introduction/advantages.md)   |   [客户痛点](/UCloudStack/introduction/painpoint.md) |  [应用场景](/UCloudStack/introduction/scenario.md)  |  [交付模式](/UCloudStack/introduction/deliver.md)</center>
+[产品概述](/UCloudStack/introduction/README.md)   |   [产品架构](/UCloudStack/introduction/arch.md) |  [核心功能](/UCloudStack/introduction/features.md)  |  [产品特性](/UCloudStack/introduction/advantages.md)   |   [客户痛点](/UCloudStack/introduction/painpoint.md) |  [应用场景](/UCloudStack/introduction/scenario.md)  |  [交付模式](/UCloudStack/introduction/deliver.md)
+</center>
 
 
 
