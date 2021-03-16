@@ -1,7 +1,7 @@
 <div class="sidebar_title icon-product__ucloudstack">优刻得私有云 UCloudStack</div>
 
 * [文档概览](/UCloudStack/README.md)
-* [产品简介](/UCloudStack/introduction/README.md)
+* [产品介绍](/UCloudStack/introduction/README.md)
 * 操作指南
   * [用户手册](/UCloudStack/userguide/README.md)
   * [管理员手册](/UCloudStack/adminguide/README.md)

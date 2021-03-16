@@ -19,30 +19,29 @@ UCloudStack 私有云源于 UCloud 公有云，并持续平滑将公有云的核
 
 ### 操作指南
 
-接下来我们使用
+云平台统一管理服务为企业用户提供租户视角和管理视角两套控制台，其中：
 
-接下来我们使用容器实例(Cube)发布您的服务，将介绍具体创建填写字段含义以及示例操作。
+* 租户控制台用于平台租户虚拟资源管理，详见：[用户手册](/UCloudStack/userguide/README.md)。
+* 管理控制台用于平台管理者对云平台整体的运营运维，详见：[管理员手册](/UCloudStack/adminguide/README.md)
 
- 
-
-* [用户手册](/UCloudStack/userguide/README.md)
-* [管理员手册](/UCloudStack/adminguide/README.md)
-* [自定义镜像制作](/UCloudStack/customimage/customimage.md)
+若平台提供的虚拟机镜像无法满足业务需求，可通过自已制作符合平台规格的镜像，并将镜像上传至平台镜像仓库，即可通过自定义镜像运行虚拟机并部署业务，详见：[自定义镜像制作](/UCloudStack/customimage/customimage.md)。
 
 ### 产品白皮书
 
-* [技术白皮书](/UCloudStack/techwhitepaper/README.md)
-* [超融合一体机](/UCloudStack/utrion/utrion.md)
+UCloudStack 私有云平台支持纯软件和优钛超融合等多种交付模式，通过平台构建业务服务时，可参阅[技术白皮书](/UCloudStack/techwhitepaper/README.md)深入了解云平台的架构及服务工作机制；有关优钛超融合产品介绍和技术参考可参考[超融合一体机](/UCloudStack/utrion/utrion.md)。
 
 ### 开发者指南
+
+为方便合作伙伴及第三方接入，平台为开发者提供标准的 API 接口及说明，可参考 API 手册及 API 状态码说明。
 
 * [API 手册](/UCloudStack/apiguide/README.md)
 * [API 状态码列表](/UCloudStack/apiretcode/apiretcode.md)
 
 ### 常见问题
 
-* [架构类](/UCloudStack/faq.md)
+在部署构建平台及使用平台时，对应的可能会遇到一些使用中的问题，如果您未找到解决方案请与我们联系。架构类常见问题详见：[架构类](/UCloudStack/faq.md)
 
 ### 更新历史
 
-* [更新历史](/UCloudStack/changelog/README.md)
+通过更新历史，你可以直观的了解 UCloudStack 私有云平台的产品发布记录，并可了解每个版本更新的主要特性及对平台的优化点，详见：[更新历史](/UCloudStack/changelog/README.md)。
+
