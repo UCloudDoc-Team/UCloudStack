@@ -1,8 +1,10 @@
 # 常见问题
 
-
-
 ---
+
+##### 0、UCloudStack 是否支持 Oracle 及 RAC ？
+
+首先 Oracle 目前并未承认除 VMWare 以外的虚拟化环境运行 Oracle 数据库，即安装在其它虚拟化环境下的 Oracle 数据库可能不提供 Oracle 官方技术支持，客户需要自行评估风险。
 
 ##### 1、UCloudStack 最小规模需要多少硬件设备？
 
