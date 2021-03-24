@@ -3,7 +3,7 @@
 * [文档概览](/UCloudStack/README.md)
 * 产品介绍
   * [产品简介](/UCloudStack/introduction/README.md)
-  * [超融合一体机](/UCloudStack/utrion/README.md)
+  * [优钛超融合](/UCloudStack/utrion/README.md)
   * [技术白皮书](/UCloudStack/techwhitepaper/README.md)
 * 操作指南
   * [用户手册](/UCloudStack/userguide/README.md)
