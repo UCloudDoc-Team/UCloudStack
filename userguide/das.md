@@ -530,7 +530,7 @@ Console控制台点击配置按钮，选择需要被审计的数据库和访问�
 
 #### 3.4.1 登陆系统
 
-打开web浏览器，在地址栏输入审计设备的管理IP地址或输入https://IP，IP为审计设备的IP地址，打开登陆界面。默认的审计管理员的用户名和密码为ruleadmin/\!1fw@2soc\#3vpn
+打开web浏览器，在地址栏输入审计设备的管理IP地址，打开登陆界面。默认的审计管理员的用户名和密码为ruleadmin/\!1fw@2soc\#3vpn
 
 <WRAP center round box 100%> 审计管理平台：auditadmin/!1fw@2soc#3vpn
 
