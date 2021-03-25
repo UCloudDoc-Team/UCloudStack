@@ -24,8 +24,7 @@
 * [20 回收站](/UCloudStack/userguide/recycle.md)
 * [21 账号管理](/UCloudStack/userguide/account.md)
 * [22 计费管理](/UCloudStack/userguide/charge.md)
-* [23 容器服务]
-    [简介](/UCloudStack/userguide/k8s.md)
+* [23 容器服务](/UCloudStack/userguide/k8s.md)
 * [24 数据库审计](/UCloudStack/userguide/das.md)
 * [返回主页](/UCloudStack/README.md)
 
