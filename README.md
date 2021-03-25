@@ -38,5 +38,4 @@ UCloudStack 私有云平台支持纯软件和优钛超融合等多种交付模�
 通过更新历史，你可以直观的了解 UCloudStack 私有云平台的产品发布记录，并可了解每个版本更新的主要特性及对平台的优化点可参考[更新历史](/UCloudStack/changelog/README.md)。
 
 
-[test-pdf](/UCloudStack/changelog/UCloud数据库审计系统用户手册.pdf)  
 
