@@ -25,6 +25,7 @@
 * [21 账号管理](/UCloudStack/userguide/account.md)
 * [22 计费管理](/UCloudStack/userguide/charge.md)
 * [23 容器服务](/UCloudStack/userguide/k8s.md)
-* [24 数据库审计](/UCloudStack/userguide/das.md)
+* [24 容器镜像仓库](/UCloudStack/userguide/containerimage.md)
+* [25 数据库审计](/UCloudStack/userguide/das.md)
 * [返回主页](/UCloudStack/README.md)
 
