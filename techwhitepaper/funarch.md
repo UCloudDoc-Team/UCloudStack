@@ -233,7 +233,7 @@ UCloudStack 支持将用户生成的公钥上传至已绑定的虚拟机，并�
 
 ### 4.2.7 VNC 登录
 
-VNC（ Virtual Network Console ）是 UCloudStack 为用户提供的一种通过 WEB 浏览器连接虚拟机的登录方式，适应于无法通过远程登录客户端（如 SecureCRT、PuTTY 等）连接虚拟机的场景。通过 VNC 登录连到虚拟机，可以查看虚拟机完整启动流程，并可以像 SSH 及 远程桌面一样管理虚拟机操作系统及界面，支持发送各种操作系统管理指令，如  `CTRL+ALT+DELETE` 及 `CTRL+C` 、`CTRL+V` 等。
+VNC（ Virtual Network Console ）是 UCloudStack 为用户提供的一种通过 WEB 浏览器连接虚拟机的登录方式，适应于无法通过远程登录客户端（如 SecureCRT、PuTTY 等）连接虚拟机的场景。通过 VNC 登录连到虚拟机，可以查看虚拟机完整启动流程，并可以像 SSH 及 远程桌面一样管理虚拟机操作系统及界面，支持发送各种操作系统管理指令，如  `CTRL+ALT+DELETE`。
 
 ### 4.2.8 生命周期        
 
