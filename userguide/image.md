@@ -8,7 +8,7 @@
 
 通过导航栏进入虚拟机控制台，切换至镜像管理页面可查看当前账户下自制镜像资源的列表及相关详细信息，包括镜像名称、资源 ID、系统类型、操作系统、状态及操作项，如下图所示：
 
-![selfimage1](../images/userguide/selfimage1.png)
+![selfimage1](../images/userguide/selfimage11.png)
 
 - 镜像名称/资源 ID：当前自制镜像的名称及全局唯一 ID 标识；
 - 系统类型：代表当前自制镜像的操作系统类型，如 Linux、 Windows、Kylin 等；
@@ -32,7 +32,7 @@
 
 用户可通过镜像管理资源列表的操作项“从镜像创建主机”进行创建，如下图所示，虚拟机创建向导自动为用户选择指定的自制镜像。
 
-![selfimage](../images/userguide/selfimage.png)
+![selfimage](../images/userguide/selfimage2.png)
 
 使用自制镜像创建虚拟机的过程与基础镜像相同，可根据提示进行操作。从镜像创建虚拟机时设置的管理员密码会覆盖原镜像操作系统中的密码，需使用新密码登录创建的虚拟机。
 
@@ -79,11 +79,11 @@
 
 用户如果需要下载镜像至本地时，可通过自制镜像列表操作项中的【下载】进入镜像下载向导页面，如下图所示：
 
-![downloadimage](../images/userguide/downloadimage.png)
+![downloadimage](../images/userguide/downloadimage2.png)
 
 点击生成下载地址后，平台会跳转至下载地址展示向导页面，通过向导页面，用户通过复制下载地址链接，通过 HTTP、FTP 及相关下载工具下载镜像。
 
-![downloadimage1](../images/userguide/downloadimage1.png)
+![downloadimage1](../images/userguide/downloadimage3.png)
 
 > 镜像下载地址有效期为 24 小时，需在 24 小时内进行镜像下载。若镜像下载地址过期，则无法进行下载，需到平台重新生成镜像下载地址。
 
@@ -91,7 +91,7 @@
 
 用户可对自制镜像进行删除操作，被删除的自制镜像会自动进入“**回收站**”，可进行还原和销毁操作。用户可通过自制镜像管理控制台的“删除”功能进行自制镜像的删除，删除后可到回收站中查看已删除的自制镜像。
 
-![rmimage](../images/userguide/rmimage.png)
+![rmimage](../images/userguide/rmimage1.png)
 
 仅支持删除状态为可用或导入失败的的自制镜像；若已通过自制镜像创建虚拟机，则不可删除自制镜像，需要将虚拟机删除，才可进行自制镜像的删除。
 
