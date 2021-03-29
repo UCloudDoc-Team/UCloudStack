@@ -1,4 +1,19 @@
-# 相关概念
+# 23 容器服务
+
+## 产品介绍
+UCloudStack提供稳定可靠、通过CNCF一致性认证的，基于Kubernetes的容器应用管理服务。提供容器化应用的全生命周期管理，并与UCloudStack提供的分布式存储、负载均衡深度集成，让你轻松高效地在私有场景下构建云原生应用。
+
+## 产品架构
+虽然Kubernetes支持诸如NetworkPolicy、LimitRange、Quota、RBAC、Taint等隔离机制，但其本质上依然属于软隔离(Soft Multi-tenancy)，不能够有效地阻挡恶意用户（程序）对集群内部的其他用户（程序）发起攻击。
+考虑到私有场景下依然会存在跨组织，跨企业的协作，需要防范不同租户（程序）之间互相攻击的情况出现，UCloudStack提供的容器服务需要具备强隔离(Hard Multi-tenancy)特性，每个UCloudStack上的租户均可申请自己的Kubernetes集群，不同租户之间的Kuberneters集群网络、权限、计算、存储完全隔离。
+
+![k8sarch](../images/userguide/k8s_arch.png)
+Master 默认三节点，节点为UCloudStack的虚拟机，通过keepalive实现apiserver高可用。Node 支持虚拟机和物理机，物理机必须是由UCloudStack纳管的物理机，否则无法加入集群。
+
+另提供统一镜像仓库服务，不同租户无需另行搭建容器镜像仓库，只需要在仓库中创建私有命名空间即可。
+
+
+## 相关概念
 
 | 名称     | 对应字段    | 解释                                                         |
 | -------- | ----------- | ------------------------------------------------------------ |
@@ -13,7 +28,7 @@
 
 
 
-# 功能列表
+## 功能列表
 
 | 序号 | 模块         | 功能                                   |
 | ---- | ------------ | -------------------------------------- |
@@ -33,31 +48,31 @@
 
 
 
-# 操作指南
 
-## 一. 集群管理
+## 操作指南
 
-### 1.1 创建集群
+### 一. 集群管理
+
+#### 1.1 创建集群
 
 登陆UCloudStack控制台  — 导航栏【容器服务】— 【集群】— 【创建】
 
 输入创建集群信息点击确认即可完成创建。
 
 
-
-### 1.2 删除集群
+#### 1.2 删除集群
 
 在集群概览页面勾选想要删除的集群，点击【删除】，完成二次确认后即可删除。
 
 
 
-### 1.3 查看集群详情
+#### 1.3 查看集群详情
 
 在集群概览页面点击想要查看集群的【详情】，进入集群查看页面。
 
 
 
-#### 1.4 查看/更新集群凭证
+##### 1.4 查看/更新集群凭证
 
 集群凭证存放了用户访问和管理容器服务的配置文件信息，一般称为kubeconfig。凭证包含以下几个重要信息：
 
@@ -205,18 +220,15 @@ Job：适用于管理和部署一次性应用
 
 
 
-# 排障指南
+## 排障指南
 
-## 入门必读
+### 入门必读
 
 Kubernetes 提供了一系列的命令行工具来辅助我们调试和定位问题，本指南列举一些常见的命令来帮助应用管理者快速定位和解决问题。
-
-
 
 **定位问题**
 
 在开始处理问题之前，我们需要确认问题的类型，是 Pod ，Service ，或者 Controller（Deployment、StatefulSet） 的问题，然后分别使用不同的命令来查看故障原因。
-
 
 
 **Pod常见命令**	
@@ -254,7 +266,6 @@ kubectl -n ${NAMESPACE} exec -it  ${POD_NAME} /bin/bash
 ```
 
 
-
 **Controller 常见命令**
 
 控制器负责 Pod 的生命周期管理，一般 Pod 无法被注册时，可以通过 Controller 来查看原因。这里以 Deployment 为例，介绍 Kubernetes Controller 的常用命令,其他 Controller 的命令类型与其一致。
@@ -276,8 +287,6 @@ kubectl -n ${NAMESPACE} get deploy ${DEPLOYMENT_NAME} -o yaml
 ```bash
 kubectl -n ${NAMESPACE} describe deployment ${DEPLOYMENT_NAME}
 ```
-
-
 
 **Service常见命令**
 
@@ -318,8 +327,6 @@ Events:            <none>
 
 在Kubernetes中发布应用时，我们经常会遇到Pod出现异常的情况，如Pod长时间处于Pending状态，或者反复重启，下面介绍下Pod 的各种异常状态及处理思路。
 
-
-
 **常见错误**
 
 | 状态                  | 状态说明                         | 处理办法                                                    |
@@ -337,7 +344,6 @@ Events:            <none>
 | RunContainerError     | 启动容器失败。                   | 容器参数配置异常                                            |
 | PostStartHookError    | 执行 postStart hook 报错。       | postStart 命令有误                                          |
 | NetworkPluginNotReady | 网络插件还没有完全启动。         | cni 插件异常，可检查cni状态                                 |
-
 
 
 ## Node故障处理

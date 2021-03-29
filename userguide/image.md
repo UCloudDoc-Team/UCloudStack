@@ -44,10 +44,13 @@
 
 用户制作好自定义镜像后，可通过镜像管理控制台资源列表上方的【导入镜像】功能，进入导入镜像向导页面：
 
-![importimage](../images/userguide/importimage.png)
+![importimage](../images/userguide/importimage_1.png)
+![importimage](../images/userguide/importimage_url.png)
 
 * 镜像名称/描述：镜像的名称及相关描述信息；
-* 镜像地址：平台导入镜像时读取并下载镜像的 URL 地址，导入镜像时必须提供，平台会从提供的 URL 地址自动下载镜像并自动导入至镜像仓库，用于创建虚拟机。
+* 导入方法：用户可以自行选择本地文件或者是URL导入 QCOW2 格式的镜像文件；
+* 镜像文件：在选择导入方法为本地文件时，可以选择当前浏览器选择的本地文件进行上传；
+* 镜像地址：在选择导入方法为URL时，平台导入镜像时读取并下载镜像的 URL 地址，导入镜像时必须提供，平台会从提供的 URL 地址自动下载镜像并自动导入至镜像仓库，用于创建虚拟机。
   * 当前仅支持 HTTP、HTTPS 等协议的 URL 地址，格式包括 `https://path/file` 或`ftp://hostname[:port]/path/file` 或 `ftp://user:password@hostname[:port]/path/file` ；
   * 镜像的地址必须从云平台可达，即云平台组件可访问的 URL 地址，建议使用云平台相同外网的 IP 地址或外网 IP 地址可通信的地址。
 * 操作系统：导入镜像的操作系统类型，包括 Linux 和 Windows ，需根据导入镜像 OS 类型进行选择；
