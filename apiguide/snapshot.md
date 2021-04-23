@@ -11,7 +11,7 @@
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | No       |
 | Name           | string | 快照名称，限制字符长度30                  | **Yes**  |
 | DiskID         | string | 硬盘ID，输入“有效”状态的ID                | **Yes**  |
 | Remark         | string | 描述，限制字符长度100                     | No       |
@@ -56,7 +56,7 @@ https://xxx.xxx.xxx/?Action=CreateSnapshot
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | SnapshotIDs.N  | string | 【数组】快照ID，输入“有效”的ID。调用方式举例：SnapshotIDs.0=“one-id”、SnapshotIDs.1=“two-id”。 | No       |
 | DiskID         | string | 硬盘ID，输入“有效”状态的ID                                   | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -130,7 +130,7 @@ https://xxx.xxx.xxx/?Action=DescribeSnapshot
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。  | No       |
 | DiskID         | string | 对应的云硬盘 ID；                         | **Yes**  |
 | SnapshotID     | string | 快照ID                                    | **Yes**  |
 
@@ -171,7 +171,7 @@ https://xxx.xxx.xxx/?Action=RollbackSnapshot
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。  | No       |
 | SnapshotID     | string | 快照ID                                    | **Yes**  |
 
 **Response Elements**

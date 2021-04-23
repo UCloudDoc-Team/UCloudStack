@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | VPCID          | string | 弹性网卡所属 VPC 的 ID              | **Yes**  |
 | SubnetID       | string | 弹性网卡所属子网的 ID               | **Yes**  |
 | Name           | string | 弹性网卡名称                        | **Yes**  |
@@ -58,7 +58,7 @@ https://xxx.xxx.xxx/?Action=CreateNIC
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | NICIDs.N       | string | 【数组】网卡的 ID。输入有效的 ID。调用方式举例：NICIDs.0=“one-id”、NICIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
@@ -139,7 +139,7 @@ https://xxx.xxx.xxx/?Action=DescribeNIC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | NICID          | string | 网卡ID                              | **Yes**  |
 | ResourceID     | string | 绑定的资源ID                        | **Yes**  |
 
@@ -180,7 +180,7 @@ https://xxx.xxx.xxx/?Action=AttachNIC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | NICID          | string | 网卡ID                              | **Yes**  |
 | ResourceID     | string | 绑定的资源ID                        | **Yes**  |
 
@@ -221,7 +221,7 @@ https://xxx.xxx.xxx/?Action=DetachNIC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | NICID          | string | 被删除的网卡 ID                     | **Yes**  |
 
 **Response Elements**

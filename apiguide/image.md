@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | ImageType      | string | 镜像类型。枚举值：Base(基础镜像，平台默认提供的镜像)，Custom(自制镜像，通过虚拟机导出的镜像) 。若该值为空，默认查询所有镜像。 | No       |
 | ImageIDs.N     | string | 【数组】镜像的 ID。输入有效的 ID。调用方式举例：ImageIDs.0=“one-id”、ImageIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -88,7 +88,7 @@ https://xxx.xxx.xxx/?Action=DescribeImage
 | Parameter name   | Type   | Description                         | Required |
 | ---------------- | ------ | ----------------------------------- | -------- |
 | Region           | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone             | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone             | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | VMID             | string | 虚拟机ID                            | **Yes**  |
 | ImageName        | string | 镜像名称                            | **Yes**  |
 | ImageDescription | string | 镜像描述。                          | No       |
@@ -133,7 +133,7 @@ https://xxx.xxx.xxx/?Action=CreateCustomImage
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | ImageID        | string | 自制镜像ID                          | **Yes**  |
 
 **Response Elements**

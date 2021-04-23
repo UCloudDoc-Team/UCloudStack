@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | SetType        | string | 磁盘类型。例如：Normal,SSD                                   | **Yes**  |
 | Name           | string | 磁盘名称                                                     | **Yes**  |
 | DiskSpace      | int    | 磁盘大小                                                     | **Yes**  |
@@ -59,7 +59,7 @@ https://xxx.xxx.xxx/?Action=CreateDisk
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | DiskIDs.N      | string | 【数组】磁盘的 ID。输入有效的 ID。调用方式举例：DiskIDs.0=“one-id”、DiskIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
@@ -125,7 +125,7 @@ https://xxx.xxx.xxx/?Action=DescribeDisk
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区                                                       | **Yes**  |
+| Zone           | string | 可用区                                                       | No       |
 | DiskSpace      | int    | 磁盘大小                                                     | **Yes**  |
 | ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
 | SetType        | string | 磁盘类型                                                     | **Yes**  |
@@ -187,7 +187,7 @@ https://xxx.xxx.xxx/?Action=GetDiskPrice
 | Parameter name | Type   | Description                            | Required |
 | -------------- | ------ | -------------------------------------- | -------- |
 | Region         | string | 地域                                   | **Yes**  |
-| Zone           | string | 可用区                                 | **Yes**  |
+| Zone           | string | 可用区                                 | No       |
 | DiskID         | string | 硬盘ID                                 | **Yes**  |
 | ResourceID     | string | 绑定的资源ID                           | **Yes**  |
 | ResourceType   | string | 绑定的资源类型，枚举值：VM，标识虚拟机 | **Yes**  |
@@ -230,7 +230,7 @@ https://xxx.xxx.xxx/?Action=AttachDisk
 | Parameter name | Type   | Description  | Required |
 | -------------- | ------ | ------------ | -------- |
 | Region         | string | 地域         | **Yes**  |
-| Zone           | string | 可用区       | **Yes**  |
+| Zone           | string | 可用区        | No       |
 | DiskID         | string | 硬盘ID       | **Yes**  |
 | ResourceID     | string | 绑定的资源ID | **Yes**  |
 
@@ -272,7 +272,7 @@ Response Example
 | Parameter name | Type   | Description                                         | Required |
 | -------------- | ------ | --------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                 | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                 | No       |
 | DiskID         | string | 硬盘ID                                              | **Yes**  |
 | DiskSpace      | int    | 硬盘升级后的容量， 不能小于原硬盘容量，单位为 GB 。 | **Yes**  |
 
@@ -313,7 +313,7 @@ https://xxx.xxx.xxx/?Action=UpgradeDisk
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域                                                         | **Yes**  |
-| Zone           | string | 可用区                                                       | **Yes**  |
+| Zone           | string | 可用区                                                        | No       |
 | SrcID          | string | 源硬盘ID                                                     | **Yes**  |
 | Name           | string | 名称                                                         | **Yes**  |
 | ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
@@ -360,7 +360,7 @@ https://xxx.xxx.xxx/?Action=CloneDisk
 | Parameter name | Type   | Description    | Required |
 | -------------- | ------ | -------------- | -------- |
 | Region         | string | 地域           | **Yes**  |
-| Zone           | string | 可用区         | **Yes**  |
+| Zone           | string | 可用区          | No       |
 | DiskID         | string | 被删除的硬盘ID | **Yes**  |
 
 **Response Elements**

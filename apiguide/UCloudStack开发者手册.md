@@ -341,7 +341,7 @@ curl -X POST http://console.dev.ucloudstack.com/api \
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域或数据中心。枚举值：cn,表示中国；                        | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | Name            | string | 虚拟机名称。可输入如：myVM。名称只能包含中英文、数字以及- _ .且1-30个字符。 | **Yes**  |
 | VMType          | string | 虚拟机所在宿主机的集群类型，代表不同架构、不同型号的 CPU 或硬件特征。枚举值：Normal，表示普通；SSD，表示SSD。 | **Yes**  |
 | ImageID         | string | 镜像 ID。基础镜像 ID 或者自制镜像 ID。如：cn-image-centos-74。 | **Yes**  |
@@ -428,7 +428,7 @@ https://xxx.xxx.xxx/?Action=CreateVMInstance
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域或数据中心。枚举值： cn，表示中国；                      | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | VPCID          | string | VPC ID。输入“有效”状态的VPC ID。                             | No       |
 | SubnetID       | string | 子网 ID。输入“有效”状态的子网 ID。                           | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -582,7 +582,7 @@ https://xxx.xxx.xxx/?Action=DescribeVMInstance
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | VMType          | string | 机型。枚举值：Normal，表示普通；SSD，表示SSD；               | **Yes**  |
 | ImageID         | string | 镜像 ID。基础镜像 ID 或者自制镜像 ID。如：cn-image-centos-74。 | **Yes**  |
 | CPU             | int    | CPU 个数，目前只能输入数据库配置指定规格参数，如：1核2048M、2核4096M、4核8192M、8核16384M、16核32768M。 | **Yes**  |
@@ -667,7 +667,7 @@ https://xxx.xxx.xxx/?Action=GetVMInstancePrice
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn，表示中国；        | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机 ID                           | **Yes**  |
 
 **Response Elements**
@@ -707,7 +707,7 @@ https://xxx.xxx.xxx/?Action=StartVMInstance
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | VMID           | string | 虚拟机ID;                           | **Yes**  |
 
 **Response Elements**
@@ -746,7 +746,7 @@ https://xxx.xxx.xxx/?Action=RestartVMInstance
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn，表示中国；        | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机 ID                           | **Yes**  |
 
 **Response Elements**
@@ -787,7 +787,7 @@ http(s)://xxx.xxx.xx/?Action=StopVMInstance
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。  | No       |
 | VMID           | string | 虚拟机ID                                  | **Yes**  |
 
 **Response Elements**
@@ -826,7 +826,7 @@ https://api.ucloud.cn/?Action=PoweroffVMInstance
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机ID                            | **Yes**  |
 | Password       | string | 密码                                | **Yes**  |
 
@@ -867,7 +867,7 @@ https://xxx.xxx.xx/?Action=ResetVMInstancePassword
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机ID                            | **Yes**  |
 | ImageID        | string | 镜像ID                              | **Yes**  |
 
@@ -908,7 +908,7 @@ https://xxx.xxx.xx/?Action=ReinstallVMInstance
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | VMID           | string | 虚拟机ID                                                     | **Yes**  |
 | CPU            | int    | CPU 个数，如 1、2、4、8、16、32、64。                        | **Yes**  |
 | Memory         | int    | 内存容量，如 2048、4096、8192、16384、32768、65536、131072。 | **Yes**  |
@@ -951,7 +951,7 @@ https://xxx.xxx.xx/?Action=ResizeVMConfig
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域        | **Yes**  |
-| Zone           | string | 可用区      | **Yes**  |
+| Zone           | string | 可用区      | No       |
 | VMID           | string | 虚拟机ID    | **Yes**  |
 | EIPID          | string | EIPID       | **Yes**  |
 
@@ -992,7 +992,7 @@ https://xxx.xxx.xxx/?Action=UpdateVMDefaultGW
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。 枚举值：cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | VMID           | string | 虚拟机 ID。输入有效的虚拟机 ID。    | **Yes**  |
 
 **Response Elements**
@@ -1033,7 +1033,7 @@ http(s)://xxx.xxx.xx/?Action=DeleteVMInstance
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | ImageType      | string | 镜像类型。枚举值：Base(基础镜像，平台默认提供的镜像)，Custom(自制镜像，通过虚拟机导出的镜像) 。若该值为空，默认查询所有镜像。 | No       |
 | ImageIDs.N     | string | 【数组】镜像的 ID。输入有效的 ID。调用方式举例：ImageIDs.0=“one-id”、ImageIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -1112,7 +1112,7 @@ https://xxx.xxx.xxx/?Action=DescribeImage
 | Parameter name   | Type   | Description                         | Required |
 | ---------------- | ------ | ----------------------------------- | -------- |
 | Region           | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone             | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone             | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID             | string | 虚拟机ID                            | **Yes**  |
 | ImageName        | string | 镜像名称                            | **Yes**  |
 | ImageDescription | string | 镜像描述。                          | No       |
@@ -1157,7 +1157,7 @@ https://xxx.xxx.xxx/?Action=CreateCustomImage
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | ImageID        | string | 自制镜像ID                          | **Yes**  |
 
 **Response Elements**
@@ -1198,7 +1198,7 @@ https://xxx.xxx.xxx/?Action=DeleteCustomImage
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | SetType        | string | 磁盘类型。例如：Normal,SSD                                   | **Yes**  |
 | Name           | string | 磁盘名称                                                     | **Yes**  |
 | DiskSpace      | int    | 磁盘大小                                                     | **Yes**  |
@@ -1248,7 +1248,7 @@ https://xxx.xxx.xxx/?Action=CreateDisk
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | DiskIDs.N      | string | 【数组】磁盘的 ID。输入有效的 ID。调用方式举例：DiskIDs.0=“one-id”、DiskIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
@@ -1314,7 +1314,7 @@ https://xxx.xxx.xxx/?Action=DescribeDisk
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区                                                       | **Yes**  |
+| Zone           | string | 可用区                                                       | No       |
 | DiskSpace      | int    | 磁盘大小                                                     | **Yes**  |
 | ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
 | SetType        | string | 磁盘类型                                                     | **Yes**  |
@@ -1376,7 +1376,7 @@ https://xxx.xxx.xxx/?Action=GetDiskPrice
 | Parameter name | Type   | Description                            | Required |
 | -------------- | ------ | -------------------------------------- | -------- |
 | Region         | string | 地域                                   | **Yes**  |
-| Zone           | string | 可用区                                 | **Yes**  |
+| Zone           | string | 可用区                                 | No       |
 | DiskID         | string | 硬盘ID                                 | **Yes**  |
 | ResourceID     | string | 绑定的资源ID                           | **Yes**  |
 | ResourceType   | string | 绑定的资源类型，枚举值：VM，标识虚拟机 | **Yes**  |
@@ -1419,7 +1419,7 @@ https://xxx.xxx.xxx/?Action=AttachDisk
 | Parameter name | Type   | Description  | Required |
 | -------------- | ------ | ------------ | -------- |
 | Region         | string | 地域         | **Yes**  |
-| Zone           | string | 可用区       | **Yes**  |
+| Zone           | string | 可用区       | No       |
 | DiskID         | string | 硬盘ID       | **Yes**  |
 | ResourceID     | string | 绑定的资源ID | **Yes**  |
 
@@ -1461,7 +1461,7 @@ Response Example
 | Parameter name | Type   | Description                                         | Required |
 | -------------- | ------ | --------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                 | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                  | No       |
 | DiskID         | string | 硬盘ID                                              | **Yes**  |
 | DiskSpace      | int    | 硬盘升级后的容量， 不能小于原硬盘容量，单位为 GB 。 | **Yes**  |
 
@@ -1502,7 +1502,7 @@ https://xxx.xxx.xxx/?Action=UpgradeDisk
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域                                                         | **Yes**  |
-| Zone           | string | 可用区                                                       | **Yes**  |
+| Zone           | string | 可用区                                                       | No       |
 | SrcID          | string | 源硬盘ID                                                     | **Yes**  |
 | Name           | string | 名称                                                         | **Yes**  |
 | ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
@@ -1549,7 +1549,7 @@ https://xxx.xxx.xxx/?Action=CloneDisk
 | Parameter name | Type   | Description    | Required |
 | -------------- | ------ | -------------- | -------- |
 | Region         | string | 地域           | **Yes**  |
-| Zone           | string | 可用区         | **Yes**  |
+| Zone           | string | 可用区          | No       |
 | DiskID         | string | 被删除的硬盘ID | **Yes**  |
 
 **Response Elements**
@@ -1592,7 +1592,7 @@ https://xxx.xxx.xxx/?Action=DeleteDisk
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。  | No       |
 | Name           | string | 快照名称，限制字符长度30                  | **Yes**  |
 | DiskID         | string | 硬盘ID，输入“有效”状态的ID                | **Yes**  |
 | Remark         | string | 描述，限制字符长度100                     | No       |
@@ -1637,7 +1637,7 @@ https://xxx.xxx.xxx/?Action=CreateSnapshot
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | SnapshotIDs.N  | string | 【数组】快照ID，输入“有效”的ID。调用方式举例：SnapshotIDs.0=“one-id”、SnapshotIDs.1=“two-id”。 | No       |
 | DiskID         | string | 硬盘ID，输入“有效”状态的ID                                   | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -1711,7 +1711,7 @@ https://xxx.xxx.xxx/?Action=DescribeSnapshot
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | No       |
 | DiskID         | string | 对应的云硬盘 ID；                         | **Yes**  |
 | SnapshotID     | string | 快照ID                                    | **Yes**  |
 
@@ -1752,7 +1752,7 @@ https://xxx.xxx.xxx/?Action=RollbackSnapshot
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。  | No       |
 | SnapshotID     | string | 快照ID                                    | **Yes**  |
 
 **Response Elements**
@@ -1793,7 +1793,7 @@ https://xxx.xxx.xxx/?Action=DeleteSnapshot
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | Network        | string | 网段。例如：10.0.0.0/16；           | **Yes**  |
 | Name           | string | 名称;                               | **Yes**  |
 | Remark         | string | 描述;                               | No       |
@@ -1837,7 +1837,7 @@ https://xxx.xxx.xxx/?Action=CreateVPC
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区。                                                     | **Yes**  |
+| Zone           | string | 可用区。                                                     | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | VPCIDs.N       | string | 【数组】VPC的 ID。调用方式举例：VPCIDs.0=“one-id”、VPCIDs.1=“two-id” | No       |
@@ -1936,7 +1936,7 @@ https://xxx.xxx.xxx/?Action=DescribeVPC
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。     | No       |
 | VPCID          | string | ID          | **Yes**  |
 
 **Response Elements**
@@ -1975,7 +1975,7 @@ https://xxx.xxx.xxx/?Action=DeleteVPC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | Name           | string | 名称;                               | **Yes**  |
 | Network        | string | 网段。列如：10.0.0.0/16；           | **Yes**  |
 | VPCID          | string | 所属VPCID                           | **Yes**  |
@@ -2021,7 +2021,7 @@ https://xxx.xxx.xxx/?Action=CreateSubnet
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区。                                                     | **Yes**  |
+| Zone           | string | 可用区。                                                      | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | VPCID          | string | VPCID                                                        | No       |
@@ -2094,7 +2094,7 @@ https://xxx.xxx.xxx/?Action=DescribeSubnet
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。     | No       |
 | SubnetID       | string | SubnetID    | **Yes**  |
 
 **Response Elements**
@@ -2135,7 +2135,7 @@ https://xxx.xxx.xxx/?Action=DeleteSubnet
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | OperatorName   | string | 线路。目前支持Bgp                                            | **Yes**  |
 | Bandwidth      | int    | 带宽，默认值1，默认范围1\~100                                | **Yes**  |
 | ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
@@ -2188,7 +2188,7 @@ https://xxx.xxx.xxx/?Action=AllocateEIP
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | Offset         | string | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | string | 返回数据长度，默认为20，最大100。                            | No       |
 | EIPIDs.N       | string | 【数组】外网的 ID。输入有效的 ID。调用方式举例：EIPIDs.0=“one-id”、EIPIDs.1=“two-id” | No       |
@@ -2281,7 +2281,7 @@ https://xxx.xxx.xxx/?Action=DescribeEIP
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | Offset         | string | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | string | 返回数据长度，默认为20，最大100。                            | No       |
 | EIPIDs.N       | string | 【数组】外网的 ID。输入有效的 ID。调用方式举例：EIPIDs.0=“one-id”、EIPIDs.1=“two-id” | No       |
@@ -2352,7 +2352,7 @@ https://xxx.xxx.xxx/?Action=DescribeEIP
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；中国                   | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                | No       |
 | ResourceType   | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关 | **Yes**  |
 | ResourceID     | string | 资源ID                                            | **Yes**  |
 | EIPID          | string | 外网IP的ID                                        | **Yes**  |
@@ -2395,7 +2395,7 @@ https://xxx.xxx.xxx/?Action=BindEIP
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；中国                   | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                | No       |
 | ResourceType   | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关 | **Yes**  |
 | ResourceID     | string | 资源ID                                            | **Yes**  |
 | EIPID          | string | 外网IP的ID                                        | **Yes**  |
@@ -2439,7 +2439,7 @@ https://xxx.xxx.xxx/?Action=UnBindEIP
 | Parameter name | Type   | Description  | Required |
 | -------------- | ------ | ------------ | -------- |
 | Region         | string | 地域。       | **Yes**  |
-| Zone           | string | 可用区。     | **Yes**  |
+| Zone           | string | 可用区。      | No       |
 | EIPID          | string | 外网IP的ID   | **Yes**  |
 | Bandwidth      | int    | 调整后的带宽 | **Yes**  |
 
@@ -2480,7 +2480,7 @@ https://xxx.xxx.xxx/?Action=ModifyEIPBandwidth
 | Parameter name | Type   | Description                       | Required |
 | -------------- | ------ | --------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；中国   | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国 | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国  | No       |
 | EIPID          | string | 外网IP的ID                        | **Yes**  |
 
 **Response Elements**
@@ -2521,7 +2521,7 @@ https://xxx.xxx.xxx/?Action=ReleaseEIP
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VPCID          | string | 弹性网卡所属 VPC 的 ID              | **Yes**  |
 | SubnetID       | string | 弹性网卡所属子网的 ID               | **Yes**  |
 | Name           | string | 弹性网卡名称                        | **Yes**  |
@@ -2570,7 +2570,7 @@ https://xxx.xxx.xxx/?Action=CreateNIC
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | NICIDs.N       | string | 【数组】网卡的 ID。输入有效的 ID。调用方式举例：NICIDs.0=“one-id”、NICIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
@@ -2651,7 +2651,7 @@ https://xxx.xxx.xxx/?Action=DescribeNIC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | NICID          | string | 网卡ID                              | **Yes**  |
 | ResourceID     | string | 绑定的资源ID                        | **Yes**  |
 
@@ -2692,7 +2692,7 @@ https://xxx.xxx.xxx/?Action=AttachNIC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | NICID          | string | 网卡ID                              | **Yes**  |
 | ResourceID     | string | 绑定的资源ID                        | **Yes**  |
 
@@ -2733,7 +2733,7 @@ https://xxx.xxx.xxx/?Action=DetachNIC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | NICID          | string | 被删除的网卡 ID                     | **Yes**  |
 
 **Response Elements**
@@ -2774,7 +2774,7 @@ https://xxx.xxx.xxx/?Action=DeleteNIC
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | Name           | string | 名称;                                                        | **Yes**  |
 | Rule.N         | string | 【数组】安全组规则。输入有效的规则，调用方式举例：Rule.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1”、Rule.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1” | **Yes**  |
 | Remark         | string | 描述;                                                        | No       |
@@ -2818,7 +2818,7 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroup
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区。                                                     | **Yes**  |
+| Zone           | string | 可用区。                                                      | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | SGIDs.N        | string | 【数组】安全组的 ID。输入有效的 ID。调用方式举例：SGIDs.0=“one-id”、SGIDs.1=“two-id” | No       |
@@ -2915,7 +2915,7 @@ https://xxx.xxx.xxx/?Action=DescribeSecurityGroup
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | SGID           | string | 安全组ID                            | **Yes**  |
 
 **Response Elements**
@@ -2954,7 +2954,7 @@ https://xxx.xxx.xxx/?Action=DeleteSecurityGroup
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | SGID           | string | 安全组ID                                                     | **Yes**  |
 | Rules.N        | string | 【数组】安全组规则。输入有效的规则，调用方式举例：Rule.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1”、Rule.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1” | **Yes**  |
 
@@ -2996,7 +2996,7 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroupRule
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | SGID           | string | 安全组ID                                                     | **Yes**  |
 | Rules.N        | string | 【数组】规则。输入有效的 规则。调用方式举例：Rules.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1\|sg_rule-wefvg34f”、Rules.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1\|sg_rule-wefvggf” | **Yes**  |
 
@@ -3037,7 +3037,7 @@ https://xxx.xxx.xxx/?Action=UpdateSecurityGroupRule
 | Parameter name | Type   | Description  | Required |
 | -------------- | ------ | ------------ | -------- |
 | Region         | string | 地域。       | **Yes**  |
-| Zone           | string | 可用区。     | **Yes**  |
+| Zone           | string | 可用区。     | No       |
 | SGID           | string | 安全组ID     | **Yes**  |
 | SGRuleID       | string | 安全组规则ID | **Yes**  |
 
@@ -3078,7 +3078,7 @@ https://xxx.xxx.xxx/?Action=DeleteSecurityGroupRule
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                     | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | No       |
 | ResourceID     | string | 绑定的资源ID。调用方式举例：ResourceID=“one-id”。 | **Yes**  |
 | SGID           | string | 安全组ID                                          | **Yes**  |
 | NICID          | string | 网卡ID                                            | No       |
@@ -3121,7 +3121,7 @@ https://xxx.xxx.xxx/?Action=BindSecurityGroup
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                     | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | No       |
 | ResourceID     | string | 解绑的资源ID。调用方式举例：ResourceID=“one-id”。 | **Yes**  |
 | SGID           | string | 安全组ID                                          | **Yes**  |
 
@@ -3162,7 +3162,7 @@ https://xxx.xxx.xxx/?Action=UnBindSecurityGroup
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | SGID           | string | 安全组ID                            | **Yes**  |
 | Offset         | int    | 列表起始位置偏移量，默认为0。       | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。   | No       |
@@ -3221,7 +3221,7 @@ https://xxx.xxx.xxx/?Action=DescribeSecurityGroupResource
 | Parameter name | Type   | Description    | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | Name           | string | 名称。                                                       | **Yes**  |
 | VMType         | string | 运行负载均衡实例的主机机型。枚举值：如 Normal ，表示普通机型； SSD，表示 SSD 机型。（机型由平台管理员修改和指定，可参考获取主机机型接口） | **Yes**  |
 | VPCID          | string | LB实例所在的 VPC ID 。                                       | **Yes**  |
@@ -3280,7 +3280,7 @@ https://xxx.xxx.xxx/?Action=CreateLB
 | Parameter name | Type   | Description     | Required |
 | -------------- | ------ | --------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | VPCID          | string | VPCID                                                        | No       |
 | SubnetID       | string | 子网ID                                                       | No       |
 | LBIDs.N        | string | 【数组】负载均衡的 ID。调用方式举例：LBIDs.0=“one-id”、LBIDs.1=“two-id”。 | No       |
@@ -3373,7 +3373,7 @@ https://xxx.xxx.xxx/?Action=DescribeLB
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
 
 **Response Elements**
@@ -3412,7 +3412,7 @@ https://xxx.xxx.xxx/?Action=DeleteLB
 | Parameter name      | Type   | Description                                                  | Required |
 | ------------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region              | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | LBID                | string | 负载均衡ID                                                   | **Yes**  |
 | Protocol            | string | VServer 的监听协议。枚举值：支持 TCP、UDP、HTTP、HTTPS 四种协议转发。 | **Yes**  |
 | Port                | int    | VServer 的监听端口。端口范围为 1\~65535 ，其中 323、9102、9103、9104、9105、60909、60910 被系统占用。 | **Yes**  |
@@ -3477,7 +3477,7 @@ https://xxx.xxx.xxx/?Action=CreateVS
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSIDs.N        | string | 【数组】VServer的 ID。调用方式举例：VSIDs.0=“one-id”、VSIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -3649,7 +3649,7 @@ https://xxx.xxx.xxx/?Action=DescribeVS
 | Parameter name      | Type   | Description                                                  | Required |
 | ------------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region              | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | VSID                | string | 需要更新的VSID                                               | **Yes**  |
 | LBID                | string | VServer 监听器所属的负载均衡 ID                              | **Yes**  |
 | Scheduler           | string | 负载均衡的调度算法。枚举值：wrr:加权轮训；least_conn:最小连接数；hash:原地址,四层lb使用。ip_hash:七层lb使用 | No       |
@@ -3712,7 +3712,7 @@ https://xxx.xxx.xxx/?Action=UpdateVS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | LBID           | string | VServer 监听器所属的负载均衡 ID     | **Yes**  |
 | VSID           | string | 负载均衡VServer监听器ID             | **Yes**  |
 
@@ -3753,7 +3753,7 @@ https://xxx.xxx.xxx/?Action=DeleteVS
 | Parameter name | Type   | Description                                               | Required |
 | -------------- | ------ | --------------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                               | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                       | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                       | No       |
 | LBID           | string | 负载均衡ID                                                | **Yes**  |
 | VSID           | string | VServer的ID                                               | **Yes**  |
 | BindResourceID | string | 服务节点的资源 ID ，仅支持添加与 LB 相同 VPC 的虚拟机资源 | **Yes**  |
@@ -3802,7 +3802,7 @@ https://xxx.xxx.xxx/?Action=CreateRS
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServer的ID                                                  | No       |
 | RSIDs.N        | string | 【数组】RServer的 ID。调用方式举例：RSIDs.0=“one-id”、RSIDs.1=“two-id”。 | No       |
@@ -3885,7 +3885,7 @@ https://xxx.xxx.xxx/?Action=DescribeRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | RSID           | string | RServer的ID                         | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
@@ -3928,7 +3928,7 @@ https://xxx.xxx.xxx/?Action=EnableRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | RSID           | string | RServer的ID                         | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
@@ -3971,7 +3971,7 @@ https://xxx.xxx.xxx/?Action=DisableRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | LBID           | string | VServer 监听器所属的负载均衡 ID     | **Yes**  |
 | VSID           | string | RServer所属的VServer的ID            | **Yes**  |
 | RSID           | string | RServer的ID                         | **Yes**  |
@@ -4018,7 +4018,7 @@ https://xxx.xxx.xxx/?Action=UpdateRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | RSID           | string | RServer的ID                         | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
@@ -4061,7 +4061,7 @@ https://xxx.xxx.xxx/?Action=DeleteRS
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServer的ID                                                  | **Yes**  |
 | RSIDs.N        | string | 【数组】内容转发规则应用的服务节点的 ID，来源于 VServer 中添加的服务节点。调用方式举例：RSIDs.0=“one-id”、RSIDs.1=“two-id”。 | **Yes**  |
@@ -4110,7 +4110,7 @@ https://xxx.xxx.xxx/?Action=CreateVSPolicy
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServerID                                                    | No       |
 | PolicyIDs.N    | string | 【数组】七层负载均衡内容转发规则的 ID。调用方式举例：PolicyIDs.0=“one-id”、PolicyIDs.1=“two-id” | No       |
@@ -4219,7 +4219,7 @@ https://xxx.xxx.xxx/?Action=DescribeVSPolicy
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServer的ID                                                  | **Yes**  |
 | PolicyID       | string | 内容转发规则ID                                               | **Yes**  |
@@ -4268,7 +4268,7 @@ https://xxx.xxx.xxx/?Action=UpdateVSPolicy
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | PolicyID       | string | 内容转发规则ID                      | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
@@ -4311,7 +4311,7 @@ https://xxx.xxx.xxx/?Action=DeleteVSPolicy
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。                                                       | **Yes**  |
-| Zone            | string | 可用区。                                                     | **Yes**  |
+| Zone            | string | 可用区。                                                      | No       |
 | Certificate     | string | 证书内容                                                     | **Yes**  |
 | Name            | string | 证书名称                                                     | **Yes**  |
 | CertificateType | string | 证书类型，枚举值["ServerCrt","CACrt"]。分别表示服务器证书和CA证书，CA证书仅在双向认证的时有效。 | **Yes**  |
@@ -4366,7 +4366,7 @@ https://xxx.xxx.xxx/?Action=CreateCertificate
 | Parameter name   | Type   | Description                                                  | Required |
 | ---------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region           | string | 地域。                                                       | **Yes**  |
-| Zone             | string | 可用区。                                                     | **Yes**  |
+| Zone             | string | 可用区。                                                    | No       |
 | CertificateType  | string | 证书类型，枚举值["ServerCrt","CACrt"]，分别表示服务器证书和CA证书。 | No       |
 | CertificateIDs.N | string | 证书ID列表                                                   | No       |
 | Limit            | int    | 返回数据长度，默认为20，最大100                              | No       |
@@ -4471,7 +4471,7 @@ https://xxx.xxx.xxx/?Action=DescribeCertificate
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。     | No       |
 | CertificateID  | string | 证书ID      | **Yes**  |
 
 **Response Elements**
@@ -4512,7 +4512,7 @@ https://xxx.xxx.xxx/?Action=DeleteCertificate
 | Parameter name | Type   | Description     | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | Name           | string | 名称。                                                       | **Yes**  |
 | VMType         | string | 运行NAT网关实例的主机机型。枚举值：如 Normal ，表示普通机型； SSD，表示 SSD 机型。（机型由平台管理员修改和指定，可参考获取主机机型接口） | **Yes**  |
 | VPCID          | string | NAT网关实例所在的 VPC ID                                     | **Yes**  |
@@ -4569,7 +4569,7 @@ https://xxx.xxx.xxx/?Action=CreateNATGW
 | Parameter name | Type   | Description                 | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | NATGWIDs.N     | string | 【数组】NAT网关的 ID。调用方式举例：NATGWIDs.0=“one-id”、NATGWIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
@@ -4652,7 +4652,7 @@ https://xxx.xxx.xxx/?Action=DescribeNATGW
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | NATGWID        | string | NAT网关ID                           | **Yes**  |
 
 **Response Elements**
@@ -4691,7 +4691,7 @@ https://xxx.xxx.xxx/?Action=DeleteNATGW
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | NATGWID        | string | NAT网关ID                           | **Yes**  |
 | BindResourceID | string | 绑定的虚拟机资源ID                  | **Yes**  |
 | NATGWType      | string | NAT的类型。枚举值：SNAT，DNAT       | **Yes**  |
@@ -4736,7 +4736,7 @@ https://xxx.xxx.xxx/?Action=CreateNATGWRule
 | Parameter name    | Type   | Description          | Required |
 | ----------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region            | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone              | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone              | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | NATGWID           | string | NAT网关ID                                                    | **Yes**  |
 | NATGWType         | string | NAT类型。枚举值：SNAT，DNAT                                  | **Yes**  |
 | Offset            | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -4815,7 +4815,7 @@ https://xxx.xxx.xxx/?Action=DescribeNATGWRule
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | RuleID         | string | 白名单ID                            | **Yes**  |
 | NATGWID        | string | nat网关ID                           | **Yes**  |
 
@@ -4999,7 +4999,7 @@ https://xxx.xxx.xxx/?Action=Recharge
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。                               | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                    | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                     | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | ResourceIDs.N  | string | 【数组】资源ID，输入“有效”的ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | No       |
@@ -5067,7 +5067,7 @@ https://xxx.xxx.xxx/?Action=DescribeRecycledResource
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | No       |
 | ResourceID     | string | 待恢复的资源ID                            | **Yes**  |
 
 **Response Elements**
@@ -5106,7 +5106,7 @@ https://xxx.xxx.xxx/?Action=RollbackResource
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。                               | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                    | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                     | No       |
 | ResourceID     | string | 待续续的资源ID                                               | **Yes**  |
 | Quantity       | int    | 购买时长，默认为 1。按小时(Dynamic)付费的资源无需此参数，按月付费的资源传 0 时，代表购买至月末。 | No       |
 
@@ -5148,7 +5148,7 @@ https://xxx.xxx.xxx/?Action=RenewResource
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。    | No       |
 | ResourceID     | string | 资源id      | **Yes**  |
 
 **Response Elements**
@@ -5192,7 +5192,7 @@ https://xxx.xxx.xxx/?Action=TerminateResource
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn，表示中国；                                 | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，中国；                              | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，中国；                             | No       |
 | ResourceID     | string | 资源ID                                                       | **Yes**  |
 | ResourceType   | string | 资源类型。VM：虚拟机；EIP：弹性IP                            | **Yes**  |
 | BeginTime      | string | 开始时间。使用unix时间戳                                     | **Yes**  |
@@ -5267,7 +5267,7 @@ https://xxx.xxx.xxx/?Action=DescribeMetric
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | ResourceID     | string | 资源ID;                             | **Yes**  |
 | Name           | string | 名称;                               | **Yes**  |
 | Remark         | string | 描述;                               | No       |
@@ -5310,7 +5310,7 @@ https://xxx.xxx.xxx/?Action=ModifyNameAndRemark
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | ResourceIDs.N   | string | 【数组】告警模板ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | **Yes**  |
 | ResourceType    | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关;EIP:弹性IP | **Yes**  |
 | AlarmTemplateID | string | 告警模板ID                                                   | **Yes**  |
@@ -5353,7 +5353,7 @@ https://xxx.xxx.xxx/?Action=BindAlarmTemplate
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | ResourceIDs.N   | string | 【数组】资源的 ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | **Yes**  |
 | ResourceType    | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关;EIP:弹性网卡 | **Yes**  |
 | AlarmTemplateID | string | 告警模板ID                                                   | **Yes**  |
@@ -5396,7 +5396,7 @@ https://xxx.xxx.xxx/?Action=UnbindAlarmTemplate
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。     | No       |
 
 **Response Elements**
 
@@ -5453,7 +5453,7 @@ https://xxx.xxx.xxx/?Action=DescribeVMType
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。    | No       |
 
 **Response Elements**
 
@@ -5506,7 +5506,7 @@ https://xxx.xxx.xxx/?Action=DescribeStorageType
 | Parameter name | Type   | Description                       | Required |
 | -------------- | ------ | --------------------------------- | -------- |
 | Region         | string | 地域。                            | **Yes**  |
-| Zone           | string | 可用区。                          | **Yes**  |
+| Zone           | string | 可用区。                           | No       |
 | BeginTime      | int    | 开始时间                          | **Yes**  |
 | EndTime        | int    | 结束时间                          | **Yes**  |
 | ResourceID     | string | 资源ID                            | No       |

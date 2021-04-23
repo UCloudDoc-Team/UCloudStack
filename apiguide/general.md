@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn，表示中国；                                 | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，中国；                              | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，中国；                               | No       |
 | ResourceID     | string | 资源ID                                                       | **Yes**  |
 | ResourceType   | string | 资源类型。VM：虚拟机；EIP：弹性IP                            | **Yes**  |
 | BeginTime      | string | 开始时间。使用unix时间戳                                     | **Yes**  |
@@ -84,7 +84,7 @@ https://xxx.xxx.xxx/?Action=DescribeMetric
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | ResourceID     | string | 资源ID;                             | **Yes**  |
 | Name           | string | 名称;                               | **Yes**  |
 | Remark         | string | 描述;                               | No       |
@@ -127,7 +127,7 @@ https://xxx.xxx.xxx/?Action=ModifyNameAndRemark
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | ResourceIDs.N   | string | 【数组】告警模板ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | **Yes**  |
 | ResourceType    | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关;EIP:弹性IP | **Yes**  |
 | AlarmTemplateID | string | 告警模板ID                                                   | **Yes**  |
@@ -170,7 +170,7 @@ https://xxx.xxx.xxx/?Action=BindAlarmTemplate
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | ResourceIDs.N   | string | 【数组】资源的 ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | **Yes**  |
 | ResourceType    | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关;EIP:弹性网卡 | **Yes**  |
 | AlarmTemplateID | string | 告警模板ID                                                   | **Yes**  |
@@ -213,7 +213,7 @@ https://xxx.xxx.xxx/?Action=UnbindAlarmTemplate
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。    | No       |
 
 **Response Elements**
 
@@ -270,7 +270,7 @@ https://xxx.xxx.xxx/?Action=DescribeVMType
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。    | No       |
 
 **Response Elements**
 
@@ -323,7 +323,7 @@ https://xxx.xxx.xxx/?Action=DescribeStorageType
 | Parameter name | Type   | Description                       | Required |
 | -------------- | ------ | --------------------------------- | -------- |
 | Region         | string | 地域。                            | **Yes**  |
-| Zone           | string | 可用区。                          | **Yes**  |
+| Zone           | string | 可用区。                           | No       |
 | BeginTime      | int    | 开始时间                          | **Yes**  |
 | EndTime        | int    | 结束时间                          | **Yes**  |
 | ResourceID     | string | 资源ID                            | No       |

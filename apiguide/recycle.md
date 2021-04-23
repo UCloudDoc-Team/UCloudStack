@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。                               | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                    | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                     | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | ResourceIDs.N  | string | 【数组】资源ID，输入“有效”的ID。调用方式举例：ResourceIDs.0=“one-id”、ResourceIDs.1=“two-id”。 | No       |
@@ -77,7 +77,7 @@ https://xxx.xxx.xxx/?Action=DescribeRecycledResource
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。  | No       |
 | ResourceID     | string | 待恢复的资源ID                            | **Yes**  |
 
 **Response Elements**
@@ -116,7 +116,7 @@ https://xxx.xxx.xxx/?Action=RollbackResource
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。                               | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                    | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。                     | No       |
 | ResourceID     | string | 待续续的资源ID                                               | **Yes**  |
 | Quantity       | int    | 购买时长，默认为 1。按小时(Dynamic)付费的资源无需此参数，按月付费的资源传 0 时，代表购买至月末。 | No       |
 

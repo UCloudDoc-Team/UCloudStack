@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | OperatorName   | string | 线路。目前支持Bgp                                            | **Yes**  |
 | Bandwidth      | int    | 带宽，默认值1，默认范围1\~100                                | **Yes**  |
 | ChargeType     | string | 计费模式。枚举值：Dynamic，表示小时；Month，表示月；Year，表示年； | **Yes**  |
@@ -62,7 +62,7 @@ https://xxx.xxx.xxx/?Action=AllocateEIP
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | Offset         | string | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | string | 返回数据长度，默认为20，最大100。                            | No       |
 | EIPIDs.N       | string | 【数组】外网的 ID。输入有效的 ID。调用方式举例：EIPIDs.0=“one-id”、EIPIDs.1=“two-id” | No       |
@@ -155,7 +155,7 @@ https://xxx.xxx.xxx/?Action=DescribeEIP
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                         | No       |
 | Offset         | string | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | string | 返回数据长度，默认为20，最大100。                            | No       |
 | EIPIDs.N       | string | 【数组】外网的 ID。输入有效的 ID。调用方式举例：EIPIDs.0=“one-id”、EIPIDs.1=“two-id” | No       |
@@ -226,7 +226,7 @@ https://xxx.xxx.xxx/?Action=DescribeEIP
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；中国                   | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                | No       |
 | ResourceType   | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关 | **Yes**  |
 | ResourceID     | string | 资源ID                                            | **Yes**  |
 | EIPID          | string | 外网IP的ID                                        | **Yes**  |
@@ -269,7 +269,7 @@ https://xxx.xxx.xxx/?Action=BindEIP
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；中国                   | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                | No       |
 | ResourceType   | string | 资源类型。VM：虚拟机, LB:负载均衡, NATGW：nat网关 | **Yes**  |
 | ResourceID     | string | 资源ID                                            | **Yes**  |
 | EIPID          | string | 外网IP的ID                                        | **Yes**  |
@@ -313,7 +313,7 @@ https://xxx.xxx.xxx/?Action=UnBindEIP
 | Parameter name | Type   | Description  | Required |
 | -------------- | ------ | ------------ | -------- |
 | Region         | string | 地域。       | **Yes**  |
-| Zone           | string | 可用区。     | **Yes**  |
+| Zone           | string | 可用区。      | No       |
 | EIPID          | string | 外网IP的ID   | **Yes**  |
 | Bandwidth      | int    | 调整后的带宽 | **Yes**  |
 
@@ -354,7 +354,7 @@ https://xxx.xxx.xxx/?Action=ModifyEIPBandwidth
 | Parameter name | Type   | Description                       | Required |
 | -------------- | ------ | --------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；中国   | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国 | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国 | No       |
 | EIPID          | string | 外网IP的ID                        | **Yes**  |
 
 **Response Elements**
