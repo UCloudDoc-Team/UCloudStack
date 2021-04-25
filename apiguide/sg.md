@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | Name           | string | 名称;                                                        | **Yes**  |
 | Rule.N         | string | 【数组】安全组规则。输入有效的规则，调用方式举例：Rule.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1”、Rule.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1” | **Yes**  |
 | Remark         | string | 描述;                                                        | No       |
@@ -53,7 +53,7 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroup
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区。                                                     | **Yes**  |
+| Zone           | string | 可用区。                                                      | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | SGIDs.N        | string | 【数组】安全组的 ID。输入有效的 ID。调用方式举例：SGIDs.0=“one-id”、SGIDs.1=“two-id” | No       |
@@ -150,7 +150,7 @@ https://xxx.xxx.xxx/?Action=DescribeSecurityGroup
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | SGID           | string | 安全组ID                            | **Yes**  |
 
 **Response Elements**
@@ -189,7 +189,7 @@ https://xxx.xxx.xxx/?Action=DeleteSecurityGroup
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | SGID           | string | 安全组ID                                                     | **Yes**  |
 | Rules.N        | string | 【数组】安全组规则。输入有效的规则，调用方式举例：Rule.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1”、Rule.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1” | **Yes**  |
 
@@ -231,7 +231,7 @@ https://xxx.xxx.xxx/?Action=CreateSecurityGroupRule
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | SGID           | string | 安全组ID                                                     | **Yes**  |
 | Rules.N        | string | 【数组】规则。输入有效的 规则。调用方式举例：Rules.0=“TCP\|23\|0.0.0.0/0\|ACCEPT\|HIGH\|1\|sg_rule-wefvg34f”、Rules.1=“TCP\|55\|0.0.0.0/0\|ACCEPT\|HIGH\|1\|sg_rule-wefvggf” | **Yes**  |
 
@@ -272,7 +272,7 @@ https://xxx.xxx.xxx/?Action=UpdateSecurityGroupRule
 | Parameter name | Type   | Description  | Required |
 | -------------- | ------ | ------------ | -------- |
 | Region         | string | 地域。       | **Yes**  |
-| Zone           | string | 可用区。     | **Yes**  |
+| Zone           | string | 可用区。      | No       |
 | SGID           | string | 安全组ID     | **Yes**  |
 | SGRuleID       | string | 安全组规则ID | **Yes**  |
 
@@ -313,7 +313,7 @@ https://xxx.xxx.xxx/?Action=DeleteSecurityGroupRule
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                     | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                | No       |
 | ResourceID     | string | 绑定的资源ID。调用方式举例：ResourceID=“one-id”。 | **Yes**  |
 | SGID           | string | 安全组ID                                          | **Yes**  |
 | NICID          | string | 网卡ID                                            | No       |
@@ -356,7 +356,7 @@ https://xxx.xxx.xxx/?Action=BindSecurityGroup
 | Parameter name | Type   | Description                                       | Required |
 | -------------- | ------ | ------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                     | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；               | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                | No       |
 | ResourceID     | string | 解绑的资源ID。调用方式举例：ResourceID=“one-id”。 | **Yes**  |
 | SGID           | string | 安全组ID                                          | **Yes**  |
 
@@ -397,7 +397,7 @@ https://xxx.xxx.xxx/?Action=UnBindSecurityGroup
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | SGID           | string | 安全组ID                            | **Yes**  |
 | Offset         | int    | 列表起始位置偏移量，默认为0。       | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。   | No       |

@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No  |
 | Network        | string | 网段。例如：10.0.0.0/16；           | **Yes**  |
 | Name           | string | 名称;                               | **Yes**  |
 | Remark         | string | 描述;                               | No       |
@@ -53,7 +53,7 @@ https://xxx.xxx.xxx/?Action=CreateVPC
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区。                                                     | **Yes**  |
+| Zone           | string | 可用区。                                                     | No  |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | VPCIDs.N       | string | 【数组】VPC的 ID。调用方式举例：VPCIDs.0=“one-id”、VPCIDs.1=“two-id” | No       |
@@ -152,7 +152,7 @@ https://xxx.xxx.xxx/?Action=DescribeVPC
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。    | No  |
 | VPCID          | string | ID          | **Yes**  |
 
 **Response Elements**
@@ -191,7 +191,7 @@ https://xxx.xxx.xxx/?Action=DeleteVPC
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No  |
 | Name           | string | 名称;                               | **Yes**  |
 | Network        | string | 网段。列如：10.0.0.0/16；           | **Yes**  |
 | VPCID          | string | 所属VPCID                           | **Yes**  |
@@ -237,7 +237,7 @@ https://xxx.xxx.xxx/?Action=CreateSubnet
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。                                                       | **Yes**  |
-| Zone           | string | 可用区。                                                     | **Yes**  |
+| Zone           | string | 可用区。                                                     | No  |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | VPCID          | string | VPCID                                                        | No       |
@@ -310,7 +310,7 @@ https://xxx.xxx.xxx/?Action=DescribeSubnet
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。    | No |
 | SubnetID       | string | SubnetID    | **Yes**  |
 
 **Response Elements**

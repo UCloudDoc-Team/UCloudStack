@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description    | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | Name           | string | 名称。                                                       | **Yes**  |
 | VMType         | string | 运行负载均衡实例的主机机型。枚举值：如 Normal ，表示普通机型； SSD，表示 SSD 机型。（机型由平台管理员修改和指定，可参考获取主机机型接口） | **Yes**  |
 | VPCID          | string | LB实例所在的 VPC ID 。                                       | **Yes**  |
@@ -68,7 +68,7 @@ https://xxx.xxx.xxx/?Action=CreateLB
 | Parameter name | Type   | Description     | Required |
 | -------------- | ------ | --------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | VPCID          | string | VPCID                                                        | No       |
 | SubnetID       | string | 子网ID                                                       | No       |
 | LBIDs.N        | string | 【数组】负载均衡的 ID。调用方式举例：LBIDs.0=“one-id”、LBIDs.1=“two-id”。 | No       |
@@ -161,7 +161,7 @@ https://xxx.xxx.xxx/?Action=DescribeLB
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
 
 **Response Elements**
@@ -200,7 +200,7 @@ https://xxx.xxx.xxx/?Action=DeleteLB
 | Parameter name      | Type   | Description                                                  | Required |
 | ------------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region              | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | LBID                | string | 负载均衡ID                                                   | **Yes**  |
 | Protocol            | string | VServer 的监听协议。枚举值：支持 TCP、UDP、HTTP、HTTPS 四种协议转发。 | **Yes**  |
 | Port                | int    | VServer 的监听端口。端口范围为 1\~65535 ，其中 323、9102、9103、9104、9105、60909、60910 被系统占用。 | **Yes**  |
@@ -265,7 +265,7 @@ https://xxx.xxx.xxx/?Action=CreateVS
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSIDs.N        | string | 【数组】VServer的 ID。调用方式举例：VSIDs.0=“one-id”、VSIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -437,7 +437,7 @@ https://xxx.xxx.xxx/?Action=DescribeVS
 | Parameter name      | Type   | Description                                                  | Required |
 | ------------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region              | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone                | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | VSID                | string | 需要更新的VSID                                               | **Yes**  |
 | LBID                | string | VServer 监听器所属的负载均衡 ID                              | **Yes**  |
 | Scheduler           | string | 负载均衡的调度算法。枚举值：wrr:加权轮训；least_conn:最小连接数；hash:原地址,四层lb使用。ip_hash:七层lb使用 | No       |
@@ -500,7 +500,7 @@ https://xxx.xxx.xxx/?Action=UpdateVS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | LBID           | string | VServer 监听器所属的负载均衡 ID     | **Yes**  |
 | VSID           | string | 负载均衡VServer监听器ID             | **Yes**  |
 
@@ -541,7 +541,7 @@ https://xxx.xxx.xxx/?Action=DeleteVS
 | Parameter name | Type   | Description                                               | Required |
 | -------------- | ------ | --------------------------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                               | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                       | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                        | No       |
 | LBID           | string | 负载均衡ID                                                | **Yes**  |
 | VSID           | string | VServer的ID                                               | **Yes**  |
 | BindResourceID | string | 服务节点的资源 ID ，仅支持添加与 LB 相同 VPC 的虚拟机资源 | **Yes**  |
@@ -590,7 +590,7 @@ https://xxx.xxx.xxx/?Action=CreateRS
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServer的ID                                                  | No       |
 | RSIDs.N        | string | 【数组】RServer的 ID。调用方式举例：RSIDs.0=“one-id”、RSIDs.1=“two-id”。 | No       |
@@ -673,7 +673,7 @@ https://xxx.xxx.xxx/?Action=DescribeRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | RSID           | string | RServer的ID                         | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
@@ -716,7 +716,7 @@ https://xxx.xxx.xxx/?Action=EnableRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | RSID           | string | RServer的ID                         | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
@@ -759,7 +759,7 @@ https://xxx.xxx.xxx/?Action=DisableRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | LBID           | string | VServer 监听器所属的负载均衡 ID     | **Yes**  |
 | VSID           | string | RServer所属的VServer的ID            | **Yes**  |
 | RSID           | string | RServer的ID                         | **Yes**  |
@@ -806,7 +806,7 @@ https://xxx.xxx.xxx/?Action=UpdateRS
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | RSID           | string | RServer的ID                         | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
@@ -849,7 +849,7 @@ https://xxx.xxx.xxx/?Action=DeleteRS
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServer的ID                                                  | **Yes**  |
 | RSIDs.N        | string | 【数组】内容转发规则应用的服务节点的 ID，来源于 VServer 中添加的服务节点。调用方式举例：RSIDs.0=“one-id”、RSIDs.1=“two-id”。 | **Yes**  |
@@ -898,7 +898,7 @@ https://xxx.xxx.xxx/?Action=CreateVSPolicy
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServerID                                                    | No       |
 | PolicyIDs.N    | string | 【数组】七层负载均衡内容转发规则的 ID。调用方式举例：PolicyIDs.0=“one-id”、PolicyIDs.1=“two-id” | No       |
@@ -1007,7 +1007,7 @@ https://xxx.xxx.xxx/?Action=DescribeVSPolicy
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | LBID           | string | 负载均衡ID                                                   | **Yes**  |
 | VSID           | string | VServer的ID                                                  | **Yes**  |
 | PolicyID       | string | 内容转发规则ID                                               | **Yes**  |
@@ -1056,7 +1056,7 @@ https://xxx.xxx.xxx/?Action=UpdateVSPolicy
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | PolicyID       | string | 内容转发规则ID                      | **Yes**  |
 | LBID           | string | 负载均衡ID                          | **Yes**  |
 | VSID           | string | VServer的ID                         | **Yes**  |
@@ -1099,7 +1099,7 @@ https://xxx.xxx.xxx/?Action=DeleteVSPolicy
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。                                                       | **Yes**  |
-| Zone            | string | 可用区。                                                     | **Yes**  |
+| Zone            | string | 可用区。                                                     | No       |
 | Certificate     | string | 证书内容                                                     | **Yes**  |
 | Name            | string | 证书名称                                                     | **Yes**  |
 | CertificateType | string | 证书类型，枚举值["ServerCrt","CACrt"]。分别表示服务器证书和CA证书，CA证书仅在双向认证的时有效。 | **Yes**  |
@@ -1154,7 +1154,7 @@ https://xxx.xxx.xxx/?Action=CreateCertificate
 | Parameter name   | Type   | Description                                                  | Required |
 | ---------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region           | string | 地域。                                                       | **Yes**  |
-| Zone             | string | 可用区。                                                     | **Yes**  |
+| Zone             | string | 可用区。                                                     | No       |
 | CertificateType  | string | 证书类型，枚举值["ServerCrt","CACrt"]，分别表示服务器证书和CA证书。 | No       |
 | CertificateIDs.N | string | 证书ID列表                                                   | No       |
 | Limit            | int    | 返回数据长度，默认为20，最大100                              | No       |
@@ -1259,7 +1259,7 @@ https://xxx.xxx.xxx/?Action=DescribeCertificate
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域。      | **Yes**  |
-| Zone           | string | 可用区。    | **Yes**  |
+| Zone           | string | 可用区。     | No       |
 | CertificateID  | string | 证书ID      | **Yes**  |
 
 **Response Elements**

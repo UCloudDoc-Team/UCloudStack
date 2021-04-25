@@ -9,7 +9,7 @@
 | Parameter name | Type   | Description     | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | Name           | string | 名称。                                                       | **Yes**  |
 | VMType         | string | 运行NAT网关实例的主机机型。枚举值：如 Normal ，表示普通机型； SSD，表示 SSD 机型。（机型由平台管理员修改和指定，可参考获取主机机型接口） | **Yes**  |
 | VPCID          | string | NAT网关实例所在的 VPC ID                                     | **Yes**  |
@@ -66,7 +66,7 @@ https://xxx.xxx.xxx/?Action=CreateNATGW
 | Parameter name | Type   | Description                 | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | NATGWIDs.N     | string | 【数组】NAT网关的 ID。调用方式举例：NATGWIDs.0=“one-id”、NATGWIDs.1=“two-id”。 | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
 | Limit          | int    | 返回数据长度，默认为20，最大100。                            | No       |
@@ -149,7 +149,7 @@ https://xxx.xxx.xxx/?Action=DescribeNATGW
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | NATGWID        | string | NAT网关ID                           | **Yes**  |
 
 **Response Elements**
@@ -188,7 +188,7 @@ https://xxx.xxx.xxx/?Action=DeleteNATGW
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | NATGWID        | string | NAT网关ID                           | **Yes**  |
 | BindResourceID | string | 绑定的虚拟机资源ID                  | **Yes**  |
 | NATGWType      | string | NAT的类型。枚举值：SNAT，DNAT       | **Yes**  |
@@ -233,7 +233,7 @@ https://xxx.xxx.xxx/?Action=CreateNATGWRule
 | Parameter name    | Type   | Description          | Required |
 | ----------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region            | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone              | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone              | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | NATGWID           | string | NAT网关ID                                                    | **Yes**  |
 | NATGWType         | string | NAT类型。枚举值：SNAT，DNAT                                  | **Yes**  |
 | Offset            | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -312,7 +312,7 @@ https://xxx.xxx.xxx/?Action=DescribeNATGWRule
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | RuleID         | string | 白名单ID                            | **Yes**  |
 | NATGWID        | string | nat网关ID                           | **Yes**  |
 

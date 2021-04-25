@@ -9,7 +9,7 @@
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域或数据中心。枚举值：cn,表示中国；                        | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | No  |
 | Name            | string | 虚拟机名称。可输入如：myVM。名称只能包含中英文、数字以及- _ .且1-30个字符。 | **Yes**  |
 | VMType          | string | 虚拟机所在宿主机的集群类型，代表不同架构、不同型号的 CPU 或硬件特征。枚举值：Normal，表示普通；SSD，表示SSD。 | **Yes**  |
 | ImageID         | string | 镜像 ID。基础镜像 ID 或者自制镜像 ID。如：cn-image-centos-74。 | **Yes**  |
@@ -96,7 +96,7 @@ https://xxx.xxx.xxx/?Action=CreateVMInstance
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域或数据中心。枚举值： cn，表示中国；                      | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | No       |
 | VPCID          | string | VPC ID。输入“有效”状态的VPC ID。                             | No       |
 | SubnetID       | string | 子网 ID。输入“有效”状态的子网 ID。                           | No       |
 | Offset         | int    | 列表起始位置偏移量，默认为0。                                | No       |
@@ -250,7 +250,7 @@ https://xxx.xxx.xxx/?Action=DescribeVMInstance
 | Parameter name  | Type   | Description                                                  | Required |
 | --------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region          | string | 地域。枚举值：cn,表示中国；                                  | **Yes**  |
-| Zone            | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone            | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | VMType          | string | 机型。枚举值：Normal，表示普通；SSD，表示SSD；               | **Yes**  |
 | ImageID         | string | 镜像 ID。基础镜像 ID 或者自制镜像 ID。如：cn-image-centos-74。 | **Yes**  |
 | CPU             | int    | CPU 个数，目前只能输入数据库配置指定规格参数，如：1核2048M、2核4096M、4核8192M、8核16384M、16核32768M。 | **Yes**  |
@@ -335,7 +335,7 @@ https://xxx.xxx.xxx/?Action=GetVMInstancePrice
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn，表示中国；        | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机 ID                           | **Yes**  |
 
 **Response Elements**
@@ -375,7 +375,7 @@ https://xxx.xxx.xxx/?Action=StartVMInstance
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn,表示中国；         | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机ID;                           | **Yes**  |
 
 **Response Elements**
@@ -414,7 +414,7 @@ https://xxx.xxx.xxx/?Action=RestartVMInstance
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值：cn，表示中国；        | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国； | No       |
 | VMID           | string | 虚拟机 ID                           | **Yes**  |
 
 **Response Elements**
@@ -455,7 +455,7 @@ http(s)://xxx.xxx.xx/?Action=StopVMInstance
 | Parameter name | Type   | Description                               | Required |
 | -------------- | ------ | ----------------------------------------- | -------- |
 | Region         | string | 地域。枚举值：如 cn,表示中国。            | **Yes**  |
-| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。 | **Yes**  |
+| Zone           | string | 可用区。枚举值：如 zone-01，表示可用区1。  | No       |
 | VMID           | string | 虚拟机ID                                  | **Yes**  |
 
 **Response Elements**
@@ -494,7 +494,7 @@ https://api.ucloud.cn/?Action=PoweroffVMInstance
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机ID                            | **Yes**  |
 | Password       | string | 密码                                | **Yes**  |
 
@@ -535,7 +535,7 @@ https://xxx.xxx.xx/?Action=ResetVMInstancePassword
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机ID                            | **Yes**  |
 | ImageID        | string | 镜像ID                              | **Yes**  |
 
@@ -576,7 +576,7 @@ https://xxx.xxx.xx/?Action=ReinstallVMInstance
 | Parameter name | Type   | Description                                                  | Required |
 | -------------- | ------ | ------------------------------------------------------------ | -------- |
 | Region         | string | 地域。枚举值： cn，表示中国；                                | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国；                          | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；                           | No       |
 | VMID           | string | 虚拟机ID                                                     | **Yes**  |
 | CPU            | int    | CPU 个数，如 1、2、4、8、16、32、64。                        | **Yes**  |
 | Memory         | int    | 内存容量，如 2048、4096、8192、16384、32768、65536、131072。 | **Yes**  |
@@ -619,7 +619,7 @@ https://xxx.xxx.xx/?Action=ResizeVMConfig
 | Parameter name | Type   | Description | Required |
 | -------------- | ------ | ----------- | -------- |
 | Region         | string | 地域        | **Yes**  |
-| Zone           | string | 可用区      | **Yes**  |
+| Zone           | string | 可用区       | No       |
 | VMID           | string | 虚拟机ID    | **Yes**  |
 | EIPID          | string | EIPID       | **Yes**  |
 
@@ -660,7 +660,7 @@ https://xxx.xxx.xxx/?Action=UpdateVMDefaultGW
 | Parameter name | Type   | Description                         | Required |
 | -------------- | ------ | ----------------------------------- | -------- |
 | Region         | string | 地域。 枚举值：cn，表示中国；       | **Yes**  |
-| Zone           | string | 可用区。枚举值：zone-01，表示中国； | **Yes**  |
+| Zone           | string | 可用区。枚举值：zone-01，表示中国；  | No       |
 | VMID           | string | 虚拟机 ID。输入有效的虚拟机 ID。    | **Yes**  |
 
 **Response Elements**
