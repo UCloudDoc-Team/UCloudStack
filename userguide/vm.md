@@ -565,12 +565,6 @@ Linux 系统通常使用 `growpart` 和 `resize2fs` 工具完成系统盘分区�
   yum install -y cloud-utils
   ```
 
-* Ubuntu
-
-  ```bash
-  sudo apt-get install cloud-initramfs-growroot
-  ```
-
 2、通过 `fdisk -l ` 查看系统盘容量为 200GB ，运行 `df -Th` 查看系统盘分区`/dev/vda1` 容量为 40GB ，文件系统类型为 ext4 。
 
 ```bash
