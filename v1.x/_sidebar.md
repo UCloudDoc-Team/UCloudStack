@@ -12,6 +12,7 @@
     * [交付模式](UCloudStack/v1.x/introduction/deliver.md)
 * 技术白皮书
   * [技术白皮书概览](UCloudStack/v1.x/techwhitepaper/README.md)
+    * [版权声明](UCloudStack/v1.x/techwhitepaper/copyright.md)
     * [前言](UCloudStack/v1.x/techwhitepaper/abstract.md)
     * [1 产品简介](UCloudStack/v1.x/techwhitepaper/introduction.md)
     * [2 平台物理架构](UCloudStack/v1.x/techwhitepaper/pharch.md)
@@ -21,6 +22,7 @@
     * [6 灾备服务](UCloudStack/v1.x/techwhitepaper/recovery.md)
 * 用户手册
   * [用户手册概览](UCloudStack/v1.x/userguide/README.md)
+    * [版权声明](/UCloudStack/v1.x/userguide/copyright.md)
     * [1 产品简介](/UCloudStack/v1.x/userguide/introduction.md)
     * [2 主账号](/UCloudStack/v1.x/userguide/mainaccount.md)
     * [3 虚拟机](/UCloudStack/v1.x/userguide/vm.md)
@@ -48,6 +50,7 @@
     * [25 数据库审计](/UCloudStack/v1.x/userguide/das.md)
 * 管理员手册
   * [管理员手册概览](UCloudStack/v1.x/adminguide/README.md)
+    * [版权声明](UCloudStack/v1.x/adminguide/copyright.md)
     * [1 平台概述](UCloudStack/v1.x/adminguide/introduction.md)
     * [2 账号认证](UCloudStack/v1.x/adminguide/account.md)
     * [3 地域管理](UCloudStack/v1.x/adminguide/region.md)
@@ -63,6 +66,7 @@
 * 开发者指南
   * API手册
     * [概览](UCloudStack/v1.x/apiguide/README.md)
+    * [版权声明](UCloudStack/v1.x/apiguide/copyright.md)
     * [1 API 概述](UCloudStack/v1.x/apiguide/overview.md)
     * [2 虚拟机](UCloudStack/v1.x/apiguide/vm.md)
     * [3 镜像管理](UCloudStack/v1.x/apiguide/image.md)
