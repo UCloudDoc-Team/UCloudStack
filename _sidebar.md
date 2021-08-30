@@ -20,8 +20,8 @@
     * [API 手册 v2.x](/UCloudStack/v2.x/apiguide/README.md)
     * [API 状态码列表 v2.x](/UCloudStack/v2.x/apiretcode/README.md)
 * 更新历史
-  * [更新历史 v1.x](/UCloudStack/v1.x/changelog/README.md)
-  * [更新历史 v2.x](/UCloudStack/v2.x/changelog/README.md)
+  * [更新历史 v1.x](/UCloudStack/changelog/v1.x/README.md)
+  * [更新历史 v2.x](/UCloudStack/changelog/v2.x/README.md)
 * [常见问题](/UCloudStack/faq.md)
 
 
