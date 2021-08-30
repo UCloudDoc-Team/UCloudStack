@@ -1,0 +1,21 @@
+<div class="sidebar_title icon-product__UCloudStack/v1.x">API手册 APIGuide</div>
+
+* [概览](/UCloudStack/v1.x/apiguide/README.md)
+* [版权声明](/UCloudStack/v1.x/apiguide/copyright.md)
+* [1 API 概述](/UCloudStack/v1.x/apiguide/overview.md)
+* [2 虚拟机](/UCloudStack/v1.x/apiguide/vm.md)
+* [3 镜像管理](/UCloudStack/v1.x/apiguide/image.md)
+* [4 云硬盘](/UCloudStack/v1.x/apiguide/disk.md)
+* [5 硬盘快照](/UCloudStack/v1.x/apiguide/snapshot.md)
+* [6 VPC 网络](/UCloudStack/v1.x/apiguide/vpc.md)
+* [7 外网 IP](/UCloudStack/v1.x/apiguide/eip.md)
+* [8 弹性网卡](/UCloudStack/v1.x/apiguide/nic.md)
+* [9 安全组](/UCloudStack/v1.x/apiguide/sg.md)
+* [10 负载均衡](/UCloudStack/v1.x/apiguide/lb.md)
+* [11 NAT 网关](/UCloudStack/v1.x/apiguide/natgw.md)
+* [12 账户管理](/UCloudStack/v1.x/apiguide/account.md)
+* [13 回收站](/UCloudStack/v1.x/apiguide/recycle.md )
+* [14 资源通用操作](/UCloudStack/v1.x/apiguide/general.md)
+* [15 Python Demo](/UCloudStack/v1.x/apiguide/demo.md)
+* [返回主页](/UCloudStack/README.md)
+
