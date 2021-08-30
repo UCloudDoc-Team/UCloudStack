@@ -1,4 +1,4 @@
-<div class="sidebar_title icon-product__ucloudstack">私有云 UCloudStack v2.x版本</div>
+<div class="sidebar_title icon-product__ucloudstack">UCloudStack v2.x版本</div>
 
 * [文档概览](UCloudStack/README.md)
 * 产品介绍
