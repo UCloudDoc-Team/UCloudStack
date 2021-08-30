@@ -48,6 +48,8 @@
     * [23 容器服务](/UCloudStack/v1.x/userguide/k8s.md)
     * [24 容器镜像仓库](/UCloudStack/v1.x/userguide/containerimage.md)
     * [25 数据库审计](/UCloudStack/v1.x/userguide/das.md)
+  * 自定义镜像制作
+    * [自定义镜像制作](UCloudStack/v1.x/customimage/README.md)
 * 管理员手册
   * [管理员手册概览](UCloudStack/v1.x/adminguide/README.md)
     * [版权声明](UCloudStack/v1.x/adminguide/copyright.md)
