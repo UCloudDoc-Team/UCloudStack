@@ -1,4 +1,4 @@
-<div class="sidebar_title icon-product__ucloudstack">优刻得私有云 UCloudStack</div>
+<div class="sidebar_title icon-product__ucloudstack">私有云 UCloudStack</div>
 
 * [文档概览](/UCloudStack/README.md)
 * 产品介绍
