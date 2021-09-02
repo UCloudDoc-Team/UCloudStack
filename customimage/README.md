@@ -62,6 +62,7 @@ Windows 安装过程中出现下图提示说明制镜镜像的虚拟机未安装
 
 ![image](../images/customimage/customize_04.png)
 
+> **以下为KVM环境下的解决方案**
 * 下载 [virtio 驱动程序](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.149-2/) 中的 `virtio-win-0.1.149.iso` 文件到物理机操作，如 `/root` 目录；
 
 * 在物理机中编辑文件 `virtio_iso.xml` ；
@@ -123,3 +124,4 @@ Windows 安装过程中出现下图提示说明制镜镜像的虚拟机未安装
 
   ![image](../images/customimage/customize_05.png)
 
+> **如需从其他平台导入镜像（如vmware），请联系平台客户经理或技术支持。**
