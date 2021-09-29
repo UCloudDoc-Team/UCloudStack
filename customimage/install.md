@@ -11,14 +11,14 @@
 <!-- tabs:start -->
 ### ** Linux **
 * 进入工具所在目录，使用root权限运行工具，进行检测。
- ```bash
-    chmod +x image_init
+```bash
+chmod +x image_init
 
-    ./image_init -t check -c v1 
+./image_init -t check -c v1 
 ```
 * 等待检测工具的返回信息。
 
- ```bash
+```bash
 [2021-09-29 14:29:37] [INFO] Start to check system......
 [2021-09-29 14:29:37] [INFO] The tools Get your system info is fallow. when you import your image to UCloudStack Platform
 [2021-09-29 14:29:37] [INFO] Get system Info: CentOS
@@ -73,8 +73,8 @@ check qga enable                                           [FAILED]
 [2021-09-29 14:29:39] [INFO] Check details report info from file : /root/image_init_report_2021-09-29_14-29-37.txt
 
 [2021-09-29 14:29:39] [INFO] Please use [ ./image_init install ] to repaire those failed.
-
 ```
+
 * 查看检测报告
 
 检测工具的运行结果中，会显示当前的检测信息，也会展示检测报告所在的路径。如本示例中，检测报告所在的路径为 `/root/image_init_report_日期_时间.txt` 。
@@ -86,10 +86,8 @@ check qga enable                                           [FAILED]
  * 依次检测，等待工具的返回信息
  ![windows_check_02](../images/customimage/win_check_02.png)
 
-
-
-
 <!-- tabs:end -->
+
 
 ## 镜像工具安装与检测
 
