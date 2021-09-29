@@ -4,19 +4,21 @@
 * 启动第三方已安装或已有的 Linux 或 Windows 虚拟机
 * 将下载的初始化工具上传至虚拟机任意目录，如  `/root` 或 `C盘`目录下
 
-<!-- tabs:start -->
+
 
 ## 镜像规范检测
 
+<!-- tabs:start -->
 ### ** Linux **
 * 进入工具所在目录，使用root权限运行工具，进行检测。
-```
+ ```bash
     chmod +x image_init
 
     ./image_init -t check -c v1 
 ```
 * 等待检测工具的返回信息。
-```
+
+ ```bash
 [2021-09-29 14:29:37] [INFO] Start to check system......
 [2021-09-29 14:29:37] [INFO] The tools Get your system info is fallow. when you import your image to UCloudStack Platform
 [2021-09-29 14:29:37] [INFO] Get system Info: CentOS
@@ -71,6 +73,7 @@ check qga enable                                           [FAILED]
 [2021-09-29 14:29:39] [INFO] Check details report info from file : /root/image_init_report_2021-09-29_14-29-37.txt
 
 [2021-09-29 14:29:39] [INFO] Please use [ ./image_init install ] to repaire those failed.
+
 ```
 * 查看检测报告
 
@@ -88,8 +91,8 @@ check qga enable                                           [FAILED]
 
 <!-- tabs:end -->
 
-
 ## 镜像工具安装与检测
+
 <!-- tabs:start -->
 ### ** Linux **
 * 进入工具所在目录，使用root权限运行工具，进行安装。
@@ -103,7 +106,7 @@ check qga enable                                           [FAILED]
     ./image_init -t install -c v1 -r true
 ```
 * 等待安装工具的返回信息。
-```
+ ```bash
 [2021-09-29 15:07:52] [INFO] Start to check system......
 [2021-09-29 15:07:52] [INFO] The tools Get your system info is fallow. when you import your image to UCloudStack Platform
 [2021-09-29 15:07:52] [INFO] Get system Info: CentOS
@@ -151,6 +154,7 @@ reset repo                                                 [OK]
 [2021-09-29 15:07:54] [INFO] 0 items are warning.
 [2021-09-29 15:07:54] [INFO] ------------end report-----------------
 [2021-09-29 15:07:54] [INFO] Check details report info from file : /root/image_init_report_2021-09-29_15-07-52.txt
+
 ```
 * 查看安装报告
 
@@ -158,12 +162,12 @@ reset repo                                                 [OK]
 
 * 安装完后再次进行检测
 * 进入工具所在目录，使用root权限运行工具，进行检测。
-```
+ ```bash
     ./image_init -t check -c v1 
 ```
 * 等待检测工具的返回信息。
 确保检测信息中，无 `error` 出现，表示已安装正常。
->- 如果仍有 `error` 出现，请参照 [检测项和手动安装方式](#check_install_manual_linux) 中的说明进行相对应检查项的安装。
+>- 如果仍有 `error` 出现，请参照 [检测项和手动安装方式](#check_install_manual) 中的说明进行相对应检查项的安装。
 
 ### ** Windows **
 
@@ -187,14 +191,14 @@ reset repo                                                 [OK]
  ![windows_virtio_02](../images/customimage/win_virtio_02.png)
  * 安装完后，再次运行检测工具，进行检测，直至所有的检查项都为 `success` 为止。
 
->- 如果仍有 `Failed` 出现，请参照 [检测项和手动安装方式](#check_install_manual_windows) 中的说明进行相对应检查项的安装。
+>- 如果仍有 `Failed` 出现，请参照 [检测项和手动安装方式](#check_install_manual) 中的说明进行相对应检查项的安装。
 <!-- tabs:end -->
 
 
 
 
 
-<span id = "check_install_manual_linux"></span>
+<span id = "check_install_manual"></span>
 
 ## 检测项和手动安装方式
 <!-- tabs:start -->
@@ -326,7 +330,6 @@ reset repo                                                 [OK]
     参考 hhga 安装步骤
 
 
-<span id = "check_install_manual_windows"></span>
 
 ### ** Windows **
 
