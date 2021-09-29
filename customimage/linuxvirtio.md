@@ -3,7 +3,7 @@
 
 ## 操作步骤
 * Linux安装Virtio驱动
-<span id="CheckVirtio"></span>
+<span id = "CheckVirtio"></span>
 
 ### 步骤一.检查内核是否安装Virito驱动
 
@@ -18,8 +18,7 @@
 |参数取值都为 y|表示操作系统中已经包含了Viritio驱动，请根据 [导入镜像流程](https://docs.ucloud.cn/UCloudStack/customimage/README?id=_3-导入镜像流程)  继续操作 |
 |没有这三个参数|表示没有安装virito相关驱动，不能直接导入云平台。需要编译安装virtio驱动。具体请参见[步骤四](#DownloadKernel)|
 
-
-<span id="CheckVirtioForInitramfs"></span>
+<span id = "CheckVirtioForInitramfs"></span>
 
 ### 步骤二.检查临时文件系统是否包含Virtio驱动
 如果 [步骤一](#CheckVirtio)的执行结果参数取值为 m，则需要进一步检查，确认临时文件系统 initramfs 或者 initrd 是否包含 virtio 驱动。请根据操作系统的不同，执行相应命令：
@@ -40,7 +39,7 @@ lsinitramfs /boot/initrd.img-$(uname -r) | grep virtio
 
 
 
-<span id="ReconfigureInitramfs"></span>
+<span id = "ReconfigureInitramfs"></span>
 
 ### 步骤三.修复临时文件系统
 如果 [步骤二](#CheckVirtioForInitramfs) 的执行结果显示临时文件系统 initramfs 或者 initrd 没有包含 virtio 驱动，则需要重新配置临时文件系统，使其包含 virtio 驱动。请根据操作系统的不同，选择相应操作：
@@ -57,7 +56,7 @@ update-initramfs  -u
 ```
 > 安装完成后，可以根据[导入镜像流程](https://docs.ucloud.cn/UCloudStack/customimage/README?id=_3-导入镜像流程) 继续操作。
 
-<span id="DownloadKernel"></span>
+<span id = "DownloadKernel"></span>
 
 ### 步骤四.下载和内核安装包
 #### 下载内核安装包
