@@ -11,10 +11,12 @@
 <!-- tabs:start -->
 ### ** Linux **
 * 进入工具所在目录，使用root权限运行工具，进行检测。
+
 ```bash
 chmod +x image_init
 ./image_init -t check -c v1 
 ```
+
 * 等待检测工具的返回信息。
 
 ```bash
@@ -102,7 +104,7 @@ check qga enable                                           [FAILED]
 ```
     ./image_init -t install -c v1 -r true
 ```
-* 等待安装工具的返回信息。
+* 等待安装工具的返回信息
 
 ```bash
 [2021-09-29 15:07:52] [INFO] Start to check system......
@@ -153,17 +155,22 @@ reset repo                                                 [OK]
 [2021-09-29 15:07:54] [INFO] ------------end report-----------------
 [2021-09-29 15:07:54] [INFO] Check details report info from file : /root/image_init_report_2021-09-29_15-07-52.txt
 ```
+
 * 查看安装报告
 
 工具安装的运行结果中，会显示当前的安装信息，也会展示安装报告所在的路径。如本示例中，安装报告所在的路径为 `/root/image_init_report_日期_时间.txt` 
 
 * 安装完后再次进行检测
 * 进入工具所在目录，使用root权限运行工具，进行检测。
+
 ```bash
     ./image_init -t check -c v1 
 ```
+
 * 等待检测工具的返回信息。
+
 确保检测信息中，无 `error` 出现，表示已安装正常。
+
 >- 如果仍有 `error` 出现，请参照 [检测项和手动安装方式](#check_install_manual) 中的说明进行相对应检查项的安装。
 
 ### ** Windows **
