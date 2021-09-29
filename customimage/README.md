@@ -33,7 +33,7 @@
     </tr>
     <tr>
     <td>驱动</td>
-        <td>镜像必须安装虚拟化平台 KVM 的 Virtio 驱动，可参考<a href="#ImportImage" title="导入镜像流程"> 导入镜像流程</a> 进行自动安装，或参考<a href="/UCloudStack/customimage/linuxvirtio.md" title=" linux virtio驱动安装"> linux virtoi驱动安装</a> 、 <a href="/UCloudStack/customimage/windowsvirtio.md" title="windows virtio驱动安装"> windows virtoi驱动安装</a> 进行手动安装</td>
+        <td>镜像必须安装虚拟化平台 KVM 的 Virtio 驱动，可参考 【导入镜像流程】进行自动安装，或参考<a href="/UCloudStack/customimage/linuxvirtio.md" title=" linux virtio驱动安装"> linux virtoi驱动安装</a> 、 <a href="/UCloudStack/customimage/windowsvirtio.md" title="windows virtio驱动安装"> windows virtoi驱动安装</a> 进行手动安装</td>
     </tr>
      <tr>
     </tr>
@@ -46,8 +46,7 @@
 </table>
 
 
-
-<span id="ImportImage"></span>
+<span id = "ImportImage"></span>
 
 # 3 导入镜像流程
 
