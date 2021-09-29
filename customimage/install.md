@@ -98,7 +98,7 @@ check qga enable                                           [FAILED]
 ```
     ./image_init -t install -c v1
 ``` 
-    * 如果需要重置 yum 或 deb 源，请运行
+* 如果需要重置 yum 或 deb 源，请运行
 ```
     ./image_init -t install -c v1 -r true
 ```
@@ -156,7 +156,7 @@ reset repo                                                 [OK]
 
 工具安装的运行结果中，会显示当前的安装信息，也会展示安装报告所在的路径。如本示例中，安装报告所在的路径为 `/root/image_init_report_日期_时间.txt` 
 
-* 再次进行检测
+* 安装完后再次进行检测
 * 进入工具所在目录，使用root权限运行工具，进行检测。
 ```
     ./image_init -t check -c v1 
@@ -175,7 +175,7 @@ reset repo                                                 [OK]
 
 
 > - 如果检测过程中，出现 `virtio` 的检测结果为失败，参照如下步骤进行安装。
-* 下载【Windows virtio 驱动安装工具】至虚拟机任意目录，如 `C盘`目录下
+* 下载 [Windows virtio 驱动安装工具](http://ucloudstack-image.cn-sh2.ufileos.com/v1.x/windows/windows_virtio.exe) 至虚拟机任意目录，如 `C盘`目录下
 
 * 使用管理员身份运行工具，进行安装。
 
@@ -185,7 +185,7 @@ reset repo                                                 [OK]
  
  在安装这个设备软件时，选择始终信任来自"Red Hat, Inc." 的软件，并选择“安装”
  ![windows_virtio_02](../images/customimage/win_virtio_02.png)
- * 再次运行工具，进行检测，直至所有的检查项都为"success"为止。
+ * 安装完后，再次运行检测工具，进行检测，直至所有的检查项都为 `success` 为止。
 
 >- 如果仍有 `Failed` 出现，请参照 [检测项和手动安装方式](#check_install_manual_windows) 中的说明进行相对应检查项的安装。
 <!-- tabs:end -->
@@ -204,8 +204,8 @@ reset repo                                                 [OK]
 |driver  |创建虚拟机无法启动 | UCloudStack 后台使用virtio 驱动存储和网卡, virtio驱动效率会高一些 | 参见[安装Linux virtio驱动](UCloudStack/customimage/linuxvirtio.md) 
 |SElinux |创建虚拟机无法正常使用 |selinux是为了最小权限,或影响虚拟机启动功能设置 | 文件: /etc/selinux/config 修改: SELINUX=disabled |
 |ssh     |远程ssh连接慢 | 默认 UseDNS/GSSAPIAuthentication 是开启的| 文件: /etc/ssh/sshd_config  关闭: UseDNS no/ GSSAPIAuthentication no|
-|console |物理机后台登录有问题|方便后台登录排查原因|参见[各版本操作系统console开启](#virt_console)|
-|firewall|系统无法自动配置一些功能| 默认开启后影响服务访问,平台已在虚拟机网络层面做了防火墙功能|参见[各个操作系统关系防火墙](#disable_firewall)|
+|console |物理机后台登录有问题|方便后台登录排查原因|参见 [各版本操作系统console开启](#virt_console)|
+|firewall|系统无法自动配置一些功能| 默认开启后影响服务访问,平台已在虚拟机网络层面做了防火墙功能|参见 [各个操作系统关系防火墙](#disable_firewall)|
 |fstab   |无法正常启动虚拟机| 清理fstab文件，去除文件中不需要的device id，保证使用的device id都在blkid命令的显示结果中| 防止启动时不存在的设备导致系统系统卡主| 对比blkid 和 /etc/fatab 是否匹配,删除多余的配置项|
 |DNS     |防止绑定外网后虚拟机无法正常上网| NA | 默认检查 114.114.114.114 如果存在自定义或者其他DNS可以忽略此项自行判断|
 |ipv6    |无法正常启动机器 | UCloudStack 虚拟机依赖ipv6管理网来管理和配置虚拟机| 参见[开启管理网络ipv6](#use_ipv6) |
@@ -302,7 +302,7 @@ reset repo                                                 [OK]
 
 <span id = "install_hhga"></span>
 
-### hhga安装 （下面安装文件联系UCloudStack 管理员索取）
+### hhga安装 （下面安装文件联系服务经理索取）
 
 #### CentOS 6 && Ubuntu 14 (服务配置文件) [CentOS6_hhga](#centos6_hhga) [Ubuntu14_hhga](#ubuntu14_hhga)
     1.拷贝服务二进制文件 hhga 到 /usr/sbin 目录下
@@ -333,7 +333,7 @@ reset repo                                                 [OK]
 |检查项           |检查项影响   |检查项目原因  |  达成项目方式 |
 |:----------------|:------------|:-------------|:--------------|
 |PasswordComplexity|创建机器时设置额密码无法使用|N/A| 参见[密码复杂度设置](#set_passwd_complex)|
-|Firewall|可能导致机器无法启动|UCloudStack平台已经提供安全组因此可以关闭机器中防火墙|参见[关闭系统防火墙](#disable_firewall)|
+|Firewall|可能导致机器无法启动|UCloudStack平台已经提供安全组因此可以关闭机器中防火墙|参见[关闭系统防火墙](#win_disable_firewall)|
 |Remote Desktop|无法通过远程连接工具连接虚拟机|如果需要远程连接,需要打开远程连接功能|参见[开启远程桌面连接](#enable_remote_desktop)|
 |hhga   |无法正常启动机器| 虚拟机网络配置,改密码等都依赖hhga| 参见[hhga安装](#install_hhga)|
 |hhgad   |NA| hhga的守护服务| 参见[hhgad安装](#install_hhgad)|
@@ -349,7 +349,8 @@ reset repo                                                 [OK]
 #### 关闭密码复杂性要求
 ![](../images/customimage/windows_init_docs_pic_02.png)
 
-<span id = "set_passwd_complex"></span>
+
+<span id = "win_disable_firewall"></span>
 
 ### 关闭系统防火墙
 #### 打开防火墙管理界面
