@@ -13,7 +13,6 @@
 * 进入工具所在目录，使用root权限运行工具，进行检测。
 ```bash
 chmod +x image_init
-
 ./image_init -t check -c v1 
 ```
 * 等待检测工具的返回信息。
@@ -104,7 +103,8 @@ check qga enable                                           [FAILED]
     ./image_init -t install -c v1 -r true
 ```
 * 等待安装工具的返回信息。
- ```bash
+
+```bash
 [2021-09-29 15:07:52] [INFO] Start to check system......
 [2021-09-29 15:07:52] [INFO] The tools Get your system info is fallow. when you import your image to UCloudStack Platform
 [2021-09-29 15:07:52] [INFO] Get system Info: CentOS
@@ -152,7 +152,6 @@ reset repo                                                 [OK]
 [2021-09-29 15:07:54] [INFO] 0 items are warning.
 [2021-09-29 15:07:54] [INFO] ------------end report-----------------
 [2021-09-29 15:07:54] [INFO] Check details report info from file : /root/image_init_report_2021-09-29_15-07-52.txt
-
 ```
 * 查看安装报告
 
@@ -160,7 +159,7 @@ reset repo                                                 [OK]
 
 * 安装完后再次进行检测
 * 进入工具所在目录，使用root权限运行工具，进行检测。
- ```bash
+```bash
     ./image_init -t check -c v1 
 ```
 * 等待检测工具的返回信息。
