@@ -5,16 +5,15 @@
 
 ## 操作步骤
 
-**Windows安装Virtio驱动**
 
-### 下载 virtio 安装包
+### 步骤一：下载 virtio 安装包
 * 启动虚拟机并连接至图形控制台；
 *  登录 Windows 用户会话；
 * 下载并安装VirtIO驱动程序，选择最新的iso文件下载到虚拟机，如 C 盘根目录下；
 `https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/`
 *  将iso文件进行解压至当前虚拟机。
 
-### 安装 virtio 驱动
+### 步骤二：安装 virtio 驱动
 
 *  以管理员身份运行 `Windows PowerShell` ，切换至上一步的文件夹目录， 如
 `C:\virtio-win-0.1.204\vioserial\2k16\amd64` （此处以安装vioser为例）, 运行 `PnPutil.exe -i -a .\vioser.inf` 进行安装，且安装过程无报错；
