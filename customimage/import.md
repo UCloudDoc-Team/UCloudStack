@@ -2,13 +2,13 @@
 
 用户可以手动导入服务器的镜像文件，也可以由平台的虚拟机生成镜像。
 
-# 前提条件
+## 前提条件
 导入镜像前，请确认以下操作已经完成：
 * 了解镜像限制和要求 [镜像限制](https://docs.ucloud.cn/UCloudStack/customimage/README?id=_2-镜像限制) 
 * 已经根据 [导入镜像流程](https://docs.ucloud.cn/UCloudStack/customimage/README?id=_3-导入镜像流程) 进行镜像初始化的工具安装，并确保已经检查完整。
 * 已经根据  [镜像转换流程](UCloudStack/customimage/convert.md) 完成镜像转换。
 
-# 导入形式
+## 导入形式
 
 |功能|应用场景| 推荐指数|
 |:----------------|:------------|:------------|
