@@ -383,7 +383,7 @@ reset repo                                                 [OK]
     3. C:\Windows\System32\instsrv.exe hhga C:\Windows\System32\srvany.exe
     4. 安装完毕后，我们需要对srvany.exe进行配置，以便于能够加载我们指定的程序，配置的方法是:
         开始 –> 运行 –> regedit，打开注册表，定位到下面的路径 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\hhga
-    5. 如果该服务名下没有Parameters项目，则对服务名称项目右击新建项，名称为Parameters，然后定位到Parametes    项，新建以下几个字符串值
+    5. 如果该服务名下没有Parameters项目，则对服务名称项目右击新建项，名称为Parameters，然后定位到Parametes项，新建以下几个字符串值
         名称 Application 值为你要作为服务运行的程序地址。
         名称 AppDirectory 值为你要作为服务运行的程序所在文件夹路径。
         名称 AppParameters 值为你要作为服务运行的程序启动所需要的参数。
