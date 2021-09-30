@@ -12,6 +12,7 @@
 返回结果如下类似：
 ![virtio](../images/customimage/virtio_check.png)
 检查结果中的CONFIG_VIRTIO_BLK 、CONFIG_VIRTIO_NET 和 CONFIG_VIRTIO_PCI 参数
+
 |检查结果|说明 |
 |:---|:--- |
 |参数取值有 m|执行[步骤二](#CheckVirtioForInitramfs) 检查返回为 m 的 返回结果 |
