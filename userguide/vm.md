@@ -83,9 +83,8 @@
   * 虚拟机名称：平台默认配置名称为 `host` ，用户可自定义虚拟机名称，可通过名称进行搜索和筛选；
   * 登录方式：为虚拟机设置登录凭证，即登录虚拟机的密码；
       * CentOS 的管理员为 `root` ，Ubuntu 的管理员为 `ubuntu` ，Windows 系统的管理员名称为  `administrator` ；
-      * Linux 操作系统可在虚拟机创建成功后，通过 SSH 密钥的方式进行登录及管理。
 
-9. 选择购买数量和付费方式，如下图所示确认订单并点击“立即购买” 进行虚拟机创建操作。
+7. 选择购买数量和付费方式，如下图所示确认订单并点击“立即购买” 进行虚拟机创建操作。
 
 ![vmorder](../images/userguide/vmorder.png)
 
@@ -278,7 +277,6 @@ VNC（ Virtual Network Console ）是 UCloudStack 为用户提供的一种通过
 ![vmoperating](../images/userguide/vmoperating.png)
 
 * 关机
-  * 用户可使用系统命令进行关机，如 Windows 系统下的关机和 Linux 系统下的 shudown 命令；
   * 支持用户通过控制台点击【关机】进行关机操作，关机时虚拟机的状态必须为运行状态；
   * 虚拟机关机时，状态会从运行转换为关机中，最后转换为已关机，代表关机成功；
   * 若虚拟机卡在关机中，支持对虚拟机进行断电操作；
@@ -330,7 +328,7 @@ VNC（ Virtual Network Console ）是 UCloudStack 为用户提供的一种通过
 
 重置密码是指在线修改虚拟机操作系统的登录密码，适应于忘记登录密码或想通过控制台快速修改密码的场景。
 
-Linux 操作系统是修改 `root` 账号的密码，Windows 操作系统是修改 `administrator` 账号的密码。重置密码时虚拟机必须运行状态。用户通过点击虚拟机控制台操作中的“重置密码”按钮进行密码的重置，如下图所示：
+Linux 操作系统是修改 `root` 或 `ubuntu` 账号的密码，Windows 操作系统是修改  `administrator` 账号的密码。重置密码时虚拟机必须运行状态。用户通过点击虚拟机控制台操作中的“重置密码”按钮进行密码的重置，如下图所示：
 
 ![vmresetpd](../images/userguide/vmresetpd2.png)
 
@@ -517,7 +515,7 @@ Linux 操作系统是修改 `root` 账号的密码，Windows 操作系统是修�
 
 1. 为需要远程登录的虚拟机绑定外网 IP 地址且外网安全组允许 SSH 22 端口访问，如下图所示：
 
-![sshlogin](../images/userguide/sshlogin.png)
+![sshlogin](../images/userguide/sshlogin2.png)
 
 2. 用户打开系统自带的终端 （Terminal）并输入 SSH 命令登录：`ssh root@虚拟机的外网 IP 地址` ,如下例：
 
