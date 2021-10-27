@@ -7,8 +7,8 @@
 * 将下载的初始化工具上传至虚拟机任意目录，如  `/root` 或 `C盘`目录下
 
 
-
-## 镜像规范检测
+## 使用镜像工具自动安装
+### 镜像规范检测
 
 <!-- tabs:start -->
 ### ** Linux **
@@ -92,7 +92,7 @@ check qga enable                                           [FAILED]
 <!-- tabs:end -->
 
 
-## 镜像工具安装与检测
+### 镜像工具安装与检测
 
 <!-- tabs:start -->
 ### ** Linux **
@@ -173,7 +173,7 @@ reset repo                                                 [OK]
 
 确保检测信息中，无 `error` 出现，表示已安装正常。
 
->- 如果仍有 `error` 出现，请参照 [检测项和手动安装方式](#check_install_manual) 中的说明进行相对应检查项的安装。
+
 
 ### ** Windows **
 
@@ -197,16 +197,16 @@ reset repo                                                 [OK]
  ![windows_virtio_02](../images/customimage/win_virtio_02.png)
  * 安装完后，再次运行检测工具，进行检测，直至所有的检查项都为 `success` 为止。
 
->- 如果仍有 `Failed` 出现，请参照 [检测项和手动安装方式](#check_install_manual) 中的说明进行相对应检查项的安装。
-<!-- tabs:end -->
 
+<!-- tabs:end -->
+!> 如果仍有 `error` 或`Failed` 出现，请参照 [手动检测项和安装方式](#check_install_manual) 中的说明进行相对应检查项的安装。
 
 
 
 
 <span id = "check_install_manual"></span>
 
-## 检测项和手动安装方式
+## 手动检测项和安装方式
 <!-- tabs:start -->
 ### ** Linux **
 |检查项           |检查项影响   |检查项目原因  |  达成项目方式 |
