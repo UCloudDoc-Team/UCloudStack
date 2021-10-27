@@ -28,7 +28,7 @@ UCloudStack 商标和 UCloud 商标为优刻得科技股份有限公司所有。
 
 | Name         | Description                                | Notes                           |
 | :----------- | :----------------------------------------- | :------------------------------ |
-| API 调用地址 | 调用 API 的 WebService 入口                | http(s)://xxx.xxx.xxx           |
+| API 调用地址 | 调用 API 的 WebService 入口                | 参见 [api调用地址](#_126-api调用地址)|
 | 公共参数     | 调用 API 时需要给出的公共参数              | 参见 [公共参数](#_122-公共参数) |
 | API 指令     | 即 API 指令名称，如 **DescribeVMInstance** |                                 |
 | 指令参数     | 执行每个指令时所需要提供的参数             |                                 |
@@ -101,6 +101,17 @@ http(s)://console.dev.ucloudstack.com/api/?Action=DescribeVMInstance
 
 <span id="_13-签名算法"></span>
 
+### 1.2.6 api调用地址
+
+UCloudStack的api请求地址为http(s)://xxx.xxx.xxx/api, 可通过访问UCloudStack的管理控制确认域名前缀。下面以console.poc.ucloudstack.com为例，演示如何获取api调用地址。
+
+1.使用Chrome浏览器，打开UCloudStack控制台，进入登录页面，鼠标右键“审查”，点击“Network”，在左侧搜索框中输入api；
+
+![image](../images/customimage/get_api_res_url.png)
+
+2.刷新页面，下方会出现几个api请求，点击其中任意一个，其中General中的Request URL，便是我们要获取的api请求地址；
+
+![image](../images/customimage/get_api_res_url2.png)
 ## 1.3 签名算法
 
 
