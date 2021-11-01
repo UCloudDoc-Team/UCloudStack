@@ -1,7 +1,7 @@
 # 自定义镜像工具安装
 
 ## 操作场景
-针对 Linux 和 Windows 两种类型的镜像，平台分别提供对应的工具及制作方式进行镜像的制作及初始化。Linux 镜像制作前需下载 [Linux 初始化工具]http://ucloudstack-image.cn-sh2.ufileos.com/v1.x/linux/image_init_new) ，Windows 镜像制作前需下载 [Windows 初始化工具](http://ucloudstack-image.cn-sh2.ufileos.com/v1.x/windows/windows_init_new.exe)。
+针对 Linux 和 Windows 两种类型的镜像，平台分别提供对应的工具及制作方式进行镜像的制作及初始化。Linux 镜像制作前需下载 [Linux 初始化工具](http://ucloudstack-image.cn-sh2.ufileos.com/v1.x/linux/image_init_new) ，Windows 镜像制作前需下载 [Windows 初始化工具](http://ucloudstack-image.cn-sh2.ufileos.com/v1.x/windows/windows_init_new.exe)。
 
 * 启动第三方已安装或已有的 Linux 或 Windows 虚拟机
 * 将下载的初始化工具上传至虚拟机任意目录，如  `/root` 或 `C盘`目录下
