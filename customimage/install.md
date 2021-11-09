@@ -15,8 +15,8 @@
 * 进入工具所在目录，使用root权限运行工具，进行检测。
 
 ```bash
-chmod +x image_init
-./image_init -t check -c v1 
+chmod +x image_init_new
+./image_init_new -t check -c v1 
 ```
 
 * 等待检测工具的返回信息。
@@ -75,7 +75,7 @@ check qga enable                                           [FAILED]
 [2021-09-29 14:29:39] [INFO] ------------end report-----------------
 [2021-09-29 14:29:39] [INFO] Check details report info from file : /root/image_init_report_2021-09-29_14-29-37.txt
 
-[2021-09-29 14:29:39] [INFO] Please use [ ./image_init install ] to repaire those failed.
+[2021-09-29 14:29:39] [INFO] Please use [ ./image_init_new install ] to repaire those failed.
 ```
 
 * 查看检测报告
@@ -100,11 +100,11 @@ check qga enable                                           [FAILED]
 
 * 如果需要保持 yum 或 deb 源，请运行
 ```
-    ./image_init -t install -c v1
+    ./image_init_new -t install -c v1
 ``` 
 * 如果需要重置 yum 或 deb 源，请运行
 ```
-    ./image_init -t install -c v1 -r true
+    ./image_init_new -t install -c v1 -r true
 ```
 * 等待安装工具的返回信息
 
@@ -166,7 +166,7 @@ reset repo                                                 [OK]
 * 进入工具所在目录，使用root权限运行工具，进行检测。
 
 ```bash
-    ./image_init -t check -c v1 
+    ./image_init_new -t check -c v1 
 ```
 
 * 等待检测工具的返回信息。
