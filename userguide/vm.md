@@ -609,7 +609,7 @@ CHANGED: partition=1 start=2048 old: size=83881728 end=83883776 new: size=419428
   The filesystem on /dev/vda1 is now 52428539 blocks long.
   ```
 
-* 若xff 类型的文件系统，可使用 `xfs_growfs <mountpoint>` 工具进行扩容。
+* 若xfs 类型的文件系统，可使用 `xfs_growfs <mountpoint>` 工具进行扩容。
 
 5、运行 `df -Th` 查看系统盘分区`/dev/vda1` 容量为 200GB 。
 
