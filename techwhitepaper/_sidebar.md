@@ -7,7 +7,6 @@
 * [2 平台物理架构](UCloudStack/techwhitepaper/pharch.md)
 * [3 平台技术架构](UCloudStack/techwhitepaper/techarch.md)
 * [4 产品功能架构](UCloudStack/techwhitepaper/funarch.md)
-* [5 用户服务支持](UCloudStack/techwhitepaper/service.md)
-* [6 灾备服务](UCloudStack/techwhitepaper/recovery.md)
+* [5 灾备服务](UCloudStack/techwhitepaper/recovery.md)
 * [返回主页](UCloudStack/README.md)
 
