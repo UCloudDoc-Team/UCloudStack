@@ -12,8 +12,6 @@ UCloudStack 私有云源于 UCloud 公有云，并持续平滑将公有云的核
 
 UCloudStack 私有云平台支持纯软件和优钛超融合等多种交付模式，通过平台构建业务服务时，可参阅**技术白皮书**深入了解云平台的架构及服务工作机制；有关优钛超融合产品介绍和技术参考可参考[优钛超融合](https://www.ucloud.cn/site/product/utrion.html)。
 
-* [技术白皮书](/UCloudStack/techwhitepaper/README.md)    
-
 
 ### 操作指南
 
