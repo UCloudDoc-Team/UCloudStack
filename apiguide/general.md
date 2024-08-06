@@ -26,15 +26,6 @@
 | TotalCount     | int    | 返回监控信息条数 | No       |
 | Infos          | array  | 返回信息列表     | No       |
 
-**DescribePlatform**
-
-| Parameter name | Type  | Description | Required |
-| -------------- | ----- | ----------- | -------- |
-| DescribePlatformAlarmRecord      | int   | 查询整个平台的监控告警记录    | No       |
-| DescribePlatformResourceUsage          | int | 查询平台资源使用情况     | No       |
-| DescribePlatformResourceOverview      | int   | 查询平台资源概览    | No       |
-| DescribePlatformResourceRanking          | string | 查询平台资源排行(物理机和虚拟机)     | No       |
-
 **MetricInfo**
 
 | Parameter name | Type   | Description                                                  | Required |
